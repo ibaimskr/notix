@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ConstraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfessorSignupActivity">
+
+    <TextView
+        android:id="@+id/viewProfessorSignup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/professorSignup"
+        app:layout_constraintBottom_toTopOf="@+id/layoutProfessorSignup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TableLayout
+        android:id="@+id/layoutProfessorSignup"
+        android:layout_width="407dp"
+        android:layout_height="410dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/viewProfessorSignupDni"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dni" />
+
+            <EditText
+                android:id="@+id/textProfessorSignupDni"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/viewProfessorSignupName"
+                android:layout_width="124dp"
+                android:layout_height="wrap_content"
+                android:text="@string/name" />
+
+            <EditText
+                android:id="@+id/textProfessorSignupName"
+                android:layout_width="283dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/viewProfessorSignupSurname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/surname" />
+
+            <EditText
+                android:id="@+id/textProfessorSignupSurname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nationality" />
+
+            <EditText
+                android:id="@+id/textProfessorSignupNationality"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/viewProfessorSignupNationality"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nationality" />
+
+            <Spinner
+                android:id="@+id/spinnerProfessorSignupNationality"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/viewProfessorSignupEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/email" />
+
+            <EditText
+                android:id="@+id/textProfessorSignupEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/viewProfessorSignupAdress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/addres" />
+
+            <EditText
+                android:id="@+id/textProfessorSignupAdress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/viewProfessorSignupPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/password" />
+
+            <EditText
+                android:id="@+id/textProfessorSignupPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPassword" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/viewProfessorSignupPassword2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/password2" />
+
+            <EditText
+                android:id="@+id/textProfessorSignupPassword2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPassword" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/viewProfessorSignupPhoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/photo" />
+
+            <Button
+                android:id="@+id/buttonProfessorSignupPhoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="@string/button_photo" />
+        </TableRow>
+    </TableLayout>
+
+    <Button
+        android:id="@+id/buttonProfessorSignupBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:text="@string/button_back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutProfessorSignup" />
+
+    <Button
+        android:id="@+id/buttonProfessorSignup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="72dp"
+        android:text="@string/button_signup"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutProfessorSignup" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

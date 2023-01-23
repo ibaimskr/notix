@@ -1,0 +1,62 @@
+<resources>
+    <string name="app_name">notix</string>
+
+    <string name="text_dni">DNI</string>
+    <string name="text_password">PASSWORD</string>
+    <string name="text_signup_question">¿Que tipo de usuario eres?</string>
+    <string name="text_professor">PROFESOR</string>
+    <string name="text_student">ALUMNO</string>
+    <string name="text_eva1">1ª Evaluación</string>
+    <string name="text_eva2">2ª Evaluación</string>
+    <string name="text_eva3">3ª Evaluación</string>
+    <string name="text_parcial">PARCIALES</string>
+    <string name="text_absences">FALTAS</string>
+    <string name="text_reunion">REUNION</string>
+    <string name="text_justified_absences">FALTAS JUSTIFICADAS</string>
+    <string name="text_justified_subjects">ASIGNATURAS</string>
+    <string name="text_spanish">CASTELLANO</string>
+    <string name="text_english">INGLES</string>
+    <string name="text_basque">EUSKERA</string>
+    <string name="text_spinner">SPINNER</string>
+    <string name="text_add">AÑADIR</string>
+    <string name="text_send">ENVIAR</string>
+    <string name="text_hour">HORA</string>
+
+    <string name="dni">DNI</string>
+    <string name="name">Nombre</string>
+    <string name="surname">Apellidos</string>
+    <string name="bornDate">Fecha Nacimiento</string>
+    <string name="nationality">Nacionalidad</string>
+    <string name="email">Email</string>
+    <string name="addres">Dirección</string>
+    <string name="phone">Telefono</string>
+    <string name="photo">Foto</string>
+    <string name="password">Contraseña</string>
+    <string name="password2">Repite Contraseña</string>
+    <string name="professorSignup">Registro Profesor</string>
+    <string name="studentSignup">Registro Alumno</string>
+
+    <string name="check_remember">Recuerdame</string>
+
+    <string name="button_idioma">Idioma</string>
+    <string name="button_contraseña">He olvidado mi contraseña</string>
+    <string name="button_signup">REGISTRAR</string>
+    <string name="button_login">ENTRAR</string>
+    <string name="button_back">VOLVER</string>
+    <string name="button_photo">CLICA</string>
+    <string name="button_next">SIGUIENTE</string>
+    <string name="button_previous">ANTERIOR</string>
+    <string name="button_final">FINAL</string>
+    <string name="button_justified">JUSTIFICADAS</string>
+
+    <string name="created">¡Usuario creado!</string>
+
+    <string name="error">¡Error!</string>
+    <string name="error_blankField">¡Se deben rellenar todos los campos!</string>
+    <string name="error_communication">¡Error al conectar con el servidor!</string>
+    <string name="error_data">¡Error al recibir datos del servidor!</string>
+    <string name="error_dnipass">¡DNI o Contraseña incorrecta!</string>
+    <string name="error_password">¡La contraseña debe tener 5 caracteres minimo!</string>
+    <string name="error_duplicatedUser">¡El usuario ya existe!</string>
+    <string name="error_samePass">¡Las contraseñas no coinciden!</string>
+</resources>

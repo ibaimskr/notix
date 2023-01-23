@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <TableLayout
+        android:id="@+id/layoutLogin"
+        android:layout_width="411dp"
+        android:layout_height="168dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/viewLoginDni"
+                android:layout_width="105dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="50dp"
+                android:text="@string/text_dni" />
+
+            <EditText
+                android:id="@+id/textLoginDni"
+                android:layout_width="283dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="30dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="12345678A" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/viewLoginPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="65dp"
+                android:text="@string/text_password" />
+
+            <EditText
+                android:id="@+id/textLoginPassword"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPassword" />
+        </TableRow>
+
+    </TableLayout>
+
+    <CheckBox
+        android:id="@+id/checkLoginRemember"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/check_remember"
+        app:layout_constraintBottom_toTopOf="@+id/buttonLoginRemember"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutLogin" />
+
+    <Button
+        android:id="@+id/buttonLoginRemember"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_contraseña"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutLogin" />
+
+    <Button
+        android:id="@+id/buttonLoginSignup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:text="@string/button_signup"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonLoginRemember" />
+
+    <Button
+        android:id="@+id/buttonLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="50dp"
+        android:text="@string/button_login"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonLoginRemember" />
+
+    <Button
+        android:id="@+id/buttonLoginLanguage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_idioma"
+        app:layout_constraintBottom_toTopOf="@+id/layoutLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageLogin" />
+
+    <ImageView
+        android:id="@+id/imageLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/layoutLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_launcher_foreground" />
+</androidx.constraintlayout.widget.ConstraintLayout>
