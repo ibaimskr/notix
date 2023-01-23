@@ -20,10 +20,9 @@ public class GetStudentByDni extends NetConfiguration implements Runnable{
         super();
     }
 
-    public GetStudentByDni(String token, String student_dni) {
+    public GetStudentByDni(String token) {
         super();
         this.token = token;
-        this.student_dni = student_dni;
     }
 
     @Override

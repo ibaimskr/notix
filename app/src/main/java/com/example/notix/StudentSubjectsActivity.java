@@ -13,8 +13,6 @@ import com.example.notix.Network.Subject.GetSubjectsByStudentDni;
 import com.example.notix.adapters.SubjectsAdapter;
 import com.example.notix.beans.Professor;
 import com.example.notix.beans.Subject;
-import com.example.notix.Network.Professor.GetProfessorByDni;
-import com.example.notix.Network.Subject.GetSubjectsByStudentDni;
 
 import java.util.ArrayList;
 

@@ -73,12 +73,12 @@ public class StudentEva1Activity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), getString(R.string.error_communication), Toast.LENGTH_SHORT).show();
         }
 
-        buttonNext.setOnClickListener(view -> {
-            Intent i = new Intent(StudentEva1Activity.this, StudentEva2Activity.class);
-            i.putExtra("access", access);
-            i.putExtra("dni", dni);
-            startActivity(i);
-        });
+            buttonNext.setOnClickListener(view -> {
+                Intent i = new Intent(StudentEva1Activity.this, StudentEva2Activity.class);
+                i.putExtra("access", access);
+                i.putExtra("dni", dni);
+                startActivity(i);
+            });
     }
 
     public boolean isConnected() {

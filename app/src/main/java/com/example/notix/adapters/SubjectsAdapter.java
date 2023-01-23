@@ -23,7 +23,7 @@ public class SubjectsAdapter extends ArrayAdapter<Subject> {
     private final ArrayList<Professor> tutors;
     private final Context context;
 
-    public SubjectsAdapter(@NonNull Context context, int resource, @NotNull ArrayList<Subject> subjects, ArrayList<Professor> tutors) {
+    public SubjectsAdapter(@NonNull Context context, int resource, @NotNull ArrayList<Subject> subjects, @NotNull ArrayList<Professor> tutors) {
         super(context, resource, subjects);
         this.context = context;
         this.subjects = subjects;
@@ -38,8 +38,9 @@ public class SubjectsAdapter extends ArrayAdapter<Subject> {
         LayoutInflater layoutInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.subject_layout, null);
 
-        ((TextView) view.findViewById(R.id.viewSubjectLayoutSubject)).setText(subjects.get(position).getName());
-        ((TextView) view.findViewById(R.id.viewSubjectLayoutDuration)).setText(subjects.get(position).getName());
+        ((TextView) view.findViewById(R.id.viewSubjectLayoutSubject)).setText("" + subjects.get(position).getName());
+        ((TextView) view.findViewById(R.id.viewSubjectLayoutDuration)).setText("" + subjects.get(position).getDuration());
+        //((TextView) view.findViewById(R.id.viewSubjectLayoutTutor)).setText("" + subjects.get(position).getProfessor_dni());
         ((TextView) view.findViewById(R.id.viewSubjectLayoutTutor)).setText(tutors.get(position).getName());
 
         return view;
