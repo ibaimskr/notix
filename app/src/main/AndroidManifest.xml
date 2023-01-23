@@ -17,6 +17,9 @@
         android:theme="@style/Theme.Notix"
         tools:targetApi="31">
         <activity
+            android:name=".MainProfessorActivity"
+            android:exported="false" />
+        <activity
             android:name=".StudentJustifiedAbsencesActivity"
             android:exported="false" />
         <activity
