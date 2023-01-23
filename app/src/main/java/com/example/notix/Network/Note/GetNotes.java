@@ -1,6 +1,7 @@
-package com.example.notix.network;
+package com.example.notix.Network.Note;
 
 import com.example.notix.beans.Note;
+import com.example.notix.Network.NetConfiguration;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -11,19 +12,18 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class GetNotes extends NetConfiguration implements Runnable {
-
+public class GetNotes extends NetConfiguration implements Runnable{
     private final String theUrl = theBaseUrl + "notes";
+    private String token = "";
+    private ArrayList<Note> response = new ArrayList<Note>();
 
-    private String access = "";
-
-    private ArrayList<Note> response = new ArrayList<>();
-
-    public GetNotes() { super(); }
-
-    public GetNotes(String access) {
+    public GetNotes() {
         super();
-        this.access = access;
+    }
+
+    public GetNotes(String token) {
+        super();
+        this.token = token;
     }
 
     @Override
@@ -33,14 +33,16 @@ public class GetNotes extends NetConfiguration implements Runnable {
             URL url = new URL(theUrl);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("GET");
-            httpURLConnection.setRequestProperty("Authorization", "Bearer " + access);
+//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + token);
 
             // Sending...
             int responseCode = httpURLConnection.getResponseCode();
 
             if (responseCode == 204) {
                 this.response = null;
+
             } else if (responseCode == HttpURLConnection.HTTP_OK) {
+                // Response...
                 BufferedReader bufferedReader = new BufferedReader(
                         new InputStreamReader(httpURLConnection.getInputStream()));
                 StringBuffer response = new StringBuffer();
@@ -74,6 +76,8 @@ public class GetNotes extends NetConfiguration implements Runnable {
             System.out.println("ERROR: " + e.getMessage());
         }
     }
-    public ArrayList<Note> getResponse() { return response; }
 
+    public ArrayList<Note> getResponse() {
+        return response;
+    }
 }

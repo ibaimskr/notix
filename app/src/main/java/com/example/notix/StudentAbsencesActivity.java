@@ -14,8 +14,8 @@ import android.widget.Toast;
 import com.example.notix.adapters.AbsencesAdapter;
 import com.example.notix.beans.Absence;
 import com.example.notix.beans.Subject;
-import com.example.notix.network.GetAbsencesByDni;
-import com.example.notix.network.GetSubjectsByDni;
+import com.example.notix.Network.Absence.GetAbsencesByStudentDni;
+import com.example.notix.Network.Subject.GetSubjectsByStudentDni;
 
 import java.util.ArrayList;
 
@@ -39,8 +39,8 @@ public class StudentAbsencesActivity extends AppCompatActivity {
         listView.setAdapter(absencesAdapter);
 
         if (isConnected()) {
-            GetAbsencesByDni getAbsences = new GetAbsencesByDni(dni, access);
-            GetSubjectsByDni getSubjects = new GetSubjectsByDni(dni, access);
+            GetAbsencesByStudentDni getAbsences = new GetAbsencesByStudentDni(dni, access);
+            GetSubjectsByStudentDni getSubjects = new GetSubjectsByStudentDni(dni, access);
             Thread thread1 = new Thread(getAbsences);
             Thread thread2 = new Thread(getSubjects);
             try {

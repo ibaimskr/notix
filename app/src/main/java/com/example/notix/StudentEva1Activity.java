@@ -14,9 +14,9 @@ import android.widget.Toast;
 import com.example.notix.adapters.Eva1Adapter;
 import com.example.notix.beans.Note;
 import com.example.notix.beans.Subject;
-import com.example.notix.network.GetNotesByDni;
-import com.example.notix.network.GetSubjects;
-import com.example.notix.network.GetSubjectsByDni;
+import com.example.notix.Network.Note.GetNotesByStudentDni;
+import com.example.notix.Network.Subject.GetSubjects;
+import com.example.notix.Network.Subject.GetSubjectsByStudentDni;
 
 import java.util.ArrayList;
 
@@ -40,8 +40,8 @@ public class StudentEva1Activity extends AppCompatActivity {
         listView.setAdapter(notesAdapter);
 
         if (isConnected()) {
-            GetNotesByDni getNotes = new GetNotesByDni(dni, access);
-            GetSubjectsByDni getSubjects = new GetSubjectsByDni(dni, access);
+            GetNotesByStudentDni getNotes = new GetNotesByStudentDni(dni, access);
+            GetSubjectsByStudentDni getSubjects = new GetSubjectsByStudentDni(dni, access);
             Thread thread1 = new Thread(getNotes);
             Thread thread2 = new Thread(getSubjects);
             try {

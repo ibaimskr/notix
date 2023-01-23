@@ -13,8 +13,8 @@ import android.widget.Toast;
 import com.example.notix.adapters.AbsencesAdapter;
 import com.example.notix.beans.Absence;
 import com.example.notix.beans.Subject;
-import com.example.notix.network.GetJustifiedAbsencesByDni;
-import com.example.notix.network.GetSubjectsByDni;
+import com.example.notix.Network.Absence.GetJustifiedAbsencesByDni;
+import com.example.notix.Network.Subject.GetSubjectsByStudentDni;
 
 import java.util.ArrayList;
 
@@ -39,7 +39,7 @@ public class StudentJustifiedAbsencesActivity extends AppCompatActivity {
 
         if (isConnected()) {
             GetJustifiedAbsencesByDni getAbsences = new GetJustifiedAbsencesByDni(dni, access);
-            GetSubjectsByDni getSubjects = new GetSubjectsByDni(dni, access);
+            GetSubjectsByStudentDni getSubjects = new GetSubjectsByStudentDni(dni, access);
             Thread thread1 = new Thread(getAbsences);
             Thread thread2 = new Thread(getSubjects);
             try {

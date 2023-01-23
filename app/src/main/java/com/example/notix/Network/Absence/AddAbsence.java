@@ -1,7 +1,7 @@
-package com.example.notix.network;
+package com.example.notix.Network.Absence;
 
-import com.example.notix.beans.Professor;
-import com.example.notix.beans.ProfessorRequest;
+import com.example.notix.beans.Absence;
+import com.example.notix.Network.NetConfiguration;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -9,40 +9,44 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class ProfessorSignup extends NetConfiguration implements Runnable {
-    private final String theUrl = theBaseUrl + "professors";
-    private int response;
-    ProfessorRequest professor;
+public class AddAbsence extends NetConfiguration implements Runnable {
 
-    public ProfessorSignup(ProfessorRequest professor) {
-        super();
-        this.professor = professor;
+    private final String theUrl = theBaseUrl + "absences";
+    private Absence absence;
+    private int response;
+    private String token;
+
+    public AddAbsence(Absence absenceRequest, String token) {
+        this.absence = absenceRequest;
+        this.token = token;
     }
 
     @Override
     public void run() {
         try {
+            // The URL
             URL url = new URL(theUrl);
 
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("POST");
             httpURLConnection.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
             httpURLConnection.setRequestProperty("Accept", "application/json");
+//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + token);
             httpURLConnection.setDoOutput(true);
             httpURLConnection.setDoInput(true);
 
-            String jsonInputString = professor.toString();
-            try (OutputStream postSend = httpURLConnection.getOutputStream()) {
+            String jsonInputString = absence.toString();
+            try (OutputStream postsend = httpURLConnection.getOutputStream()) {
                 byte[] input = jsonInputString.getBytes("utf-8");
-                postSend.write(input, 0, input.length);
+                postsend.write(input, 0, input.length);
             }
 
-            // Sending...
+            // Sending
             int responseCode = httpURLConnection.getResponseCode();
 
-            if (responseCode == 500) {
-                this.response = 500;
-            } else if (responseCode == HttpURLConnection.HTTP_OK) {
+            if (responseCode == 409) {
+                this.response = 409;
+            } else if (responseCode == HttpURLConnection.HTTP_CREATED) {
                 BufferedReader bufferedReader = new BufferedReader(
                         new InputStreamReader(httpURLConnection.getInputStream()));
 
@@ -52,14 +56,16 @@ public class ProfessorSignup extends NetConfiguration implements Runnable {
                     response.append(inputLine);
                 }
                 bufferedReader.close();
+
             }
 
         } catch (Exception e) {
             System.out.println("ERROR: " + e.getMessage());
         }
+
     }
+
     public int getResponse() {
         return response;
     }
-
 }

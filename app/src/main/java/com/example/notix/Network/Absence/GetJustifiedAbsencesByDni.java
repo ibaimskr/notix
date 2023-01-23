@@ -1,7 +1,7 @@
-package com.example.notix.network;
+package com.example.notix.Network.Absence;
 
+import com.example.notix.Network.NetConfiguration;
 import com.example.notix.beans.Absence;
-import com.example.notix.beans.Professor;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -12,16 +12,17 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class GetProfessorByDni extends NetConfiguration implements Runnable {
+public class GetJustifiedAbsencesByDni extends NetConfiguration implements Runnable {
 
-    private final String theUrl = theBaseUrl + "professors/";
+    private final String theUrl = theBaseUrl + "absences/";
     private String dni;
     private String access = "";
-    private ArrayList<Professor> response = new ArrayList<>();
+    private ArrayList<Absence> response = new ArrayList<>();
 
-    public GetProfessorByDni() { super(); }
+    public GetJustifiedAbsencesByDni() { super(); }
 
-    public GetProfessorByDni(String dni, String access) {
+    public GetJustifiedAbsencesByDni(String dni, String access){
+        super();
         this.dni = dni;
         this.access = access;
     }
@@ -30,7 +31,7 @@ public class GetProfessorByDni extends NetConfiguration implements Runnable {
     public void run() {
         try {
             // The URL
-            URL url = new URL(theUrl + dni);
+            URL url = new URL(theUrl + dni + "/justified");
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("GET");
             httpURLConnection.setRequestProperty("Authorization", "Bearer " + access);
@@ -53,20 +54,18 @@ public class GetProfessorByDni extends NetConfiguration implements Runnable {
                 // Processing the JSON...
                 String theUnprocessedJSON = response.toString();
 
-                JSONArray professors = new JSONArray(theUnprocessedJSON);
+                JSONArray absences = new JSONArray(theUnprocessedJSON);
 
-                for (int i = 0; i < professors.length(); i++) {
-                    JSONObject object = professors.getJSONObject(i);
+                for (int i = 0; i < absences.length(); i++) {
+                    JSONObject object = absences.getJSONObject(i);
 
-                    Professor professor = new Professor();
-                    professor.setProfessor_dni(object.getString("professorDni"));
-                    professor.setName(object.getString("name"));
-                    professor.setSurname(object.getString("surname"));
-                    professor.setNationality(object.getString("nationality"));
-                    professor.setEmail(object.getString("email"));
-                    professor.setAdress(object.getString("adress"));
-                    professor.setPhoto(object.getString("photo"));
-                    this.response.add(professor);
+                    Absence absence = new Absence();
+                    absence.setStudent_dni(object.getString("studentDni"));
+                    absence.setSubject_id(object.getInt("subjectId"));
+                    String dni = absence.getStudent_dni();
+                    absence.setFoul(object.getString("foul"));
+                    absence.setJustified(object.getBoolean("justified"));
+                    this.response.add(absence);
                 }
             }
 
@@ -75,5 +74,5 @@ public class GetProfessorByDni extends NetConfiguration implements Runnable {
         }
     }
 
-    public ArrayList<Professor> getResponse() { return response; }
+    public ArrayList<Absence> getResponse() { return response; }
 }

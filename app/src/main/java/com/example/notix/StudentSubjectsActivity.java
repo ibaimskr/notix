@@ -9,11 +9,12 @@ import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.notix.Network.Subject.GetSubjectsByStudentDni;
 import com.example.notix.adapters.SubjectsAdapter;
 import com.example.notix.beans.Professor;
 import com.example.notix.beans.Subject;
-import com.example.notix.network.GetProfessorByDni;
-import com.example.notix.network.GetSubjectsByDni;
+import com.example.notix.Network.Professor.GetProfessorByDni;
+import com.example.notix.Network.Subject.GetSubjectsByStudentDni;
 
 import java.util.ArrayList;
 
@@ -36,7 +37,7 @@ public class StudentSubjectsActivity extends AppCompatActivity {
         listView.setAdapter(subjectsAdapter);
 
         if (isConnected()) {
-            GetSubjectsByDni getSubjects = new GetSubjectsByDni(dni, access);
+            GetSubjectsByStudentDni getSubjects = new GetSubjectsByStudentDni(dni, access);
             //GetProfessorByDni getTutors = new GetProfessorByDni(dni, access);
             Thread thread = new Thread(getSubjects);
             try {

@@ -1,6 +1,7 @@
-package com.example.notix.network;
+package com.example.notix.Network.Note;
 
 import com.example.notix.beans.Note;
+import com.example.notix.Network.NetConfiguration;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -11,38 +12,41 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class GetNotesByDni extends NetConfiguration implements Runnable {
+public class GetNotesByProfessorDni extends NetConfiguration implements Runnable{
+    private final String theUrl = theBaseUrl + "notes/professor/";
+    private String token = "";
+    private String professor_dni;
+    private ArrayList<Note> response = new ArrayList<Note>();
 
-    private final String theUrl = theBaseUrl + "notes/student/";
-    private String dni;
-    private String access = "";
-    private ArrayList<Note> response = new ArrayList<>();
-
-    public GetNotesByDni() { super(); }
-
-    public GetNotesByDni(String dni, String access) {
+    public GetNotesByProfessorDni() {
         super();
-        this.dni = dni;
-        this.access = access;
+    }
+
+    public GetNotesByProfessorDni(String student_dni, String token) {
+        super();
+        this.professor_dni = professor_dni;
+        this.token = token;
     }
 
     @Override
     public void run() {
         try {
             // The URL
-            URL url = new URL(theUrl + dni);
+            URL url = new URL(theUrl + professor_dni);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("GET");
-            httpURLConnection.setRequestProperty("Authorization", "Bearer " + access);
+//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + token);
 
             // Sending...
             int responseCode = httpURLConnection.getResponseCode();
 
-            if (responseCode == 418) {
+            if (responseCode == 204) {
                 this.response = null;
+
             } else if (responseCode == HttpURLConnection.HTTP_OK) {
+                // Response...
                 BufferedReader bufferedReader = new BufferedReader(
-                    new InputStreamReader(httpURLConnection.getInputStream()));
+                        new InputStreamReader(httpURLConnection.getInputStream()));
                 StringBuffer response = new StringBuffer();
                 String inputLine;
                 while ((inputLine = bufferedReader.readLine()) != null) {
@@ -52,6 +56,7 @@ public class GetNotesByDni extends NetConfiguration implements Runnable {
 
                 // Processing the JSON...
                 String theUnprocessedJSON = response.toString();
+
                 JSONArray notes = new JSONArray(theUnprocessedJSON);
 
                 for (int i = 0; i < notes.length(); i++) {
@@ -73,8 +78,8 @@ public class GetNotesByDni extends NetConfiguration implements Runnable {
             System.out.println("ERROR: " + e.getMessage());
         }
     }
+
     public ArrayList<Note> getResponse() {
         return response;
     }
-
 }

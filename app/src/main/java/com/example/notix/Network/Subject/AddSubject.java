@@ -1,11 +1,7 @@
-package com.example.notix.network;
+package com.example.notix.Network.Subject;
 
-import android.content.Context;
-import android.util.Log;
-
-import com.example.notix.beans.AuthRequest;
-import com.example.notix.beans.AuthResponse;
-import com.google.gson.Gson;
+import com.example.notix.beans.Subject;
+import com.example.notix.Network.NetConfiguration;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -13,16 +9,15 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class Login extends NetConfiguration implements Runnable {
+public class AddSubject extends NetConfiguration implements Runnable{
+    private final String theUrl = theBaseUrl + "subjects";
+    private Subject subject;
+    private int response;
+    private String token;
 
-    private final String theUrl = theBaseUrl + "users/login";
-    private AuthRequest request;
-    private AuthResponse response;
-    Context context;
-
-    public Login(AuthRequest userComp) {
-        super();
-        this.request = userComp;
+    public AddSubject(Subject subjectRequest, String token) {
+        this.subject = subjectRequest;
+        this.token = token;
     }
 
     @Override
@@ -35,10 +30,11 @@ public class Login extends NetConfiguration implements Runnable {
             httpURLConnection.setRequestMethod("POST");
             httpURLConnection.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
             httpURLConnection.setRequestProperty("Accept", "application/json");
+//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + token);
             httpURLConnection.setDoOutput(true);
             httpURLConnection.setDoInput(true);
 
-            String jsonInputString = request.toString();
+            String jsonInputString = subject.toString();
             try (OutputStream postsend = httpURLConnection.getOutputStream()) {
                 byte[] input = jsonInputString.getBytes("utf-8");
                 postsend.write(input, 0, input.length);
@@ -47,18 +43,9 @@ public class Login extends NetConfiguration implements Runnable {
             // Sending
             int responseCode = httpURLConnection.getResponseCode();
 
-            if (responseCode == 400) {
-                AuthResponse errorResponse = new AuthResponse();
-                errorResponse.setError(responseCode);
-                this.response = errorResponse;
-
-            } else if (responseCode == 401) {
-                AuthResponse errorResponse = new AuthResponse();
-                errorResponse.setError(responseCode);
-                this.response = errorResponse;
-
-            } else if (responseCode == HttpURLConnection.HTTP_OK) {
-                // Response...
+            if (responseCode == 409) {
+                this.response = 409;
+            } else if (responseCode == HttpURLConnection.HTTP_CREATED) {
                 BufferedReader bufferedReader = new BufferedReader(
                         new InputStreamReader(httpURLConnection.getInputStream()));
 
@@ -67,20 +54,17 @@ public class Login extends NetConfiguration implements Runnable {
                 while ((inputLine = bufferedReader.readLine()) != null) {
                     response.append(inputLine);
                 }
-
                 bufferedReader.close();
 
-                // Processing the JSON...
-                String theUnprocessedJSON = response.toString();
-                AuthResponse response1 = new Gson().fromJson(theUnprocessedJSON, AuthResponse.class);
-
-                this.response = response1;
             }
- //
+
         } catch (Exception e) {
-            Log.e("ERROR: ", e.getMessage());
+            System.out.println("ERROR: " + e.getMessage());
         }
+
     }
 
-    public AuthResponse getResponse(AuthRequest request) { return response; }
+    public int getResponse() {
+        return response;
+    }
 }

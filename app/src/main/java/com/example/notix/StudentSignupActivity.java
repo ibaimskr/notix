@@ -14,10 +14,10 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.notix.Network.Student.StudentSignup;
+import com.example.notix.Network.User.UserSignup;
 import com.example.notix.beans.AuthRequest;
 import com.example.notix.beans.StudentRequest;
-import com.example.notix.network.StudentSignup;
-import com.example.notix.network.UserSignup;
 
 import java.util.ArrayList;
 

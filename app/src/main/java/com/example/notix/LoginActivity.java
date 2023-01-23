@@ -17,11 +17,11 @@ import android.widget.EditText;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
+import com.example.notix.Network.User.Login;
 import com.example.notix.beans.AuthRequest;
 import com.example.notix.beans.AuthResponse;
 import com.example.notix.beans.UserRemember;
 import com.example.notix.db.DataManager;
-import com.example.notix.network.Login;
 
 import java.util.List;
 import java.util.Locale;

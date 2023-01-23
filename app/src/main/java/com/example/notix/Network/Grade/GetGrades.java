@@ -1,6 +1,7 @@
-package com.example.notix.network;
+package com.example.notix.Network.Grade;
 
-import com.example.notix.beans.Subject;
+import com.example.notix.beans.Grade;
+import com.example.notix.Network.NetConfiguration;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -11,19 +12,18 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class GetSubjects extends NetConfiguration implements Runnable {
+public class GetGrades extends NetConfiguration implements Runnable{
+    private final String theUrl = theBaseUrl + "grades";
+    private String token = "";
+    private ArrayList<Grade> response = new ArrayList<Grade>();
 
-    private final String theUrl = theBaseUrl + "subjects";
-
-    private String access = "";
-
-    private ArrayList<Subject> response = new ArrayList<>();
-
-    public GetSubjects() { super(); }
-
-    public GetSubjects(String access) {
+    public GetGrades() {
         super();
-        this.access = access;
+    }
+
+    public GetGrades(String token) {
+        super();
+        this.token = token;
     }
 
     @Override
@@ -33,14 +33,16 @@ public class GetSubjects extends NetConfiguration implements Runnable {
             URL url = new URL(theUrl);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("GET");
-            httpURLConnection.setRequestProperty("Authorization", "Bearer " + access);
+//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + token);
 
             // Sending...
             int responseCode = httpURLConnection.getResponseCode();
 
             if (responseCode == 204) {
                 this.response = null;
+
             } else if (responseCode == HttpURLConnection.HTTP_OK) {
+                // Response...
                 BufferedReader bufferedReader = new BufferedReader(
                         new InputStreamReader(httpURLConnection.getInputStream()));
                 StringBuffer response = new StringBuffer();
@@ -53,18 +55,16 @@ public class GetSubjects extends NetConfiguration implements Runnable {
                 // Processing the JSON...
                 String theUnprocessedJSON = response.toString();
 
-                JSONArray subjects = new JSONArray(theUnprocessedJSON);
+                JSONArray grades = new JSONArray(theUnprocessedJSON);
 
-                for (int i = 0; i < subjects.length(); i++) {
-                    JSONObject object = subjects.getJSONObject(i);
+                for (int i = 0; i < grades.length(); i++) {
+                    JSONObject object = grades.getJSONObject(i);
 
-                    Subject subject = new Subject();
-                    subject.setSubject_id(object.getInt("subjectId"));
-                    subject.setGrade_edition_id(object.getInt("gradeEditionId"));
-                    subject.setProfessor_dni(object.getString("professorDni"));
-                    subject.setName(object.getString("name"));
-                    subject.setDuration(object.getInt("duration"));
-                    this.response.add(subject);
+                    Grade grade = new Grade();
+                    grade.setGrade_id(object.getInt("gradeId"));
+                    grade.setLanguage(object.getString("language"));
+                    grade.setName(object.getString("name"));
+                    this.response.add(grade);
                 }
             }
 
@@ -72,6 +72,8 @@ public class GetSubjects extends NetConfiguration implements Runnable {
             System.out.println("ERROR: " + e.getMessage());
         }
     }
-    public ArrayList<Subject> getResponse() { return response; }
 
+    public ArrayList<Grade> getResponse() {
+        return response;
+    }
 }

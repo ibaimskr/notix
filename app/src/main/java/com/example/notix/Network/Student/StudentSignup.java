@@ -1,5 +1,7 @@
-package com.example.notix.network;
+package com.example.notix.Network.Student;
 
+import com.example.notix.beans.Student;
+import com.example.notix.Network.NetConfiguration;
 import com.example.notix.beans.StudentRequest;
 
 import java.io.BufferedReader;
@@ -8,40 +10,47 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class StudentSignup extends NetConfiguration implements Runnable {
+public class StudentSignup extends NetConfiguration implements Runnable{
     private final String theUrl = theBaseUrl + "students";
+    private Student student;
     private int response;
-    StudentRequest student;
+    private String token;
+
+    public StudentSignup(Student studentRequest, String token) {
+        this.student = studentRequest;
+        this.token = token;
+    }
 
     public StudentSignup(StudentRequest student) {
         super();
-        this.student = student;
     }
 
     @Override
     public void run() {
         try {
+            // The URL
             URL url = new URL(theUrl);
 
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("POST");
             httpURLConnection.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
             httpURLConnection.setRequestProperty("Accept", "application/json");
+//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + token);
             httpURLConnection.setDoOutput(true);
             httpURLConnection.setDoInput(true);
 
             String jsonInputString = student.toString();
-            try (OutputStream postSend = httpURLConnection.getOutputStream()) {
+            try (OutputStream postsend = httpURLConnection.getOutputStream()) {
                 byte[] input = jsonInputString.getBytes("utf-8");
-                postSend.write(input, 0, input.length);
+                postsend.write(input, 0, input.length);
             }
 
-            // Sending...
+            // Sending
             int responseCode = httpURLConnection.getResponseCode();
 
-            if (responseCode == 500) {
-                this.response = 500;
-            } else if (responseCode == HttpURLConnection.HTTP_OK) {
+            if (responseCode == 409) {
+                this.response = 409;
+            } else if (responseCode == HttpURLConnection.HTTP_CREATED) {
                 BufferedReader bufferedReader = new BufferedReader(
                         new InputStreamReader(httpURLConnection.getInputStream()));
 
@@ -51,12 +60,16 @@ public class StudentSignup extends NetConfiguration implements Runnable {
                     response.append(inputLine);
                 }
                 bufferedReader.close();
+
             }
 
         } catch (Exception e) {
             System.out.println("ERROR: " + e.getMessage());
         }
-    }
-    public int getResponse() { return response; }
 
+    }
+
+    public int getResponse() {
+        return response;
+    }
 }
