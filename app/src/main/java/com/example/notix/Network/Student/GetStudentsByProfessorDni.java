@@ -1,8 +1,9 @@
 package com.example.notix.Network.Student;
 
-import com.example.notix.beans.Student;
 import com.example.notix.Network.NetConfiguration;
+import com.example.notix.beans.Student;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -10,27 +11,27 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class GetStudentByDni extends NetConfiguration implements Runnable{
-    private final String theUrl = theBaseUrl + "students/";
+public class GetStudentsByProfessorDni extends NetConfiguration implements Runnable{
+    private final String theUrl = theBaseUrl + "students/professor/";
     private String token = "";
-    private String student_dni;
+    private String professor_dni;
     private Student student;
 
-    public GetStudentByDni() {
+    public GetStudentsByProfessorDni() {
         super();
     }
 
-    public GetStudentByDni(String token, String student_dni) {
+    public GetStudentsByProfessorDni(String token, String professor_dni) {
         super();
         this.token = token;
-        this.student_dni = student_dni;
+        this.professor_dni = professor_dni;
     }
 
     @Override
     public void run() {
         try {
             // The URL
-            URL url = new URL(theUrl + student_dni);
+            URL url = new URL(theUrl + professor_dni);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("GET");
 //            httpURLConnection.setRequestProperty("Authorization", "Bearer " + token);
@@ -55,7 +56,10 @@ public class GetStudentByDni extends NetConfiguration implements Runnable{
                 // Processing the JSON...
                 String theUnprocessedJSON = response.toString();
 
-                    JSONObject object = new JSONObject(theUnprocessedJSON);
+                JSONArray students = new JSONArray(theUnprocessedJSON);
+
+                for (int i = 0; i < students.length(); i++) {
+                    JSONObject object = students.getJSONObject(i);
 
                     student = new Student();
                     student.setStudent_dni(object.getString("studentDni"));
@@ -66,7 +70,7 @@ public class GetStudentByDni extends NetConfiguration implements Runnable{
                     student.setEmail(object.getString("email"));
                     student.setPhone(object.getString("phone"));
                     student.setPhoto(object.getString("photo"));
-
+                    }
                 }
 
 

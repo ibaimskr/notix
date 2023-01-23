@@ -12,17 +12,15 @@ import java.net.URL;
 
 public class StudentSignup extends NetConfiguration implements Runnable{
     private final String theUrl = theBaseUrl + "students";
-    private Student student;
+    private StudentRequest student;
     private int response;
     private String token;
 
-    public StudentSignup(Student studentRequest, String token) {
-        this.student = studentRequest;
-        this.token = token;
-    }
+
 
     public StudentSignup(StudentRequest student) {
         super();
+        this.student = student;
     }
 
     @Override

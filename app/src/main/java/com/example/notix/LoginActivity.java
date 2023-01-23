@@ -18,6 +18,7 @@ import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import com.example.notix.Network.User.Login;
+import com.example.notix.Network.User.SessionManager;
 import com.example.notix.beans.AuthRequest;
 import com.example.notix.beans.AuthResponse;
 import com.example.notix.beans.UserRemember;
@@ -85,6 +86,9 @@ public class LoginActivity extends AppCompatActivity {
                             textPassword.setText("");
                         } else {
                             rememberMe();
+                            Context context = getApplicationContext();
+                            SessionManager session = new SessionManager(context);
+                            session.saveStringData ("jwtToken", response.getAccessToken());
                             Intent i = new Intent(LoginActivity.this, MainStudentActivity.class);
                             i.putExtra("access", access);
                             i.putExtra("dni", dni);

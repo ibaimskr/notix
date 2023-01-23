@@ -113,15 +113,17 @@ public class StudentSignupActivity extends AppCompatActivity {
                     Thread thread2 = new Thread(createStudent);
                     try {
                         thread1.start();
-                        thread1.join();
                         thread2.start();
+                        thread1.join();
                         thread2.join();
                     } catch (InterruptedException e) {
                         // Nothing to do here...
                     }
                     // Processing the answer
-                    System.out.println("RESPONSE DE USER: " + createUser.getResponse());
+                    //System.out.println("RESPONSE DE USER: " + createUser.getResponse());
                     registered = createUser.getResponse();
+                    int hola = createStudent.getResponse();
+                    System.out.println("AAAAAAA++++++++++++++++++++++++++++++++++++++++"+hola);
                 }
                 return  registered;
             }

@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.notix.Network.User.SessionManager;
 import com.example.notix.adapters.Eva1Adapter;
 import com.example.notix.beans.Note;
 import com.example.notix.beans.Subject;
@@ -31,6 +32,10 @@ public class StudentEva1Activity extends AppCompatActivity {
         String access = extras.getString("access");
         String dni = extras.getString("dni");
 
+        SessionManager session;
+        session = new SessionManager(getApplicationContext());
+        String token = session.getStringData("jwtToken");
+
         Button buttonNext = findViewById(R.id.buttonEva1Next);
         ListView listView = findViewById(R.id.listViewEva1);
 
@@ -40,8 +45,8 @@ public class StudentEva1Activity extends AppCompatActivity {
         listView.setAdapter(notesAdapter);
 
         if (isConnected()) {
-            GetNotesByStudentDni getNotes = new GetNotesByStudentDni(dni, access);
-            GetSubjectsByStudentDni getSubjects = new GetSubjectsByStudentDni(dni, access);
+            GetNotesByStudentDni getNotes = new GetNotesByStudentDni(dni, token);
+            GetSubjectsByStudentDni getSubjects = new GetSubjectsByStudentDni(dni, token);
             Thread thread1 = new Thread(getNotes);
             Thread thread2 = new Thread(getSubjects);
             try {

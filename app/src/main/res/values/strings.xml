@@ -20,7 +20,7 @@
     <string name="text_spinner">SPINNER</string>
     <string name="text_add">AÑADIR</string>
     <string name="text_send">ENVIAR</string>
-    <string name="text_hour">HORA</string>
+    <string name="text_date">FECHA</string>
 
     <string name="dni">DNI</string>
     <string name="name">Nombre</string>

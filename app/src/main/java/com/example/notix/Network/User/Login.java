@@ -83,5 +83,6 @@ public class Login extends NetConfiguration implements Runnable {
         }
     }
 
-    public AuthResponse getResponse(AuthRequest request) { return response; }
+    public AuthResponse getResponse(AuthRequest request) {
+        return response; }
 }
