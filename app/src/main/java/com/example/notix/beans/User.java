@@ -7,10 +7,13 @@ public class User implements Serializable {
     int is_enabled;
     String password;
 
-    public User(String dni, int is_enabled, String password) {
+    int roleId;
+
+    public User(String dni, int is_enabled, String password, int roleId) {
         this.dni = dni;
         this.is_enabled = is_enabled;
         this.password = password;
+        this.roleId = roleId;
     }
 
     public String getDni() {
@@ -37,11 +40,20 @@ public class User implements Serializable {
         this.password = password;
     }
 
+    public int getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
+    }
+
     @Override
     public String toString() {
         return "{" +
                 '"' + "dni" + '"' + ":" + '"' + dni + '"' +
                 "," + '"' + "enabled" + '"' + ":" + '"'+ is_enabled + '"' +
+                "," + '"' + "roleId" + '"' + ":" + '"'+ roleId + '"' +
                 "}";
     }
 }

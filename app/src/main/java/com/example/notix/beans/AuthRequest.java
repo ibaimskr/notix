@@ -7,8 +7,12 @@ public class AuthRequest implements Serializable {
     private String dni;
     private String password;
 
+    int roleId;
+
     public AuthRequest() {
     }
+
+
 
     public String getDni() {
         return dni;
@@ -26,11 +30,20 @@ public class AuthRequest implements Serializable {
         this.password = password;
     }
 
+    public int getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
+    }
+
     @Override
     public String toString() {
         return "{" +
                 '"' + "dni" + '"' + ":" + '"' + dni + '"' +
                 "," + '"' + "password" + '"' + ":" + '"' + password + '"' +
+                "," + '"' + "roleId" + '"' + ":" + '"'+ roleId + '"' +
                 '}';
     }
 

@@ -28,5 +28,12 @@ public class MainProfessorActivity extends AppCompatActivity {
             startActivity(i);
         });
 
+        buttonAbsences.setOnClickListener(view -> {
+            Intent i = new Intent(MainProfessorActivity.this, ProfessorAddAbsencesActivity.class);
+            i.putExtra("access", access);
+            i.putExtra("dni", dni);
+            startActivity(i);
+        });
+
     }
 }

@@ -74,6 +74,7 @@ public class StudentSignupActivity extends AppCompatActivity {
 
                         user.setDni(textDni.getText().toString());
                         user.setPassword(textPass.getText().toString());
+                        user.setRoleId(3);
                         student.setStudent_dni(textDni.getText().toString());
                         student.setName(textName.getText().toString());
                         student.setSurname(textSurname.getText().toString());
@@ -119,6 +120,7 @@ public class StudentSignupActivity extends AppCompatActivity {
                         // Nothing to do here...
                     }
                     // Processing the answer
+                    System.out.println("RESPONSE DE USER: " + createUser.getResponse());
                     registered = createUser.getResponse();
                 }
                 return  registered;

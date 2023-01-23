@@ -41,7 +41,7 @@ public class UserSignup extends NetConfiguration implements Runnable {
 
             if (responseCode == 500) {
                 this.response = 500;
-            } else if (responseCode == HttpURLConnection.HTTP_OK) {
+            } else if (responseCode == HttpURLConnection.HTTP_CREATED) {
                 BufferedReader bufferedReader = new BufferedReader(
                         new InputStreamReader(httpURLConnection.getInputStream()));
 
