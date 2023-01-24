@@ -16,7 +16,7 @@ public class GetSubjectsByStudentDni extends NetConfiguration implements Runnabl
     private final String theUrl = theBaseUrl + "subjects/student/";
     private String token = "";
     private String student_dni;
-    private ArrayList<Subject> response = new ArrayList<Subject>();
+    private ArrayList<Subject> subjectResponse = new ArrayList<Subject>();
 
     public GetSubjectsByStudentDni() {
         super();
@@ -41,7 +41,7 @@ public class GetSubjectsByStudentDni extends NetConfiguration implements Runnabl
             int responseCode = httpURLConnection.getResponseCode();
 
             if (responseCode == 204) {
-                this.response = null;
+                subjectResponse = null;
 
             } else if (responseCode == HttpURLConnection.HTTP_OK) {
                 // Response...
@@ -68,7 +68,7 @@ public class GetSubjectsByStudentDni extends NetConfiguration implements Runnabl
                     subject.setProfessor_dni(object.getString("professorDni"));
                     subject.setName(object.getString("name"));
                     subject.setDuration(object.getInt("duration"));
-                    this.response.add(subject);
+                    subjectResponse.add(subject);
                 }
             }
 
@@ -78,6 +78,6 @@ public class GetSubjectsByStudentDni extends NetConfiguration implements Runnabl
     }
 
     public ArrayList<Subject> getResponse() {
-        return response;
+        return subjectResponse;
     }
 }

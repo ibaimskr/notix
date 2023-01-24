@@ -10,13 +10,16 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 
 public class GetStudentsByProfessorDni extends NetConfiguration implements Runnable {
 
     private final String theUrl = theBaseUrl + "students/professor/";
     private String professor_dni;
-    private Student student;
+
     private String access = "";
+
+    private ArrayList<Student> studentsResponse = new ArrayList<>();
 
     public GetStudentsByProfessorDni(String access, String professor_dni) {
         super();
@@ -31,13 +34,13 @@ public class GetStudentsByProfessorDni extends NetConfiguration implements Runna
             URL url = new URL(theUrl + professor_dni);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("GET");
-//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + access);
+            httpURLConnection.setRequestProperty("Authorization", "Bearer " + access);
 
             // Sending...
             int responseCode = httpURLConnection.getResponseCode();
 
             if (responseCode == 204) {
-                this.student = null;
+                responseCode = 204;
 
             } else if (responseCode == HttpURLConnection.HTTP_OK) {
                 // Response...
@@ -58,7 +61,7 @@ public class GetStudentsByProfessorDni extends NetConfiguration implements Runna
                 for (int i = 0; i < students.length(); i++) {
                     JSONObject object = students.getJSONObject(i);
 
-                    student = new Student();
+                    Student student = new Student();
                     student.setStudent_dni(object.getString("studentDni"));
                     student.setName(object.getString("name"));
                     student.setSurname(object.getString("surname"));
@@ -67,6 +70,7 @@ public class GetStudentsByProfessorDni extends NetConfiguration implements Runna
                     student.setEmail(object.getString("email"));
                     student.setPhone(object.getString("phone"));
                     student.setPhoto(object.getString("photo"));
+                    studentsResponse.add(student);
                     }
                 }
 
@@ -75,7 +79,7 @@ public class GetStudentsByProfessorDni extends NetConfiguration implements Runna
         }
     }
 
-    public Student getResponse() {
-        return student;
+    public ArrayList<Student> getResponse() {
+        return studentsResponse;
     }
 }

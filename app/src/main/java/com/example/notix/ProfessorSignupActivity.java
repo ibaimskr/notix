@@ -63,6 +63,7 @@ public class ProfessorSignupActivity extends AppCompatActivity {
 
                         user.setDni(textDni.getText().toString());
                         user.setPassword(textPass.getText().toString());
+                        user.setRoleId(2);
                         professor.setProfessor_dni(textDni.getText().toString());
                         professor.setName(textName.getText().toString());
                         professor.setSurname(textSurname.getText().toString());
@@ -100,8 +101,8 @@ public class ProfessorSignupActivity extends AppCompatActivity {
                     Thread thread2 = new Thread(createProfessor);
                     try {
                         thread1.start();
-                        thread1.join();
                         thread2.start();
+                        thread1.join();
                         thread2.join();
                     } catch (InterruptedException e) {
                         // Nothing to do here...

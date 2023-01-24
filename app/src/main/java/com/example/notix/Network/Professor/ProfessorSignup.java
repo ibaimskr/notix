@@ -13,15 +13,13 @@ import java.net.URL;
 public class ProfessorSignup extends NetConfiguration implements Runnable {
 
     private final String theUrl = theBaseUrl + "professors";
-    private Professor professor;
-    private String access;
+    private ProfessorRequest professor;
     private int response;
 
-    public ProfessorSignup(ProfessorRequest professor) { }
 
-    public ProfessorSignup(Professor professorRequest, String access) {
-        this.professor = professorRequest;
-        this.access = access;
+
+    public ProfessorSignup(ProfessorRequest professor) {
+        this.professor = professor;
     }
 
     @Override
@@ -34,7 +32,6 @@ public class ProfessorSignup extends NetConfiguration implements Runnable {
             httpURLConnection.setRequestMethod("POST");
             httpURLConnection.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
             httpURLConnection.setRequestProperty("Accept", "application/json");
-//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + access);
             httpURLConnection.setDoOutput(true);
             httpURLConnection.setDoInput(true);
 

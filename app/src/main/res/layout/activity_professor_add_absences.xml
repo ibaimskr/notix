@@ -18,33 +18,12 @@
 
     <TableLayout
         android:id="@+id/tableLayout2"
-        android:layout_width="350dp"
-        android:layout_height="138dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/viewProfessorAddAbsenceSubject"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/text_subjects" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <Spinner
-                android:id="@+id/spinnerProfessorAddAbsencesSubject"
-                android:layout_width="350dp"
-                android:layout_height="25dp" />
-        </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
@@ -72,6 +51,27 @@
             android:layout_height="match_parent">
 
             <TextView
+                android:id="@+id/viewProfessorAddAbsenceSubject"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_subjects" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Spinner
+                android:id="@+id/spinnerProfessorAddAbsencesSubject"
+                android:layout_width="350dp"
+                android:layout_height="25dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
                 android:id="@+id/viewProfessorAddAbsencesDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -82,12 +82,36 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <EditText
+                android:id="@+id/editTextDateProfessorAddAbsences"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Fecha"
+                android:inputType="date" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/viewProfessorAddAbsencesFoul"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="JUSTIFIED" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
             <Spinner
-                android:id="@+id/spinnerProfessorAddAbsencesDate"
+                android:id="@+id/spinnerProfessorAddAbsencesFoul"
                 android:layout_width="match_parent"
                 android:layout_height="25dp" />
-
         </TableRow>
+
     </TableLayout>
 
     <Button
