@@ -29,7 +29,7 @@ public class MainStudentActivity extends AppCompatActivity {
         Button buttonNotes = findViewById(R.id.buttonStudentMainNotes);
         Button buttonAbsences = findViewById(R.id.buttonStudentMainAbsences);
         Button buttonSubjects = findViewById(R.id.buttonStudentMainSubjects);
-
+//
         if (isConnected()) {
             GetStudentByDni getStudent = new GetStudentByDni(dni, access);
             Thread thread = new Thread(getStudent);
@@ -43,8 +43,8 @@ public class MainStudentActivity extends AppCompatActivity {
             Student student = getStudent.getResponse();
             String studentName = (student.getName() + " " + student.getSurname());
             viewName.setText(studentName);
-
         }
+//
 
         buttonNotes.setOnClickListener(view -> {
             Intent i = new Intent(MainStudentActivity.this, StudentEva1Activity.class);

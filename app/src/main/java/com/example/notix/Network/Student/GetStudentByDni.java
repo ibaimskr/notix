@@ -10,19 +10,21 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class GetStudentByDni extends NetConfiguration implements Runnable{
+public class GetStudentByDni extends NetConfiguration implements Runnable {
+
     private final String theUrl = theBaseUrl + "students/";
-    private String token = "";
     private String student_dni;
     private Student student;
+    private String access = "";
 
     public GetStudentByDni() {
         super();
     }
 
-    public GetStudentByDni(String token) {
+    public GetStudentByDni(String student_dni, String access) {
         super();
-        this.token = token;
+        this.student_dni = student_dni;
+        this.access = access;
     }
 
     @Override
@@ -32,7 +34,7 @@ public class GetStudentByDni extends NetConfiguration implements Runnable{
             URL url = new URL(theUrl + student_dni);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("GET");
-//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + token);
+            httpURLConnection.setRequestProperty("Authorization", "Bearer " + access);
 
             // Sending...
             int responseCode = httpURLConnection.getResponseCode();
@@ -65,9 +67,7 @@ public class GetStudentByDni extends NetConfiguration implements Runnable{
                     student.setEmail(object.getString("email"));
                     student.setPhone(object.getString("phone"));
                     student.setPhoto(object.getString("photo"));
-
                 }
-
 
         } catch (Exception e) {
             System.out.println("ERROR: " + e.getMessage());

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainProfessorActivity extends AppCompatActivity {
 
@@ -17,6 +18,7 @@ public class MainProfessorActivity extends AppCompatActivity {
         String access = extras.getString("access");
         String dni = extras.getString("dni");
 
+        TextView viewName = findViewById(R.id.viewProfessorMainName);
         Button buttonNotes = findViewById(R.id.buttonProfessorMainNotes);
         Button buttonAbsences = findViewById(R.id.buttonProfessorMainAbsences);
         Button buttonSubjects = findViewById(R.id.buttonProfessorMainSubjects);
