@@ -8,15 +8,15 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class DeleteGrade extends NetConfiguration implements Runnable {
+
     private final String theUrl = theBaseUrl + "grades/";
-
     private int grade_id;
+    private String access;
     private int response;
-    private String token;
 
-    public DeleteGrade(int grade_id, String token) {
+    public DeleteGrade(int grade_id, String access) {
         this.grade_id = grade_id;
-        this.token = token;
+        this.access = access;
     }
 
     @Override
@@ -26,7 +26,7 @@ public class DeleteGrade extends NetConfiguration implements Runnable {
             URL url = new URL(theUrl + grade_id);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("DELETE");
-//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + token);
+//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + access);
 
             // Sending...
             int responseCode = httpURLConnection.getResponseCode();

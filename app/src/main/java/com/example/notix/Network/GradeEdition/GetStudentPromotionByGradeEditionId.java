@@ -13,20 +13,17 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class GetStudentPromotionByGradeEditionId extends NetConfiguration implements Runnable{
+public class GetStudentPromotionByGradeEditionId extends NetConfiguration implements Runnable {
+
     private final String theUrl = theBaseUrl + "gradeEditions/";
-    private String token = "";
     private String grade_edition_id;
+    private String access = "";
     private ArrayList<Student> response;
 
-    public GetStudentPromotionByGradeEditionId() {
-        super();
-    }
-
-    public GetStudentPromotionByGradeEditionId(String grade_edition_id, String token) {
+    public GetStudentPromotionByGradeEditionId(String grade_edition_id, String access) {
         super();
         this.grade_edition_id = grade_edition_id;
-        this.token = token;
+        this.access = access;
     }
 
     @Override
@@ -36,7 +33,7 @@ public class GetStudentPromotionByGradeEditionId extends NetConfiguration implem
             URL url = new URL(theUrl + grade_edition_id + "/student");
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("GET");
-//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + token);
+//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + access);
 
             // Sending...
             int responseCode = httpURLConnection.getResponseCode();
@@ -74,7 +71,6 @@ public class GetStudentPromotionByGradeEditionId extends NetConfiguration implem
                     student.setPhoto(object.getString("photo"));
                     this.response.add(student);
                 }
-
             }
 
         } catch (Exception e) {

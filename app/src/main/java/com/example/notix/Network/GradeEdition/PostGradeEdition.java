@@ -1,6 +1,6 @@
-package com.example.notix.Network.Absence;
+package com.example.notix.Network.GradeEdition;
 
-import com.example.notix.beans.Absence;
+import com.example.notix.beans.GradeEdition;
 import com.example.notix.Network.NetConfiguration;
 
 import java.io.BufferedReader;
@@ -9,16 +9,16 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class AddAbsence extends NetConfiguration implements Runnable {
+public class PostGradeEdition extends NetConfiguration implements Runnable {
 
-    private final String theUrl = theBaseUrl + "absences";
-    private Absence absence;
+    private final String theUrl = theBaseUrl + "gradeEditions";
+    private GradeEdition gradeEdition;
+    private String access;
     private int response;
-    private String token;
 
-    public AddAbsence(Absence absenceRequest, String token) {
-        this.absence = absenceRequest;
-        this.token = token;
+    public PostGradeEdition(GradeEdition gradeEditionRequest, String access) {
+        this.gradeEdition = gradeEditionRequest;
+        this.access = access;
     }
 
     @Override
@@ -31,11 +31,11 @@ public class AddAbsence extends NetConfiguration implements Runnable {
             httpURLConnection.setRequestMethod("POST");
             httpURLConnection.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
             httpURLConnection.setRequestProperty("Accept", "application/json");
-//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + token);
+//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + access);
             httpURLConnection.setDoOutput(true);
             httpURLConnection.setDoInput(true);
 
-            String jsonInputString = absence.toString();
+            String jsonInputString = gradeEdition.toString();
             try (OutputStream postsend = httpURLConnection.getOutputStream()) {
                 byte[] input = jsonInputString.getBytes("utf-8");
                 postsend.write(input, 0, input.length);
@@ -56,16 +56,15 @@ public class AddAbsence extends NetConfiguration implements Runnable {
                     response.append(inputLine);
                 }
                 bufferedReader.close();
-
             }
 
         } catch (Exception e) {
             System.out.println("ERROR: " + e.getMessage());
         }
-
     }
 
     public int getResponse() {
         return response;
     }
 }
+

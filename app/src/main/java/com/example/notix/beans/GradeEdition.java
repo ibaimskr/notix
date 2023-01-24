@@ -9,8 +9,7 @@ public class GradeEdition implements Serializable {
     int grade_id;
     String tutor_dni;
 
-    public GradeEdition() {
-    }
+    public GradeEdition() { }
 
     public GradeEdition(int grade_edition_id, String fecha, int grade_id, String tutor_dni) {
         this.grade_edition_id = grade_edition_id;
@@ -44,6 +43,5 @@ public class GradeEdition implements Serializable {
                 "," + '"' + "fecha" + '"' + ":" + '"'+ fecha + '"' +
                 "}";
     }
-
 }
 

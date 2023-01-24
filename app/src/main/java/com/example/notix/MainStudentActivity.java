@@ -26,9 +26,9 @@ public class MainStudentActivity extends AppCompatActivity {
         String dni = extras.getString("dni");
 
         TextView viewName = findViewById(R.id.viewStudentMainName);
-        Button buttonNotes = findViewById(R.id.buttonNotes);
-        Button buttonAbsences = findViewById(R.id.buttonAbsences);
-        Button buttonSubjects = findViewById(R.id.buttonSubjects);
+        Button buttonNotes = findViewById(R.id.buttonStudentMainNotes);
+        Button buttonAbsences = findViewById(R.id.buttonStudentMainAbsences);
+        Button buttonSubjects = findViewById(R.id.buttonStudentMainSubjects);
 
         if (isConnected()) {
             GetStudentByDni getStudent = new GetStudentByDni(dni, access);

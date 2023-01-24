@@ -1,6 +1,6 @@
-package com.example.notix.Network.Student;
+package com.example.notix.Network.Note;
 
-import com.example.notix.beans.Student;
+import com.example.notix.beans.Note;
 import com.example.notix.Network.NetConfiguration;
 
 import java.io.BufferedReader;
@@ -9,34 +9,37 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class UpdateStudent extends NetConfiguration implements Runnable{
-    private final String theUrl = theBaseUrl + "students/";
-    private Student student;
-    private String student_dni;
-    private int response;
-    private String token;
+public class PutNote extends NetConfiguration implements Runnable {
 
-    public UpdateStudent(String student_dni, Student studentRequest, String token) {
+    private final String theUrl = theBaseUrl + "notes/";
+    private Note note;
+    private String student_dni;
+    private int subject_id;
+    private String access;
+    private int response;
+
+    public PutNote(String student_dni, int subject_id, Note noteRequest, String access) {
         this.student_dni = student_dni;
-        this.student = studentRequest;
-        this.token = token;
+        this.subject_id = subject_id;
+        this.note = noteRequest;
+        this.access = access;
     }
 
     @Override
     public void run() {
         try {
             // The URL
-            URL url = new URL(theUrl + student_dni);
+            URL url = new URL(theUrl + student_dni + "/" + subject_id);
 
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("PUT");
             httpURLConnection.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
             httpURLConnection.setRequestProperty("Accept", "application/json");
-//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + token);
+//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + access);
             httpURLConnection.setDoOutput(true);
             httpURLConnection.setDoInput(true);
 
-            String jsonInputString = student.toString();
+            String jsonInputString = note.toString();
             try (OutputStream postsend = httpURLConnection.getOutputStream()) {
                 byte[] input = jsonInputString.getBytes("utf-8");
                 postsend.write(input, 0, input.length);
@@ -57,13 +60,11 @@ public class UpdateStudent extends NetConfiguration implements Runnable{
                     response.append(inputLine);
                 }
                 bufferedReader.close();
-
             }
 
         } catch (Exception e) {
             System.out.println("ERROR: " + e.getMessage());
         }
-
     }
 
     public int getResponse() {

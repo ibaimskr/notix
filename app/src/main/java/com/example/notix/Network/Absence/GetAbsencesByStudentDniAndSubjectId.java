@@ -10,22 +10,19 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class GetAbsencesByStudentDniAndSubjectId extends NetConfiguration implements Runnable{
+public class GetAbsencesByStudentDniAndSubjectId extends NetConfiguration implements Runnable {
+
     private final String theUrl = theBaseUrl + "absences/";
-    private String token = "";
     private String student_dni;
     private int subject_id;
+    private String access = "";
     private Absence response;
 
-    public GetAbsencesByStudentDniAndSubjectId() {
-        super();
-    }
-
-    public GetAbsencesByStudentDniAndSubjectId(String student_dni, int subject_id, String token) {
+    public GetAbsencesByStudentDniAndSubjectId(String student_dni, int subject_id, String access) {
         super();
         this.subject_id = subject_id;
         this.student_dni = student_dni;
-        this.token = token;
+        this.access = access;
     }
 
     @Override
@@ -35,7 +32,7 @@ public class GetAbsencesByStudentDniAndSubjectId extends NetConfiguration implem
             URL url = new URL(theUrl + student_dni + "/" + subject_id);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("GET");
-//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + token);
+//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + access);
 
             // Sending...
             int responseCode = httpURLConnection.getResponseCode();
@@ -64,9 +61,7 @@ public class GetAbsencesByStudentDniAndSubjectId extends NetConfiguration implem
                     absence.setSubject_id(object.getInt("subjectId"));
                     absence.setFoul(object.getString("foul"));
                     absence.setJustified(object.getBoolean("justified"));
-
                 }
-
 
         } catch (Exception e) {
             System.out.println("ERROR: " + e.getMessage());

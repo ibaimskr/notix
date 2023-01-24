@@ -12,8 +12,7 @@ public class ProfessorRequest implements Serializable {
     String adress;
     String photo;
 
-    public ProfessorRequest() {
-    }
+    public ProfessorRequest() { }
 
     public ProfessorRequest(String professor_dni, String name, String surname, String nationality, String email, String adress, String photo) {
         this.professor_dni = professor_dni;
@@ -93,5 +92,4 @@ public class ProfessorRequest implements Serializable {
                 "," + '"' + "photo" + '"' + ":" + '"'+ photo + '"' +
                 "}";
     }
-
 }

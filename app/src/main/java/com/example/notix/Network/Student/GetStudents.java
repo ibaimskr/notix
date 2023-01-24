@@ -12,7 +12,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class GetStudents extends NetConfiguration implements Runnable{
+public class GetStudents extends NetConfiguration implements Runnable {
+
     private final String theUrl = theBaseUrl + "students";
     private String token = "";
     private ArrayList<Student> response = new ArrayList<Student>();

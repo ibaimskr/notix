@@ -6,51 +6,93 @@
     android:layout_height="match_parent"
     tools:context=".MainProfessorActivity">
 
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/containerProfessorView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageProfessorMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/textView8"
+        app:layout_constraintBottom_toTopOf="@+id/viewProfessorMainName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/viewProfessorMainName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/buttonProfessorNotes"
+        android:id="@+id/buttonProfessorMainNotes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="NOTAS"
+        android:layout_marginBottom="100dp"
+        android:text="@string/text_notes"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintTop_toBottomOf="@+id/viewProfessorMainName" />
 
     <Button
-        android:id="@+id/buttonProfessorAbsences"
+        android:id="@+id/buttonProfessorMainAbsences"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="FALTAS"
+        android:layout_marginBottom="100dp"
+        android:text="@string/text_absences"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/buttonProfessorReunion"
-        app:layout_constraintStart_toEndOf="@+id/buttonProfessorNotes"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintEnd_toStartOf="@+id/buttonProfessorMainSubjects"
+        app:layout_constraintStart_toEndOf="@+id/buttonProfessorMainNotes"
+        app:layout_constraintTop_toBottomOf="@+id/viewProfessorMainName" />
 
     <Button
-        android:id="@+id/buttonProfessorReunion"
+        android:id="@+id/buttonProfessorMainReunion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="REUNION"
+        android:layout_marginBottom="50dp"
+        android:text="@string/text_reunion"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonProfessorMainAbsences" />
+
+    <Button
+        android:id="@+id/buttonProfessorMainSubjects"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
+        android:text="@string/text_subjects"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewProfessorMainName" />
+
+    <Button
+        android:id="@+id/buttonProfessorMainStudents"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:text="@string/text_students"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonProfessorMainAbsences" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/professorBottomNavigation"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/professor_bottom_menu" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

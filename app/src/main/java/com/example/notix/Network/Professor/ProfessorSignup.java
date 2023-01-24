@@ -10,19 +10,18 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class ProfessorSignup extends NetConfiguration implements Runnable{
+public class ProfessorSignup extends NetConfiguration implements Runnable {
+
     private final String theUrl = theBaseUrl + "professors";
     private Professor professor;
+    private String access;
     private int response;
-    private String token;
 
-    public ProfessorSignup(Professor professorRequest, String token) {
+    public ProfessorSignup(ProfessorRequest professor) { }
+
+    public ProfessorSignup(Professor professorRequest, String access) {
         this.professor = professorRequest;
-        this.token = token;
-    }
-
-    public ProfessorSignup(ProfessorRequest professor) {
-
+        this.access = access;
     }
 
     @Override
@@ -35,7 +34,7 @@ public class ProfessorSignup extends NetConfiguration implements Runnable{
             httpURLConnection.setRequestMethod("POST");
             httpURLConnection.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
             httpURLConnection.setRequestProperty("Accept", "application/json");
-//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + token);
+//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + access);
             httpURLConnection.setDoOutput(true);
             httpURLConnection.setDoInput(true);
 
@@ -60,13 +59,11 @@ public class ProfessorSignup extends NetConfiguration implements Runnable{
                     response.append(inputLine);
                 }
                 bufferedReader.close();
-
             }
 
         } catch (Exception e) {
             System.out.println("ERROR: " + e.getMessage());
         }
-
     }
 
     public int getResponse() {

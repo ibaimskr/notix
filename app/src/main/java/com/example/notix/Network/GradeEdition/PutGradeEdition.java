@@ -1,6 +1,6 @@
-package com.example.notix.Network.Grade;
+package com.example.notix.Network.GradeEdition;
 
-import com.example.notix.beans.Grade;
+import com.example.notix.beans.GradeEdition;
 import com.example.notix.Network.NetConfiguration;
 
 import java.io.BufferedReader;
@@ -9,32 +9,35 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class AddGrade extends NetConfiguration implements Runnable{
-    private final String theUrl = theBaseUrl + "grades";
-    private Grade grade;
-    private int response;
-    private String token;
+public class PutGradeEdition extends NetConfiguration implements Runnable {
 
-    public AddGrade(Grade gradeRequest, String token) {
-        this.grade = gradeRequest;
-        this.token = token;
+    private final String theUrl = theBaseUrl + "gradeEditions/";
+    private GradeEdition gradeEdition;
+    private int grade_edition_id;
+    private String access;
+    private int response;
+
+    public PutGradeEdition(int grade_edition_id, GradeEdition gradeEditionRequest, String access) {
+        this.grade_edition_id = grade_edition_id;
+        this.gradeEdition = gradeEditionRequest;
+        this.access = access;
     }
 
     @Override
     public void run() {
         try {
             // The URL
-            URL url = new URL(theUrl);
+            URL url = new URL(theUrl + grade_edition_id);
 
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-            httpURLConnection.setRequestMethod("POST");
+            httpURLConnection.setRequestMethod("PUT");
             httpURLConnection.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
             httpURLConnection.setRequestProperty("Accept", "application/json");
-//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + token);
+//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + access);
             httpURLConnection.setDoOutput(true);
             httpURLConnection.setDoInput(true);
 
-            String jsonInputString = grade.toString();
+            String jsonInputString = gradeEdition.toString();
             try (OutputStream postsend = httpURLConnection.getOutputStream()) {
                 byte[] input = jsonInputString.getBytes("utf-8");
                 postsend.write(input, 0, input.length);
@@ -43,9 +46,9 @@ public class AddGrade extends NetConfiguration implements Runnable{
             // Sending
             int responseCode = httpURLConnection.getResponseCode();
 
-            if (responseCode == 409) {
-                this.response = 409;
-            } else if (responseCode == HttpURLConnection.HTTP_CREATED) {
+            if (responseCode == 204) {
+                this.response = 204;
+            } else if (responseCode == HttpURLConnection.HTTP_OK) {
                 BufferedReader bufferedReader = new BufferedReader(
                         new InputStreamReader(httpURLConnection.getInputStream()));
 
@@ -55,16 +58,15 @@ public class AddGrade extends NetConfiguration implements Runnable{
                     response.append(inputLine);
                 }
                 bufferedReader.close();
-
             }
 
         } catch (Exception e) {
             System.out.println("ERROR: " + e.getMessage());
         }
-
     }
 
     public int getResponse() {
         return response;
     }
 }
+

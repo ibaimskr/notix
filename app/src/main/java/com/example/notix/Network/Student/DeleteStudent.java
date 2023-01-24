@@ -7,9 +7,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class DeleteStudent extends NetConfiguration implements Runnable{
-    private final String theUrl = theBaseUrl + "students/";
+public class DeleteStudent extends NetConfiguration implements Runnable {
 
+    private final String theUrl = theBaseUrl + "students/";
     private String student_dni;
     private int response;
     private String token;
@@ -26,7 +26,7 @@ public class DeleteStudent extends NetConfiguration implements Runnable{
             URL url = new URL(theUrl + student_dni);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("DELETE");
-//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + token);
+//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + access);
 
             // Sending...
             int responseCode = httpURLConnection.getResponseCode();

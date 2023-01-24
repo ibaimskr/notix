@@ -64,6 +64,5 @@ public class Note implements Serializable  {
                 "," + '"' + "final2" + '"' + ":" + '"'+ final2 + '"' +
                 "}";
     }
-
 }
 

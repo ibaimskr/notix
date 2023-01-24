@@ -10,22 +10,19 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class GetNotesByStudentDniAndSubjectId extends NetConfiguration implements Runnable{
+public class GetNotesByStudentDniAndSubjectId extends NetConfiguration implements Runnable {
+
     private final String theUrl = theBaseUrl + "notes";
-    private String token = "";
     private String student_dni;
     private int subject_id;
+    private String access = "";
     private Note response;
 
-    public GetNotesByStudentDniAndSubjectId() {
-        super();
-    }
-
-    public GetNotesByStudentDniAndSubjectId(String student_dni, int subject_id, String token) {
+    public GetNotesByStudentDniAndSubjectId(String student_dni, int subject_id, String access) {
         super();
         this.subject_id = subject_id;
         this.student_dni = student_dni;
-        this.token = token;
+        this.access = access;
     }
 
     @Override
@@ -35,7 +32,7 @@ public class GetNotesByStudentDniAndSubjectId extends NetConfiguration implement
             URL url = new URL(theUrl + student_dni);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("GET");
-//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + token);
+//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + access);
 
             // Sending...
             int responseCode = httpURLConnection.getResponseCode();
@@ -67,9 +64,7 @@ public class GetNotesByStudentDniAndSubjectId extends NetConfiguration implement
                     note.setEva3((float) object.getDouble("eva3"));
                     note.setFinal1(object.getInt("final1"));
                     note.setFinal2(object.getInt("final2"));
-
                 }
-
 
         } catch (Exception e) {
             System.out.println("ERROR: " + e.getMessage());

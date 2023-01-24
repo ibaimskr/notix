@@ -5,13 +5,9 @@ import java.io.Serializable;
 public class Subject implements Serializable {
 
     int subject_id;
-
     int grade_edition_id;
-
     String professor_dni;
-
     String name;
-
     int duration;
 
     public Subject() { }
@@ -54,5 +50,4 @@ public class Subject implements Serializable {
                 "," + '"' + "duration" + '"' + ":" + '"'+ duration + '"' +
                 "}";
     }
-
 }

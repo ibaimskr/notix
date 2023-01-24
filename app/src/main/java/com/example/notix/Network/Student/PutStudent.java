@@ -1,6 +1,6 @@
-package com.example.notix.Network.Note;
+package com.example.notix.Network.Student;
 
-import com.example.notix.beans.Note;
+import com.example.notix.beans.Student;
 import com.example.notix.Network.NetConfiguration;
 
 import java.io.BufferedReader;
@@ -9,18 +9,16 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class UpdateNote extends NetConfiguration implements Runnable{
-    private final String theUrl = theBaseUrl + "notes/";
-    private Note note;
+public class PutStudent extends NetConfiguration implements Runnable{
+    private final String theUrl = theBaseUrl + "students/";
+    private Student student;
     private String student_dni;
-    private int subject_id;
     private int response;
     private String token;
 
-    public UpdateNote(String student_dni, int subject_id, Note noteRequest, String token) {
+    public PutStudent(String student_dni, Student studentRequest, String token) {
         this.student_dni = student_dni;
-        this.subject_id = subject_id;
-        this.note = noteRequest;
+        this.student = studentRequest;
         this.token = token;
     }
 
@@ -28,7 +26,7 @@ public class UpdateNote extends NetConfiguration implements Runnable{
     public void run() {
         try {
             // The URL
-            URL url = new URL(theUrl + student_dni + "/" + subject_id);
+            URL url = new URL(theUrl + student_dni);
 
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("PUT");
@@ -38,7 +36,7 @@ public class UpdateNote extends NetConfiguration implements Runnable{
             httpURLConnection.setDoOutput(true);
             httpURLConnection.setDoInput(true);
 
-            String jsonInputString = note.toString();
+            String jsonInputString = student.toString();
             try (OutputStream postsend = httpURLConnection.getOutputStream()) {
                 byte[] input = jsonInputString.getBytes("utf-8");
                 postsend.write(input, 0, input.length);

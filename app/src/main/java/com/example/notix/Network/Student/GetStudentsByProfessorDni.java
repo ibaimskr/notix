@@ -11,19 +11,16 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class GetStudentsByProfessorDni extends NetConfiguration implements Runnable{
+public class GetStudentsByProfessorDni extends NetConfiguration implements Runnable {
+
     private final String theUrl = theBaseUrl + "students/professor/";
-    private String token = "";
     private String professor_dni;
     private Student student;
+    private String access = "";
 
-    public GetStudentsByProfessorDni() {
+    public GetStudentsByProfessorDni(String access, String professor_dni) {
         super();
-    }
-
-    public GetStudentsByProfessorDni(String token, String professor_dni) {
-        super();
-        this.token = token;
+        this.access = access;
         this.professor_dni = professor_dni;
     }
 
@@ -34,7 +31,7 @@ public class GetStudentsByProfessorDni extends NetConfiguration implements Runna
             URL url = new URL(theUrl + professor_dni);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("GET");
-//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + token);
+//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + access);
 
             // Sending...
             int responseCode = httpURLConnection.getResponseCode();
@@ -72,7 +69,6 @@ public class GetStudentsByProfessorDni extends NetConfiguration implements Runna
                     student.setPhoto(object.getString("photo"));
                     }
                 }
-
 
         } catch (Exception e) {
             System.out.println("ERROR: " + e.getMessage());

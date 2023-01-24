@@ -12,20 +12,17 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class GetAbsencesByStudentDni extends NetConfiguration implements Runnable{
+public class GetAbsencesByStudentDni extends NetConfiguration implements Runnable {
+
     private final String theUrl = theBaseUrl + "absences/";
-    private String token = "";
     private String student_dni;
     private ArrayList<Absence> response = new ArrayList<Absence>();
+    private String access = "";
 
-    public GetAbsencesByStudentDni() {
-        super();
-    }
-
-    public GetAbsencesByStudentDni(String student_dni, String token) {
+    public GetAbsencesByStudentDni(String student_dni, String access) {
         super();
         this.student_dni = student_dni;
-        this.token = token;
+        this.access = access;
     }
 
     @Override
@@ -35,7 +32,7 @@ public class GetAbsencesByStudentDni extends NetConfiguration implements Runnabl
             URL url = new URL(theUrl + student_dni);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("GET");
-//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + token);
+//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + access);
 
             // Sending...
             int responseCode = httpURLConnection.getResponseCode();

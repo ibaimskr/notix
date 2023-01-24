@@ -18,7 +18,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 
 public class SubjectsAdapter extends ArrayAdapter<Subject> {
-
+    
     private final ArrayList<Subject> subjects;
     private final ArrayList<Professor> tutors;
     private final Context context;

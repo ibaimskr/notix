@@ -7,20 +7,20 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class DeleteAbsence extends NetConfiguration implements Runnable{
-    private final String theUrl = theBaseUrl + "absences/";
+public class DeleteAbsence extends NetConfiguration implements Runnable {
 
+    private final String theUrl = theBaseUrl + "absences/";
     private String student_dni;
     private int subject_id;
     private String date;
     private int response;
-    private String token;
+    private String access;
 
-    public DeleteAbsence(String student_dni, int subject_id, String date, String token) {
+    public DeleteAbsence(String student_dni, int subject_id, String date, String access) {
         this.student_dni = student_dni;
         this.subject_id = subject_id;
         this.date = date;
-        this.token = token;
+        this.access = access;
     }
 
     @Override
@@ -30,7 +30,7 @@ public class DeleteAbsence extends NetConfiguration implements Runnable{
             URL url = new URL(theUrl + student_dni + "/" + subject_id + "/" + date);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("DELETE");
-//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + token);
+//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + access);
 
             // Sending...
             int responseCode = httpURLConnection.getResponseCode();

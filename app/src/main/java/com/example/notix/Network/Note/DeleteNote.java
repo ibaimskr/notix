@@ -7,17 +7,18 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class DeleteNote  extends NetConfiguration implements Runnable{
+public class DeleteNote  extends NetConfiguration implements Runnable {
+
     private final String theUrl = theBaseUrl + "notes/";
     private String student_dni;
     private int subject_id;
+    private String access;
     private int response;
-    private String token;
 
-    public DeleteNote(String student_dni, int subject_id, String token) {
+    public DeleteNote(String student_dni, int subject_id, String access) {
         this.subject_id = subject_id;
         this.student_dni = student_dni;
-        this.token = token;
+        this.access = access;
     }
 
     @Override
@@ -27,7 +28,7 @@ public class DeleteNote  extends NetConfiguration implements Runnable{
             URL url = new URL(theUrl + student_dni + "/" + subject_id);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("DELETE");
-//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + token);
+//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + access);
 
             // Sending...
             int responseCode = httpURLConnection.getResponseCode();

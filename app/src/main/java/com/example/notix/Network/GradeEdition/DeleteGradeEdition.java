@@ -7,16 +7,16 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class DeleteGradeEdition extends NetConfiguration implements Runnable{
+public class DeleteGradeEdition extends NetConfiguration implements Runnable {
+
     private final String theUrl = theBaseUrl + "gradeEditions/";
-
     private int grade_ed_id;
+    private String access;
     private int response;
-    private String token;
 
-    public DeleteGradeEdition(int grade_ed_id, String token) {
+    public DeleteGradeEdition(int grade_ed_id, String access) {
         this.grade_ed_id = grade_ed_id;
-        this.token = token;
+        this.access = access;
     }
 
     @Override
@@ -26,7 +26,7 @@ public class DeleteGradeEdition extends NetConfiguration implements Runnable{
             URL url = new URL(theUrl + grade_ed_id);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("DELETE");
-//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + token);
+//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + access);
 
             // Sending...
             int responseCode = httpURLConnection.getResponseCode();

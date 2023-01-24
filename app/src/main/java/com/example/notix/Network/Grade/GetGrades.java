@@ -12,18 +12,15 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class GetGrades extends NetConfiguration implements Runnable{
+public class GetGrades extends NetConfiguration implements Runnable {
+
     private final String theUrl = theBaseUrl + "grades";
-    private String token = "";
     private ArrayList<Grade> response = new ArrayList<Grade>();
+    private String access = "";
 
-    public GetGrades() {
+    public GetGrades(String access) {
         super();
-    }
-
-    public GetGrades(String token) {
-        super();
-        this.token = token;
+        this.access = access;
     }
 
     @Override
@@ -33,7 +30,7 @@ public class GetGrades extends NetConfiguration implements Runnable{
             URL url = new URL(theUrl);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("GET");
-//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + token);
+//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + access);
 
             // Sending...
             int responseCode = httpURLConnection.getResponseCode();

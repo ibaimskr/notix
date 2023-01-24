@@ -13,8 +13,7 @@ public class StudentRequest implements Serializable {
     String phone;
     String photo;
 
-    public StudentRequest() {
-    }
+    public StudentRequest() { }
 
     public StudentRequest(String student_dni, String name, String surname, String bornDate, String nationality, String email, String phone, String photo) {
         this.student_dni = student_dni;
@@ -72,5 +71,4 @@ public class StudentRequest implements Serializable {
                 "," + '"' + "photo" + '"' + ":" + '"'+ photo + '"' +
                 "}";
     }
-
 }

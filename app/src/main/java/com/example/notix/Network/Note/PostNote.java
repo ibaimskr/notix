@@ -1,6 +1,6 @@
-package com.example.notix.Network.Absence;
+package com.example.notix.Network.Note;
 
-import com.example.notix.beans.Absence;
+import com.example.notix.beans.Note;
 import com.example.notix.Network.NetConfiguration;
 
 import java.io.BufferedReader;
@@ -9,35 +9,33 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class UpdateAbsence extends NetConfiguration implements Runnable {
+public class PostNote extends NetConfiguration implements Runnable {
 
-    private final String theUrl = theBaseUrl + "absences/";
-    private Absence absence;
-    private String student_dni;
+    private final String theUrl = theBaseUrl + "notes";
+    private Note note;
+    private String access;
     private int response;
-    private String token;
 
-    public UpdateAbsence(String student_dni, Absence absenceRequest, String token) {
-        this.absence = absenceRequest;
-        this.student_dni = student_dni;
-        this.token = token;
+    public PostNote(Note noteRequest, String access) {
+        this.note = noteRequest;
+        this.access = access;
     }
 
     @Override
     public void run() {
         try {
             // The URL
-            URL url = new URL(theUrl + student_dni);
+            URL url = new URL(theUrl);
 
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-            httpURLConnection.setRequestMethod("PUT");
+            httpURLConnection.setRequestMethod("POST");
             httpURLConnection.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
             httpURLConnection.setRequestProperty("Accept", "application/json");
-//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + token);
+//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + access);
             httpURLConnection.setDoOutput(true);
             httpURLConnection.setDoInput(true);
 
-            String jsonInputString = absence.toString();
+            String jsonInputString = note.toString();
             try (OutputStream postsend = httpURLConnection.getOutputStream()) {
                 byte[] input = jsonInputString.getBytes("utf-8");
                 postsend.write(input, 0, input.length);
@@ -46,9 +44,9 @@ public class UpdateAbsence extends NetConfiguration implements Runnable {
             // Sending
             int responseCode = httpURLConnection.getResponseCode();
 
-            if (responseCode == 204) {
-                this.response = 204;
-            } else if (responseCode == HttpURLConnection.HTTP_OK) {
+            if (responseCode == 409) {
+                this.response = 409;
+            } else if (responseCode == HttpURLConnection.HTTP_CREATED) {
                 BufferedReader bufferedReader = new BufferedReader(
                         new InputStreamReader(httpURLConnection.getInputStream()));
 
@@ -58,7 +56,6 @@ public class UpdateAbsence extends NetConfiguration implements Runnable {
                     response.append(inputLine);
                 }
                 bufferedReader.close();
-
             }
 
         } catch (Exception e) {

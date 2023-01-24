@@ -1,6 +1,6 @@
-package com.example.notix.Network.Grade;
+package com.example.notix.Network.Professor;
 
-import com.example.notix.beans.Grade;
+import com.example.notix.beans.Professor;
 import com.example.notix.Network.NetConfiguration;
 
 import java.io.BufferedReader;
@@ -9,34 +9,34 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class UpdateGrade extends NetConfiguration implements Runnable{
-    private final String theUrl = theBaseUrl + "grades/";
-    private Grade grade;
-    private int grade_id;
+public class PutProfessor extends NetConfiguration implements Runnable {
+    private final String theUrl = theBaseUrl + "professors/";
+    private Professor professor;
+    private String professor_dni;
+    private String access;
     private int response;
-    private String token;
 
-    public UpdateGrade(int grade_id, Grade gradeRequest, String token) {
-        this.grade_id = grade_id;
-        this.grade = gradeRequest;
-        this.token = token;
+    public PutProfessor(String professor_dni, Professor professorRequest, String access) {
+        this.professor_dni = professor_dni;
+        this.professor = professorRequest;
+        this.access = access;
     }
 
     @Override
     public void run() {
         try {
             // The URL
-            URL url = new URL(theUrl + grade_id);
+            URL url = new URL(theUrl + professor_dni);
 
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("PUT");
             httpURLConnection.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
             httpURLConnection.setRequestProperty("Accept", "application/json");
-//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + token);
+//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + access);
             httpURLConnection.setDoOutput(true);
             httpURLConnection.setDoInput(true);
 
-            String jsonInputString = grade.toString();
+            String jsonInputString = professor.toString();
             try (OutputStream postsend = httpURLConnection.getOutputStream()) {
                 byte[] input = jsonInputString.getBytes("utf-8");
                 postsend.write(input, 0, input.length);

@@ -10,20 +10,17 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class GetGradeByGradeId extends NetConfiguration implements Runnable{
+public class GetGradeByGradeId extends NetConfiguration implements Runnable {
+
     private final String theUrl = theBaseUrl + "grades/";
-    private String token = "";
     private int grade_id;
     private Grade grade;
+    private String access = "";
 
-    public GetGradeByGradeId() {
-        super();
-    }
-
-    public GetGradeByGradeId(int grade_id, String token) {
+    public GetGradeByGradeId(int grade_id, String access) {
         super();
         this.grade_id = grade_id;
-        this.token = token;
+        this.access = access;
     }
 
     @Override
@@ -33,7 +30,7 @@ public class GetGradeByGradeId extends NetConfiguration implements Runnable{
             URL url = new URL(theUrl + grade_id);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("GET");
-//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + token);
+//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + access);
 
             // Sending...
             int responseCode = httpURLConnection.getResponseCode();
@@ -61,8 +58,6 @@ public class GetGradeByGradeId extends NetConfiguration implements Runnable{
                 grade.setGrade_id(object.getInt("gradeId"));
                 grade.setLanguage(object.getString("language"));
                 grade.setName(object.getString("name"));
-
-
             }
 
         } catch (Exception e) {

@@ -19,8 +19,6 @@ public class GetJustifiedAbsencesByDni extends NetConfiguration implements Runna
     private String access = "";
     private ArrayList<Absence> response = new ArrayList<>();
 
-    public GetJustifiedAbsencesByDni() { super(); }
-
     public GetJustifiedAbsencesByDni(String dni, String access){
         super();
         this.dni = dni;

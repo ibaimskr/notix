@@ -6,14 +6,12 @@ public class Grade {
     String language;
     String name;
 
+    public Grade() { }
+
     public Grade(int grade_id, String language, String name) {
         this.grade_id = grade_id;
         this.language = language;
         this.name = name;
-    }
-
-    public Grade() {
-
     }
 
     public int getGrade_id() {

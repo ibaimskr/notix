@@ -11,20 +11,17 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class GetProfessorByDni extends NetConfiguration implements Runnable{
+public class GetProfessorByDni extends NetConfiguration implements Runnable {
+
     private final String theUrl = theBaseUrl + "professors/";
-    private String token = "";
     private String professor_dni;
     private Professor professor ;
+    private String access = "";
 
-    public GetProfessorByDni() {
-        super();
-    }
-
-    public GetProfessorByDni(String professor_dni, String token) {
+    public GetProfessorByDni(String professor_dni, String access) {
         super();
         this.professor_dni = professor_dni;
-        this.token = token;
+        this.access = access;
     }
 
     @Override
@@ -34,7 +31,7 @@ public class GetProfessorByDni extends NetConfiguration implements Runnable{
             URL url = new URL(theUrl + professor_dni);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("GET");
-//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + token);
+//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + access);
 
             // Sending...
             int responseCode = httpURLConnection.getResponseCode();
@@ -66,9 +63,6 @@ public class GetProfessorByDni extends NetConfiguration implements Runnable{
                 professor.setNationality(object.getString("nationality"));
                 professor.setPhoto(object.getString("photo"));
                 professor.setSurname(object.getString("surname"));
-
-
-
             }
 
         } catch (Exception e) {

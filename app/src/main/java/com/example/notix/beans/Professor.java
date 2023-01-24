@@ -12,8 +12,7 @@ public class Professor implements Serializable {
     String adress;
     String photo;
 
-    public Professor() {
-    }
+    public Professor() { }
 
     public Professor(String professor_dni, String name, String surname, String nationality, String email, String adress, String photo) {
         this.professor_dni = professor_dni;

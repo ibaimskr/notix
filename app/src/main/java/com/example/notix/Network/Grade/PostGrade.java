@@ -1,6 +1,6 @@
-package com.example.notix.Network.GradeEdition;
+package com.example.notix.Network.Grade;
 
-import com.example.notix.beans.GradeEdition;
+import com.example.notix.beans.Grade;
 import com.example.notix.Network.NetConfiguration;
 
 import java.io.BufferedReader;
@@ -9,14 +9,14 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class AddGradeEdition extends NetConfiguration implements Runnable{
-    private final String theUrl = theBaseUrl + "gradeEditions";
-    private GradeEdition gradeEdition;
+public class PostGrade extends NetConfiguration implements Runnable{
+    private final String theUrl = theBaseUrl + "grades";
+    private Grade grade;
     private int response;
     private String token;
 
-    public AddGradeEdition(GradeEdition gradeEditionRequest, String token) {
-        this.gradeEdition = gradeEditionRequest;
+    public PostGrade(Grade gradeRequest, String token) {
+        this.grade = gradeRequest;
         this.token = token;
     }
 
@@ -30,11 +30,11 @@ public class AddGradeEdition extends NetConfiguration implements Runnable{
             httpURLConnection.setRequestMethod("POST");
             httpURLConnection.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
             httpURLConnection.setRequestProperty("Accept", "application/json");
-//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + token);
+//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + access);
             httpURLConnection.setDoOutput(true);
             httpURLConnection.setDoInput(true);
 
-            String jsonInputString = gradeEdition.toString();
+            String jsonInputString = grade.toString();
             try (OutputStream postsend = httpURLConnection.getOutputStream()) {
                 byte[] input = jsonInputString.getBytes("utf-8");
                 postsend.write(input, 0, input.length);
@@ -68,4 +68,3 @@ public class AddGradeEdition extends NetConfiguration implements Runnable{
         return response;
     }
 }
-

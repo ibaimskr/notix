@@ -9,8 +9,7 @@ public class Absence implements Serializable  {
     String foul;
     Boolean justified;
 
-    public Absence() {
-    }
+    public Absence() { }
 
     public Absence(String student_dni, int subject_id, String foul, Boolean justified) {
         this.student_dni = student_dni;
@@ -60,5 +59,4 @@ public class Absence implements Serializable  {
                 "," + '"' + "justified" + '"' + ":" + '"'+ justified + '"' +
                 "}";
     }
-
 }

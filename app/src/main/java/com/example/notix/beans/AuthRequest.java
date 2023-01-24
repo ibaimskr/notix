@@ -9,10 +9,14 @@ public class AuthRequest implements Serializable {
 
     int roleId;
 
-    public AuthRequest() {
+    public AuthRequest() {  }
+
+    public AuthRequest(String dni, String password, int roleId) {
+        super();
+        this.dni = dni;
+        this.password = password;
+        this.roleId = roleId;
     }
-
-
 
     public String getDni() {
         return dni;
@@ -46,5 +50,4 @@ public class AuthRequest implements Serializable {
                 "," + '"' + "roleId" + '"' + ":" + '"'+ roleId + '"' +
                 '}';
     }
-
 }

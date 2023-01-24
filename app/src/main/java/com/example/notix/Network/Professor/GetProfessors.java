@@ -12,18 +12,19 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class GetProfessors extends NetConfiguration implements Runnable{
+public class GetProfessors extends NetConfiguration implements Runnable {
+
     private final String theUrl = theBaseUrl + "professors";
-    private String token = "";
     private ArrayList<Professor> response = new ArrayList<Professor>();
+    private String access = "";
 
     public GetProfessors() {
         super();
     }
 
-    public GetProfessors(String token) {
+    public GetProfessors(String access) {
         super();
-        this.token = token;
+        this.access = access;
     }
 
     @Override
@@ -33,7 +34,7 @@ public class GetProfessors extends NetConfiguration implements Runnable{
             URL url = new URL(theUrl);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("GET");
-//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + token);
+//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + access);
 
             // Sending...
             int responseCode = httpURLConnection.getResponseCode();

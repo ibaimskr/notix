@@ -89,11 +89,23 @@ public class LoginActivity extends AppCompatActivity {
                             Context context = getApplicationContext();
                             SessionManager session = new SessionManager(context);
                             session.saveStringData ("jwtToken", response.getAccessToken());
-                            Intent i = new Intent(LoginActivity.this, MainStudentActivity.class);
-                            i.putExtra("access", access);
-                            i.putExtra("dni", dni);
-                            startActivityForResult(i, 1);
+/*
+                            if (response.getRole() == 2) {
+                                Intent i = new Intent(LoginActivity.this, MainProfessorActivity.class);
+                                i.putExtra("access", access);
+                                i.putExtra("dni", dni);
+                                startActivityForResult(i, 1);
+                            } else if (response.getRole() == 3) {
+ */
+                                Intent i = new Intent(LoginActivity.this, MainStudentActivity.class);
+                                i.putExtra("access", access);
+                                i.putExtra("dni", dni);
+                                startActivityForResult(i, 1);
+/*
+                            }
+*/
                         }
+
                     } catch(NullPointerException e) {
                         Toast.makeText(getApplicationContext(), R.string.error, Toast.LENGTH_SHORT).show();
                         textDni.setText("");
@@ -176,7 +188,6 @@ public class LoginActivity extends AppCompatActivity {
             });
             popupMenu.show();
         });
-
     }
 
     private void setLang(String lang) {

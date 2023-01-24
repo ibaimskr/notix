@@ -11,20 +11,17 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class GetGradeEditionByGradeEditionId extends NetConfiguration implements Runnable{
+public class GetGradeEditionByGradeEditionId extends NetConfiguration implements Runnable {
+
     private final String theUrl = theBaseUrl + "gradeEditions/";
-    private String token = "";
     private String grade_edition_id;
     private GradeEdition gradeEdition ;
+    private String access = "";
 
-    public GetGradeEditionByGradeEditionId() {
-        super();
-    }
-
-    public GetGradeEditionByGradeEditionId(String grade_edition_id, String token) {
+    public GetGradeEditionByGradeEditionId(String grade_edition_id, String access) {
         super();
         this.grade_edition_id = grade_edition_id;
-        this.token = token;
+        this.access = access;
     }
 
     @Override
@@ -34,7 +31,7 @@ public class GetGradeEditionByGradeEditionId extends NetConfiguration implements
             URL url = new URL(theUrl + grade_edition_id);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("GET");
-//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + token);
+//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + access);
 
             // Sending...
             int responseCode = httpURLConnection.getResponseCode();
@@ -63,8 +60,6 @@ public class GetGradeEditionByGradeEditionId extends NetConfiguration implements
                 gradeEdition.setFecha(object.getString("fecha"));
                 gradeEdition.setGrade_id(object.getInt("gradeId"));
                 gradeEdition.setTutor_dni(object.getString("tutorDni"));
-
-
             }
 
         } catch (Exception e) {

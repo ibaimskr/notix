@@ -13,18 +13,15 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class GetGradeEditions extends NetConfiguration implements Runnable{
+public class GetGradeEditions extends NetConfiguration implements Runnable {
+
     private final String theUrl = theBaseUrl + "gradeEditions";
-    private String token = "";
     private ArrayList<GradeEdition> response = new ArrayList<GradeEdition>();
+    private String access = "";
 
-    public GetGradeEditions() {
+    public GetGradeEditions(String access) {
         super();
-    }
-
-    public GetGradeEditions(String token) {
-        super();
-        this.token = token;
+        this.access = access;
     }
 
     @Override
@@ -34,7 +31,7 @@ public class GetGradeEditions extends NetConfiguration implements Runnable{
             URL url = new URL(theUrl);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("GET");
-//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + token);
+//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + access);
 
             // Sending...
             int responseCode = httpURLConnection.getResponseCode();

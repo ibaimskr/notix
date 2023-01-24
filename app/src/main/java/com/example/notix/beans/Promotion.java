@@ -5,6 +5,8 @@ public class Promotion {
     String student_dni;
     int grade_ed_id;
 
+    public Promotion() { }
+
     public Promotion(String student_dni, int grade_ed_id) {
         this.student_dni = student_dni;
         this.grade_ed_id = grade_ed_id;

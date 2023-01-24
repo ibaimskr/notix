@@ -13,6 +13,8 @@ public class Student implements Serializable  {
     String phone;
     String photo;
 
+    public Student() { }
+
     public Student(String student_dni, String name, String surname, String born_date, String nationality, String email, String phone, String photo) {
         this.student_dni = student_dni;
         this.name = name;
@@ -22,10 +24,6 @@ public class Student implements Serializable  {
         this.email = email;
         this.phone = phone;
         this.photo = photo;
-    }
-
-    public Student() {
-
     }
 
     public String getStudent_dni() {

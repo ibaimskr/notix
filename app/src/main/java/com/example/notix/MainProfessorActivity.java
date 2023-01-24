@@ -17,9 +17,11 @@ public class MainProfessorActivity extends AppCompatActivity {
         String access = extras.getString("access");
         String dni = extras.getString("dni");
 
-        Button buttonNotes = findViewById(R.id.buttonProfessorNotes);
-        Button buttonAbsences = findViewById(R.id.buttonProfessorAbsences);
-        Button buttonReunion = findViewById(R.id.buttonProfessorReunion);
+        Button buttonNotes = findViewById(R.id.buttonProfessorMainNotes);
+        Button buttonAbsences = findViewById(R.id.buttonProfessorMainAbsences);
+        Button buttonSubjects = findViewById(R.id.buttonProfessorMainSubjects);
+        Button buttonStudents = findViewById(R.id.buttonProfessorMainStudents);
+        Button buttonReunion = findViewById(R.id.buttonProfessorMainReunion);
 
         buttonNotes.setOnClickListener(view -> {
             Intent i = new Intent(MainProfessorActivity.this, ProfessorNotesActivity.class);
@@ -35,5 +37,25 @@ public class MainProfessorActivity extends AppCompatActivity {
             startActivity(i);
         });
 
+        buttonSubjects.setOnClickListener(view -> {
+            Intent i = new Intent(MainProfessorActivity.this, ProfessorSubjectsActivity.class);
+            i.putExtra("access", access);
+            i.putExtra("dni", dni);
+            startActivity(i);
+        });
+
+        buttonStudents.setOnClickListener(view -> {
+            Intent i = new Intent(MainProfessorActivity.this, ProfessorStudentsActivity.class);
+            i.putExtra("access", access);
+            i.putExtra("dni", dni);
+            startActivity(i);
+        });
+
+        buttonReunion.setOnClickListener(view -> {
+            Intent i = new Intent(MainProfessorActivity.this, ProfessorReunionActivity.class);
+            i.putExtra("access", access);
+            i.putExtra("dni", dni);
+            startActivity(i);
+        });
     }
 }

@@ -42,5 +42,4 @@ public class AbsencesAdapter extends ArrayAdapter<Absence> {
 
         return view;
     }
-
 }
