@@ -1,8 +1,7 @@
 package com.example.notix.Network.Professor;
 
-import com.example.notix.beans.Professor;
 import com.example.notix.Network.NetConfiguration;
-import com.example.notix.beans.ProfessorRequest;
+import com.example.notix.Network.Professor.beans.ProfessorRequest;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -56,6 +55,7 @@ public class ProfessorSignup extends NetConfiguration implements Runnable {
                     response.append(inputLine);
                 }
                 bufferedReader.close();
+                responseCode = 201;
             }
 
         } catch (Exception e) {

@@ -1,7 +1,7 @@
 package com.example.notix.Network.Professor;
 
 
-import com.example.notix.beans.Professor;
+import com.example.notix.Network.Professor.beans.Professor;
 import com.example.notix.Network.NetConfiguration;
 
 import org.json.JSONObject;

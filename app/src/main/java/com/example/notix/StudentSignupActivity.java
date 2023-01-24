@@ -16,8 +16,8 @@ import android.widget.Toast;
 
 import com.example.notix.Network.Student.StudentSignup;
 import com.example.notix.Network.User.UserSignup;
-import com.example.notix.beans.AuthRequest;
-import com.example.notix.beans.StudentRequest;
+import com.example.notix.Network.Professor.beans.AuthRequest;
+import com.example.notix.Network.Professor.beans.StudentRequest;
 
 import java.util.ArrayList;
 

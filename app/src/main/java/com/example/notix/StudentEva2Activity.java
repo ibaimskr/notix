@@ -11,9 +11,10 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.notix.Network.User.SessionManager;
 import com.example.notix.adapters.Eva2Adapter;
-import com.example.notix.beans.Note;
-import com.example.notix.beans.Subject;
+import com.example.notix.Network.Professor.beans.Note;
+import com.example.notix.Network.Professor.beans.Subject;
 import com.example.notix.Network.Note.GetNotesByStudentDni;
 import com.example.notix.Network.Subject.GetSubjectsByStudentDni;
 
@@ -27,8 +28,12 @@ public class StudentEva2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_student_eva2);
 
         Bundle extras = getIntent().getExtras();
-        String access = extras.getString("access");
+        //String access = extras.getString("access");
         String dni = extras.getString("dni");
+
+        SessionManager session;
+        session = new SessionManager(getApplicationContext());
+        String token = session.getStringData("jwtToken");
 
         Button buttonPrevious = findViewById(R.id.buttonEva2Previous);
         Button buttonNext = findViewById(R.id.buttonEva2Next);
@@ -40,8 +45,8 @@ public class StudentEva2Activity extends AppCompatActivity {
         listView.setAdapter(notesAdapter);
 
         if (isConnected()) {
-            GetNotesByStudentDni getNotes = new GetNotesByStudentDni(dni, access);
-            GetSubjectsByStudentDni getSubjects = new GetSubjectsByStudentDni(dni, access);
+            GetNotesByStudentDni getNotes = new GetNotesByStudentDni(dni, token);
+            GetSubjectsByStudentDni getSubjects = new GetSubjectsByStudentDni(dni, token);
             Thread thread1 = new Thread(getNotes);
             Thread thread2 = new Thread(getSubjects);
             try {
@@ -72,7 +77,7 @@ public class StudentEva2Activity extends AppCompatActivity {
 
         buttonNext.setOnClickListener(view -> {
             Intent i = new Intent(StudentEva2Activity.this, StudentEva3Activity.class);
-            i.putExtra("access", access);
+            //i.putExtra("access", access);
             i.putExtra("dni", dni);
             startActivity(i);
         });

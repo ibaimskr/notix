@@ -1,8 +1,8 @@
-package com.example.notix.beans;
+package com.example.notix.Network.Professor.beans;
 
 import java.io.Serializable;
 
-public class Professor implements Serializable {
+public class ProfessorRequest implements Serializable {
 
     String professor_dni;
     String name;
@@ -12,9 +12,9 @@ public class Professor implements Serializable {
     String adress;
     String photo;
 
-    public Professor() { }
+    public ProfessorRequest() { }
 
-    public Professor(String professor_dni, String name, String surname, String nationality, String email, String adress, String photo) {
+    public ProfessorRequest(String professor_dni, String name, String surname, String nationality, String email, String adress, String photo) {
         this.professor_dni = professor_dni;
         this.name = name;
         this.surname = surname;
@@ -93,4 +93,3 @@ public class Professor implements Serializable {
                 "}";
     }
 }
-

@@ -1,6 +1,6 @@
 package com.example.notix.Network.Subject;
 
-import com.example.notix.beans.Subject;
+import com.example.notix.Network.Professor.beans.Subject;
 import com.example.notix.Network.NetConfiguration;
 
 import org.json.JSONArray;

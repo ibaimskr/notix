@@ -12,8 +12,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.notix.adapters.AbsencesAdapter;
-import com.example.notix.beans.Absence;
-import com.example.notix.beans.Subject;
+import com.example.notix.Network.Professor.beans.Absence;
+import com.example.notix.Network.Professor.beans.Subject;
 import com.example.notix.Network.Absence.GetAbsencesByStudentDni;
 import com.example.notix.Network.Subject.GetSubjectsByStudentDni;
 

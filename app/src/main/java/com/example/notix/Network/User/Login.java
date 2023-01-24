@@ -4,8 +4,8 @@ import android.content.Context;
 import android.util.Log;
 
 import com.example.notix.Network.NetConfiguration;
-import com.example.notix.beans.AuthRequest;
-import com.example.notix.beans.AuthResponse;
+import com.example.notix.Network.Professor.beans.AuthRequest;
+import com.example.notix.Network.Professor.beans.AuthResponse;
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;
@@ -31,7 +31,6 @@ public class Login extends NetConfiguration implements Runnable {
         try {
             // The URL
             URL url = new URL(theUrl);
-
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("POST");
             httpURLConnection.setRequestProperty("Content-Type", "application/json;charset=UTF-8");

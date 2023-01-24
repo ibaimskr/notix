@@ -10,9 +10,10 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.notix.Network.Subject.GetSubjectsByStudentDni;
+import com.example.notix.Network.User.SessionManager;
 import com.example.notix.adapters.SubjectsAdapter;
-import com.example.notix.beans.Professor;
-import com.example.notix.beans.Subject;
+import com.example.notix.Network.Professor.beans.Professor;
+import com.example.notix.Network.Professor.beans.Subject;
 
 import java.util.ArrayList;
 
@@ -24,8 +25,12 @@ public class StudentSubjectsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_student_subjects);
 
         Bundle extras = getIntent().getExtras();
-        String access = extras.getString("access");
+        //String access = extras.getString("access");
         String dni = extras.getString("dni");
+
+        SessionManager session;
+        session = new SessionManager(getApplicationContext());
+        String token = session.getStringData("jwtToken");
 
         ListView listView = findViewById(R.id.listViewStudentSubjects);
 
@@ -35,7 +40,7 @@ public class StudentSubjectsActivity extends AppCompatActivity {
         listView.setAdapter(subjectsAdapter);
 
         if (isConnected()) {
-            GetSubjectsByStudentDni getSubjects = new GetSubjectsByStudentDni(dni, access);
+            GetSubjectsByStudentDni getSubjects = new GetSubjectsByStudentDni(dni, token);
             //GetProfessorByDni getTutors = new GetProfessorByDni(dni, access);
             Thread thread = new Thread(getSubjects);
             try {

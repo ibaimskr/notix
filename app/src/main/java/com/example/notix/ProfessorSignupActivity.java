@@ -13,8 +13,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.notix.beans.AuthRequest;
-import com.example.notix.beans.ProfessorRequest;
+import com.example.notix.Network.Professor.beans.AuthRequest;
+import com.example.notix.Network.Professor.beans.ProfessorRequest;
 import com.example.notix.Network.Professor.ProfessorSignup;
 import com.example.notix.Network.User.UserSignup;
 

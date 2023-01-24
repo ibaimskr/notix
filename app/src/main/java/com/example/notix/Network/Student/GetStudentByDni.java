@@ -1,6 +1,6 @@
 package com.example.notix.Network.Student;
 
-import com.example.notix.beans.Student;
+import com.example.notix.Network.Professor.beans.Student;
 import com.example.notix.Network.NetConfiguration;
 
 import org.json.JSONObject;
@@ -56,7 +56,7 @@ public class GetStudentByDni extends NetConfiguration implements Runnable {
                 // Processing the JSON...
                 String theUnprocessedJSON = response.toString();
 
-                    JSONObject object = new JSONObject(theUnprocessedJSON);
+                JSONObject object = new JSONObject(theUnprocessedJSON);
 
                     student = new Student();
                     student.setStudent_dni(object.getString("studentDni"));

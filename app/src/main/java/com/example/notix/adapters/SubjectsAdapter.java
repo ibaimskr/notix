@@ -10,8 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import com.example.notix.R;
-import com.example.notix.beans.Professor;
-import com.example.notix.beans.Subject;
+import com.example.notix.Network.Professor.beans.Professor;
+import com.example.notix.Network.Professor.beans.Subject;
 
 import org.jetbrains.annotations.NotNull;
 

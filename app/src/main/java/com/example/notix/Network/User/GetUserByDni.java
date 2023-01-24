@@ -1,7 +1,7 @@
-package com.example.notix.Network.Absence;
+package com.example.notix.Network.User;
 
-import com.example.notix.Network.Professor.beans.Absence;
 import com.example.notix.Network.NetConfiguration;
+import com.example.notix.Network.Professor.beans.AuthResponse;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -10,18 +10,17 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
 
-public class GetAbsencesByStudentDni extends NetConfiguration implements Runnable {
+public class GetUserByDni extends NetConfiguration implements Runnable {
 
-    private final String theUrl = theBaseUrl + "absences/";
-    private String student_dni;
-    private ArrayList<Absence> response = new ArrayList<Absence>();
+    private final String theUrl = theBaseUrl + "users/";
+    private String dni;
+    private AuthResponse userResponse = new AuthResponse();
     private String access = "";
 
-    public GetAbsencesByStudentDni(String student_dni, String access) {
+    public GetUserByDni(String dni, String access) {
         super();
-        this.student_dni = student_dni;
+        this.dni = dni;
         this.access = access;
     }
 
@@ -29,7 +28,7 @@ public class GetAbsencesByStudentDni extends NetConfiguration implements Runnabl
     public void run() {
         try {
             // The URL
-            URL url = new URL(theUrl + student_dni);
+            URL url = new URL(theUrl + dni);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("GET");
             httpURLConnection.setRequestProperty("Authorization", "Bearer " + access);
@@ -38,7 +37,7 @@ public class GetAbsencesByStudentDni extends NetConfiguration implements Runnabl
             int responseCode = httpURLConnection.getResponseCode();
 
             if (responseCode == 204) {
-                this.response = null;
+                this.userResponse = null;
 
             } else if (responseCode == HttpURLConnection.HTTP_OK) {
                 // Response...
@@ -54,18 +53,23 @@ public class GetAbsencesByStudentDni extends NetConfiguration implements Runnabl
                 // Processing the JSON...
                 String theUnprocessedJSON = response.toString();
 
-                JSONArray absences = new JSONArray(theUnprocessedJSON);
 
-                for (int i = 0; i < absences.length(); i++) {
-                    JSONObject object = absences.getJSONObject(i);
 
-                    Absence absence = new Absence();
-                    absence.setStudent_dni(object.getString("studentDni"));
-                    absence.setSubject_id(object.getInt("subjectId"));
-                    absence.setFoul(object.getString("foul"));
-                    absence.setJustified(object.getBoolean("justified"));
-                    this.response.add(absence);
+                JSONObject object = new JSONObject(theUnprocessedJSON);
+                userResponse.setDni(object.getString("dni"));
+
+                JSONArray roles = null;
+                int roll = 0;
+                roles = object.getJSONArray("roles");
+
+                for (int i = 0; i < roles.length(); i++) {
+                    JSONObject object2 = roles.getJSONObject(i);
+                    //userResponse.setRoleId(object2.getInt("roleID"));
+
+                    roll = object2.getInt("roleID");
+                    //userResponse.setRoleId(roll);
                 }
+                userResponse.setRoleId(roll);
             }
 
         } catch (Exception e) {
@@ -73,7 +77,5 @@ public class GetAbsencesByStudentDni extends NetConfiguration implements Runnabl
         }
     }
 
-    public ArrayList<Absence> getResponse() {
-        return response;
-    }
+    public AuthResponse getResponse() { return userResponse; }
 }

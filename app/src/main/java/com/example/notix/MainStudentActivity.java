@@ -12,7 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.notix.Network.Student.GetStudentByDni;
-import com.example.notix.beans.Student;
+import com.example.notix.Network.Professor.beans.Student;
 
 public class MainStudentActivity extends AppCompatActivity {
 

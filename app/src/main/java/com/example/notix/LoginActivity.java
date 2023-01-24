@@ -17,11 +17,12 @@ import android.widget.EditText;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
+import com.example.notix.Network.User.GetUserByDni;
 import com.example.notix.Network.User.Login;
 import com.example.notix.Network.User.SessionManager;
-import com.example.notix.beans.AuthRequest;
-import com.example.notix.beans.AuthResponse;
-import com.example.notix.beans.UserRemember;
+import com.example.notix.Network.Professor.beans.AuthRequest;
+import com.example.notix.Network.Professor.beans.AuthResponse;
+import com.example.notix.Network.Professor.beans.UserRemember;
 import com.example.notix.db.DataManager;
 
 import java.util.List;
@@ -89,21 +90,24 @@ public class LoginActivity extends AppCompatActivity {
                             Context context = getApplicationContext();
                             SessionManager session = new SessionManager(context);
                             session.saveStringData ("jwtToken", response.getAccessToken());
-/*
-                            if (response.getRole() == 2) {
+                            session.saveStringData("dni", response.getDni());
+
+                            AuthResponse userRole = getRole(response.getDni(), response.getAccessToken());
+//
+                            if (userRole.getRoleId() == 2) {
                                 Intent i = new Intent(LoginActivity.this, MainProfessorActivity.class);
-                                i.putExtra("access", access);
+                                //i.putExtra("access", access);
                                 i.putExtra("dni", dni);
                                 startActivityForResult(i, 1);
-                            } else if (response.getRole() == 3) {
- */
+                            } else if (userRole.getRoleId() == 3) {
+ //
                                 Intent i = new Intent(LoginActivity.this, MainStudentActivity.class);
-                                i.putExtra("access", access);
+                                //i.putExtra("access", access);
                                 i.putExtra("dni", dni);
                                 startActivityForResult(i, 1);
-/*
+//
                             }
-*/
+//
                         }
 
                     } catch(NullPointerException e) {
@@ -127,6 +131,22 @@ public class LoginActivity extends AppCompatActivity {
                     }
                     // Processing the answer
                     response = getUser.getResponse(loginRequest);
+                }
+                return response;
+            }
+
+            private AuthResponse getRole(String dni, String access) {
+                AuthResponse response = new AuthResponse();
+                if (isConnected()) {
+                    GetUserByDni getUser = new GetUserByDni(dni, access);
+                    Thread thread = new Thread(getUser);
+                    try {
+                        thread.start();
+                        thread.join();
+                    } catch (InterruptedException e) {
+                        // Nothing to do here...
+                    }
+                    response = getUser.getResponse();
                 }
                 return response;
             }

@@ -13,10 +13,9 @@ import android.widget.Toast;
 
 import com.example.notix.Network.User.SessionManager;
 import com.example.notix.adapters.Eva1Adapter;
-import com.example.notix.beans.Note;
-import com.example.notix.beans.Subject;
+import com.example.notix.Network.Professor.beans.Note;
+import com.example.notix.Network.Professor.beans.Subject;
 import com.example.notix.Network.Note.GetNotesByStudentDni;
-import com.example.notix.Network.Subject.GetSubjects;
 import com.example.notix.Network.Subject.GetSubjectsByStudentDni;
 
 import java.util.ArrayList;
@@ -29,7 +28,7 @@ public class StudentEva1Activity extends AppCompatActivity {
         setContentView(R.layout.activity_student_eva1);
 
         Bundle extras = getIntent().getExtras();
-        String access = extras.getString("access");
+        //String access = extras.getString("access");
         String dni = extras.getString("dni");
 
         SessionManager session;
@@ -75,7 +74,7 @@ public class StudentEva1Activity extends AppCompatActivity {
 
             buttonNext.setOnClickListener(view -> {
                 Intent i = new Intent(StudentEva1Activity.this, StudentEva2Activity.class);
-                i.putExtra("access", access);
+                //i.putExtra("access", access);
                 i.putExtra("dni", dni);
                 startActivity(i);
             });

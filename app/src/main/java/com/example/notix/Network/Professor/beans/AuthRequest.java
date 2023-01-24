@@ -1,4 +1,4 @@
-package com.example.notix.beans;
+package com.example.notix.Network.Professor.beans;
 
 import java.io.Serializable;
 
@@ -6,8 +6,7 @@ public class AuthRequest implements Serializable {
 
     private String dni;
     private String password;
-
-    int roleId;
+    private int roleId;
 
     public AuthRequest() {  }
 
@@ -34,13 +33,9 @@ public class AuthRequest implements Serializable {
         this.password = password;
     }
 
-    public int getRoleId() {
-        return roleId;
-    }
+    public int getRoleId() { return roleId; }
 
-    public void setRoleId(int roleId) {
-        this.roleId = roleId;
-    }
+    public void setRoleId(int roleId) { this.roleId = roleId; }
 
     @Override
     public String toString() {

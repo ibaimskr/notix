@@ -1,7 +1,7 @@
 package com.example.notix.Network.Absence;
 
 import com.example.notix.Network.NetConfiguration;
-import com.example.notix.beans.Absence;
+import com.example.notix.Network.Professor.beans.Absence;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

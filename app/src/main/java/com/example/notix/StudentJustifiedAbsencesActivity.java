@@ -10,9 +10,10 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.notix.Network.User.SessionManager;
 import com.example.notix.adapters.AbsencesAdapter;
-import com.example.notix.beans.Absence;
-import com.example.notix.beans.Subject;
+import com.example.notix.Network.Professor.beans.Absence;
+import com.example.notix.Network.Professor.beans.Subject;
 import com.example.notix.Network.Absence.GetJustifiedAbsencesByDni;
 import com.example.notix.Network.Subject.GetSubjectsByStudentDni;
 
@@ -26,8 +27,12 @@ public class StudentJustifiedAbsencesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_student_justified_absences);
 
         Bundle extras = getIntent().getExtras();
-        String access = extras.getString("access");
+        //String access = extras.getString("access");
         String dni = extras.getString("dni");
+
+        SessionManager session;
+        session = new SessionManager(getApplicationContext());
+        String token = session.getStringData("jwtToken");
 
         Button buttonBack = findViewById(R.id.buttonStudentJustifiedAbsencesBack);
         ListView listView = findViewById(R.id.listViewStudentJustifiedAbsences);
@@ -38,8 +43,8 @@ public class StudentJustifiedAbsencesActivity extends AppCompatActivity {
         listView.setAdapter(absencesAdapter);
 
         if (isConnected()) {
-            GetJustifiedAbsencesByDni getAbsences = new GetJustifiedAbsencesByDni(dni, access);
-            GetSubjectsByStudentDni getSubjects = new GetSubjectsByStudentDni(dni, access);
+            GetJustifiedAbsencesByDni getAbsences = new GetJustifiedAbsencesByDni(dni, token);
+            GetSubjectsByStudentDni getSubjects = new GetSubjectsByStudentDni(dni, token);
             Thread thread1 = new Thread(getAbsences);
             Thread thread2 = new Thread(getSubjects);
             try {

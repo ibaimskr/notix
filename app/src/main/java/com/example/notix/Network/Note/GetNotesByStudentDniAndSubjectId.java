@@ -1,6 +1,6 @@
 package com.example.notix.Network.Note;
 
-import com.example.notix.beans.Note;
+import com.example.notix.Network.Professor.beans.Note;
 import com.example.notix.Network.NetConfiguration;
 
 import org.json.JSONObject;
