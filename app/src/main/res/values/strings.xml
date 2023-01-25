@@ -16,6 +16,7 @@
     <string name="text_notes">NOTAS</string>
     <string name="text_justified_absences">FALTAS JUSTIFICADAS</string>
     <string name="text_subjects">ASIGNATURAS</string>
+    <string name="text_mail">EMAIL</string>
     <string name="text_spanish">CASTELLANO</string>
     <string name="text_english">INGLES</string>
     <string name="text_basque">EUSKERA</string>
@@ -23,6 +24,9 @@
     <string name="text_add">AÑADIR</string>
     <string name="text_send">ENVIAR</string>
     <string name="text_date">FECHA</string>
+    <string name="text_receiper">Receptor</string>
+    <string name="text_asunt">Asunto</string>
+    <string name="text_body">Cuerpo: </string>
 
     <string name="dni">DNI</string>
     <string name="name">Nombre</string>

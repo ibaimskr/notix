@@ -66,6 +66,10 @@ public class MainStudentActivity extends AppCompatActivity {
                         Intent i3 = new Intent(MainStudentActivity.this, StudentSubjectsActivity.class);
                         startActivity(i3);
                         break;
+                    case R.id.student_nav_mail:
+                        Intent i4 = new Intent(MainStudentActivity.this, StudentMailActivity.class);
+                        startActivity(i4);
+                        break;
                     default:
                 }
                 return true;

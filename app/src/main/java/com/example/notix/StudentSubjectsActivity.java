@@ -73,10 +73,12 @@ public class StudentSubjectsActivity extends AppCompatActivity {
                     case R.id.student_nav_notes:
                         Intent i = new Intent(StudentSubjectsActivity.this, StudentNotesActivity.class);
                         startActivity(i);
+                        finish();
                         break;
                     case R.id.student_nav_absences:
                         Intent i3 = new Intent(StudentSubjectsActivity.this, StudentAbsencesActivity.class);
                         startActivity(i3);
+                        finish();
                         break;
                     default:
                 }

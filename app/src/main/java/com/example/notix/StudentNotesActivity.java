@@ -27,21 +27,25 @@ public class StudentNotesActivity extends AppCompatActivity {
         buttonEva1.setOnClickListener(view -> {
             Intent i = new Intent(StudentNotesActivity.this, StudentEva1Activity.class);
             startActivity(i);
+            finish();
         });
 
         buttonEva2.setOnClickListener(view -> {
             Intent i = new Intent(StudentNotesActivity.this, StudentEva2Activity.class);
             startActivity(i);
+            finish();
         });
 
         buttonEva3.setOnClickListener(view -> {
             Intent i = new Intent(StudentNotesActivity.this, StudentEva3Activity.class);
             startActivity(i);
+            finish();
         });
 
         buttonPartial.setOnClickListener(view -> {
             Intent i = new Intent(StudentNotesActivity.this, StudentPartialActivity.class);
             startActivity(i);
+            finish();
         });
 
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -51,10 +55,12 @@ public class StudentNotesActivity extends AppCompatActivity {
                     case R.id.student_nav_absences:
                         Intent i2 = new Intent(StudentNotesActivity.this, StudentAbsencesActivity.class);
                         startActivity(i2);
+                        finish();
                         break;
                     case R.id.student_nav_subjects:
                         Intent i3 = new Intent(StudentNotesActivity.this, StudentSubjectsActivity.class);
                         startActivity(i3);
+                        finish();
                         break;
                     default:
                 }
