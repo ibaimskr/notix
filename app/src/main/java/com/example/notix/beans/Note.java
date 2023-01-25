@@ -1,4 +1,4 @@
-package com.example.notix.Network.Professor.beans;
+package com.example.notix.beans;
 
 import java.io.Serializable;
 

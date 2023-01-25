@@ -12,8 +12,8 @@ import android.widget.Toast;
 
 import com.example.notix.Network.User.SessionManager;
 import com.example.notix.adapters.PartialAdapter;
-import com.example.notix.Network.Professor.beans.Note;
-import com.example.notix.Network.Professor.beans.Subject;
+import com.example.notix.beans.Note;
+import com.example.notix.beans.Subject;
 import com.example.notix.Network.Note.GetNotesByStudentDni;
 import com.example.notix.Network.Subject.GetSubjectsByStudentDni;
 
@@ -33,9 +33,6 @@ public class StudentPartialActivity extends AppCompatActivity {
         SessionManager session;
         session = new SessionManager(getApplicationContext());
         String token = session.getStringData("jwtToken");
-
-        Button buttonPrevious = findViewById(R.id.buttonPartialPrevious);
-        Button buttonBack = findViewById(R.id.buttonPartialBack);
         ListView listView = findViewById(R.id.listViewPartial);
 
         ArrayList<Note> notesArrayList = new ArrayList<>();
@@ -71,16 +68,6 @@ public class StudentPartialActivity extends AppCompatActivity {
         } else {
             Toast.makeText(getApplicationContext(), getString(R.string.error_communication), Toast.LENGTH_SHORT).show();
         }
-
-        buttonPrevious.setOnClickListener(view -> finish());
-/*
-        buttonBack.setOnClickListener(view -> {
-            Intent i = new Intent(StudentPartialActivity.this, StudentEva1Activity.class);
-            startActivity(i);
-            //finish();
-        });
-
- */
     }
 
     public boolean isConnected() {

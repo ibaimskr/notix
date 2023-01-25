@@ -18,10 +18,10 @@ import com.example.notix.Network.Absence.PostAbsence;
 import com.example.notix.Network.Student.GetStudentsByProfessorDni;
 import com.example.notix.Network.Subject.GetSubjectsByStudentDni;
 import com.example.notix.Network.User.SessionManager;
-import com.example.notix.Network.Professor.beans.Absence;
-import com.example.notix.Network.Professor.beans.Student;
-import com.example.notix.Network.Professor.beans.StudentForAbsences;
-import com.example.notix.Network.Professor.beans.Subject;
+import com.example.notix.beans.Absence;
+import com.example.notix.beans.Student;
+import com.example.notix.beans.StudentForAbsences;
+import com.example.notix.beans.Subject;
 
 import java.util.ArrayList;
 

@@ -1,7 +1,7 @@
 package com.example.notix.Network.Student;
 
 import com.example.notix.Network.NetConfiguration;
-import com.example.notix.Network.Professor.beans.StudentRequest;
+import com.example.notix.beans.StudentRequest;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

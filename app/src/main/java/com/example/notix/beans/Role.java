@@ -1,4 +1,4 @@
-package com.example.notix.Network.Professor.beans;
+package com.example.notix.beans;
 
 public class Role {
 

@@ -1,6 +1,6 @@
 package com.example.notix.Network.Student;
 
-import com.example.notix.Network.Professor.beans.Student;
+import com.example.notix.beans.Student;
 import com.example.notix.Network.NetConfiguration;
 
 import java.io.BufferedReader;

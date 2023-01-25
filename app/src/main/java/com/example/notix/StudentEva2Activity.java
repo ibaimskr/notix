@@ -13,8 +13,8 @@ import android.widget.Toast;
 
 import com.example.notix.Network.User.SessionManager;
 import com.example.notix.adapters.Eva2Adapter;
-import com.example.notix.Network.Professor.beans.Note;
-import com.example.notix.Network.Professor.beans.Subject;
+import com.example.notix.beans.Note;
+import com.example.notix.beans.Subject;
 import com.example.notix.Network.Note.GetNotesByStudentDni;
 import com.example.notix.Network.Subject.GetSubjectsByStudentDni;
 
@@ -34,9 +34,6 @@ public class StudentEva2Activity extends AppCompatActivity {
         SessionManager session;
         session = new SessionManager(getApplicationContext());
         String token = session.getStringData("jwtToken");
-
-        Button buttonPrevious = findViewById(R.id.buttonEva2Previous);
-        Button buttonNext = findViewById(R.id.buttonEva2Next);
         ListView listView = findViewById(R.id.listViewEva2);
 
         ArrayList<Note> notesArrayList = new ArrayList<>();
@@ -72,16 +69,6 @@ public class StudentEva2Activity extends AppCompatActivity {
         } else {
             Toast.makeText(getApplicationContext(), getString(R.string.error_communication), Toast.LENGTH_SHORT).show();
         }
-
-        buttonPrevious.setOnClickListener(view -> finish());
-
-        buttonNext.setOnClickListener(view -> {
-            Intent i = new Intent(StudentEva2Activity.this, StudentEva3Activity.class);
-            //i.putExtra("access", access);
-            i.putExtra("dni", dni);
-            startActivity(i);
-        });
-
     }
 
     public boolean isConnected() {

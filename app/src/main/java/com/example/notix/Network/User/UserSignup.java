@@ -1,7 +1,7 @@
 package com.example.notix.Network.User;
 
 import com.example.notix.Network.NetConfiguration;
-import com.example.notix.Network.Professor.beans.AuthRequest;
+import com.example.notix.beans.AuthRequest;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

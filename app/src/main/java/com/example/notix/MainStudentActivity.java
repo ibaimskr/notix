@@ -1,5 +1,6 @@
 package com.example.notix;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -7,12 +8,17 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.notix.Network.Student.GetStudentByDni;
-import com.example.notix.Network.Professor.beans.Student;
+import com.example.notix.Network.User.SessionManager;
+import com.example.notix.beans.Student;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarMenuView;
+import com.google.android.material.navigation.NavigationBarView;
 
 public class MainStudentActivity extends AppCompatActivity {
 
@@ -21,17 +27,16 @@ public class MainStudentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_student);
 
-        Bundle extras = getIntent().getExtras();
-        String access = extras.getString("access");
-        String dni = extras.getString("dni");
+        SessionManager session;
+        session = new SessionManager(getApplicationContext());
+        String token = session.getStringData("jwtToken");
+        String dni = session.getStringData("dni");
 
         TextView viewName = findViewById(R.id.viewStudentMainName);
-        Button buttonNotes = findViewById(R.id.buttonStudentMainNotes);
-        Button buttonAbsences = findViewById(R.id.buttonStudentMainAbsences);
-        Button buttonSubjects = findViewById(R.id.buttonStudentMainSubjects);
-//
+        BottomNavigationView navigation = findViewById(R.id.studentBottomNavigation);
+
         if (isConnected()) {
-            GetStudentByDni getStudent = new GetStudentByDni(dni, access);
+            GetStudentByDni getStudent = new GetStudentByDni(dni, token);
             Thread thread = new Thread(getStudent);
             try {
                 thread.start();
@@ -44,27 +49,27 @@ public class MainStudentActivity extends AppCompatActivity {
             String studentName = (student.getName() + " " + student.getSurname());
             viewName.setText(studentName);
         }
-//
 
-        buttonNotes.setOnClickListener(view -> {
-            Intent i = new Intent(MainStudentActivity.this, StudentEva1Activity.class);
-            i.putExtra("access", access);
-            i.putExtra("dni", dni);
-            startActivity(i);
-        });
-
-        buttonAbsences.setOnClickListener(view -> {
-            Intent i = new Intent(MainStudentActivity.this, StudentAbsencesActivity.class);
-            i.putExtra("access", access);
-            i.putExtra("dni", dni);
-            startActivity(i);
-        });
-
-        buttonSubjects.setOnClickListener(view -> {
-            Intent i = new Intent(MainStudentActivity.this, StudentSubjectsActivity.class);
-            i.putExtra("access", access);
-            i.putExtra("dni", dni);
-            startActivity(i);
+        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.student_nav_notes:
+                        Intent i = new Intent(MainStudentActivity.this, StudentNotesActivity.class);
+                        startActivity(i);
+                        break;
+                    case R.id.student_nav_absences:
+                        Intent i2 = new Intent(MainStudentActivity.this, StudentAbsencesActivity.class);
+                        startActivity(i2);
+                        break;
+                    case R.id.student_nav_subjects:
+                        Intent i3 = new Intent(MainStudentActivity.this, StudentSubjectsActivity.class);
+                        startActivity(i3);
+                        break;
+                    default:
+                }
+                return true;
+            }
         });
     }
 

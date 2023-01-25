@@ -34,36 +34,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/buttonStudentMainNotes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:text="@string/text_notes"
-        app:layout_constraintBottom_toTopOf="@+id/studentBottomNavigation"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewStudentMainName" />
-
-    <Button
-        android:id="@+id/buttonStudentMainAbsences"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/text_absences"
-        app:layout_constraintBottom_toTopOf="@+id/studentBottomNavigation"
-        app:layout_constraintEnd_toStartOf="@+id/buttonStudentMainSubjects"
-        app:layout_constraintStart_toEndOf="@+id/buttonStudentMainNotes"
-        app:layout_constraintTop_toBottomOf="@+id/viewStudentMainName" />
-
-    <Button
-        android:id="@+id/buttonStudentMainSubjects"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="30dp"
-        android:text="@string/text_subjects"
-        app:layout_constraintBottom_toTopOf="@+id/studentBottomNavigation"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewStudentMainName" />
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/studentBottomNavigation"
         android:layout_width="0dp"

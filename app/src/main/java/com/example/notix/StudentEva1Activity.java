@@ -1,5 +1,6 @@
 package com.example.notix;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -7,16 +8,18 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.notix.Network.User.SessionManager;
 import com.example.notix.adapters.Eva1Adapter;
-import com.example.notix.Network.Professor.beans.Note;
-import com.example.notix.Network.Professor.beans.Subject;
+import com.example.notix.beans.Note;
+import com.example.notix.beans.Subject;
 import com.example.notix.Network.Note.GetNotesByStudentDni;
 import com.example.notix.Network.Subject.GetSubjectsByStudentDni;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
@@ -27,16 +30,13 @@ public class StudentEva1Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_eva1);
 
-        Bundle extras = getIntent().getExtras();
-        //String access = extras.getString("access");
-        String dni = extras.getString("dni");
-
         SessionManager session;
         session = new SessionManager(getApplicationContext());
         String token = session.getStringData("jwtToken");
+        String dni = session.getStringData("dni");
 
-        Button buttonNext = findViewById(R.id.buttonEva1Next);
         ListView listView = findViewById(R.id.listViewEva1);
+        BottomNavigationView navigation = findViewById(R.id.studentBottomNavigation);
 
         ArrayList<Note> notesArrayList = new ArrayList<>();
         ArrayList<Subject> subjectsArrayList = new ArrayList<>();
@@ -72,12 +72,33 @@ public class StudentEva1Activity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), getString(R.string.error_communication), Toast.LENGTH_SHORT).show();
         }
 
-            buttonNext.setOnClickListener(view -> {
-                Intent i = new Intent(StudentEva1Activity.this, StudentEva2Activity.class);
-                //i.putExtra("access", access);
-                i.putExtra("dni", dni);
-                startActivity(i);
-            });
+        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.student_nav_notes:
+                        Intent i = new Intent(StudentEva1Activity.this, StudentNotesActivity.class);
+                        //i.putExtra("access", access);
+                        i.putExtra("dni", dni);
+                        startActivity(i);
+                        break;
+                    case R.id.student_nav_absences:
+                        Intent i2 = new Intent(StudentEva1Activity.this, StudentAbsencesActivity.class);
+                        //i2.putExtra("access", access);
+                        i2.putExtra("dni", dni);
+                        startActivity(i2);
+                        break;
+                    case R.id.student_nav_subjects:
+                        Intent i3 = new Intent(StudentEva1Activity.this, StudentSubjectsActivity.class);
+                        //i3.putExtra("access", access);
+                        i3.putExtra("dni", dni);
+                        startActivity(i3);
+                        break;
+                    default:
+                }
+                return true;
+            }
+        });
     }
 
     public boolean isConnected() {

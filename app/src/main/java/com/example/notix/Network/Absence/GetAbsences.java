@@ -2,7 +2,7 @@ package com.example.notix.Network.Absence;
 
 import android.util.Log;
 
-import com.example.notix.Network.Professor.beans.Absence;
+import com.example.notix.beans.Absence;
 import com.example.notix.Network.NetConfiguration;
 
 import org.json.JSONArray;

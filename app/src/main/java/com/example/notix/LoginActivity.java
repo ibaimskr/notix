@@ -20,9 +20,9 @@ import android.widget.Toast;
 import com.example.notix.Network.User.GetUserByDni;
 import com.example.notix.Network.User.Login;
 import com.example.notix.Network.User.SessionManager;
-import com.example.notix.Network.Professor.beans.AuthRequest;
-import com.example.notix.Network.Professor.beans.AuthResponse;
-import com.example.notix.Network.Professor.beans.UserRemember;
+import com.example.notix.beans.AuthRequest;
+import com.example.notix.beans.AuthResponse;
+import com.example.notix.beans.UserRemember;
 import com.example.notix.db.DataManager;
 
 import java.util.List;

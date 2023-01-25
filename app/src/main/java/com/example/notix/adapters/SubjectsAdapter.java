@@ -10,8 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import com.example.notix.R;
-import com.example.notix.Network.Professor.beans.Professor;
-import com.example.notix.Network.Professor.beans.Subject;
+import com.example.notix.beans.Professor;
+import com.example.notix.beans.Subject;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -41,7 +41,7 @@ public class SubjectsAdapter extends ArrayAdapter<Subject> {
         ((TextView) view.findViewById(R.id.viewSubjectLayoutSubject)).setText("" + subjects.get(position).getName());
         ((TextView) view.findViewById(R.id.viewSubjectLayoutDuration)).setText("" + subjects.get(position).getDuration());
         //((TextView) view.findViewById(R.id.viewSubjectLayoutTutor)).setText("" + subjects.get(position).getProfessor_dni());
-        ((TextView) view.findViewById(R.id.viewSubjectLayoutTutor)).setText(tutors.get(position).getName());
+        //((TextView) view.findViewById(R.id.viewSubjectLayoutTutor)).setText(tutors.get(position).getName());
 
         return view;
     }

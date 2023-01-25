@@ -4,8 +4,8 @@ import android.content.Context;
 import android.util.Log;
 
 import com.example.notix.Network.NetConfiguration;
-import com.example.notix.Network.Professor.beans.AuthRequest;
-import com.example.notix.Network.Professor.beans.AuthResponse;
+import com.example.notix.beans.AuthRequest;
+import com.example.notix.beans.AuthResponse;
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;

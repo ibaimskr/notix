@@ -10,8 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import com.example.notix.R;
-import com.example.notix.Network.Professor.beans.Note;
-import com.example.notix.Network.Professor.beans.Subject;
+import com.example.notix.beans.Note;
+import com.example.notix.beans.Subject;
 
 import java.util.ArrayList;
 

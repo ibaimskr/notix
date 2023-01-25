@@ -1,6 +1,6 @@
 package com.example.notix.Network.Grade;
 
-import com.example.notix.Network.Professor.beans.Grade;
+import com.example.notix.beans.Grade;
 import com.example.notix.Network.NetConfiguration;
 
 import org.json.JSONObject;

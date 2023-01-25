@@ -1,7 +1,7 @@
 package com.example.notix.Network.GradeEdition;
 
 
-import com.example.notix.Network.Professor.beans.GradeEdition;
+import com.example.notix.beans.GradeEdition;
 import com.example.notix.Network.NetConfiguration;
 
 import org.json.JSONArray;

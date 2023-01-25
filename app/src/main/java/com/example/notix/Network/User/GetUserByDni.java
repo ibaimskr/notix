@@ -1,7 +1,7 @@
 package com.example.notix.Network.User;
 
 import com.example.notix.Network.NetConfiguration;
-import com.example.notix.Network.Professor.beans.AuthResponse;
+import com.example.notix.beans.AuthResponse;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
