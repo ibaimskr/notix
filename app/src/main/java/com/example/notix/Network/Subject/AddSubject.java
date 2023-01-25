@@ -55,6 +55,7 @@ public class AddSubject extends NetConfiguration implements Runnable{
                     response.append(inputLine);
                 }
                 bufferedReader.close();
+                this.response = 201;
 
             }
 

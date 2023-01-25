@@ -59,6 +59,7 @@ public class PutAbsence extends NetConfiguration implements Runnable {
                 }
                 bufferedReader.close();
             }
+            this.response=200;
 
         } catch (Exception e) {
             System.out.println("ERROR: " + e.getMessage());

@@ -60,6 +60,7 @@ public class PutNote extends NetConfiguration implements Runnable {
                     response.append(inputLine);
                 }
                 bufferedReader.close();
+                this.response = 200;
             }
 
         } catch (Exception e) {

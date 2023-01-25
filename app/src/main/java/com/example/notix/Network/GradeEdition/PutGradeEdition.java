@@ -58,6 +58,8 @@ public class PutGradeEdition extends NetConfiguration implements Runnable {
                     response.append(inputLine);
                 }
                 bufferedReader.close();
+
+                this.response = 200;
             }
 
         } catch (Exception e) {

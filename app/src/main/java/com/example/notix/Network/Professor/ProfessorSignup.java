@@ -55,7 +55,7 @@ public class ProfessorSignup extends NetConfiguration implements Runnable {
                     response.append(inputLine);
                 }
                 bufferedReader.close();
-                responseCode = 201;
+                this.response = 201;
             }
 
         } catch (Exception e) {

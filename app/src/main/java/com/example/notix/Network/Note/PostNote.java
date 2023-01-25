@@ -56,6 +56,9 @@ public class PostNote extends NetConfiguration implements Runnable {
                     response.append(inputLine);
                 }
                 bufferedReader.close();
+
+                this.response = 201;
+
             }
 
         } catch (Exception e) {

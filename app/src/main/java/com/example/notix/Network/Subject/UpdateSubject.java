@@ -56,6 +56,8 @@ public class UpdateSubject extends NetConfiguration implements Runnable{
                 }
                 bufferedReader.close();
 
+                this.response = 200;
+
             }
 
         } catch (Exception e) {

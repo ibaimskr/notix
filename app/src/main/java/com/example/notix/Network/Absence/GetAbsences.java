@@ -67,6 +67,7 @@ public class GetAbsences extends NetConfiguration implements Runnable {
                     this.response.add(absence);
                     Log.e("ALOHAAAAAAAAAAAAAAAA", String.valueOf(absence));
                 }
+
             }
 
         } catch (Exception e) {

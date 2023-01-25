@@ -56,6 +56,7 @@ public class PostGrade extends NetConfiguration implements Runnable{
                 }
                 bufferedReader.close();
 
+                this.response = 201;
             }
 
         } catch (Exception e) {
