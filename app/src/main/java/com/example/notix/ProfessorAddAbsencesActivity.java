@@ -15,10 +15,14 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.notix.Network.Absence.PostAbsence;
+import com.example.notix.Network.Note.GetNotesByStudentDniAndSubjectId;
 import com.example.notix.Network.Student.GetStudentsByProfessorDni;
+import com.example.notix.Network.Student.GetStudentsBySubjectId;
+import com.example.notix.Network.Subject.GetSubjectsByProfessorDni;
 import com.example.notix.Network.Subject.GetSubjectsByStudentDni;
 import com.example.notix.Network.User.SessionManager;
 import com.example.notix.beans.Absence;
+import com.example.notix.beans.Note;
 import com.example.notix.beans.Student;
 import com.example.notix.beans.StudentForAbsences;
 import com.example.notix.beans.Subject;
@@ -50,44 +54,31 @@ public class ProfessorAddAbsencesActivity extends AppCompatActivity {
         ArrayAdapter foulAdapter = new ArrayAdapter(ProfessorAddAbsencesActivity.this, android.R.layout.simple_spinner_dropdown_item, foulArrayList);
         spinnerFoul.setAdapter(foulAdapter);
 
-        ArrayList<Student> studentsArrayList = new ArrayList<>();
-        ArrayList<StudentForAbsences> studentsNameArrayList = new ArrayList<>();
-        ArrayList<Subject> subjectsArrayList = new ArrayList<>();
-        ArrayList<String> subjectsStringArraylist = new ArrayList<>();
+        ArrayList<Subject> subjectsArrayList;
 
         SessionManager session;
         session = new SessionManager(getApplicationContext());
         String token = session.getStringData("jwtToken");
         dni_profe = session.getStringData("dni");
 
+
         if (isConnected()) {
-            GetStudentsByProfessorDni StudentService = new GetStudentsByProfessorDni(token, dni_profe);
-            Thread thread = new Thread(StudentService);
+            GetSubjectsByProfessorDni getSubjectsByProfessorDni = new GetSubjectsByProfessorDni(dni_profe,token);
+            Thread thread2 = new Thread(getSubjectsByProfessorDni);
             try {
-                thread.start();
-                thread.join();
+                thread2.start();
+                thread2.join();
             } catch (InterruptedException e) {
                 // Nothing to do here...
             }
-            // Processing the answer
-            ArrayList<Student> listStudents = StudentService.getResponse();
+            subjectsArrayList = getSubjectsByProfessorDni.getResponse();
 
-            if (listStudents != null) {
-                studentsArrayList.addAll(listStudents);
-            } else {
+            if (subjectsArrayList == null) {
                 Toast.makeText(getApplicationContext(), "Recibo null", Toast.LENGTH_LONG).show();
-
+            } else {
+                ArrayAdapter subjectAdapter = new ArrayAdapter(ProfessorAddAbsencesActivity.this, android.R.layout.simple_spinner_dropdown_item, subjectsArrayList);
+                spinnerSubjects.setAdapter(subjectAdapter);
             }
-
-            for(int i = 0; i < studentsArrayList.size()  ; i++){
-                StudentForAbsences student = new StudentForAbsences();
-                student.setName(studentsArrayList.get(i).getName());
-                student.setSurname(studentsArrayList.get(i).getSurname());
-                student.setDni(studentsArrayList.get(i).getStudent_dni());
-                studentsNameArrayList.add(student);
-            }
-            ArrayAdapter studentAdapter = new ArrayAdapter(ProfessorAddAbsencesActivity.this, android.R.layout.simple_spinner_dropdown_item, studentsArrayList);
-            spinnerStudents.setAdapter(studentAdapter);
         } else {
             Toast.makeText(getApplicationContext(), "no me conecto al server", Toast.LENGTH_LONG).show();
         }
@@ -95,40 +86,10 @@ public class ProfessorAddAbsencesActivity extends AppCompatActivity {
         spinnerStudents.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-               Student selectedStudentName = (Student) spinnerStudents.getSelectedItem();
-               dni_alumno = selectedStudentName.getStudent_dni();
-               subjectsStringArraylist.clear();
-               subjectsArrayList.clear();
-                if (isConnected()) {
-                    GetSubjectsByStudentDni SubjectService = new GetSubjectsByStudentDni(dni_alumno, token);
-                    Thread thread = new Thread(SubjectService);
-                    try {
-                        thread.start();
-                        thread.join();
-                    } catch (InterruptedException e) {
-                        // Nothing to do here...
-                    }
-                    // Processing the answer
-                    ArrayList<Subject> listSubjects = SubjectService.getResponse();
-
-                    if (listSubjects != null) {
-                        subjectsArrayList.addAll(listSubjects);
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Recibo null", Toast.LENGTH_LONG).show();
-
-                    }
-                    subjectsStringArraylist.clear();
-                    for(int i = 0; i < subjectsArrayList.size()  ; i++){
-                       Subject subject = new Subject();
-                       if(subjectsArrayList.get(i).getProfessor_dni().equalsIgnoreCase(dni_profe)){
-                           subjectsStringArraylist.add(subjectsArrayList.get(i).getName().toString());
-                       };
-                    }
-                    ArrayAdapter subjectAdapter = new ArrayAdapter(ProfessorAddAbsencesActivity.this, android.R.layout.simple_spinner_dropdown_item, subjectsStringArraylist);
-                    spinnerSubjects.setAdapter(subjectAdapter);
-                } else {
-                    Toast.makeText(getApplicationContext(), "no me conecto al server", Toast.LENGTH_LONG).show();
-                }
+                Subject selectedSubject = (Subject) spinnerSubjects.getSelectedItem();
+                subject_id = selectedSubject.getSubject_id();
+                Student selectedStudent = (Student) spinnerStudents.getSelectedItem();
+                dni_alumno = selectedStudent.getStudent_dni();
             }
 
             @Override
@@ -140,19 +101,34 @@ public class ProfessorAddAbsencesActivity extends AppCompatActivity {
         spinnerSubjects.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String token = session.getStringData("jwtToken");
+                ArrayList<Student> studentsArrayList = new ArrayList<>();
+                studentsArrayList.clear();
+                Subject selectedSubject = (Subject) spinnerSubjects.getSelectedItem();
+                if (isConnected()) {
+                    GetStudentsBySubjectId getStudentsBySubjectId = new GetStudentsBySubjectId(selectedSubject.getSubject_id(),token );
+                    Thread thread = new Thread(getStudentsBySubjectId);
+                    try {
+                        thread.start();
+                        thread.join();
+                    } catch (InterruptedException e) {
+                    }
+                    // Processing the answer
+                    studentsArrayList = getStudentsBySubjectId.getResponse();
 
-                String subject_name = (String) spinnerSubjects.getItemAtPosition(position);
-                for(int i = 0 ; i < subjectsArrayList.size() ; i++){
-                   if(subjectsArrayList.get(i).getName().equals(subject_name)){
-                       subject_id = subjectsArrayList.get(i).getSubject_id();
-                   }
+                    if (studentsArrayList == null) {
+                        Toast.makeText(getApplicationContext(), "Recibo null", Toast.LENGTH_LONG).show();
+                    } else {
+                        ArrayAdapter studentAdapter = new ArrayAdapter(ProfessorAddAbsencesActivity.this, android.R.layout.simple_spinner_dropdown_item, studentsArrayList);
+                        spinnerStudents.setAdapter(studentAdapter);
+                    }
+
+                } else {
+                    Toast.makeText(getApplicationContext(), "no me conecto al server", Toast.LENGTH_LONG).show();
                 }
-
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
 
@@ -165,15 +141,10 @@ public class ProfessorAddAbsencesActivity extends AppCompatActivity {
                     justified = false;
                 }
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
-
-
-
 
         buttonAddAbsence.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -209,7 +180,6 @@ public class ProfessorAddAbsencesActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
 
     public boolean isConnected() {
