@@ -26,7 +26,7 @@ public class MainProfessorActivity extends AppCompatActivity {
         Button buttonReunion = findViewById(R.id.buttonProfessorMainReunion);
 
         buttonNotes.setOnClickListener(view -> {
-            Intent i = new Intent(MainProfessorActivity.this, ProfessorNotesActivity.class);
+            Intent i = new Intent(MainProfessorActivity.this, ProfessorAddNotesActivity.class);
             i.putExtra("access", access);
             i.putExtra("dni", dni);
             startActivity(i);

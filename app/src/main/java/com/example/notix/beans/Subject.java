@@ -42,12 +42,6 @@ public class Subject implements Serializable {
 
     @Override
     public String toString() {
-        return "{" +
-                "," + '"' + "subjectId" + '"' + ":" + '"'+ subject_id + '"' +
-                "," + '"' + "gradeEditionId" + '"' + ":" + '"'+ grade_edition_id + '"' +
-                "," + '"' + "professorDni" + '"' + ":" + '"'+ professor_dni + '"' +
-                "," + '"' + "name" + '"' + ":" + '"'+ name + '"' +
-                "," + '"' + "duration" + '"' + ":" + '"'+ duration + '"' +
-                "}";
+        return name;
     }
 }

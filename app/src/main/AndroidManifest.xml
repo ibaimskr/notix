@@ -20,6 +20,9 @@
             android:name=".StudentNotesActivity"
             android:exported="false" />
         <activity
+            android:name=".ProfessorAddNotesActivity"
+            android:exported="false" />
+        <activity
             android:name=".ProfessorSubjectsActivity"
             android:exported="false" />
         <activity

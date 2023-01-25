@@ -35,7 +35,7 @@ public class GetSubjectsByProfessorDni extends NetConfiguration implements Runna
             URL url = new URL(theUrl + professor_dni);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("GET");
-//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + token);
+            httpURLConnection.setRequestProperty("Authorization", "Bearer " + token);
 
             // Sending...
             int responseCode = httpURLConnection.getResponseCode();

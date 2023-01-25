@@ -86,7 +86,7 @@ public class ProfessorAddAbsencesActivity extends AppCompatActivity {
                 student.setDni(studentsArrayList.get(i).getStudent_dni());
                 studentsNameArrayList.add(student);
             }
-            ArrayAdapter studentAdapter = new ArrayAdapter(ProfessorAddAbsencesActivity.this, android.R.layout.simple_spinner_dropdown_item, studentsNameArrayList);
+            ArrayAdapter studentAdapter = new ArrayAdapter(ProfessorAddAbsencesActivity.this, android.R.layout.simple_spinner_dropdown_item, studentsArrayList);
             spinnerStudents.setAdapter(studentAdapter);
         } else {
             Toast.makeText(getApplicationContext(), "no me conecto al server", Toast.LENGTH_LONG).show();
@@ -95,8 +95,8 @@ public class ProfessorAddAbsencesActivity extends AppCompatActivity {
         spinnerStudents.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-               StudentForAbsences selectedStudentName = (StudentForAbsences) spinnerStudents.getSelectedItem();
-               dni_alumno = selectedStudentName.getDni();
+               Student selectedStudentName = (Student) spinnerStudents.getSelectedItem();
+               dni_alumno = selectedStudentName.getStudent_dni();
                subjectsStringArraylist.clear();
                subjectsArrayList.clear();
                 if (isConnected()) {

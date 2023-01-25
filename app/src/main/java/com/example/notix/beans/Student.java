@@ -92,16 +92,7 @@ public class Student implements Serializable  {
 
     @Override
     public String toString() {
-        return "{" +
-                '"' + "studentDni" + '"' + ":" + '"' + student_dni + '"' +
-                "," + '"' + "name" + '"' + ":" + '"'+ name + '"' +
-                "," + '"' + "surname" + '"' + ":" + '"'+ surname + '"' +
-                "," + '"' + "bornDate" + '"' + ":" + '"'+ born_date + '"' +
-                "," + '"' + "nationality" + '"' + ":" + '"'+ nationality + '"' +
-                "," + '"' + "email" + '"' + ":" + '"'+ email + '"' +
-                "," + '"' + "phone" + '"' + ":" + '"'+ phone + '"' +
-                "," + '"' + "photo" + '"' + ":" + '"'+ photo + '"' +
-                "}";
+        return name +" , "+surname ;
     }
 }
 
