@@ -31,7 +31,7 @@ public class PostNote extends NetConfiguration implements Runnable {
             httpURLConnection.setRequestMethod("POST");
             httpURLConnection.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
             httpURLConnection.setRequestProperty("Accept", "application/json");
-//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + access);
+            httpURLConnection.setRequestProperty("Authorization", "Bearer " + access);
             httpURLConnection.setDoOutput(true);
             httpURLConnection.setDoInput(true);
 
@@ -46,6 +46,8 @@ public class PostNote extends NetConfiguration implements Runnable {
 
             if (responseCode == 409) {
                 this.response = 409;
+            }else if (responseCode == 401) {
+                this.response = 401;
             } else if (responseCode == HttpURLConnection.HTTP_CREATED) {
                 BufferedReader bufferedReader = new BufferedReader(
                         new InputStreamReader(httpURLConnection.getInputStream()));

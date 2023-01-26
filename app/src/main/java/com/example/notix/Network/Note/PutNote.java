@@ -35,7 +35,7 @@ public class PutNote extends NetConfiguration implements Runnable {
             httpURLConnection.setRequestMethod("PUT");
             httpURLConnection.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
             httpURLConnection.setRequestProperty("Accept", "application/json");
-//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + access);
+            httpURLConnection.setRequestProperty("Authorization", "Bearer " + access);
             httpURLConnection.setDoOutput(true);
             httpURLConnection.setDoInput(true);
 

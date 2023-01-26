@@ -92,7 +92,7 @@ public class Student implements Serializable  {
 
     @Override
     public String toString() {
-        return name +" , "+surname ;
+        return surname +" , "+name ;
     }
 }
 

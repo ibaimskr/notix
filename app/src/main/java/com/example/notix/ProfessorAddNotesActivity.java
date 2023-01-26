@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -18,6 +19,8 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.notix.Network.Note.GetNotesByStudentDniAndSubjectId;
+import com.example.notix.Network.Note.PostNote;
+import com.example.notix.Network.Note.PutNote;
 import com.example.notix.Network.Student.GetStudentsBySubjectId;
 import com.example.notix.Network.Subject.GetSubjectsByProfessorDni;
 import com.example.notix.Network.User.SessionManager;
@@ -31,6 +34,9 @@ import java.util.ArrayList;
 public class ProfessorAddNotesActivity extends AppCompatActivity {
 
     String dni_profe;
+    String dni_student;
+    int id_subject;
+    Note noteBD;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,9 +100,6 @@ public class ProfessorAddNotesActivity extends AppCompatActivity {
 
                 if (isConnected()) {
                     GetNotesByStudentDniAndSubjectId getNotesByStudentDniAndSubjectId = new GetNotesByStudentDniAndSubjectId(selectedStudent.getStudent_dni(),selectedSubject.getSubject_id(),token );
-
-
-
                     Thread thread = new Thread(getNotesByStudentDniAndSubjectId);
                     try {
                         thread.start();
@@ -104,19 +107,16 @@ public class ProfessorAddNotesActivity extends AppCompatActivity {
                     } catch (InterruptedException e) {
                     }
                     // Processing the answer
-                    Note note = getNotesByStudentDniAndSubjectId.getResponse();
+                    noteBD = getNotesByStudentDniAndSubjectId.getResponse();
 
-
-                    if (note == null) {
-                        Toast.makeText(getApplicationContext(), "Recibo nullIOIOIOIO", Toast.LENGTH_LONG).show();
+                    if (noteBD == null) {
+                        Toast.makeText(getApplicationContext(), "no me conecto al server", Toast.LENGTH_LONG).show();
                     } else {
-
-
-                       eva1.setText(String.valueOf(note.getEva1()));
-                       eva2.setText(String.valueOf(note.getEva2()));
-                       eva3.setText(String.valueOf(note.getEva3()));
-                        final1.setText(String.valueOf(note.getFinal1()));
-                        final2.setText(String.valueOf(note.getFinal2()));
+                       eva1.setText(String.valueOf(noteBD.getEva1()));
+                       eva2.setText(String.valueOf(noteBD.getEva2()));
+                       eva3.setText(String.valueOf(noteBD.getEva3()));
+                       final1.setText(String.valueOf(noteBD.getFinal1()));
+                       final2.setText(String.valueOf(noteBD.getFinal2()));
                     }
 
                 } else {
@@ -173,6 +173,56 @@ public class ProfessorAddNotesActivity extends AppCompatActivity {
             Intent i = new Intent(ProfessorAddNotesActivity.this, ProfessorNotesActivity.class);
             startActivity(i);
             finish();
+        });
+
+        buttonAddNote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String token = session.getStringData("jwtToken");
+                Subject selectedSubject = (Subject) spinnerSubjects.getSelectedItem();
+                id_subject = selectedSubject.getSubject_id();
+                Student selectedStudent = (Student) spinnerStudents.getSelectedItem();
+                dni_student = selectedStudent.getStudent_dni();
+
+                float eva1text = Float.parseFloat(String.valueOf(eva1.getText()));
+                float eva2text = Float.parseFloat(String.valueOf(eva2.getText()));
+                float eva3text = Float.parseFloat(String.valueOf(eva3.getText()));
+                int final1text = Integer.parseInt(String.valueOf(final1.getText()));
+                int final2text = Integer.parseInt(String.valueOf(final2.getText()));
+
+                Note note = new Note();
+                note.setStudent_dni(dni_student);
+                note.setSubject_id(id_subject);
+                note.setEva1(eva1text);
+                note.setEva2(eva2text);
+                note.setEva3(eva3text);
+                note.setFinal1(final1text);
+                note.setFinal2(final2text);
+
+                if (isConnected()) {
+                        PutNote putNote = new PutNote(dni_student, id_subject, note, token);
+                        Thread thread2 = new Thread(putNote);
+                        try {
+                            thread2.start();
+                            thread2.join();
+                        } catch (InterruptedException e) {
+                        }
+                        // Processing the answer
+                        int response = putNote.getResponse();
+
+                        if (response == 401) {
+                            Toast.makeText(getApplicationContext(), "No estas autorizado para crear esta nota", Toast.LENGTH_LONG).show();
+                        } else if (response == 409){
+                            Toast.makeText(getApplicationContext(), "Conflicto", Toast.LENGTH_LONG).show();
+                        }else {
+                            Toast.makeText(getApplicationContext(), "Nota actualizada correctamente", Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+
+
+
+            }
         });
 
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
