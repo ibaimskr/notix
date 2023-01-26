@@ -31,7 +31,7 @@ public class GetProfessorByDni extends NetConfiguration implements Runnable {
             URL url = new URL(theUrl + professor_dni);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("GET");
-//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + access);
+            httpURLConnection.setRequestProperty("Authorization", "Bearer " + access);
 
             // Sending...
             int responseCode = httpURLConnection.getResponseCode();

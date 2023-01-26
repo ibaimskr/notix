@@ -3,13 +3,23 @@ package com.example.notix;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.example.notix.Network.Note.GetNotesByStudentDni;
+import com.example.notix.Network.Subject.GetSubjectsByStudentDni;
 import com.example.notix.Network.User.SessionManager;
+import com.example.notix.beans.Note;
+import com.example.notix.beans.Subject;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.ArrayList;
 
 public class StudentNotesActivity extends AppCompatActivity {
 
@@ -17,6 +27,11 @@ public class StudentNotesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_notes);
+
+        SessionManager session;
+        session = new SessionManager(getApplicationContext());
+        String token = session.getStringData("jwtToken");
+        String dni = session.getStringData("dni");
 
         Button buttonEva1 = findViewById(R.id.buttonStudentNotesEva1);
         Button buttonEva2 = findViewById(R.id.buttonStudentNotesEva2);
@@ -79,5 +94,17 @@ public class StudentNotesActivity extends AppCompatActivity {
         });
     }
 
-
+    public boolean isConnected() {
+        boolean ret = false;
+        try {
+            ConnectivityManager connectivityManager = (ConnectivityManager) getApplicationContext()
+                    .getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+            if ((networkInfo != null) && (networkInfo.isAvailable()) && (networkInfo.isConnected()))
+                ret = true;
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), getString(R.string.error_communication), Toast.LENGTH_SHORT).show();
+        }
+        return ret;
+    }
 }

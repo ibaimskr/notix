@@ -60,12 +60,15 @@ public class StudentPartialActivity extends AppCompatActivity {
             ArrayList<Note> notes = getNotes.getResponse();
             ArrayList<Subject> subjects = getSubjects.getResponse();
 
-            if (notes != null && subjects != null) {
+            if (notes.size() != 0 || subjects.size() != 0) {
                 notesArrayList.addAll(notes);
                 subjectsArrayList.addAll(subjects);
                 ((ListView) findViewById(R.id.listViewPartial)).setAdapter(notesAdapter);
             } else {
-                Toast.makeText(getApplicationContext(), getString(R.string.error_data), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.error_partial), Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(StudentPartialActivity.this, StudentNotesActivity.class);
+                startActivity(i);
+                finish();
             }
 
         } else {

@@ -25,8 +25,8 @@
     <string name="text_add">AÑADIR</string>
     <string name="text_send">ENVIAR</string>
     <string name="text_date">FECHA</string>
-    <string name="text_receiper">Receptor</string>
-    <string name="text_asunt">Asunto</string>
+    <string name="text_receiper">Receptor: </string>
+    <string name="text_asunt">Asunto: </string>
     <string name="text_body">Cuerpo: </string>
 
     <string name="dni">DNI</string>
@@ -68,6 +68,8 @@
     <string name="error_password">¡La contraseña debe tener 5 caracteres minimo!</string>
     <string name="error_duplicatedUser">¡El usuario ya existe!</string>
     <string name="error_samePass">¡Las contraseñas no coinciden!</string>
+    <string name="error_notes">¡Aun no tienes notas en esta evaluación!</string>
+    <string name="error_partial">¡Aun no tienes notas parciales!</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

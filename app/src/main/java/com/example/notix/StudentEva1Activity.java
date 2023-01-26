@@ -60,12 +60,15 @@ public class StudentEva1Activity extends AppCompatActivity {
             ArrayList<Note> notes = getNotes.getResponse();
             ArrayList<Subject> subjects = getSubjects.getResponse();
 
-            if (notes != null && subjects != null) {
+            if (notes.size() != 0 || subjects.size() != 0) {
                 notesArrayList.addAll(notes);
                 subjectsArrayList.addAll(subjects);
                 ((ListView) findViewById(R.id.listViewEva1)).setAdapter(notesAdapter);
             } else {
-                Toast.makeText(getApplicationContext(), getString(R.string.error_data), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.error_notes), Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(StudentEva1Activity.this, StudentNotesActivity.class);
+                startActivity(i);
+                finish();
             }
 
         } else {

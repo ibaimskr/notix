@@ -10,6 +10,7 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -48,6 +49,18 @@ public class StudentMailActivity extends AppCompatActivity {
         } else {
             Toast.makeText(getApplicationContext(), "no me conecto al server", Toast.LENGTH_LONG).show();
         }
+
+        spinnerReceiper.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (isConnected()) {
+
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) { }
+        });
 
         buttonSend.setOnClickListener(new View.OnClickListener() {
             @Override
