@@ -37,7 +37,7 @@ public class StudentAbsencesActivity extends AppCompatActivity {
 
         Button buttonJustified = findViewById(R.id.buttonStudentAbsencesJustified);
         ListView listView = findViewById(R.id.listViewStudentAbsences);
-        BottomNavigationView navigation = findViewById(R.id.studentBottomNavigation);
+        BottomNavigationView navigation = findViewById(R.id.absencesBottomNavigation);
 
         ArrayList<Absence> absencesArrayList = new ArrayList<>();
         ArrayList<Subject> subjectsArrayList = new ArrayList<>();
@@ -76,19 +76,30 @@ public class StudentAbsencesActivity extends AppCompatActivity {
         buttonJustified.setOnClickListener(view -> {
             Intent i = new Intent(StudentAbsencesActivity.this, StudentJustifiedAbsencesActivity.class);
             startActivity(i);
+            finish();
         });
 
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.student_nav_notes:
-                        Intent i = new Intent(StudentAbsencesActivity.this, StudentNotesActivity.class);
+                    case R.id.student_nav_main:
+                        Intent i = new Intent(StudentAbsencesActivity.this, MainStudentActivity.class);
                         startActivity(i);
+                        finish();
+                        break;
+                    case R.id.student_nav_notes:
+                        Intent i2 = new Intent(StudentAbsencesActivity.this, StudentNotesActivity.class);
+                        startActivity(i2);
                         break;
                     case R.id.student_nav_subjects:
                         Intent i3 = new Intent(StudentAbsencesActivity.this, StudentSubjectsActivity.class);
                         startActivity(i3);
+                        break;
+                    case R.id.student_nav_mail:
+                        Intent i4 = new Intent(StudentAbsencesActivity.this, StudentMailActivity.class);
+                        startActivity(i4);
+                        finish();
                         break;
                     default:
                 }

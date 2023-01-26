@@ -34,7 +34,7 @@ public class StudentSubjectsActivity extends AppCompatActivity {
         String dni = session.getStringData("dni");
 
         ListView listView = findViewById(R.id.listViewStudentSubjects);
-        BottomNavigationView navigation = findViewById(R.id.studentBottomNavigation);
+        BottomNavigationView navigation = findViewById(R.id.subjectsBottomNavigation);
 
         ArrayList<Subject> subjectsArrayList = new ArrayList<>();
         ArrayList<Professor> tutorsArrayList = new ArrayList<>();
@@ -70,14 +70,24 @@ public class StudentSubjectsActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.student_nav_notes:
-                        Intent i = new Intent(StudentSubjectsActivity.this, StudentNotesActivity.class);
+                    case R.id.student_nav_main:
+                        Intent i = new Intent(StudentSubjectsActivity.this, MainStudentActivity.class);
                         startActivity(i);
+                        finish();
+                        break;
+                    case R.id.student_nav_notes:
+                        Intent i2 = new Intent(StudentSubjectsActivity.this, StudentNotesActivity.class);
+                        startActivity(i2);
                         finish();
                         break;
                     case R.id.student_nav_absences:
                         Intent i3 = new Intent(StudentSubjectsActivity.this, StudentAbsencesActivity.class);
                         startActivity(i3);
+                        finish();
+                        break;
+                    case R.id.student_nav_mail:
+                        Intent i4 = new Intent(StudentSubjectsActivity.this, StudentMailActivity.class);
+                        startActivity(i4);
                         finish();
                         break;
                     default:

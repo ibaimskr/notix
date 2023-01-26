@@ -1,11 +1,21 @@
 package com.example.notix;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.widget.Button;
+import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.notix.Network.Professor.GetProfessorByDni;
+import com.example.notix.Network.User.SessionManager;
+import com.example.notix.beans.Professor;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainProfessorActivity extends AppCompatActivity {
 
@@ -14,50 +24,70 @@ public class MainProfessorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_professor);
 
-        Bundle extras = getIntent().getExtras();
-        String access = extras.getString("access");
-        String dni = extras.getString("dni");
+        SessionManager session;
+        session = new SessionManager(getApplicationContext());
+        String token = session.getStringData("jwtToken");
+        String dni = session.getStringData("dni");
 
         TextView viewName = findViewById(R.id.viewProfessorMainName);
-        Button buttonNotes = findViewById(R.id.buttonProfessorMainNotes);
-        Button buttonAbsences = findViewById(R.id.buttonProfessorMainAbsences);
-        Button buttonSubjects = findViewById(R.id.buttonProfessorMainSubjects);
-        Button buttonStudents = findViewById(R.id.buttonProfessorMainStudents);
-        Button buttonReunion = findViewById(R.id.buttonProfessorMainReunion);
+        BottomNavigationView navigation = findViewById(R.id.professorBottomNavigation);
 
-        buttonNotes.setOnClickListener(view -> {
-            Intent i = new Intent(MainProfessorActivity.this, ProfessorAddNotesActivity.class);
-            i.putExtra("access", access);
-            i.putExtra("dni", dni);
-            startActivity(i);
-        });
+        if (isConnected()) {
+            GetProfessorByDni getProfessor = new GetProfessorByDni(dni, token);
+            Thread thread = new Thread(getProfessor);
+            try {
+                thread.start();
+                thread.join();
+            } catch (InterruptedException e) {
+                // Nothing to do here...
+            }
+            // Processing the answer
+            Professor professor = getProfessor.getResponse();
+            String professorName = (professor.getName() + " " + professor.getSurname());
+            viewName.setText(professorName);
+        }
 
-        buttonAbsences.setOnClickListener(view -> {
-            Intent i = new Intent(MainProfessorActivity.this, ProfessorAddAbsencesActivity.class);
-            i.putExtra("access", access);
-            i.putExtra("dni", dni);
-            startActivity(i);
+        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.professor_nav_notes:
+                        Intent i = new Intent(MainProfessorActivity.this, ProfessorAddNotesActivity.class);
+                        startActivity(i);
+                        break;
+                    case R.id.professor_nav_absences:
+                        Intent i2 = new Intent(MainProfessorActivity.this, ProfessorAddAbsencesActivity.class);
+                        startActivity(i2);
+                        break;
+                    case R.id.professor_nav_subjects:
+                        Intent i3 = new Intent(MainProfessorActivity.this, ProfessorSubjectsActivity.class);
+                        startActivity(i3);
+                        break;
+                    case R.id.professor_nav_students:
+                        Intent i4 = new Intent(MainProfessorActivity.this, ProfessorStudentsActivity.class);
+                        startActivity(i4);
+                    case R.id.professor_nav_reunion:
+                        Intent i5 = new Intent(MainProfessorActivity.this, ProfessorMailActivity.class);
+                        startActivity(i5);
+                        break;
+                    default:
+                }
+                return true;
+            }
         });
+    }
 
-        buttonSubjects.setOnClickListener(view -> {
-            Intent i = new Intent(MainProfessorActivity.this, ProfessorSubjectsActivity.class);
-            i.putExtra("access", access);
-            i.putExtra("dni", dni);
-            startActivity(i);
-        });
-
-        buttonStudents.setOnClickListener(view -> {
-            Intent i = new Intent(MainProfessorActivity.this, ProfessorStudentsActivity.class);
-            i.putExtra("access", access);
-            i.putExtra("dni", dni);
-            startActivity(i);
-        });
-
-        buttonReunion.setOnClickListener(view -> {
-            Intent i = new Intent(MainProfessorActivity.this, ProfessorReunionActivity.class);
-            i.putExtra("access", access);
-            i.putExtra("dni", dni);
-            startActivity(i);
-        });
+    public boolean isConnected() {
+        boolean ret = false;
+        try {
+            ConnectivityManager connectivityManager = (ConnectivityManager) getApplicationContext()
+                    .getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+            if ((networkInfo != null) && (networkInfo.isAvailable()) && (networkInfo.isConnected()))
+                ret = true;
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), getString(R.string.error_communication), Toast.LENGTH_SHORT).show();
+        }
+        return ret;
     }
 }

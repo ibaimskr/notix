@@ -1,11 +1,14 @@
 package com.example.notix;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -26,6 +29,7 @@ import com.example.notix.beans.Note;
 import com.example.notix.beans.Student;
 import com.example.notix.beans.StudentForAbsences;
 import com.example.notix.beans.Subject;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
@@ -41,12 +45,18 @@ public class ProfessorAddAbsencesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_professor_add_absences);
 
+        SessionManager session;
+        session = new SessionManager(getApplicationContext());
+        String token = session.getStringData("jwtToken");
+        dni_profe = session.getStringData("dni");
+
         Spinner spinnerStudents = findViewById(R.id.spinnerProfessorAddAbsencesStudent);
         Spinner spinnerSubjects = findViewById(R.id.spinnerProfessorAddAbsencesSubject);
         Spinner spinnerFoul = findViewById(R.id.spinnerProfessorAddAbsencesFoul);
         Button buttonAddAbsence = findViewById(R.id.buttonProfessorAddAbsencesAdd);
-        Button buttonSeeAbsences = findViewById(R.id.buttonProfessorAddAbsencesAbsences);
+        Button buttonAbsences = findViewById(R.id.buttonProfessorAddAbsencesAbsences);
         EditText editeTexDate = findViewById(R.id.editTextDateProfessorAddAbsences);
+        BottomNavigationView navigation = findViewById(R.id.absencesBottomNavigation);
 
         ArrayList<String> foulArrayList = new ArrayList<>();
         foulArrayList.add("True");
@@ -55,12 +65,6 @@ public class ProfessorAddAbsencesActivity extends AppCompatActivity {
         spinnerFoul.setAdapter(foulAdapter);
 
         ArrayList<Subject> subjectsArrayList;
-
-        SessionManager session;
-        session = new SessionManager(getApplicationContext());
-        String token = session.getStringData("jwtToken");
-        dni_profe = session.getStringData("dni");
-
 
         if (isConnected()) {
             GetSubjectsByProfessorDni getSubjectsByProfessorDni = new GetSubjectsByProfessorDni(dni_profe,token);
@@ -178,6 +182,47 @@ public class ProfessorAddAbsencesActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(getApplicationContext(), "no me conecto al server", Toast.LENGTH_LONG).show();
                 }
+            }
+        });
+
+        buttonAbsences.setOnClickListener(view -> {
+            Intent i = new Intent(ProfessorAddAbsencesActivity.this, ProfessorAbsencesActivity.class);
+            startActivity(i);
+            finish();
+        });
+
+        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.professor_nav_main:
+                        Intent i = new Intent(ProfessorAddAbsencesActivity.this, MainProfessorActivity.class);
+                        startActivity(i);
+                        finish();
+                        break;
+                    case R.id.professor_nav_notes:
+                        Intent i2 = new Intent(ProfessorAddAbsencesActivity.this, ProfessorAddNotesActivity.class);
+                        startActivity(i2);
+                        finish();
+                        break;
+                    case R.id.professor_nav_subjects:
+                        Intent i3 = new Intent(ProfessorAddAbsencesActivity.this, ProfessorSubjectsActivity.class);
+                        startActivity(i3);
+                        finish();
+                        break;
+                    case R.id.professor_nav_students:
+                        Intent i4 = new Intent(ProfessorAddAbsencesActivity.this, ProfessorStudentsActivity.class);
+                        startActivity(i4);
+                        finish();
+                        break;
+                    case R.id.professor_nav_mail:
+                        Intent i5 = new Intent(ProfessorAddAbsencesActivity.this, ProfessorMailActivity.class);
+                        startActivity(i5);
+                        finish();
+                        break;
+                    default:
+                }
+                return true;
             }
         });
     }

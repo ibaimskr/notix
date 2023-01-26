@@ -17,6 +17,9 @@
         android:theme="@style/Theme.Notix"
         tools:targetApi="31">
         <activity
+            android:name=".ProfessorAbsencesActivity"
+            android:exported="false" />
+        <activity
             android:name=".StudentMailActivity"
             android:exported="false" />
         <activity
@@ -65,7 +68,7 @@
             android:name=".StudentSignupActivity"
             android:exported="false" />
         <activity
-            android:name=".ProfessorReunionActivity"
+            android:name=".ProfessorMailActivity"
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"

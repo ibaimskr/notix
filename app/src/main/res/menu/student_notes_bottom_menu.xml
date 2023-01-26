@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/student_nav_main"
+        android:icon="@drawable/icon_main"
+        android:title="@string/text_main" />
+
+    <item
+        android:id="@+id/student_nav_absences"
+        android:icon="@drawable/icon_absences"
+        android:title="@string/text_absences" />
+
+    <item
+        android:id="@+id/student_nav_subjects"
+        android:icon="@drawable/icon_subjects"
+        android:title="@string/text_subjects" />
+
+    <item
+        android:id="@+id/student_nav_mail"
+        android:icon="@drawable/icon_email"
+        android:title="@string/text_mail" />
+</menu>

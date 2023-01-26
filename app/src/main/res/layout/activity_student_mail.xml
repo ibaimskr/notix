@@ -20,6 +20,7 @@
         android:id="@+id/tableLayout4"
         android:layout_width="350dp"
         android:layout_height="75dp"
+        android:layout_marginTop="241dp"
         app:layout_constraintBottom_toTopOf="@+id/tableLayout5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,7 +31,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/viewStudentMailRecipient"
+                android:id="@+id/viewStudentMailReceiper"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:text="@string/text_receiper" />
@@ -56,8 +57,7 @@
                 android:layout_width="230dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Name" />
+                android:inputType="textPersonName" />
 
         </TableRow>
 
@@ -67,6 +67,7 @@
         android:id="@+id/tableLayout5"
         android:layout_width="350dp"
         android:layout_height="200dp"
+        android:layout_marginTop="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -96,4 +97,25 @@
                 android:inputType="textPersonName" />
         </TableRow>
     </TableLayout>
+
+    <Button
+        android:id="@+id/buttonStudentMailSend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_send"
+        app:layout_constraintBottom_toTopOf="@+id/mailBottomNavigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout5" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/mailBottomNavigation"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/mail_bottom_menu" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

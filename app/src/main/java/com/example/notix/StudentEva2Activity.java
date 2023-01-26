@@ -1,5 +1,6 @@
 package com.example.notix;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -7,6 +8,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -17,6 +19,7 @@ import com.example.notix.beans.Note;
 import com.example.notix.beans.Subject;
 import com.example.notix.Network.Note.GetNotesByStudentDni;
 import com.example.notix.Network.Subject.GetSubjectsByStudentDni;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
@@ -27,14 +30,13 @@ public class StudentEva2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_eva2);
 
-        Bundle extras = getIntent().getExtras();
-        //String access = extras.getString("access");
-        String dni = extras.getString("dni");
-
         SessionManager session;
         session = new SessionManager(getApplicationContext());
         String token = session.getStringData("jwtToken");
+        String dni = session.getStringData("dni");
+
         ListView listView = findViewById(R.id.listViewEva2);
+        BottomNavigationView navigation = findViewById(R.id.studentBottomNavigation);
 
         ArrayList<Note> notesArrayList = new ArrayList<>();
         ArrayList<Subject> subjectsArrayList = new ArrayList<>();
@@ -58,7 +60,7 @@ public class StudentEva2Activity extends AppCompatActivity {
             ArrayList<Note> notes = getNotes.getResponse();
             ArrayList<Subject> subjects = getSubjects.getResponse();
 
-            if (notes != null ) {
+            if (notes != null && subjects != null) {
                 notesArrayList.addAll(notes);
                 subjectsArrayList.addAll(subjects);
                 ((ListView) findViewById(R.id.listViewEva2)).setAdapter(notesAdapter);
@@ -69,6 +71,36 @@ public class StudentEva2Activity extends AppCompatActivity {
         } else {
             Toast.makeText(getApplicationContext(), getString(R.string.error_communication), Toast.LENGTH_SHORT).show();
         }
+
+        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.student_nav_notes:
+                        Intent i = new Intent(StudentEva2Activity.this, StudentNotesActivity.class);
+                        startActivity(i);
+                        finish();
+                        break;
+                    case R.id.student_nav_absences:
+                        Intent i2 = new Intent(StudentEva2Activity.this, StudentAbsencesActivity.class);
+                        startActivity(i2);
+                        finish();
+                        break;
+                    case R.id.student_nav_subjects:
+                        Intent i3 = new Intent(StudentEva2Activity.this, StudentSubjectsActivity.class);
+                        startActivity(i3);
+                        finish();
+                        break;
+                    case R.id.student_nav_mail:
+                        Intent i4 = new Intent(StudentEva2Activity.this, StudentMailActivity.class);
+                        startActivity(i4);
+                        finish();
+                        break;
+                    default:
+                }
+                return true;
+            }
+        });
     }
 
     public boolean isConnected() {

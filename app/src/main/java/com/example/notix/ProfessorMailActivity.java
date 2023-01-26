@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class ProfessorReunionActivity extends AppCompatActivity {
+public class ProfessorMailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_professor_reunion);
+        setContentView(R.layout.activity_professor_mail);
     }
 }

@@ -1,11 +1,14 @@
 package com.example.notix;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -21,6 +24,7 @@ import com.example.notix.Network.User.SessionManager;
 import com.example.notix.beans.Note;
 import com.example.notix.beans.Student;
 import com.example.notix.beans.Subject;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
@@ -33,21 +37,23 @@ public class ProfessorAddNotesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_professor_add_notes);
 
-        Spinner spinnerStudents = findViewById(R.id.spinnerProfessorAddAbsencesStudent);
-        Spinner spinnerSubjects = findViewById(R.id.spinnerProfessorAddAbsencesSubject);
-        Button buttonAddNote = findViewById(R.id.buttonProfessorAddANotes);
+        SessionManager session;
+        session = new SessionManager(getApplicationContext());
+        String token = session.getStringData("jwtToken");
+        dni_profe = session.getStringData("dni");
+
         EditText eva1= findViewById(R.id.editTextNumberDecimalEva1);
         EditText eva2= findViewById(R.id.editTextNumberDecimalEva2);
         EditText eva3= findViewById(R.id.editTextNumberDecimalEva3);
         EditText final1= findViewById(R.id.editTextNumberDecimalFinal1);
         EditText final2= findViewById(R.id.editTextNumberDecimalFinal2);
+        Spinner spinnerStudents = findViewById(R.id.spinnerProfessorAddAbsencesStudent);
+        Spinner spinnerSubjects = findViewById(R.id.spinnerProfessorAddAbsencesSubject);
+        Button buttonAddNote = findViewById(R.id.buttonProfessorAddANotesAdd);
+        Button buttonNotes = findViewById(R.id.buttonProfessorAddNotesNotes);
+        BottomNavigationView navigation = findViewById(R.id.notesBottomNavigation);
 
         ArrayList<Subject> subjectsArrayList ;
-
-        SessionManager session;
-        session = new SessionManager(getApplicationContext());
-        String token = session.getStringData("jwtToken");
-        dni_profe = session.getStringData("dni");
 
         if (isConnected()) {
             GetSubjectsByProfessorDni getSubjectsByProfessorDni = new GetSubjectsByProfessorDni(dni_profe,token);
@@ -163,10 +169,46 @@ public class ProfessorAddNotesActivity extends AppCompatActivity {
             }
         });
 
+        buttonNotes.setOnClickListener(view -> {
+            Intent i = new Intent(ProfessorAddNotesActivity.this, ProfessorNotesActivity.class);
+            startActivity(i);
+            finish();
+        });
 
-
-
-
+        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.professor_nav_main:
+                        Intent i = new Intent(ProfessorAddNotesActivity.this, MainProfessorActivity.class);
+                        startActivity(i);
+                        finish();
+                        break;
+                    case R.id.professor_nav_absences:
+                        Intent i2 = new Intent(ProfessorAddNotesActivity.this, ProfessorAddAbsencesActivity.class);
+                        startActivity(i2);
+                        finish();
+                        break;
+                    case R.id.professor_nav_subjects:
+                        Intent i3 = new Intent(ProfessorAddNotesActivity.this, ProfessorSubjectsActivity.class);
+                        startActivity(i3);
+                        finish();
+                        break;
+                    case R.id.professor_nav_students:
+                        Intent i4 = new Intent(ProfessorAddNotesActivity.this, ProfessorStudentsActivity.class);
+                        startActivity(i4);
+                        finish();
+                        break;
+                    case R.id.professor_nav_mail:
+                        Intent i5 = new Intent(ProfessorAddNotesActivity.this, ProfessorMailActivity.class);
+                        startActivity(i5);
+                        finish();
+                        break;
+                    default:
+                }
+                return true;
+            }
+        });
     }
 
     public boolean isConnected() {

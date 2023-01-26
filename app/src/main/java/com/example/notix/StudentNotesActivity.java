@@ -22,7 +22,7 @@ public class StudentNotesActivity extends AppCompatActivity {
         Button buttonEva2 = findViewById(R.id.buttonStudentNotesEva2);
         Button buttonEva3 = findViewById(R.id.buttonStudentNotesEva3);
         Button buttonPartial = findViewById(R.id.buttonStudentNotesPartial);
-        BottomNavigationView navigation = findViewById(R.id.studentBottomNavigation);
+        BottomNavigationView navigation = findViewById(R.id.notesBottomNavigation);
 
         buttonEva1.setOnClickListener(view -> {
             Intent i = new Intent(StudentNotesActivity.this, StudentEva1Activity.class);
@@ -52,6 +52,11 @@ public class StudentNotesActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
+                    case R.id.student_nav_main:
+                        Intent i = new Intent(StudentNotesActivity.this, MainStudentActivity.class);
+                        startActivity(i);
+                        finish();
+                        break;
                     case R.id.student_nav_absences:
                         Intent i2 = new Intent(StudentNotesActivity.this, StudentAbsencesActivity.class);
                         startActivity(i2);
@@ -60,6 +65,11 @@ public class StudentNotesActivity extends AppCompatActivity {
                     case R.id.student_nav_subjects:
                         Intent i3 = new Intent(StudentNotesActivity.this, StudentSubjectsActivity.class);
                         startActivity(i3);
+                        finish();
+                        break;
+                    case R.id.student_nav_mail:
+                        Intent i4 = new Intent(StudentNotesActivity.this, StudentMailActivity.class);
+                        startActivity(i4);
                         finish();
                         break;
                     default:

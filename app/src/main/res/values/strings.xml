@@ -14,6 +14,7 @@
     <string name="text_absences">FALTAS</string>
     <string name="text_reunion">REUNION</string>
     <string name="text_notes">NOTAS</string>
+    <string name="text_main">MENÚ</string>
     <string name="text_justified_absences">FALTAS JUSTIFICADAS</string>
     <string name="text_subjects">ASIGNATURAS</string>
     <string name="text_mail">EMAIL</string>
@@ -54,8 +55,10 @@
     <string name="button_previous">ANTERIOR</string>
     <string name="button_final">FINAL</string>
     <string name="button_justified">JUSTIFICADAS</string>
+    <string name="button_send">ENVIAR</string>
 
     <string name="created">¡Usuario creado!</string>
+    <string name="sended">¡Enviado!</string>
 
     <string name="error">¡Error!</string>
     <string name="error_blankField">¡Se deben rellenar todos los campos!</string>

@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfessorReunionActivity">
+    tools:context=".ProfessorMailActivity">
 
     <TextView
-        android:id="@+id/viewProfessorReunion"
+        android:id="@+id/viewProfessorMail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/text_reunion"
+        android:text="@string/text_mail"
         app:layout_constraintBottom_toTopOf="@+id/tableLayout3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,7 +19,54 @@
     <TableLayout
         android:id="@+id/tableLayout3"
         android:layout_width="350dp"
-        android:layout_height="138dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="241dp"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/viewProfessorMailReceiper"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:text="@string/text_receiper" />
+
+            <Spinner
+                android:id="@+id/spinnerProfessorMailReceiper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/viewProfessorMailSubject"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_asunt" />
+
+            <EditText
+                android:id="@+id/textProfesessorMailSubject"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+        </TableRow>
+
+    </TableLayout>
+
+    <TableLayout
+        android:id="@+id/tableLayout6"
+        android:layout_width="350dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,41 +77,10 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/viewProfessorReunionSubject"
+                android:id="@+id/viewProfessorMailBody"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/text_subjects" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <Spinner
-                android:id="@+id/spinnerProfessorReunionSubject"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/viewProfessorReunionStudent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/text_student" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <Spinner
-                android:id="@+id/spinnerProfessorReunionStudent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:text="TextView" />
         </TableRow>
 
         <TableRow
@@ -72,22 +88,33 @@
             android:layout_height="match_parent">
 
             <EditText
-                android:id="@+id/editTextTextPersonName2"
+                android:id="@+id/textProfessorMailBody"
                 android:layout_width="350dp"
-                android:layout_height="wrap_content"
+                android:layout_height="177dp"
                 android:ems="10"
                 android:inputType="textPersonName" />
         </TableRow>
+
     </TableLayout>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonProfessorMailSend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/text_send"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/button_send"
+        app:layout_constraintBottom_toTopOf="@+id/studentBottomNavigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout3" />
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout6" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/studentBottomNavigation"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/professor_bottom_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

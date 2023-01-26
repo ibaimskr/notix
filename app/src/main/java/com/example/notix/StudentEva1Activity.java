@@ -78,21 +78,23 @@ public class StudentEva1Activity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.student_nav_notes:
                         Intent i = new Intent(StudentEva1Activity.this, StudentNotesActivity.class);
-                        //i.putExtra("access", access);
-                        i.putExtra("dni", dni);
                         startActivity(i);
+                        finish();
                         break;
                     case R.id.student_nav_absences:
                         Intent i2 = new Intent(StudentEva1Activity.this, StudentAbsencesActivity.class);
-                        //i2.putExtra("access", access);
-                        i2.putExtra("dni", dni);
                         startActivity(i2);
+                        finish();
                         break;
                     case R.id.student_nav_subjects:
                         Intent i3 = new Intent(StudentEva1Activity.this, StudentSubjectsActivity.class);
-                        //i3.putExtra("access", access);
-                        i3.putExtra("dni", dni);
                         startActivity(i3);
+                        finish();
+                        break;
+                    case R.id.student_nav_mail:
+                        Intent i4 = new Intent(StudentEva1Activity.this, StudentMailActivity.class);
+                        startActivity(i4);
+                        finish();
                         break;
                     default:
                 }

@@ -1,11 +1,14 @@
 package com.example.notix;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -16,6 +19,7 @@ import com.example.notix.beans.Absence;
 import com.example.notix.beans.Subject;
 import com.example.notix.Network.Absence.GetJustifiedAbsencesByDni;
 import com.example.notix.Network.Subject.GetSubjectsByStudentDni;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
@@ -31,8 +35,8 @@ public class StudentJustifiedAbsencesActivity extends AppCompatActivity {
         String token = session.getStringData("jwtToken");
         String dni = session.getStringData("dni");
 
-        Button buttonBack = findViewById(R.id.buttonStudentJustifiedAbsencesBack);
-        ListView listView = findViewById(R.id.listViewStudentJustifiedAbsences);
+       ListView listView = findViewById(R.id.listViewStudentJustifiedAbsences);
+        BottomNavigationView navigation = findViewById(R.id.studentBottomNavigation);
 
         ArrayList<Absence> absencesArrayList = new ArrayList<Absence>();
         ArrayList<Subject> subjectsArrayList = new ArrayList<>();
@@ -68,7 +72,35 @@ public class StudentJustifiedAbsencesActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), getString(R.string.error_communication), Toast.LENGTH_SHORT).show();
         }
 
-        buttonBack.setOnClickListener(view -> finish());
+        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.student_nav_notes:
+                        Intent i = new Intent(StudentJustifiedAbsencesActivity.this, StudentNotesActivity.class);
+                        startActivity(i);
+                        finish();
+                        break;
+                    case R.id.student_nav_absences:
+                        Intent i2 = new Intent(StudentJustifiedAbsencesActivity.this, StudentAbsencesActivity.class);
+                        startActivity(i2);
+                        finish();
+                        break;
+                    case R.id.student_nav_subjects:
+                        Intent i3 = new Intent(StudentJustifiedAbsencesActivity.this, StudentSubjectsActivity.class);
+                        startActivity(i3);
+                        finish();
+                        break;
+                    case R.id.student_nav_mail:
+                        Intent i4 = new Intent(StudentJustifiedAbsencesActivity.this, StudentMailActivity.class);
+                        startActivity(i4);
+                        finish();
+                        break;
+                    default:
+                }
+                return true;
+            }
+        });
     }
 
     public boolean isConnected() {
