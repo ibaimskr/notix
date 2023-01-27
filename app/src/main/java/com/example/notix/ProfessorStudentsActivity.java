@@ -12,7 +12,6 @@ import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.notix.Network.Note.GetNotesByStudentDniAndSubjectId;
 import com.example.notix.Network.Student.GetStudentsByProfessorDni;
 import com.example.notix.Network.User.SessionManager;
 import com.example.notix.adapters.ProfessorStudentsAdapter;
@@ -37,7 +36,7 @@ public class ProfessorStudentsActivity extends AppCompatActivity {
 
         ListView listStudents = findViewById(R.id.listViewStudentsProfessor);
         ArrayList<Student> students = new ArrayList<>();
-        ProfessorStudentsAdapter studentsAdapter = new ProfessorStudentsAdapter(this, R.layout.student_layout, students);
+        ProfessorStudentsAdapter studentsAdapter = new ProfessorStudentsAdapter(this, R.layout.professor_student_layout, students);
         listStudents.setAdapter(studentsAdapter);
 
         if (isConnected()) {

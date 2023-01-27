@@ -5,15 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
 import com.example.notix.R;
-import com.example.notix.beans.Professor;
 import com.example.notix.beans.Student;
-import com.example.notix.beans.Subject;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -37,7 +34,7 @@ public class ProfessorStudentsAdapter extends ArrayAdapter<Student> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater layoutInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = layoutInflater.inflate(R.layout.student_layout, null);
+        View view = layoutInflater.inflate(R.layout.professor_student_layout, null);
 
 //        ((ImageView) view.findViewById(R.id.imageViewStudentPhotoAdapter)).;
         ((TextView) view.findViewById(R.id.textViewStudentNameAdapter)).setText("" + students.get(position).getName() + " " + students.get(position).getSurname());

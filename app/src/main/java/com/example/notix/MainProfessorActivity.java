@@ -66,7 +66,8 @@ public class MainProfessorActivity extends AppCompatActivity {
                     case R.id.professor_nav_students:
                         Intent i4 = new Intent(MainProfessorActivity.this, ProfessorStudentsActivity.class);
                         startActivity(i4);
-                    case R.id.professor_nav_reunion:
+                        break;
+                    case R.id.professor_nav_mail:
                         Intent i5 = new Intent(MainProfessorActivity.this, ProfessorMailActivity.class);
                         startActivity(i5);
                         break;

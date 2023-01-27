@@ -21,7 +21,7 @@
         android:title="@string/text_students" />
 
     <item
-        android:id="@+id/professor_nav_reunion"
+        android:id="@+id/professor_nav_mail"
         android:icon="@drawable/icon_email"
         android:title="@string/text_mail" />
 </menu>
