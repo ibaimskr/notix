@@ -4,22 +4,22 @@ import java.io.Serializable;
 
 public class MailRequest implements Serializable {
 
-    private String recipient;
+    private String receiper;
     private String msgBody;
     private String subject;
 
     public MailRequest() { }
 
-    public MailRequest(String recipient, String msgBody, String subject) {
+    public MailRequest(String receiper, String msgBody, String subject) {
         super();
-        this.recipient = recipient;
+        this.receiper = receiper;
         this.msgBody = msgBody;
         this.subject = subject;
     }
 
-    public String getRecipient() { return recipient; }
+    public String getReceiper() { return receiper; }
 
-    public void setRecipient(String recipient) { this.recipient = recipient; }
+    public void setReceiper(String receiper) { this.receiper = receiper; }
 
     public String getMsgBody() { return msgBody; }
 
@@ -32,7 +32,7 @@ public class MailRequest implements Serializable {
     @Override
     public String toString() {
         return "{" +
-                '"' + "recipient" + '"' + ":" + '"' + recipient + '"' +
+                '"' + "recipient" + '"' + ":" + '"' + receiper + '"' +
                 "," + '"' + "msgBody" + '"' + ":" + '"' + msgBody + '"' +
                 "," + '"' + "subject" + '"' + ":" + '"'+ subject + '"' +
                 '}';

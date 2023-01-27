@@ -11,12 +11,14 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.notix.Network.Mail.PostMail;
+import com.example.notix.Network.Professor.GetProfessorByStudentDni;
 import com.example.notix.Network.User.SessionManager;
 import com.example.notix.beans.MailRequest;
 import com.example.notix.beans.Professor;
@@ -42,7 +44,6 @@ public class StudentMailActivity extends AppCompatActivity {
         Button buttonSend = findViewById(R.id.buttonStudentMailSend);
         BottomNavigationView navigation = findViewById(R.id.mailBottomNavigation);
 
-        ArrayList<Professor> professorsArrayList;
 
         if (isConnected()) {
 
@@ -54,7 +55,23 @@ public class StudentMailActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (isConnected()) {
-
+                    ArrayList<Professor> professorsArrayList;
+                    GetProfessorByStudentDni getProfessors = new GetProfessorByStudentDni(dni, token);
+                    Thread thread = new Thread(getProfessors);
+                    try {
+                        thread.start();
+                        thread.join();
+                    } catch (InterruptedException e) {
+                        // Nothing to do here
+                    }
+                    // Processing the answer
+                    professorsArrayList = getProfessors.getResponse();
+                    if (professorsArrayList.size() != 0) {
+                        ArrayAdapter professorAdapter = new ArrayAdapter(StudentMailActivity.this, android.R.layout.simple_spinner_dropdown_item, professorsArrayList);
+                        spinnerReceiper.setAdapter(professorAdapter);
+                    }
+                } else {
+                    Toast.makeText(getApplicationContext(), "no me conecto al server", Toast.LENGTH_LONG).show();
                 }
             }
 
@@ -66,11 +83,13 @@ public class StudentMailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 MailRequest mail = new MailRequest();
+                Professor selectedProfessor = (Professor) spinnerReceiper.getSelectedItem();
+                String professorEmail = selectedProfessor.getEmail();
 
-               if (textSubject.getText().toString().equals("") || textBody.getText().toString().equals("")) {
+               if (spinnerReceiper == null || textSubject.getText().toString().equals("") || textBody.getText().toString().equals("")) {
                    Toast.makeText(StudentMailActivity.this, R.string.error_blankField, Toast.LENGTH_SHORT).show();
                } else {
-                   //mail.setRecipient();
+                   mail.setReceiper(professorEmail);
                    mail.setSubject(textSubject.getText().toString());
                    mail.setMsgBody(textBody.getText().toString());
 
@@ -78,7 +97,7 @@ public class StudentMailActivity extends AppCompatActivity {
                    if (response == 400) {
                        //Toast
                    } else {
-                       Toast.makeText(getApplicationContext(), R.string.sended, Toast.LENGTH_SHORT).show();
+                       Toast.makeText(getApplicationContext(), R.string.toast_sended, Toast.LENGTH_SHORT).show();
                    }
                }
             }
@@ -86,7 +105,7 @@ public class StudentMailActivity extends AppCompatActivity {
             private int sendMail(MailRequest mail) {
                 int sended = 0;
                 if (isConnected()) {
-                    PostMail sendMail = new PostMail(mail, token);
+                    PostMail sendMail = new PostMail(mail);
                     Thread thread = new Thread(sendMail);
                     try {
                         thread.start();

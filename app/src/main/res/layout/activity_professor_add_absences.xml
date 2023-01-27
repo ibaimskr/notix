@@ -7,17 +7,17 @@
     tools:context=".ProfessorAddAbsencesActivity">
 
     <TextView
-        android:id="@+id/viewProfessorAddAbsences"
+        android:id="@+id/viewProfessorAddNotes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/text_absences"
-        app:layout_constraintBottom_toTopOf="@+id/tableLayout2"
+        app:layout_constraintBottom_toTopOf="@+id/layoutProfessorAddNotes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TableLayout
-        android:id="@+id/tableLayout2"
+        android:id="@+id/layoutProfessorAddNotes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -30,7 +30,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/viewProfessorAddAbsencesStudent"
+                android:id="@+id/viewProfessorAddNotesStudent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/text_student" />
@@ -41,7 +41,7 @@
             android:layout_height="match_parent">
 
             <Spinner
-                android:id="@+id/spinnerProfessorAddAbsencesStudent"
+                android:id="@+id/spinnerProfessorAddNotesStudent"
                 android:layout_width="match_parent"
                 android:layout_height="25dp" />
         </TableRow>
@@ -51,7 +51,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/viewProfessorAddAbsenceSubject"
+                android:id="@+id/viewProfessorAddNotesSubject"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/text_subjects" />
@@ -62,7 +62,7 @@
             android:layout_height="wrap_content">
 
             <Spinner
-                android:id="@+id/spinnerProfessorAddAbsencesSubject"
+                android:id="@+id/spinnerProfessorAddNotesSubject"
                 android:layout_width="350dp"
                 android:layout_height="25dp" />
         </TableRow>
@@ -122,7 +122,7 @@
         android:text="@string/text_add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/layoutProfessorAddNotes" />
 
     <Button
         android:id="@+id/buttonProfessorAddAbsencesAbsences"
@@ -132,7 +132,7 @@
         android:text="@string/text_absences"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/layoutProfessorAddNotes" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/absencesBottomNavigation"

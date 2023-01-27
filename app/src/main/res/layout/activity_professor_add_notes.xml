@@ -7,18 +7,18 @@
     tools:context=".ProfessorAddNotesActivity">
 
     <TextView
-        android:id="@+id/viewProfessorAddAbsences"
+        android:id="@+id/viewProfessorAddNotes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/text_notes"
-        app:layout_constraintBottom_toTopOf="@+id/tableLayout2"
+        app:layout_constraintBottom_toTopOf="@+id/layoutProfessorAddNotes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.672" />
 
     <TableLayout
-        android:id="@+id/tableLayout2"
+        android:id="@+id/layoutProfessorAddNotes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="250dp"
@@ -32,7 +32,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/viewProfessorAddAbsencesStudent"
+                android:id="@+id/viewProfessorAddNotesStudent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/text_student" />
@@ -43,9 +43,19 @@
             android:layout_height="match_parent">
 
             <Spinner
-                android:id="@+id/spinnerProfessorAddAbsencesStudent"
+                android:id="@+id/spinnerProfessorAddNotesStudent"
                 android:layout_width="match_parent"
                 android:layout_height="25dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/viewProfessorAddNotesEmpty"
+                android:layout_width="wrap_content"
+                android:layout_height="10dp" />
         </TableRow>
 
         <TableRow
@@ -53,7 +63,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/viewProfessorAddAbsenceSubject"
+                android:id="@+id/viewProfessorAddNotesSubject"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/text_subjects" />
@@ -64,22 +74,12 @@
             android:layout_height="wrap_content">
 
             <Spinner
-                android:id="@+id/spinnerProfessorAddAbsencesSubject"
+                android:id="@+id/spinnerProfessorAddNotesSubject"
                 android:layout_width="350dp"
                 android:layout_height="25dp" />
         </TableRow>
     </TableLayout>
 
-
-    <Button
-        android:id="@+id/buttonProfessorAddANotesAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:text="@string/text_add"
-        app:layout_constraintBottom_toTopOf="@+id/notesBottomNavigation"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout7" />
 
     <TableLayout
         android:id="@+id/tableLayout7"
@@ -97,11 +97,11 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/NotesEva1"
+                android:id="@+id/viewProfessorAddNotesEva1"
                 android:layout_width="72dp"
                 android:layout_height="55dp"
                 android:gravity="center"
-                android:text="Eva1"
+                android:text="@string/text_eva1"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.138"
@@ -110,11 +110,11 @@
                 app:layout_constraintVertical_bias="0.41" />
 
             <TextView
-                android:id="@+id/NotesEva2"
+                android:id="@+id/viewProfessorAddNotesEva2"
                 android:layout_width="72dp"
                 android:layout_height="55dp"
                 android:gravity="center"
-                android:text="Eva2"
+                android:text="@string/text_eva2"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.585"
@@ -123,11 +123,11 @@
                 app:layout_constraintVertical_bias="0.613" />
 
             <TextView
-                android:id="@+id/NotesEva3"
+                android:id="@+id/viewProfessorAddNotesEva3"
                 android:layout_width="72dp"
                 android:layout_height="55dp"
                 android:gravity="center"
-                android:text="Eva3"
+                android:text="@string/text_eva3"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.571"
@@ -136,11 +136,11 @@
                 app:layout_constraintVertical_bias="0.603" />
 
             <TextView
-                android:id="@+id/NotesFinal1"
+                android:id="@+id/viewProfessorAddNotesFinal1"
                 android:layout_width="72dp"
                 android:layout_height="55dp"
                 android:gravity="center"
-                android:text="Final1"
+                android:text="@string/text_final1"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.138"
@@ -149,11 +149,11 @@
                 app:layout_constraintVertical_bias="0.41" />
 
             <TextView
-                android:id="@+id/NotesFinal2"
+                android:id="@+id/viewProfessorAddNotesFinal2"
                 android:layout_width="75dp"
                 android:layout_height="55dp"
                 android:gravity="center"
-                android:text="Final2"
+                android:text="@string/text_final2"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.138"
@@ -170,7 +170,7 @@
 
 
             <EditText
-                android:id="@+id/editTextNumberDecimalEva1"
+                android:id="@+id/textProfessorAddNotesEva"
                 android:layout_width="72dp"
                 android:layout_height="55dp"
                 android:ems="10"
@@ -178,7 +178,7 @@
                 tools:layout_editor_absoluteY="473dp" />
 
             <EditText
-                android:id="@+id/editTextNumberDecimalEva2"
+                android:id="@+id/textProfessorAddNotesEva2"
                 android:layout_width="72dp"
                 android:layout_height="55dp"
                 android:ems="10"
@@ -186,7 +186,7 @@
                 tools:layout_editor_absoluteY="473dp" />
 
             <EditText
-                android:id="@+id/editTextNumberDecimalEva3"
+                android:id="@+id/textProfessorAddNotesEva3"
                 android:layout_width="72dp"
                 android:layout_height="55dp"
                 android:ems="10"
@@ -194,7 +194,7 @@
                 tools:layout_editor_absoluteY="473dp" />
 
             <EditText
-                android:id="@+id/editTextNumberDecimalFinal1"
+                android:id="@+id/textProfessorAddNotesFinal1"
                 android:layout_width="72dp"
                 android:layout_height="55dp"
                 android:ems="10"
@@ -202,7 +202,7 @@
                 tools:layout_editor_absoluteY="473dp" />
 
             <EditText
-                android:id="@+id/editTextNumberDecimalFinal2"
+                android:id="@+id/textProfessorAddNoteaFinal2"
                 android:layout_width="72dp"
                 android:layout_height="55dp"
                 android:ems="10"
@@ -211,6 +211,16 @@
         </TableRow>
 
     </TableLayout>
+
+    <Button
+        android:id="@+id/buttonProfessorAddANotesAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:text="@string/text_add"
+        app:layout_constraintBottom_toTopOf="@+id/notesBottomNavigation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout7" />
 
     <Button
         android:id="@+id/buttonProfessorAddNotesNotes"

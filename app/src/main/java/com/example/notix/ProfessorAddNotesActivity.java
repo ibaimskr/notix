@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -19,7 +18,6 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.notix.Network.Note.GetNotesByStudentDniAndSubjectId;
-import com.example.notix.Network.Note.PostNote;
 import com.example.notix.Network.Note.PutNote;
 import com.example.notix.Network.Student.GetStudentsBySubjectId;
 import com.example.notix.Network.Subject.GetSubjectsByProfessorDni;
@@ -48,13 +46,13 @@ public class ProfessorAddNotesActivity extends AppCompatActivity {
         String token = session.getStringData("jwtToken");
         dni_profe = session.getStringData("dni");
 
-        EditText eva1= findViewById(R.id.editTextNumberDecimalEva1);
-        EditText eva2= findViewById(R.id.editTextNumberDecimalEva2);
-        EditText eva3= findViewById(R.id.editTextNumberDecimalEva3);
-        EditText final1= findViewById(R.id.editTextNumberDecimalFinal1);
-        EditText final2= findViewById(R.id.editTextNumberDecimalFinal2);
-        Spinner spinnerStudents = findViewById(R.id.spinnerProfessorAddAbsencesStudent);
-        Spinner spinnerSubjects = findViewById(R.id.spinnerProfessorAddAbsencesSubject);
+        EditText eva1= findViewById(R.id.textProfessorAddNotesEva);
+        EditText eva2= findViewById(R.id.textProfessorAddNotesEva2);
+        EditText eva3= findViewById(R.id.textProfessorAddNotesEva3);
+        EditText final1= findViewById(R.id.textProfessorAddNotesFinal1);
+        EditText final2= findViewById(R.id.textProfessorAddNoteaFinal2);
+        Spinner spinnerStudents = findViewById(R.id.spinnerProfessorAddNotesStudent);
+        Spinner spinnerSubjects = findViewById(R.id.spinnerProfessorAddNotesSubject);
         Button buttonAddNote = findViewById(R.id.buttonProfessorAddANotesAdd);
         Button buttonNotes = findViewById(R.id.buttonProfessorAddNotesNotes);
         BottomNavigationView navigation = findViewById(R.id.notesBottomNavigation);

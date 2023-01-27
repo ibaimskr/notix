@@ -14,9 +14,11 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.notix.Network.Mail.PostMail;
 import com.example.notix.Network.Student.StudentSignup;
 import com.example.notix.Network.User.UserSignup;
 import com.example.notix.beans.AuthRequest;
+import com.example.notix.beans.MailRequest;
 import com.example.notix.beans.StudentRequest;
 
 import java.util.ArrayList;
@@ -93,8 +95,10 @@ public class StudentSignupActivity extends AppCompatActivity {
                             i.putExtra("password", user.getPassword());
                             setResult(2, i);
                             finish();
+                            Toast.makeText(getApplicationContext(), R.string.toast_created, Toast.LENGTH_SHORT).show();
 
-                            Toast.makeText(getApplicationContext(), R.string.created, Toast.LENGTH_SHORT).show();
+                            sendMail();
+                            Toast.makeText(getApplicationContext(), R.string.toast_verification, Toast.LENGTH_SHORT).show();
                         }
                     } else {
                         Toast.makeText(getApplicationContext(), R.string.error_samePass, Toast.LENGTH_SHORT).show();
@@ -120,12 +124,30 @@ public class StudentSignupActivity extends AppCompatActivity {
                         // Nothing to do here...
                     }
                     // Processing the answer
-                    //System.out.println("RESPONSE DE USER: " + createUser.getResponse());
                     registered = createUser.getResponse();
-                    int hola = createStudent.getResponse();
-                    System.out.println("AAAAAAA++++++++++++++++++++++++++++++++++++++++"+hola);
                 }
                 return  registered;
+            }
+
+            private int sendMail() {
+                MailRequest mail = new MailRequest();
+                mail.setReceiper(String.valueOf(R.string.mail_address));
+                mail.setSubject(String.valueOf(R.string.mail_subject));
+                mail.setReceiper(R.string.mail_body + textDni.getText().toString());
+                int sended = 0;
+                if (isConnected()) {
+                    PostMail sendMail = new PostMail(mail);
+                    Thread thread = new Thread(sendMail);
+                    try {
+                        thread.start();
+                        thread.join();
+                    } catch (InterruptedException e) {
+                        // Nothing to do here...
+                    }
+                    // Processing the answer
+                    sended = sendMail.getResponse();
+                }
+                return sended;
             }
 
             public boolean isConnected() {

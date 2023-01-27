@@ -18,16 +18,11 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.notix.Network.Absence.PostAbsence;
-import com.example.notix.Network.Note.GetNotesByStudentDniAndSubjectId;
-import com.example.notix.Network.Student.GetStudentsByProfessorDni;
 import com.example.notix.Network.Student.GetStudentsBySubjectId;
 import com.example.notix.Network.Subject.GetSubjectsByProfessorDni;
-import com.example.notix.Network.Subject.GetSubjectsByStudentDni;
 import com.example.notix.Network.User.SessionManager;
 import com.example.notix.beans.Absence;
-import com.example.notix.beans.Note;
 import com.example.notix.beans.Student;
-import com.example.notix.beans.StudentForAbsences;
 import com.example.notix.beans.Subject;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -50,8 +45,8 @@ public class ProfessorAddAbsencesActivity extends AppCompatActivity {
         String token = session.getStringData("jwtToken");
         dni_profe = session.getStringData("dni");
 
-        Spinner spinnerStudents = findViewById(R.id.spinnerProfessorAddAbsencesStudent);
-        Spinner spinnerSubjects = findViewById(R.id.spinnerProfessorAddAbsencesSubject);
+        Spinner spinnerStudents = findViewById(R.id.spinnerProfessorAddNotesStudent);
+        Spinner spinnerSubjects = findViewById(R.id.spinnerProfessorAddNotesSubject);
         Spinner spinnerFoul = findViewById(R.id.spinnerProfessorAddAbsencesFoul);
         Button buttonAddAbsence = findViewById(R.id.buttonProfessorAddAbsencesAdd);
         Button buttonAbsences = findViewById(R.id.buttonProfessorAddAbsencesAbsences);

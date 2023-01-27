@@ -6,19 +6,19 @@
         android:title="@string/text_main" />
 
     <item
+        android:id="@+id/professor_nav_notes"
+        android:icon="@drawable/icon_notes"
+        android:title="@string/text_notes" />
+
+    <item
         android:id="@+id/professor_nav_absences"
         android:icon="@drawable/icon_absences"
         android:title="@string/text_absences" />
 
     <item
-        android:id="@+id/professor_nav_subjects"
-        android:icon="@drawable/icon_subjects"
-        android:title="@string/text_subjects" />
-
-    <item
-        android:id="@+id/professor_nav_notes"
-        android:icon="@drawable/icon_notes"
-        android:title="@string/text_notes" />
+        android:id="@+id/professor_nav_students"
+        android:icon="@drawable/icon_students"
+        android:title="@string/text_students" />
 
     <item
         android:id="@+id/professor_nav_mail"

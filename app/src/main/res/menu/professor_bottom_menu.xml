@@ -23,5 +23,5 @@
     <item
         android:id="@+id/professor_nav_reunion"
         android:icon="@drawable/icon_email"
-        android:title="@string/text_reunion" />
+        android:title="@string/text_mail" />
 </menu>

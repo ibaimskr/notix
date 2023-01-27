@@ -7,9 +7,14 @@
     <string name="text_professor">PROFESOR</string>
     <string name="text_student">ALUMNO</string>
     <string name="text_students">ALUMNOS</string>
-    <string name="text_eva1">1ª Evaluación</string>
-    <string name="text_eva2">2ª Evaluación</string>
-    <string name="text_eva3">3ª Evaluación</string>
+    <string name="text_evaluacion1">1ª Evaluación</string>
+    <string name="text_evaluacion2">2ª Evaluación</string>
+    <string name="text_evaluacion3">3ª Evaluación</string>
+    <string name="text_eva1">Eva1</string>
+    <string name="text_eva2">Eva2</string>
+    <string name="text_eva3">Eva3</string>
+    <string name="text_final1">Final 1</string>
+    <string name="text_final2">Final 2</string>
     <string name="text_parcial">PARCIALES</string>
     <string name="text_absences">FALTAS</string>
     <string name="text_reunion">REUNION</string>
@@ -43,8 +48,6 @@
     <string name="professorSignup">Registro Profesor</string>
     <string name="studentSignup">Registro Alumno</string>
 
-    <string name="check_remember">Recuerdame</string>
-
     <string name="button_idioma">Idioma</string>
     <string name="button_contraseña">He olvidado mi contraseña</string>
     <string name="button_signup">REGISTRAR</string>
@@ -56,9 +59,6 @@
     <string name="button_final">FINAL</string>
     <string name="button_justified">JUSTIFICADAS</string>
     <string name="button_send">ENVIAR</string>
-
-    <string name="created">¡Usuario creado!</string>
-    <string name="sended">¡Enviado!</string>
 
     <string name="error">¡Error!</string>
     <string name="error_blankField">¡Se deben rellenar todos los campos!</string>
@@ -72,4 +72,14 @@
     <string name="error_partial">¡Aun no tienes notas parciales!</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="toast_created">¡Usuario creado!</string>
+    <string name="toast_verification">¡Usuario pendiente de verificación!</string>
+    <string name="toast_sended">¡Enviado!</string>
+
+    <string name="mail_address">notixdam@gmail.com</string>
+    <string name="mail_subject">Verificación</string>
+    <string name="mail_body">Esta pendiente de verificar el usuario con DNI: </string>
+
+    <string name="check_remember">Recuerdame</string>
 </resources>

@@ -20,7 +20,7 @@
         android:id="@+id/tableLayout3"
         android:layout_width="350dp"
         android:layout_height="75dp"
-        android:layout_marginTop="241dp"
+        android:layout_marginTop="201dp"
         app:layout_constraintBottom_toTopOf="@+id/tableLayout6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -66,7 +66,7 @@
         android:id="@+id/tableLayout6"
         android:layout_width="350dp"
         android:layout_height="200dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="110dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -102,19 +102,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/button_send"
-        app:layout_constraintBottom_toTopOf="@+id/studentBottomNavigation"
+        app:layout_constraintBottom_toTopOf="@+id/mailBottomNavigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tableLayout6" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/studentBottomNavigation"
+        android:id="@+id/mailBottomNavigation"
         android:layout_width="0dp"
         android:layout_height="56dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/professor_bottom_menu" />
+        app:menu="@menu/professor_mail_bottom_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

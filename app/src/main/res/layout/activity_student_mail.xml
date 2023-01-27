@@ -11,17 +11,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/text_mail"
-        app:layout_constraintBottom_toTopOf="@+id/tableLayout4"
+        app:layout_constraintBottom_toTopOf="@+id/layoutStudentMail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TableLayout
-        android:id="@+id/tableLayout4"
+        android:id="@+id/layoutStudentMail"
         android:layout_width="350dp"
         android:layout_height="75dp"
         android:layout_marginTop="201dp"
-        app:layout_constraintBottom_toTopOf="@+id/tableLayout5"
+        app:layout_constraintBottom_toTopOf="@+id/layoutStudentMail2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -64,7 +64,7 @@
     </TableLayout>
 
     <TableLayout
-        android:id="@+id/tableLayout5"
+        android:id="@+id/layoutStudentMail2"
         android:layout_width="350dp"
         android:layout_height="200dp"
         android:layout_marginTop="110dp"
@@ -106,7 +106,7 @@
         app:layout_constraintBottom_toTopOf="@+id/mailBottomNavigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout5" />
+        app:layout_constraintTop_toBottomOf="@+id/layoutStudentMail2" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/mailBottomNavigation"
@@ -116,6 +116,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/mail_bottom_menu" />
+        app:menu="@menu/student_mail_bottom_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

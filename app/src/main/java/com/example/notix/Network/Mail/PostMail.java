@@ -12,16 +12,12 @@ import java.net.URL;
 public class PostMail extends NetConfiguration implements Runnable {
 
     private final String theUrl = theBaseUrl + "sendMail";
-
     private MailRequest mail;
-
-    private String access;
-
+    //private String access;
     private int response;
 
-    public PostMail(MailRequest mail, String access) {
+    public PostMail(MailRequest mail) {
         this.mail = mail;
-        this.access = access;
     }
 
     @Override
@@ -34,7 +30,6 @@ public class PostMail extends NetConfiguration implements Runnable {
             httpURLConnection.setRequestMethod("POST");
             httpURLConnection.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
             httpURLConnection.setRequestProperty("Accept", "application/json");
-            httpURLConnection.setRequestProperty("Authorization", "Bearer " + access);
             httpURLConnection.setDoOutput(true);
             httpURLConnection.setDoInput(true);
 
