@@ -18,7 +18,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.notix.Network.Mail.PostMail;
-import com.example.notix.Network.Professor.GetProfessorByStudentDni;
+import com.example.notix.Network.Professor.GetProfessorsByStudentDni;
 import com.example.notix.Network.User.SessionManager;
 import com.example.notix.beans.MailRequest;
 import com.example.notix.beans.Professor;
@@ -45,10 +45,9 @@ public class StudentMailActivity extends AppCompatActivity {
         BottomNavigationView navigation = findViewById(R.id.mailBottomNavigation);
 
         ArrayList<Professor> professorsArrayList;
-        ArrayList<Professor> professorEmailsArrayList;
 
         if (isConnected()) {
-            GetProfessorByStudentDni getProfessors = new GetProfessorByStudentDni(dni, token);
+            GetProfessorsByStudentDni getProfessors = new GetProfessorsByStudentDni(dni, token);
             Thread thread = new Thread(getProfessors);
             try {
                 thread.start();
@@ -86,7 +85,8 @@ public class StudentMailActivity extends AppCompatActivity {
                 Professor selectedProfessor = (Professor) spinnerReceiper.getSelectedItem();
                 String professorEmail = selectedProfessor.getEmail();
 
-               if (spinnerReceiper == null || textSubject.getText().toString().equals("") || textBody.getText().toString().equals("")) {
+               if (spinnerReceiper == null || textSubject.getText().toString().equals("")
+                       || textBody.getText().toString().equals("")) {
                    Toast.makeText(StudentMailActivity.this, R.string.error_blankField, Toast.LENGTH_SHORT).show();
                } else {
                    mail.setReceiper(professorEmail);

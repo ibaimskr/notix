@@ -81,8 +81,6 @@ public class Professor implements Serializable {
     }
 
     @Override
-    public String toString() {
-        return email;
-    }
+    public String toString() { return email; }
 }
 

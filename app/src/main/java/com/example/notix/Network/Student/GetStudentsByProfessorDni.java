@@ -16,15 +16,13 @@ public class GetStudentsByProfessorDni extends NetConfiguration implements Runna
 
     private final String theUrl = theBaseUrl + "students/professor/";
     private String professor_dni;
-
+    private ArrayList<Student> response = new ArrayList<>();
     private String access = "";
 
-    private ArrayList<Student> studentsResponse = new ArrayList<>();
-
-    public GetStudentsByProfessorDni(String access, String professor_dni) {
+    public GetStudentsByProfessorDni(String professor_dni, String access) {
         super();
-        this.access = access;
         this.professor_dni = professor_dni;
+        this.access = access;
     }
 
     @Override
@@ -40,8 +38,7 @@ public class GetStudentsByProfessorDni extends NetConfiguration implements Runna
             int responseCode = httpURLConnection.getResponseCode();
 
             if (responseCode == 204) {
-                responseCode = 204;
-
+                this.response = null;
             } else if (responseCode == HttpURLConnection.HTTP_OK) {
                 // Response...
                 BufferedReader bufferedReader = new BufferedReader(
@@ -70,9 +67,9 @@ public class GetStudentsByProfessorDni extends NetConfiguration implements Runna
                     student.setEmail(object.getString("email"));
                     student.setPhone(object.getString("phone"));
                     student.setPhoto(object.getString("photo"));
-                    studentsResponse.add(student);
-                    }
+                    this.response.add(student);
                 }
+            }
 
         } catch (Exception e) {
             System.out.println("ERROR: " + e.getMessage());
@@ -80,6 +77,6 @@ public class GetStudentsByProfessorDni extends NetConfiguration implements Runna
     }
 
     public ArrayList<Student> getResponse() {
-        return studentsResponse;
+        return response;
     }
 }

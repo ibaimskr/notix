@@ -12,14 +12,14 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class GetProfessorByStudentDni extends NetConfiguration implements Runnable {
+public class GetProfessorsByStudentDni extends NetConfiguration implements Runnable {
 
     private final String theUrl = theBaseUrl + "professors/students/";
     private String student_dni;
     private ArrayList<Professor> response = new ArrayList<>();
     private String access = "";
 
-    public GetProfessorByStudentDni(String student_dni, String access) {
+    public GetProfessorsByStudentDni(String student_dni, String access) {
         super();
         this.student_dni = student_dni;
         this.access = access;

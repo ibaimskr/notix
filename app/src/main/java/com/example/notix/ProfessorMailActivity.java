@@ -44,7 +44,28 @@ public class ProfessorMailActivity extends AppCompatActivity {
         Button buttonSend = findViewById(R.id.buttonProfessorMailSend);
         BottomNavigationView navigation = findViewById(R.id.mailBottomNavigation);
 
+        ArrayList<Student> studentsArrayList;
+
         if (isConnected()) {
+            GetStudentsByProfessorDni getStudents = new GetStudentsByProfessorDni(dni, token);
+            Thread thread = new Thread(getStudents);
+            try {
+                thread.start();
+                thread.join();
+            } catch (InterruptedException e) {
+                // Nothing to do here
+            }
+            // Processing the answer
+            studentsArrayList = getStudents.getResponse();
+
+            if (studentsArrayList.size() != 0) {
+
+
+                ArrayAdapter studentsAdapter = new ArrayAdapter(ProfessorMailActivity.this, android.R.layout.simple_spinner_dropdown_item, studentsArrayList);
+                spinnerReceiper.setAdapter(studentsAdapter);
+            } else {
+
+            }
 
         } else {
             Toast.makeText(getApplicationContext(), "no me conecto al server", Toast.LENGTH_LONG).show();
@@ -52,27 +73,7 @@ public class ProfessorMailActivity extends AppCompatActivity {
 
         spinnerReceiper.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (isConnected()) {
-                    ArrayList<Student> studentsArrayList;
-                    GetStudentsByProfessorDni getStudents = new GetStudentsByProfessorDni(dni, token);
-                    Thread thread = new Thread(getStudents);
-                    try {
-                        thread.start();
-                        thread.join();
-                    } catch (InterruptedException e) {
-                        // Nothing to do here
-                    }
-                    // Processing the answer
-                    studentsArrayList = getStudents.getResponse();
-                    if (studentsArrayList.size() != 0) {
-                        ArrayAdapter studentsAdapter = new ArrayAdapter(ProfessorMailActivity.this, android.R.layout.simple_spinner_dropdown_item, studentsArrayList);
-                        spinnerReceiper.setAdapter(studentsAdapter);
-                    }
-                } else {
-                    Toast.makeText(getApplicationContext(), "no me conecto al server", Toast.LENGTH_LONG).show();
-                }
-            }
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) { }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) { }
@@ -98,6 +99,8 @@ public class ProfessorMailActivity extends AppCompatActivity {
                         //Toast
                     } else {
                         Toast.makeText(getApplicationContext(), R.string.toast_sended, Toast.LENGTH_SHORT).show();
+                        textSubject.setText("");
+                        textBody.setText("");
                     }
                 }
             }
