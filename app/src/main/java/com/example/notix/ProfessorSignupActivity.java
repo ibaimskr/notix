@@ -1,15 +1,22 @@
 package com.example.notix;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -20,10 +27,12 @@ import com.example.notix.beans.ProfessorRequest;
 import com.example.notix.Network.Professor.ProfessorSignup;
 import com.example.notix.Network.User.UserSignup;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 public class ProfessorSignupActivity extends AppCompatActivity {
 
+    String photo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,12 +50,39 @@ public class ProfessorSignupActivity extends AppCompatActivity {
         EditText textAdress = findViewById(R.id.textProfessorSignupAdress);
         EditText textPass = findViewById(R.id.textProfessorSignupPassword);
         EditText textPass2 = findViewById(R.id.textProfessorSignupPassword2);
-        //Photo
+        ImageButton imageButtonPhoto = findViewById(R.id.imageButtonProfessorSignupPhoto);
+        CheckBox checkBoxSavePhoto = findViewById(R.id.checkBoxPhotoGuardadaProfessorSignUp);
 
         ArrayList<String> nacionalidades = new ArrayList<>();
 
-        //ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-        //        R.array.planets_array, android.R.layout.simple_spinner_dropdown_item);
+        ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                activityResult -> {
+                    if ((activityResult.getResultCode() == RESULT_OK) && (activityResult.getData() != null)) {
+
+                        // Get the image and displays it
+                        // Note this method is called when the photo is taken!
+                        Bundle bundle = activityResult.getData().getExtras();
+                        Bitmap bitmap = (Bitmap) bundle.get("data");
+                        checkBoxSavePhoto.setChecked(true);
+                        photo = bitmapToBase64(bitmap);
+                    }
+                });
+
+        imageButtonPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent takePhotoIntent = new Intent( MediaStore.ACTION_IMAGE_CAPTURE );
+
+                // Is there a camera? If yes, then intent!
+                if (takePhotoIntent.resolveActivity( getPackageManager() ) != null) {
+                    activityResultLauncher.launch(takePhotoIntent);
+                } else {
+                    Toast.makeText( getApplicationContext(), "error con la camara" , Toast.LENGTH_LONG ).show();
+                }
+            }
+        });
+
 
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,7 +108,7 @@ public class ProfessorSignupActivity extends AppCompatActivity {
                         professor.setNationality(textNationality.getText().toString());
                         professor.setEmail(textEmail.getText().toString());
                         professor.setAdress(textAdress.getText().toString());
-                        //professor.setPhoto();
+                        professor.setPhoto(photo);
 
                         int response = signupProfessor(user, professor);
                         if (response == 500) {
@@ -83,9 +119,6 @@ public class ProfessorSignupActivity extends AppCompatActivity {
                             i.putExtra("password", user.getPassword());
                             setResult(2, i);
                             finish();
-                            Toast.makeText(getApplicationContext(), R.string.toast_created, Toast.LENGTH_SHORT).show();
-
-                            sendMail();
                             Toast.makeText(getApplicationContext(), R.string.toast_created, Toast.LENGTH_SHORT).show();
                         }
                     } else {
@@ -117,27 +150,6 @@ public class ProfessorSignupActivity extends AppCompatActivity {
                 return  registered;
             }
 
-            private int sendMail() {
-                MailRequest mail = new MailRequest();
-                mail.setReceiper("ibai.gonzalezug@elorrieta-errekamari.com");
-                mail.setSubject(String.valueOf(R.string.mail_subject));
-                mail.setMsgBody( R.string.mail_body + textDni.getText().toString());
-                int sended = 0;
-                if (isConnected()) {
-                    PostMail sendMail = new PostMail(mail);
-                    Thread thread = new Thread(sendMail);
-                    try {
-                        thread.start();
-                        thread.join();
-                    } catch (InterruptedException e) {
-                        // Nothing to do here...
-                    }
-                    // Processing the answer
-                    sended = sendMail.getResponse();
-                }
-                return sended;
-            }
-
             public boolean isConnected() {
                 boolean ret = false;
                 try {
@@ -161,4 +173,10 @@ public class ProfessorSignupActivity extends AppCompatActivity {
         });
     }
 
+    private String bitmapToBase64(Bitmap bitmap) {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+        byte[] byteArray = byteArrayOutputStream .toByteArray();
+        return Base64.encodeToString(byteArray, Base64.DEFAULT);
+    }
 }
