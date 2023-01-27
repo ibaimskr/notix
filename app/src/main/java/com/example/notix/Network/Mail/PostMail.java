@@ -44,7 +44,7 @@ public class PostMail extends NetConfiguration implements Runnable {
 
             if (responseCode == 409) {
                 this.response = 409;
-            } else if (responseCode == HttpURLConnection.HTTP_CREATED) {
+            } else if (responseCode == HttpURLConnection.HTTP_OK) {
                 BufferedReader bufferedReader = new BufferedReader(
                         new InputStreamReader(httpURLConnection.getInputStream()));
 
@@ -54,7 +54,7 @@ public class PostMail extends NetConfiguration implements Runnable {
                     response.append(inputLine);
                 }
                 bufferedReader.close();
-                this.response = 201;
+                this.response = 200;
             }
 
         } catch (Exception e) {

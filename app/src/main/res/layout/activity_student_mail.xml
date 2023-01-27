@@ -20,7 +20,7 @@
         android:id="@+id/layoutStudentMail"
         android:layout_width="350dp"
         android:layout_height="75dp"
-        android:layout_marginTop="201dp"
+        android:layout_marginTop="191dp"
         app:layout_constraintBottom_toTopOf="@+id/layoutStudentMail2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

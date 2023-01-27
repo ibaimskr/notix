@@ -60,12 +60,12 @@ public class GetProfessorByStudentDni extends NetConfiguration implements Runnab
 
                     Professor professor = new Professor();
                     professor.setProfessor_dni(object.getString("professorDni"));
-                    professor.setAdress(object.getString("address"));
-                    professor.setEmail(object.getString("email"));
                     professor.setName(object.getString("name"));
-                    professor.setNationality(object.getString("nationality"));
-                    professor.setPhoto(object.getString("photo"));
                     professor.setSurname(object.getString("surname"));
+                    professor.setEmail(object.getString("email"));
+                    professor.setPhoto(object.getString("photo"));
+                    professor.setNationality(object.getString("nationality"));
+                    professor.setAdress(object.getString("addres"));
                     this.response.add(professor);
                 }
             }

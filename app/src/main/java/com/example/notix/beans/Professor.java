@@ -82,15 +82,7 @@ public class Professor implements Serializable {
 
     @Override
     public String toString() {
-        return "{" +
-                '"' + "professorDni" + '"' + ":" + '"' + professor_dni + '"' +
-                "," + '"' + "name" + '"' + ":" + '"'+ name + '"' +
-                "," + '"' + "surname" + '"' + ":" + '"'+ surname + '"' +
-                "," + '"' + "nationality" + '"' + ":" + '"'+ nationality + '"' +
-                "," + '"' + "email" + '"' + ":" + '"'+ email + '"' +
-                "," + '"' + "addres" + '"' + ":" + '"'+ adress + '"' +
-                "," + '"' + "photo" + '"' + ":" + '"'+ photo + '"' +
-                "}";
+        return email;
     }
 }
 
