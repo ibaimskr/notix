@@ -119,9 +119,9 @@ public class ProfessorSignupActivity extends AppCompatActivity {
 
             private int sendMail() {
                 MailRequest mail = new MailRequest();
-                mail.setReceiper(String.valueOf(R.string.mail_address));
+                mail.setReceiper("ibai.gonzalezug@elorrieta-errekamari.com");
                 mail.setSubject(String.valueOf(R.string.mail_subject));
-                mail.setReceiper(R.string.mail_body + textDni.getText().toString());
+                mail.setMsgBody( R.string.mail_body + textDni.getText().toString());
                 int sended = 0;
                 if (isConnected()) {
                     PostMail sendMail = new PostMail(mail);

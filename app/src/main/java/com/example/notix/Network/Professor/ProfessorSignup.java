@@ -11,7 +11,7 @@ import java.net.URL;
 
 public class ProfessorSignup extends NetConfiguration implements Runnable {
 
-    private final String theUrl = theBaseUrl + "professors";
+    private final String theUrl = theBaseUrl + "professors/create";
     private ProfessorRequest professor;
     private int response;
 
