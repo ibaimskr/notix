@@ -11,6 +11,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/text_absences"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/layoutProfessorAddNotes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,7 +20,7 @@
 
     <TableLayout
         android:id="@+id/layoutProfessorAddNotes"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,9 +33,10 @@
 
             <TextView
                 android:id="@+id/viewProfessorAddNotesStudent"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/text_student" />
+                android:text="@string/text_student"
+                android:textAlignment="center" />
         </TableRow>
 
         <TableRow
@@ -52,9 +55,10 @@
 
             <TextView
                 android:id="@+id/viewProfessorAddNotesSubject"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/text_subjects" />
+                android:text="@string/text_subjects"
+                android:textAlignment="center" />
         </TableRow>
 
         <TableRow
@@ -63,8 +67,8 @@
 
             <Spinner
                 android:id="@+id/spinnerProfessorAddNotesSubject"
-                android:layout_width="350dp"
-                android:layout_height="25dp" />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
         </TableRow>
 
         <TableRow
@@ -75,7 +79,8 @@
                 android:id="@+id/viewProfessorAddAbsencesDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/text_date" />
+                android:text="@string/text_date"
+                android:textAlignment="center" />
         </TableRow>
 
         <TableRow
@@ -84,10 +89,10 @@
 
             <EditText
                 android:id="@+id/editTextDateProfessorAddAbsences"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Fecha"
+                android:hint="YYYY-MM-DD"
                 android:inputType="date" />
         </TableRow>
 
@@ -97,9 +102,10 @@
 
             <TextView
                 android:id="@+id/viewProfessorAddAbsencesFoul"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="JUSTIFIED" />
+                android:text="JUSTIFIED"
+                android:textAlignment="center" />
         </TableRow>
 
         <TableRow
