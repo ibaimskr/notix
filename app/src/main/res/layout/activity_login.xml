@@ -16,16 +16,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_launcher_foreground" />
 
-    <Button
-        android:id="@+id/buttonLoginLanguage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/button_idioma"
-        app:layout_constraintBottom_toTopOf="@+id/textLoginDni"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageLogin" />
-
     <EditText
         android:id="@+id/textLoginDni"
         android:layout_width="350dp"
@@ -66,41 +56,60 @@
         android:id="@+id/checkLoginRemember"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="30dp"
         android:text="@string/check_remember"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textLoginPassword" />
-
-    <Button
-        android:id="@+id/buttonLoginRemember"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="150dp"
-        android:text="@string/button_contraseña"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkLoginRemember" />
 
     <Button
         android:id="@+id/buttonLoginSignup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
+        android:layout_marginBottom="16dp"
+        android:background="@android:color/transparent"
         android:text="@string/button_signup"
+        android:textColor="@color/black"
+        android:textSize="11dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkLoginRemember" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
 
     <Button
         android:id="@+id/buttonLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="50dp"
+        android:layout_marginBottom="110dp"
         android:text="@string/button_login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkLoginRemember" />
+
+    <Button
+        android:id="@+id/buttonLoginRemember"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:background="@android:color/transparent"
+        android:text="@string/button_contraseña"
+        android:textColor="@color/black"
+        android:textSize="11dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonLogin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkLoginRemember"
+        app:layout_constraintVertical_bias="0.196" />
+
+    <ImageButton
+        android:id="@+id/imageButtonLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="35dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/checkLoginRemember"
+        app:layout_constraintTop_toBottomOf="@+id/textLoginPassword"
+        app:srcCompat="@android:drawable/ic_dialog_map" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
