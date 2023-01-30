@@ -37,15 +37,14 @@ public class StudentSignupActivity extends AppCompatActivity {
         EditText textName = findViewById(R.id.textStudentSignupName);
         EditText textSurname = findViewById(R.id.textStudentSignupSurname);
         EditText textBornDate = findViewById(R.id.textStudentSignupBornDate);
-        EditText textNationality = findViewById(R.id.textStudentSignupNationality);
         Spinner spinnerNationality = findViewById(R.id.spinnerStudentSignupNationality);
         EditText textEmail = findViewById(R.id.textStudentSignupEmail);
         EditText textPhone = findViewById(R.id.textStudentSingupPhone);
         EditText textPass = findViewById(R.id.textStudentSignupPassword);
         EditText textPass2 = findViewById(R.id.textStudentSignupPassword2);
-        //Photo
 
         ArrayList<String> nacionalidades = new ArrayList<>();
+        nacionalidades.add("Nacionalidad");
         nacionalidades.add("España");
         nacionalidades.add("Francia");
         nacionalidades.add("Italia");
@@ -55,21 +54,18 @@ public class StudentSignupActivity extends AppCompatActivity {
         ArrayAdapter<String> nationalityAdapter = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, nacionalidades);
         spinnerNationality.setAdapter(nationalityAdapter);
 
-        //ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-        //        R.array.planets_array, android.R.layout.simple_spinner_dropdown_item);
-
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String nationality = spinnerNationality.getSelectedItem().toString();
                 AuthRequest user = new AuthRequest();
                 StudentRequest student = new StudentRequest();
 
                 if (textDni.getText().toString().equals("") || textName.getText().toString().equals("")
-                    || textSurname.getText().toString().equals("") || textBornDate.getText().toString().equals("")
-                    || textNationality.getText().toString().equals("") || textEmail.getText().toString().equals("")
-                    || textPhone.getText().toString().equals("") || textPass.getText().toString().equals("")
-                    || textPass2.getText().toString().equals("")) {
-                    // Validacion photo en blanco
+                        || textSurname.getText().toString().equals("") || textBornDate.getText().toString().equals("")
+                        || nationality.equals("") || textEmail.getText().toString().equals("")
+                        || textPhone.getText().toString().equals("") || textPass.getText().toString().equals("")
+                        || textPass2.getText().toString().equals("")) {
                     Toast.makeText(StudentSignupActivity.this, R.string.error_blankField, Toast.LENGTH_SHORT).show();
                 } else if (textPass.length() >= 5) {
                     if (textPass.getText().toString().equals(textPass2.getText().toString())) {
@@ -81,10 +77,9 @@ public class StudentSignupActivity extends AppCompatActivity {
                         student.setName(textName.getText().toString());
                         student.setSurname(textSurname.getText().toString());
                         student.setBornDate(textBornDate.getText().toString());
-                        student.setNationality(textNationality.getText().toString());
+                        student.setNationality(nationality);
                         student.setEmail(textEmail.getText().toString());
                         student.setPhone(textPhone.getText().toString());
-                        //student.setPhoto();
 
                         int response = signupStudent(user, student);
                         if (response == 400) {
@@ -96,10 +91,8 @@ public class StudentSignupActivity extends AppCompatActivity {
                             setResult(2, i);
                             finish();
                             Toast.makeText(getApplicationContext(), R.string.toast_created, Toast.LENGTH_SHORT).show();
-
-                            sendMail();
-                            Toast.makeText(getApplicationContext(), R.string.toast_verification, Toast.LENGTH_SHORT).show();
                         }
+
                     } else {
                         Toast.makeText(getApplicationContext(), R.string.error_samePass, Toast.LENGTH_SHORT).show();
                     }
@@ -129,27 +122,6 @@ public class StudentSignupActivity extends AppCompatActivity {
                 return  registered;
             }
 
-            private int sendMail() {
-                MailRequest mail = new MailRequest();
-                mail.setReceiper("ibai.gonzalezug@elorrieta-errekamari.com");
-                mail.setSubject(String.valueOf(R.string.mail_subject));
-                mail.setReceiper(R.string.mail_body + textDni.getText().toString());
-                int sended = 0;
-                if (isConnected()) {
-                    PostMail sendMail = new PostMail(mail);
-                    Thread thread = new Thread(sendMail);
-                    try {
-                        thread.start();
-                        thread.join();
-                    } catch (InterruptedException e) {
-                        // Nothing to do here...
-                    }
-                    // Processing the answer
-                    sended = sendMail.getResponse();
-                }
-                return sended;
-            }
-
             public boolean isConnected() {
                 boolean ret = false;
                 try {
@@ -163,7 +135,6 @@ public class StudentSignupActivity extends AppCompatActivity {
                 }
                 return ret;
             }
-
         });
 
         buttonBack.setOnClickListener(view -> {

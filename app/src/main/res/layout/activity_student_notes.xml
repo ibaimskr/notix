@@ -13,40 +13,25 @@
         android:text="@string/text_notes"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/buttonStudentNotesEva1"
+        app:layout_constraintBottom_toTopOf="@+id/listViewStudentNotes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/buttonStudentNotesEva1"
-        android:layout_width="wrap_content"
+    <Spinner
+        android:id="@+id/spinnerStudentNotesEvaluation"
+        android:layout_width="409dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:text="@string/text_evaluacion1"
-        app:layout_constraintBottom_toTopOf="@+id/buttonStudentNotesEva2"
+        app:layout_constraintBottom_toTopOf="@+id/listViewStudentNotes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/viewStudentNotes" />
 
-    <Button
-        android:id="@+id/buttonStudentNotesEva2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="75dp"
-        android:text="@string/text_evaluacion2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/buttonStudentNotesEva3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="75dp"
-        android:text="@string/text_evaluacion3"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ListView
+        android:id="@+id/listViewStudentNotes"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        app:layout_constraintBottom_toTopOf="@+id/notesBottomNavigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -55,12 +40,11 @@
         android:id="@+id/buttonStudentNotesPartial"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="150dp"
         android:text="@string/text_parcial"
         app:layout_constraintBottom_toTopOf="@+id/notesBottomNavigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonStudentNotesEva3" />
+        app:layout_constraintTop_toBottomOf="@+id/listViewStudentNotes" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/notesBottomNavigation"

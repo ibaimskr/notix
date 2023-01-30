@@ -104,24 +104,6 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/nationality" />
-
-            <EditText
-                android:id="@+id/textStudentSignupNationality"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
                 android:id="@+id/viewStudentSignupNationality"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
