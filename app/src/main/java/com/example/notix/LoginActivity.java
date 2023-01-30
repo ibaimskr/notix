@@ -1,14 +1,12 @@
 package com.example.notix;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -20,7 +18,11 @@ import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.bumptech.glide.Glide;
+import com.example.notix.Network.RSA.CifradoRSA;
 import com.example.notix.Network.User.GetUserByDni;
 import com.example.notix.Network.User.Login;
 import com.example.notix.Network.User.SessionManager;
@@ -29,6 +31,7 @@ import com.example.notix.beans.AuthResponse;
 import com.example.notix.beans.UserRemember;
 import com.example.notix.db.DataManager;
 
+import java.util.Base64;
 import java.util.List;
 import java.util.Locale;
 
@@ -68,13 +71,18 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
 
+                CifradoRSA cifradoRSA = new CifradoRSA();
+                byte[] encoded64 = Base64.getEncoder().encode(cifradoRSA.cifrarTexto(textPassword.getText().toString()));
+                String strBase64 = new String(encoded64);
+
                 request.setDni(textDni.getText().toString());
-                request.setPassword(textPassword.getText().toString());
+                request.setPassword(strBase64);
                 userRem.setDni(request.getDni());
-                userRem.setPass(request.getPassword());
+                userRem.setPass(textPassword.getText().toString());
 
                 int error;
                 if(textDni.getText().toString().equals("") || textPassword.getText().toString().equals("")) {
@@ -107,7 +115,7 @@ public class LoginActivity extends AppCompatActivity {
                                 i.putExtra("dni", dni);
                                 startActivityForResult(i, 1);
                             } else if (userRole.getRoleId() == 3) {
- //
+                                //
                                 Intent i = new Intent(LoginActivity.this, MainStudentActivity.class);
                                 //i.putExtra("access", access);
                                 i.putExtra("dni", dni);
@@ -253,10 +261,10 @@ public class LoginActivity extends AppCompatActivity {
                     textPassword.setText(userRemember.getPass());
                 }
             } else {
-                    textDni.setText("");
-                    textPassword.setText("");
-                }
+                textDni.setText("");
+                textPassword.setText("");
             }
+        }
     }
 
     public boolean isConnected() {

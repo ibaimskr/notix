@@ -50,7 +50,9 @@
 
     <string name="button_idioma">Idioma</string>
     <string name="button_contraseña">He olvidado mi contraseña</string>
-    <string name="button_signup">No tengo usuario/Registrar</string>
+    <string name="button_add_user">No tengo usuario/Registrar</string>
+    <string name="button_no_add_user">Ya tengo usuario/Iniciar Sesión</string>
+    <string name="button_signup">Registrar</string>
     <string name="button_login">ENTRAR</string>
     <string name="button_back">VOLVER</string>
     <string name="button_photo">CLICA</string>

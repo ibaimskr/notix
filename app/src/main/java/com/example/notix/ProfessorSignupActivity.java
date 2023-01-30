@@ -1,11 +1,10 @@
 package com.example.notix;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -14,14 +13,17 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.notix.Network.Mail.PostMail;
-import com.example.notix.beans.AuthRequest;
-import com.example.notix.beans.MailRequest;
-import com.example.notix.beans.ProfessorRequest;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.notix.Network.Professor.ProfessorSignup;
+import com.example.notix.Network.RSA.CifradoRSA;
 import com.example.notix.Network.User.UserSignup;
+import com.example.notix.beans.AuthRequest;
+import com.example.notix.beans.ProfessorRequest;
 
 import java.util.ArrayList;
+import java.util.Base64;
 
 public class ProfessorSignupActivity extends AppCompatActivity {
 
@@ -54,6 +56,7 @@ public class ProfessorSignupActivity extends AppCompatActivity {
         spinnerNationality.setAdapter(nationalityAdapter);
 
         buttonRegister.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
                 String nationality = spinnerNationality.getSelectedItem().toString();
@@ -68,8 +71,12 @@ public class ProfessorSignupActivity extends AppCompatActivity {
                 } else if (textPass.length() >= 5) {
                     if (textPass.getText().toString().equals(textPass2.getText().toString())) {
 
+                        CifradoRSA cifradoRSA = new CifradoRSA();
+                        byte[] encoded64 = Base64.getEncoder().encode(cifradoRSA.cifrarTexto(textPass.getText().toString()));
+                        String passBase64= new String(encoded64);
+
                         user.setDni(textDni.getText().toString());
-                        user.setPassword(textPass.getText().toString());
+                        user.setPassword(passBase64);
                         user.setRoleId(2);
                         professor.setProfessor_dni(textDni.getText().toString());
                         professor.setName(textName.getText().toString());

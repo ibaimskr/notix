@@ -68,7 +68,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:background="@android:color/transparent"
-        android:text="@string/button_signup"
+        android:text="@string/button_add_user"
         android:textColor="@color/black"
         android:textSize="11dp"
         app:layout_constraintBottom_toBottomOf="parent"
