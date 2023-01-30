@@ -199,6 +199,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+
         // BUTTON LANGUAGE //
         buttonIdioma.setOnClickListener(view -> {
             PopupMenu popupMenu = new PopupMenu(LoginActivity.this, (findViewById(R.id.imageButtonLogin)));
@@ -224,7 +225,6 @@ public class LoginActivity extends AppCompatActivity {
             popupMenu.show();
         });
     }
-
     private void setLang(String lang) {
         Locale myLocale = new Locale(lang);
         Resources res = getResources();
