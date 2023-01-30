@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
@@ -42,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Button buttonIdioma = findViewById(R.id.buttonLoginLanguage);
+        ImageButton buttonIdioma = findViewById(R.id.imageButtonLogin);
         Button buttonPassword = findViewById(R.id.buttonLoginRemember);
         Button buttonRegister = findViewById(R.id.buttonLoginSignup);
         Button buttonLogin = findViewById(R.id.buttonLogin);
@@ -200,7 +201,7 @@ public class LoginActivity extends AppCompatActivity {
 
         // BUTTON LANGUAGE //
         buttonIdioma.setOnClickListener(view -> {
-            PopupMenu popupMenu = new PopupMenu(LoginActivity.this, (findViewById(R.id.buttonLoginLanguage)));
+            PopupMenu popupMenu = new PopupMenu(LoginActivity.this, (findViewById(R.id.imageButtonLogin)));
             popupMenu.getMenuInflater().inflate(R.menu.language_menu, popupMenu.getMenu());
 
             popupMenu.setOnMenuItemClickListener(item -> {

@@ -40,7 +40,7 @@ public class ProfessorStudentsActivity extends AppCompatActivity {
         listStudents.setAdapter(studentsAdapter);
 
         if (isConnected()) {
-            GetStudentsByProfessorDni getStudentsByProfessorDni = new GetStudentsByProfessorDni(token, dni_profe);
+            GetStudentsByProfessorDni getStudentsByProfessorDni = new GetStudentsByProfessorDni(dni_profe, token);
             Thread thread = new Thread(getStudentsByProfessorDni);
             try {
                 thread.start();
