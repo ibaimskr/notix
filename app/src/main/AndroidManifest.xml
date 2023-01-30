@@ -20,6 +20,9 @@
             android:name=".StudentNewPasswordActivity"
             android:exported="false" />
         <activity
+            android:name=".ContrasenaOlvidadaActivity"
+            android:exported="false" />
+        <activity
             android:name=".ProfessorAbsencesActivity"
             android:exported="false" />
         <activity

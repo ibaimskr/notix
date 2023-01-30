@@ -19,7 +19,7 @@ public class PutUser extends NetConfiguration implements Runnable {
 
     public PutUser(AuthRequest authRequest, String dni, String token) {
         super();
-        this.user = user;
+        this.user = authRequest;
         this.dni = dni;
         this.token = token;
     }
@@ -33,7 +33,7 @@ public class PutUser extends NetConfiguration implements Runnable {
             httpURLConnection.setRequestMethod("PUT");
             httpURLConnection.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
             httpURLConnection.setRequestProperty("Accept", "application/json");
-//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + token);
+            httpURLConnection.setRequestProperty("Authorization", "Bearer " + token);
             httpURLConnection.setDoOutput(true);
             httpURLConnection.setDoInput(true);
 
