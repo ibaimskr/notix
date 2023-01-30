@@ -70,7 +70,7 @@ public class StudentNewPasswordActivity extends AppCompatActivity {
                 if (textPassword.getText().equals(" ") || textPassword2.getText().equals("")) {
                     Toast.makeText(getApplicationContext(), getString(R.string.error_blankField), Toast.LENGTH_SHORT).show();
                 } else {
-                    if (textPassword.getText().equals(textPassword2.getText())) {
+                    if (textPassword.getText().toString().equals(textPassword2.getText().toString())) {
                         PutUser putUser = new PutUser(request, token, dni);
                         Thread thread = new Thread(putUser);
                         try {
@@ -81,7 +81,7 @@ public class StudentNewPasswordActivity extends AppCompatActivity {
                         }
                         // Processing the answer
                         response = putUser.getResponse();
-                        if (response == 200) {
+                        if (response == 201) {
                             Toast.makeText(getApplicationContext(), getString(R.string.toast_modified_password), Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(getApplicationContext(), getString(R.string.error_modify_password), Toast.LENGTH_SHORT).show();

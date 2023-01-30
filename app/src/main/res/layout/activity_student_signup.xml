@@ -21,7 +21,7 @@
     <TableLayout
         android:id="@+id/layoutStudentSignup"
         android:layout_width="350dp"
-        android:layout_height="461dp"
+        android:layout_height="450dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,83 +31,57 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/viewStudentSignupDni"
-                android:layout_width="118dp"
-                android:layout_height="wrap_content"
-                android:text="@string/text_dni" />
-
             <EditText
                 android:id="@+id/textStudentSignupDni"
-                android:layout_width="match_parent"
+                android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="@string/dni"
                 android:inputType="textPersonName" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/viewStudentSignupName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/name" />
 
             <EditText
                 android:id="@+id/textStudentSignupName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="@string/name"
                 android:inputType="textPersonName" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/viewStudentSignupSurname"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/surname" />
 
             <EditText
                 android:id="@+id/textStudentSignupSurname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="@string/surname"
                 android:inputType="textPersonName" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/viewStudentSignupBornDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/bornDate" />
 
             <EditText
                 android:id="@+id/textStudentSignupBornDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="@string/bornDate"
                 android:inputType="textPersonName" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/viewStudentSignupNationality"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/nationality" />
 
             <Spinner
                 android:id="@+id/spinnerStudentSignupNationality"
@@ -119,35 +93,25 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/viewStudentSignupEmail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/email" />
-
             <EditText
                 android:id="@+id/textStudentSignupEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="@string/mail"
                 android:inputType="textPersonName" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/viewStudentSignupPhone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/phone" />
 
             <EditText
                 android:id="@+id/textStudentSingupPhone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="@string/phone"
                 android:inputType="textPersonName" />
         </TableRow>
 
@@ -155,17 +119,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/viewStudentSignupPassword"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/password" />
-
             <EditText
                 android:id="@+id/textStudentSignupPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="@string/password"
                 android:inputType="textPassword" />
 
         </TableRow>
@@ -173,18 +132,13 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/viewStudentSignupPassword2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/password2" />
 
             <EditText
                 android:id="@+id/textStudentSignupPassword2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="@string/password2"
                 android:inputType="textPassword" />
 
         </TableRow>
@@ -192,12 +146,6 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/viewStudentSignupPhoto"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/photo" />
 
             <ImageButton
                 android:id="@+id/imageButtonPhotoStudentSignUp"

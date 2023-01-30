@@ -10,7 +10,7 @@
         android:id="@+id/imageLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/layoutLogin"
+        app:layout_constraintBottom_toTopOf="@+id/textLoginDni"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -21,85 +21,67 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/button_idioma"
-        app:layout_constraintBottom_toTopOf="@+id/layoutLogin"
+        app:layout_constraintBottom_toTopOf="@+id/textLoginDni"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageLogin" />
 
-    <TableLayout
-        android:id="@+id/layoutLogin"
-        android:layout_width="400dp"
-        android:layout_height="168dp"
+    <EditText
+        android:id="@+id/textLoginDni"
+        android:layout_width="350dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/view_styles"
+        android:ems="10"
+        android:hint="@string/dni"
+        android:inputType="textPersonName"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="53dp">
-
-            <TextView
-                android:id="@+id/viewLoginDni"
-                android:layout_width="105dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="50dp"
-                android:text="@string/text_dni" />
-
-            <EditText
-                android:id="@+id/textLoginDni"
-                android:layout_width="180dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="30dp"
-                android:background="@drawable/rounded_edge"
-                android:ems="10"
-                android:inputType="textPersonName" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="37dp">
-
-            <TextView
-                android:id="@+id/viewLoginPassword"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="65dp"
-                android:text="@string/text_password" />
-
-            <EditText
-                android:id="@+id/textLoginPassword"
-                android:layout_width="180dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="30dp"
-                android:background="@drawable/rounded_edge"
-                android:ems="10"
-                android:inputType="textPassword" />
-        </TableRow>
-
-    </TableLayout>
+    <EditText
+        android:id="@+id/textLoginPassword"
+        android:layout_width="350dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/view_styles"
+        android:ems="10"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <CheckBox
         android:id="@+id/checkLoginRemember"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="@string/check_remember"
-        app:layout_constraintBottom_toTopOf="@+id/buttonLoginRemember"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layoutLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/textLoginPassword" />
 
     <Button
         android:id="@+id/buttonLoginRemember"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="150dp"
         android:text="@string/button_contraseña"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layoutLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/checkLoginRemember" />
 
     <Button
         android:id="@+id/buttonLoginSignup"
@@ -109,7 +91,7 @@
         android:text="@string/button_signup"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonLoginRemember" />
+        app:layout_constraintTop_toBottomOf="@+id/checkLoginRemember" />
 
     <Button
         android:id="@+id/buttonLogin"
@@ -119,6 +101,6 @@
         android:text="@string/button_login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonLoginRemember" />
+        app:layout_constraintTop_toBottomOf="@+id/checkLoginRemember" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

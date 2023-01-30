@@ -33,65 +33,44 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/viewProfessorSignupDni"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/dni" />
-
             <EditText
                 android:id="@+id/textProfessorSignupDni"
-                android:layout_width="match_parent"
+                android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="@string/dni"
                 android:inputType="textPersonName" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/viewProfessorSignupName"
-                android:layout_width="124dp"
-                android:layout_height="wrap_content"
-                android:text="@string/name" />
 
             <EditText
                 android:id="@+id/textProfessorSignupName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="@string/name"
                 android:inputType="textPersonName" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/viewProfessorSignupSurname"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/surname" />
 
             <EditText
                 android:id="@+id/textProfessorSignupSurname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="@string/surname"
                 android:inputType="textPersonName" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/viewProfessorSignupNationality"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/nationality" />
 
             <Spinner
                 android:id="@+id/spinnerProfessorSignupNationality"
@@ -103,35 +82,25 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/viewProfessorSignupEmail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/email" />
-
             <EditText
                 android:id="@+id/textProfessorSignupEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="@string/mail"
                 android:inputType="textPersonName" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/viewProfessorSignupAdress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/addres" />
 
             <EditText
                 android:id="@+id/textProfessorSignupAdress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="@string/addres"
                 android:inputType="textPersonName" />
         </TableRow>
 
@@ -139,47 +108,31 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/viewProfessorSignupPassword"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/password" />
-
             <EditText
                 android:id="@+id/textProfessorSignupPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="@string/password"
                 android:inputType="textPassword" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/viewProfessorSignupPassword2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/password2" />
 
             <EditText
                 android:id="@+id/textProfessorSignupPassword2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="@string/password2"
                 android:inputType="textPassword" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/viewProfessorSignupPhoto"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/photo" />
 
             <ImageButton
                 android:id="@+id/imageButtonProfessorSignupPhoto"

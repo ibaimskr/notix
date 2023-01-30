@@ -184,6 +184,14 @@ public class LoginActivity extends AppCompatActivity {
             popupMenu.show();
         });
 
+        buttonPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(LoginActivity.this, ContrasenaOlvidadaActivity.class);
+                startActivity(i);
+            }
+        });
+
         // BUTTON LANGUAGE //
         buttonIdioma.setOnClickListener(view -> {
             PopupMenu popupMenu = new PopupMenu(LoginActivity.this, (findViewById(R.id.buttonLoginLanguage)));

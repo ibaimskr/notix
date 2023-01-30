@@ -36,12 +36,13 @@
     <string name="dni">DNI</string>
     <string name="name">Nombre</string>
     <string name="surname">Apellidos</string>
-    <string name="bornDate">Fecha Nacimiento</string>
+    <string name="bornDate">Nacimiento: 0000-00-00</string>
     <string name="nationality">Nacionalidad</string>
     <string name="email">Email</string>
     <string name="addres">Dirección</string>
     <string name="phone">Telefono</string>
     <string name="photo">Foto</string>
+    <string name="mail">Email</string>
     <string name="password">Contraseña</string>
     <string name="password2">Repite Contraseña</string>
     <string name="professorSignup">Registro Profesor</string>
