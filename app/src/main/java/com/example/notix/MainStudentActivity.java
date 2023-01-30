@@ -9,6 +9,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +34,7 @@ public class MainStudentActivity extends AppCompatActivity {
         String dni = session.getStringData("dni");
 
         TextView viewName = findViewById(R.id.viewStudentMainName);
+        Button button = findViewById(R.id.button);
         BottomNavigationView navigation = findViewById(R.id.studentBottomNavigation);
 
         if (isConnected()) {
@@ -49,6 +51,14 @@ public class MainStudentActivity extends AppCompatActivity {
             String studentName = (student.getName() + " " + student.getSurname());
             viewName.setText(studentName);
         }
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainStudentActivity.this, StudentNewPasswordActivity.class);
+                startActivity(i);
+            }
+        });
 
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

@@ -6,9 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
+    <ImageView
+        android:id="@+id/imageLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/layoutLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_launcher_foreground" />
+
+    <Button
+        android:id="@+id/buttonLoginLanguage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_idioma"
+        app:layout_constraintBottom_toTopOf="@+id/layoutLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageLogin" />
+
     <TableLayout
         android:id="@+id/layoutLogin"
-        android:layout_width="411dp"
+        android:layout_width="400dp"
         android:layout_height="168dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -17,11 +37,7 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <Space
-                android:layout_width="50dp"
-                android:layout_height="wrap_content" />
+            android:layout_height="53dp">
 
             <TextView
                 android:id="@+id/viewLoginDni"
@@ -36,17 +52,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="30dp"
+                android:background="@drawable/rounded_edge"
                 android:ems="10"
                 android:inputType="textPersonName" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            android:layout_height="37dp">
 
             <TextView
                 android:id="@+id/viewLoginPassword"
@@ -61,6 +74,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="30dp"
+                android:background="@drawable/rounded_edge"
                 android:ems="10"
                 android:inputType="textPassword" />
         </TableRow>
@@ -107,23 +121,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonLoginRemember" />
 
-    <Button
-        android:id="@+id/buttonLoginLanguage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/button_idioma"
-        app:layout_constraintBottom_toTopOf="@+id/layoutLogin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageLogin" />
-
-    <ImageView
-        android:id="@+id/imageLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/layoutLogin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_launcher_foreground" />
 </androidx.constraintlayout.widget.ConstraintLayout>

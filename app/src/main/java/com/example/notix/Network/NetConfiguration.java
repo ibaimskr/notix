@@ -5,7 +5,7 @@ public class NetConfiguration {
     //    protected final String theBaseUrl = "http://10.5.7.14:8080/api/";
     //    protected final String theBaseUrl = "http://10.5.7.16:8082/api/";
     //    protected final String theBaseUrl = "http://10.5.7.17:8090/api/";
-        protected final String theBaseUrl = "http://10.5.7.16:8082/api/";
+        protected final String theBaseUrl = "http://10.5.7.17:8082/api/";
     //    protected final String theBaseUrl = "http://10.5.7.23:8082/api/";
          // protected final String theBaseUrl = "http://192.168.1.43:8082/api/";
 

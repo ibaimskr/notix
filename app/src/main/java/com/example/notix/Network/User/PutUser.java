@@ -1,7 +1,7 @@
-package com.example.notix.Network.Student;
+package com.example.notix.Network.User;
 
-import com.example.notix.beans.Student;
 import com.example.notix.Network.NetConfiguration;
+import com.example.notix.beans.AuthRequest;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -9,16 +9,18 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class PutStudent extends NetConfiguration implements Runnable {
-    private final String theUrl = theBaseUrl + "students/";
-    private Student student;
-    private String student_dni;
-    private int response;
-    private String token;
+public class PutUser extends NetConfiguration implements Runnable {
 
-    public PutStudent(String student_dni, Student studentRequest, String token) {
-        this.student_dni = student_dni;
-        this.student = studentRequest;
+    private final String theUrl = theBaseUrl + "users/";
+    private AuthRequest user;
+    private String dni;
+    private String token;
+    private int response;
+
+    public PutUser(AuthRequest authRequest, String dni, String token) {
+        super();
+        this.user = user;
+        this.dni = dni;
         this.token = token;
     }
 
@@ -26,7 +28,7 @@ public class PutStudent extends NetConfiguration implements Runnable {
     public void run() {
         try {
             // The URL
-            URL url = new URL(theUrl + student_dni);
+            URL url = new URL(theUrl + dni);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("PUT");
             httpURLConnection.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
@@ -35,7 +37,7 @@ public class PutStudent extends NetConfiguration implements Runnable {
             httpURLConnection.setDoOutput(true);
             httpURLConnection.setDoInput(true);
 
-            String jsonInputString = student.toString();
+            String jsonInputString = user.toString();
             try (OutputStream postsend = httpURLConnection.getOutputStream()) {
                 byte[] input = jsonInputString.getBytes("utf-8");
                 postsend.write(input, 0, input.length);
@@ -63,10 +65,7 @@ public class PutStudent extends NetConfiguration implements Runnable {
         } catch (Exception e) {
             System.out.println("ERROR: " + e.getMessage());
         }
-
     }
 
-    public int getResponse() {
-        return response;
-    }
+    public int getResponse() { return response; }
 }
