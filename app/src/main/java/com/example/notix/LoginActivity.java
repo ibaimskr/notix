@@ -8,15 +8,18 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.notix.Network.User.GetUserByDni;
 import com.example.notix.Network.User.Login;
 import com.example.notix.Network.User.SessionManager;
@@ -46,6 +49,9 @@ public class LoginActivity extends AppCompatActivity {
         CheckBox checkRemember = findViewById(R.id.checkLoginRemember);
         textDni = findViewById(R.id.textLoginDni);
         textPassword = findViewById(R.id.textLoginPassword);
+        ImageView image = findViewById(R.id.imageLogin);
+
+        Glide.with(getApplicationContext()).load(R.drawable.logo).into(image);
 
         dataManager = new DataManager(this);
         UserRemember userRem = new UserRemember();
