@@ -3,11 +3,11 @@
 
     <item
         android:id="@+id/menuSpanishItem"
-        android:title="@string/text_spanish" />
+        android:title="@string/menu_spanish" />
     <item
         android:id="@+id/menuEnglishItem"
-        android:title="@string/text_english" />
+        android:title="@string/menu_english" />
     <item
         android:id="@+id/menuBasqueItem"
-        android:title="@string/text_basque" />
+        android:title="@string/menu_basque" />
 </menu>

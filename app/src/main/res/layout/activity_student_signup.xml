@@ -10,7 +10,7 @@
         android:id="@+id/viewStudentSignup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/studentSignup"
+        android:text="@string/view_studentSignup"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/layoutStudentSignup"
@@ -75,7 +75,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="@string/bornDate"
+                android:hint="@string/text_bornDate"
                 android:inputType="textPersonName" />
         </TableRow>
 
@@ -98,7 +98,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="@string/mail"
+                android:hint="@string/text_mail"
                 android:inputType="textPersonName" />
         </TableRow>
 
@@ -111,7 +111,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="@string/phone"
+                android:hint="@string/text_phone"
                 android:inputType="textPersonName" />
         </TableRow>
 

@@ -3,7 +3,7 @@
     <item
         android:id="@+id/professor_nav_main"
         android:icon="@drawable/icon_main"
-        android:title="@string/text_main" />
+        android:title="@string/menu_main" />
 
     <item
         android:id="@+id/professor_nav_notes"
@@ -18,10 +18,10 @@
     <item
         android:id="@+id/professor_nav_students"
         android:icon="@drawable/icon_students"
-        android:title="@string/text_students" />
+        android:title="@string/view_students" />
 
     <item
         android:id="@+id/professor_nav_mail"
         android:icon="@drawable/icon_email"
-        android:title="@string/text_mail" />
+        android:title="@string/view_mail" />
 </menu>

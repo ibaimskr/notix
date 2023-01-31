@@ -31,7 +31,7 @@
         android:id="@+id/buttonStudentAbsencesJustified"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_justified"
+        android:text="@string/button_all_justified_absences"
         app:layout_constraintBottom_toTopOf="@+id/absencesBottomNavigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

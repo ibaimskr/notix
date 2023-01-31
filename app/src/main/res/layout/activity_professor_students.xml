@@ -34,7 +34,7 @@
         android:layout_marginStart="179dp"
         android:layout_marginTop="49dp"
         android:layout_marginEnd="177dp"
-        android:text="Students"
+        android:text="@string/view_students"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
