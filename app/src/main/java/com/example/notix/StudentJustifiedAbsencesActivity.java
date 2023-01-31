@@ -9,7 +9,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -65,7 +64,7 @@ public class StudentJustifiedAbsencesActivity extends AppCompatActivity {
                 subjectsArrayList.addAll(subjects);
                 ((ListView) findViewById(R.id.listViewStudentJustifiedAbsences)).setAdapter(absencesAdapter);
             } else {
-                Toast.makeText(getApplicationContext(), getString(R.string.error_data), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.error_server_data), Toast.LENGTH_SHORT).show();
             }
 
         } else {

@@ -14,6 +14,7 @@
     <string name="text_final1">Final 1</string>
     <string name="text_final2">Final 2</string>
     <string name="text_justified">Justificada</string>
+    <string name="text_justify">Justificar</string>
     <string name="text_mail">Correo</string>
     <string name="text_mail_subject">Asunto: </string>
     <string name="text_name">Nombre</string>
@@ -29,7 +30,7 @@
     <string name="text_surname">Apellidos</string>
 
     <string name="button_add">AÑADIR</string>
-    <string name="button_all_absences">VER FALTAS</string>
+    <string name="button_all_absences">VER TODAS LAS FALTAS</string>
     <string name="button_all_justified_absences">VER JUSTIFICADAS</string>
     <string name="button_all_notes">VER NOTAS</string>
     <string name="button_enter">ENTRAR</string>
@@ -40,6 +41,21 @@
     <string name="button_send">ENVIAR</string>
     <string name="button_send_code">Enviar Código</string>
     <string name="button_signup">REGISTRAR</string>
+
+    <string name="error">¡Error!</string>
+    <string name="error_blankField">¡Se deben rellenar todos los campos!</string>
+    <string name="error_communication">¡Error al conectar con el servidor!</string>
+    <string name="error_dniPass">¡DNI o Contraseña incorrecta!</string>
+    <string name="error_duplicated_user">¡El usuario ya existe!</string>
+    <string name="error_invalid_data">¡Has introducido algún dato invalido!</string>
+    <string name="error_notes">¡Aun no tienes notas!</string>
+    <string name="error_no_create_user">¡No se ha podido crear el usuario!</string>
+    <string name="error_modify_password">¡No se ha podido actualizar la contraseña!</string>
+    <string name="error_partial">¡Aun no tienes notas parciales!</string>
+    <string name="error_password">¡Contraseña incorrecta!</string>
+    <string name="error_passwordlength">¡Contraseña minimo de 5 caracteres!</string>
+    <string name="error_samePass">¡Las contraseñas no coinciden!</string>
+    <string name="error_server_data">¡Error al recibir datos del servidor!</string>
 
     <string name="view_absences">FALTAS</string>
     <string name="view_justified_absences">FALTAS JUSTICADAS</string>
@@ -59,34 +75,12 @@
     <string name="menu_main">MENÚ</string>
     <string name="menu_spanish">CASTELLANO</string>
 
+    <string name="toast_created">¡Usuario creado!</string>
+    <string name="toast_modified_password">¡Contraseña actualizada!</string>
+    <string name="toast_sended">¡Enviado!</string>
+    <string name="toast_verification">¡Usuario pendiente de verificación!</string>
+
     <string name="check_remember">Recuerdame</string>
 
     <string name="question_singup">¿Que tipo de usuario eres?</string>
-
-    <string name="error_blankField">¡Se deben rellenar todos los campos!</string>
-
-    <string name="error_nocreate_user">¡No se ha podido crear el usuario!</string>
-    <string name="error_passwordlength">¡Contraseña minimo de 5 caracteres!</string>
-    <string name="error_samePass">¡Las contraseñas no coinciden!</string>
-
-
-
-
-
-    <string name="error">¡Error!</string>
-    <string name="error_communication">¡Error al conectar con el servidor!</string>
-    <string name="error_data">¡Error al recibir datos del servidor!</string>
-    <string name="error_dnipass">¡DNI o Contraseña incorrecta!</string>
-    <string name="error_password">¡A introducido un dato erroneo!</string>
-    <string name="error_duplicatedUser">¡El usuario ya existe!</string>
-    <string name="error_notes">¡Aun no tienes notas!</string>
-    <string name="error_partial">¡Aun no tienes notas parciales!</string>
-    <string name="error_modify_password">¡No se ha podido actualizar la contraseña!</string>
-    <!-- TODO: Remove or change this placeholder text -->
-
-    <string name="toast_created">¡Usuario creado!</string>
-    <string name="toast_verification">¡Usuario pendiente de verificación!</string>
-    <string name="toast_sended">¡Enviado!</string>
-    <string name="toast_modified_password">¡Contraseña actualizada!</string>
-
 </resources>

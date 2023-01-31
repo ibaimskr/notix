@@ -31,11 +31,9 @@ import com.example.notix.beans.UserRemember;
 import com.example.notix.db.DataManager;
 import com.bumptech.glide.Glide;
 
-import java.util.Arrays;
 import java.util.Base64;
 import java.util.List;
 import java.util.Locale;
-import java.util.regex.Pattern;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -96,7 +94,7 @@ public class LoginActivity extends AppCompatActivity {
                         //String access = response.getAccessToken();
                         String dni = response.getDni();
                         if (error == 401) {
-                            Toast.makeText(getApplicationContext(), R.string.error_dnipass, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), R.string.error_dniPass, Toast.LENGTH_SHORT).show();
                             textDni.setText("");
                             textPassword.setText("");
                         } else if (error == 400) {

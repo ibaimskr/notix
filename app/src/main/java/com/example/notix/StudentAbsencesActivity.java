@@ -66,7 +66,7 @@ public class StudentAbsencesActivity extends AppCompatActivity {
                 subjectsArrayList.addAll(subjects);
                 ((ListView) findViewById(R.id.listViewStudentAbsences)).setAdapter(absencesAdapter);
             } else {
-                Toast.makeText(getApplicationContext(), getString(R.string.error_data), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.error_server_data), Toast.LENGTH_SHORT).show();
             }
 
         } else {
@@ -86,19 +86,6 @@ public class StudentAbsencesActivity extends AppCompatActivity {
                     case R.id.student_nav_main:
                         Intent i = new Intent(StudentAbsencesActivity.this, MainStudentActivity.class);
                         startActivity(i);
-                        finish();
-                        break;
-                    case R.id.student_nav_notes:
-                        Intent i2 = new Intent(StudentAbsencesActivity.this, StudentNotesActivity.class);
-                        startActivity(i2);
-                        break;
-                    case R.id.student_nav_subjects:
-                        Intent i3 = new Intent(StudentAbsencesActivity.this, StudentSubjectsActivity.class);
-                        startActivity(i3);
-                        break;
-                    case R.id.student_nav_mail:
-                        Intent i4 = new Intent(StudentAbsencesActivity.this, StudentMailActivity.class);
-                        startActivity(i4);
                         finish();
                         break;
                     default:

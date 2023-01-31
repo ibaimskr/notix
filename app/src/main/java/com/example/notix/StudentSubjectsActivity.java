@@ -59,7 +59,7 @@ public class StudentSubjectsActivity extends AppCompatActivity {
                 ((ListView) findViewById(R.id.listViewStudentSubjects)).setAdapter(subjectsAdapter);
 
             } else {
-                Toast.makeText(getApplicationContext(), getString(R.string.error_data), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.error_server_data), Toast.LENGTH_SHORT).show();
             }
 
         } else {

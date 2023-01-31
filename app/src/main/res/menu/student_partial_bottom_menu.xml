@@ -6,7 +6,7 @@
         android:title="@string/menu_main" />
 
     <item
-        android:id="@+id/student_nav_absences"
-        android:icon="@drawable/icon_absences"
-        android:title="@string/view_absences" />
+        android:id="@+id/student_nav_notes"
+        android:icon="@drawable/icon_notes"
+        android:title="@string/view_notes" />
 </menu>

@@ -54,6 +54,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/student_notes_bottom_menu" />
+        app:menu="@menu/student_no_main_bottom_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -88,6 +88,12 @@ public class ProfessorSignupActivity extends AppCompatActivity {
         ArrayAdapter<String> nationalityAdapter = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, nacionalidades);
         spinnerNationality.setAdapter(nationalityAdapter);
 
+        buttonBack.setOnClickListener(view -> {
+            Intent i = new Intent();
+            setResult(1, i);
+            finish();
+        });
+
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
@@ -120,13 +126,19 @@ public class ProfessorSignupActivity extends AppCompatActivity {
 
                         int response = signupProfessor(user, professor);
                         if (response == 500) {
-                            Toast.makeText(getApplicationContext(), R.string.error_duplicatedUser, Toast.LENGTH_SHORT).show();
-                        } else {
+                            Toast.makeText(getApplicationContext(), R.string.error_duplicated_user, Toast.LENGTH_SHORT).show();
+                            setEmptyField();
+                        } else if (response == 400) {
+                            Toast.makeText(getApplicationContext(), R.string.error_no_create_user, Toast.LENGTH_SHORT).show();
+                            setEmptyField();
+                        } else if (response == 200) {
+                            /*
                             Intent i = new Intent();
                             i.putExtra("dni", user.getDni());
                             i.putExtra("password", user.getPassword());
                             setResult(2, i);
                             finish();
+                             */
                             Toast.makeText(getApplicationContext(), R.string.toast_created, Toast.LENGTH_SHORT).show();
                         }
 
@@ -139,11 +151,10 @@ public class ProfessorSignupActivity extends AppCompatActivity {
             }
 
             private int signupProfessor(AuthRequest user, ProfessorRequest professor) {
-                int userResponse = 0;
                 int professorResponse = 0;
                 if (isConnected()) {
-                    UserSignup createUser = new UserSignup(user);
-                    Thread thread1 = new Thread(createUser);
+                    ProfessorSignup createProfessor = new ProfessorSignup(professor);
+                    Thread thread1 = new Thread(createProfessor);
                     try {
                         thread1.start();
                         thread1.join();
@@ -151,28 +162,37 @@ public class ProfessorSignupActivity extends AppCompatActivity {
                         // Nothing to do here...
                     }
                     // Processing the answer
-                    userResponse = createUser.getResponse();
+                    professorResponse = createProfessor.getResponse();
 
-                    if (userResponse == 200) {
-                        ProfessorSignup createProfessor = new ProfessorSignup(professor);
-                        Thread thread2 = new Thread(createProfessor);
+                    if (professorResponse == 200) {
+                        UserSignup createUser = new UserSignup(user);
+                        Thread thread2 = new Thread(createUser);
                         try {
                             thread2.start();
                             thread2.join();
                         } catch (InterruptedException e) {
                             // Nothing to do here...
                         }
-                        // Processing the answer
-                        professorResponse = createProfessor.getResponse();
-
-
+                    } else if (professorResponse == 400) {
+                        Toast.makeText(getApplicationContext(), R.string.error_invalid_data, Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(getApplicationContext(), R.string.error_nocreate_user, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), R.string.error_no_create_user, Toast.LENGTH_SHORT).show();
                     }
 
+                } else {
+                    Toast.makeText(getApplicationContext(), R.string.error_communication, Toast.LENGTH_SHORT).show();
                 }
+                return  professorResponse;
+            }
 
-                return  userResponse;
+            public void setEmptyField() {
+                textDni.setText("");
+                textName.setText("");
+                textSurname.setText("");
+                textAdress.setText("");
+                textEmail.setText("");
+                textPass.setText("");
+                textPass2.setText("");
             }
 
             public boolean isConnected() {
@@ -188,13 +208,6 @@ public class ProfessorSignupActivity extends AppCompatActivity {
                 }
                 return ret;
             }
-
-        });
-
-        buttonBack.setOnClickListener(view -> {
-            Intent i = new Intent();
-            setResult(1, i);
-            finish();
         });
     }
 

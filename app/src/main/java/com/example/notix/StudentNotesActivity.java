@@ -128,21 +128,6 @@ public class StudentNotesActivity extends AppCompatActivity {
                         startActivity(i);
                         finish();
                         break;
-                    case R.id.student_nav_absences:
-                        Intent i2 = new Intent(StudentNotesActivity.this, StudentAbsencesActivity.class);
-                        startActivity(i2);
-                        finish();
-                        break;
-                    case R.id.student_nav_subjects:
-                        Intent i3 = new Intent(StudentNotesActivity.this, StudentSubjectsActivity.class);
-                        startActivity(i3);
-                        finish();
-                        break;
-                    case R.id.student_nav_mail:
-                        Intent i4 = new Intent(StudentNotesActivity.this, StudentMailActivity.class);
-                        startActivity(i4);
-                        finish();
-                        break;
                     default:
                 }
                 return true;
