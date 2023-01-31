@@ -51,7 +51,7 @@ public class StudentSignupActivity extends AppCompatActivity {
         EditText textPass2 = findViewById(R.id.textStudentSignupPassword2);
 
         ArrayList<String> nacionalidades = new ArrayList<>();
-        nacionalidades.add("Nacionalidad");
+        nacionalidades.add("");
         nacionalidades.add("España");
         nacionalidades.add("Francia");
         nacionalidades.add("Italia");

@@ -75,11 +75,10 @@ public class ProfessorSignupActivity extends AppCompatActivity {
                         Toast.makeText( getApplicationContext(), "no tengo camara", Toast.LENGTH_LONG ).show();
                     }
                 }
-
         });
 
         ArrayList<String> nacionalidades = new ArrayList<>();
-        nacionalidades.add("Nacionalidad");
+        nacionalidades.add("");
         nacionalidades.add("España");
         nacionalidades.add("Francia");
         nacionalidades.add("Italia");
@@ -88,7 +87,6 @@ public class ProfessorSignupActivity extends AppCompatActivity {
 
         ArrayAdapter<String> nationalityAdapter = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, nacionalidades);
         spinnerNationality.setAdapter(nationalityAdapter);
-
 
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
@@ -136,29 +134,45 @@ public class ProfessorSignupActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), R.string.error_samePass, Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), R.string.error_dnipass, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.error_passwordlength, Toast.LENGTH_SHORT).show();
                 }
             }
 
             private int signupProfessor(AuthRequest user, ProfessorRequest professor) {
-                int registered = 0;
+                int userResponse = 0;
+                int professorResponse = 0;
                 if (isConnected()) {
                     UserSignup createUser = new UserSignup(user);
-                    ProfessorSignup createProfessor = new ProfessorSignup(professor);
                     Thread thread1 = new Thread(createUser);
-                    Thread thread2 = new Thread(createProfessor);
                     try {
                         thread1.start();
-                        thread2.start();
                         thread1.join();
-                        thread2.join();
                     } catch (InterruptedException e) {
                         // Nothing to do here...
                     }
                     // Processing the answer
-                    registered = createUser.getResponse();
+                    userResponse = createUser.getResponse();
+
+                    if (userResponse == 200) {
+                        ProfessorSignup createProfessor = new ProfessorSignup(professor);
+                        Thread thread2 = new Thread(createProfessor);
+                        try {
+                            thread2.start();
+                            thread2.join();
+                        } catch (InterruptedException e) {
+                            // Nothing to do here...
+                        }
+                        // Processing the answer
+                        professorResponse = createProfessor.getResponse();
+
+
+                    } else {
+                        Toast.makeText(getApplicationContext(), R.string.error_nocreate_user, Toast.LENGTH_SHORT).show();
+                    }
+
                 }
-                return  registered;
+
+                return  userResponse;
             }
 
             public boolean isConnected() {

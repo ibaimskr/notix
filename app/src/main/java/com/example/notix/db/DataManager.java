@@ -18,13 +18,10 @@ public class DataManager extends SQLiteOpenHelper {
 
     // Database Information
     private static final String DB_NAME = "notix.db";
-
     // Database version
     private static final int DB_VERSION = 1;
-
     // Table Name
     public static final String TABLE_NAME = "User";
-
     // Table columns
     private static final String DNI = "dni";
     private static final String PASS = "pass";

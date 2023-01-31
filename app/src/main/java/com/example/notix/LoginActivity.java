@@ -31,9 +31,11 @@ import com.example.notix.beans.AuthResponse;
 import com.example.notix.beans.UserRemember;
 import com.example.notix.db.DataManager;
 
+import java.util.Arrays;
 import java.util.Base64;
 import java.util.List;
 import java.util.Locale;
+import java.util.regex.Pattern;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -91,7 +93,7 @@ public class LoginActivity extends AppCompatActivity {
                     try {
                         AuthResponse response = checkLogin(request);
                         error = response.getError();
-                        String access = response.getAccessToken();
+                        //String access = response.getAccessToken();
                         String dni = response.getDni();
                         if (error == 401) {
                             Toast.makeText(getApplicationContext(), R.string.error_dnipass, Toast.LENGTH_SHORT).show();
@@ -108,7 +110,7 @@ public class LoginActivity extends AppCompatActivity {
                             session.saveStringData("dni", response.getDni());
 
                             AuthResponse userRole = getRole(response.getDni(), response.getAccessToken());
-//
+
                             if (userRole.getRoleId() == 2) {
                                 Intent i = new Intent(LoginActivity.this, MainProfessorActivity.class);
                                 //i.putExtra("access", access);
@@ -120,9 +122,7 @@ public class LoginActivity extends AppCompatActivity {
                                 //i.putExtra("access", access);
                                 i.putExtra("dni", dni);
                                 startActivityForResult(i, 1);
-//
                             }
-//
                         }
 
                     } catch(NullPointerException e) {
@@ -220,11 +220,7 @@ public class LoginActivity extends AppCompatActivity {
                     setLang(language);
                     this.recreate();
                 } else if (item.getItemId() == (R.id.menuEnglishItem)) {
-                    language = "in";
-                    setLang(language);
-                    this.recreate();
-                } else if (item.getItemId() == (R.id.menuBasqueItem)) {
-                    language = "eu";
+                    language = "en";
                     setLang(language);
                     this.recreate();
                 }

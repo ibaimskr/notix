@@ -49,4 +49,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.56" />
 
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="80dp"
+        android:layout_height="71dp"
+        app:layout_constraintBottom_toTopOf="@+id/professorBottomNavigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/common_full_open_on_phone" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
