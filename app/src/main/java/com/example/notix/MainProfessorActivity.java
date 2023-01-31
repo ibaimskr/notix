@@ -1,16 +1,18 @@
 package com.example.notix;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.notix.Network.Professor.GetProfessorByDni;
 import com.example.notix.Network.User.SessionManager;
@@ -31,6 +33,15 @@ public class MainProfessorActivity extends AppCompatActivity {
 
         TextView viewName = findViewById(R.id.viewProfessorMainName);
         BottomNavigationView navigation = findViewById(R.id.professorBottomNavigation);
+        ImageButton buttonCloseSession = findViewById(R.id.imageButton);
+
+        buttonCloseSession.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainProfessorActivity.this, LoginActivity.class);
+                startActivity(i);
+            }
+        });
 
         if (isConnected()) {
             GetProfessorByDni getProfessor = new GetProfessorByDni(dni, token);

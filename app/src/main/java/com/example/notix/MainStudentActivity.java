@@ -1,8 +1,5 @@
 package com.example.notix;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -11,15 +8,17 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.notix.Network.Student.GetStudentByDni;
 import com.example.notix.Network.User.SessionManager;
 import com.example.notix.beans.Student;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarMenuView;
-import com.google.android.material.navigation.NavigationBarView;
 
 public class MainStudentActivity extends AppCompatActivity {
 
@@ -36,6 +35,15 @@ public class MainStudentActivity extends AppCompatActivity {
         TextView viewName = findViewById(R.id.viewStudentMainName);
         Button button = findViewById(R.id.button);
         BottomNavigationView navigation = findViewById(R.id.studentBottomNavigation);
+        ImageButton buttonCloseSession = findViewById(R.id.imageButton2);
+
+        buttonCloseSession.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainStudentActivity.this, LoginActivity.class);
+                startActivity(i);
+            }
+        });
 
         if (isConnected()) {
             GetStudentByDni getStudent = new GetStudentByDni(dni, token);

@@ -21,7 +21,6 @@ import android.widget.Toast;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.bumptech.glide.Glide;
 import com.example.notix.Network.RSA.CifradoRSA;
 import com.example.notix.Network.User.GetUserByDni;
 import com.example.notix.Network.User.Login;
@@ -30,6 +29,7 @@ import com.example.notix.beans.AuthRequest;
 import com.example.notix.beans.AuthResponse;
 import com.example.notix.beans.UserRemember;
 import com.example.notix.db.DataManager;
+import com.bumptech.glide.Glide;
 
 import java.util.Arrays;
 import java.util.Base64;
