@@ -39,6 +39,7 @@ public class ProfessorAbsencesActivity extends AppCompatActivity {
     ArrayList<Subject> subjectsArrayList = new ArrayList<>();
     ArrayList<Student> studentsArrayList = new ArrayList<>();
     ArrayList<Absence> absencesArrayList = new ArrayList<>();
+    ArrayList<Absence> justifiedAbsences = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -189,6 +190,10 @@ public class ProfessorAbsencesActivity extends AppCompatActivity {
                     } else {
                         Toast.makeText(getApplicationContext(), "no me conecto al server", Toast.LENGTH_LONG).show();
                     }
+
+
+                } else if (item.getItemId() == (R.id.justificate_absence)) {
+
 
 
                 }

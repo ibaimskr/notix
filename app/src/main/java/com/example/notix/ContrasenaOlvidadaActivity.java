@@ -1,17 +1,21 @@
 package com.example.notix;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.notix.Network.Mail.PostMail;
+import com.example.notix.Network.RSA.CifradoRSA;
 import com.example.notix.Network.Student.GetStudentByDni;
 import com.example.notix.Network.User.GetUserByDni;
 import com.example.notix.Network.User.Login;
@@ -20,7 +24,8 @@ import com.example.notix.beans.AuthRequest;
 import com.example.notix.beans.AuthResponse;
 import com.example.notix.beans.MailRequest;
 import com.example.notix.beans.Student;
-import com.example.notix.beans.User;
+
+import java.util.Base64;
 
 public class ContrasenaOlvidadaActivity extends AppCompatActivity {
 
@@ -41,6 +46,7 @@ public class ContrasenaOlvidadaActivity extends AppCompatActivity {
         Button buttonModificar = findViewById(R.id.buttonModificarCOntrasenaOlvidadaActivity);
 
         buttonCodigo.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
                 if (editTextDni.getText().equals(" ")) {
@@ -48,7 +54,12 @@ public class ContrasenaOlvidadaActivity extends AppCompatActivity {
                 } else {
                     AuthRequest authRequest = new AuthRequest();
                     authRequest.setDni("admin");
-                    authRequest.setPassword("admin");
+
+                    CifradoRSA cifradoRSA = new CifradoRSA();
+                    byte[] encoded64 = Base64.getEncoder().encode(cifradoRSA.cifrarTexto("admin"));
+                    String strBase64 = new String(encoded64);
+
+                    authRequest.setPassword(strBase64);
                     AuthResponse response = checkLogin(authRequest);
                     token = response.getAccessToken();
                     if (isConnected()) {
@@ -67,7 +78,7 @@ public class ContrasenaOlvidadaActivity extends AppCompatActivity {
                         } else {
                             email = student.getEmail().toString();
                             code = getFiveDigitsNumber();
-                            MailRequest mail = new MailRequest(email, "Su codigo de verificacion es: " + code, "Codigo de verificacion");
+                            MailRequest mail = new MailRequest("enekogarciarenovales@gmail.com", "Ha solicitado restablecer la contraseña de acceso a su cuenta de NotixSu codigo de verificacion para poder restablecer la contraseña es:" + code, "Codigo de verificacion");
                             int responseMail = sendMail(mail);
                             if (responseMail == 400) {
                                 //Toast
@@ -127,6 +138,7 @@ public class ContrasenaOlvidadaActivity extends AppCompatActivity {
         });
 
         buttonModificar.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
                 if (isConnected()) {
@@ -157,7 +169,13 @@ public class ContrasenaOlvidadaActivity extends AppCompatActivity {
                                 AuthRequest userRequest = new AuthRequest();
                                 userRequest.setDni(user.getDni());
                                 userRequest.setRoleId(user.getRoleId());
-                                userRequest.setPassword(editTextPass.getText().toString());
+
+                                CifradoRSA cifradoRSA = new CifradoRSA();
+                                byte[] encoded64 = Base64.getEncoder().encode(cifradoRSA.cifrarTexto(editTextPass.getText().toString()));
+                                String passCifrada = new String(encoded64);
+
+                                userRequest.setPassword(passCifrada);
+
                                 PutUser putUser = new PutUser(userRequest, user.getDni(), token);
                                 Thread thread = new Thread(putUser);
                                 try {
@@ -172,6 +190,8 @@ public class ContrasenaOlvidadaActivity extends AppCompatActivity {
                                     Toast.makeText(getApplicationContext(), "No existe el usuario", Toast.LENGTH_LONG).show();
                                 } else if (response == 200){
                                     Toast.makeText(getApplicationContext(), "Contraseña modificada", Toast.LENGTH_LONG).show();
+                                    Intent i = new Intent(ContrasenaOlvidadaActivity.this, LoginActivity.class);
+                                    startActivity(i);
                                 }
 
                             } else {
