@@ -39,7 +39,7 @@
         android:id="@+id/textViewStudentAreaMainStudent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Student Area"
+        android:text="@string/view_student_area"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/imageStudentMain"
@@ -53,7 +53,6 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
         app:layout_constraintBottom_toTopOf="@+id/studentBottomNavigation"
         app:layout_constraintEnd_toEndOf="parent" />
 

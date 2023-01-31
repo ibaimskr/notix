@@ -49,7 +49,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="@string/name"
+                android:hint="@string/text_name"
                 android:inputType="textPersonName" />
         </TableRow>
 
@@ -62,7 +62,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="@string/surname"
+                android:hint="@string/text_surname"
                 android:inputType="textPersonName" />
         </TableRow>
 
@@ -138,7 +138,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="@string/password2"
+                android:hint="@string/text_repeat_password"
                 android:inputType="textPassword" />
 
         </TableRow>
@@ -157,26 +157,27 @@
     </TableLayout>
 
     <Button
+        android:id="@+id/buttonStudentSignup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:text="@string/button_signup"
+        android:background="@drawable/button_styles"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutStudentSignup" />
+
+    <Button
         android:id="@+id/buttonStudentSignupBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_no_add_user"
         android:background="@android:color/transparent"
+        android:text="@string/button_no_add_user"
         android:textColor="@color/black"
         android:textSize="11dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonStudentSignup" />
-
-    <Button
-        android:id="@+id/buttonStudentSignup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
-        android:text="@string/button_signup"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layoutStudentSignup" />
 </androidx.constraintlayout.widget.ConstraintLayout>

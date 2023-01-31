@@ -10,7 +10,7 @@
         android:id="@+id/viewProfessorMail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/text_mail"
+        android:text="@string/view_mail"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/tableLayout3"
@@ -52,7 +52,7 @@
                 android:id="@+id/viewProfessorMailSubject"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/text_asunt" />
+                android:text="@string/text_mail_subject" />
 
             <EditText
                 android:id="@+id/textProfesessorMailSubject"
@@ -82,7 +82,7 @@
                 android:id="@+id/viewProfessorMailBody"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mensaje" />
+                android:text="@string/text_body" />
         </TableRow>
 
         <TableRow

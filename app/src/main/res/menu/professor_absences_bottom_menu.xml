@@ -8,12 +8,12 @@
     <item
         android:id="@+id/professor_nav_notes"
         android:icon="@drawable/icon_notes"
-        android:title="@string/text_notes" />
+        android:title="@string/view_notes" />
 
     <item
         android:id="@+id/professor_nav_subjects"
         android:icon="@drawable/icon_subjects"
-        android:title="@string/text_subjects" />
+        android:title="@string/text_subject" />
 
     <item
         android:id="@+id/professor_nav_students"

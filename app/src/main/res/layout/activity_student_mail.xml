@@ -52,7 +52,7 @@
                 android:id="@+id/viewStudentMailSubject"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/text_asunt" />
+                android:text="@string/text_mail_subject" />
 
             <EditText
                 android:id="@+id/textStudentMailSubject"

@@ -10,7 +10,7 @@
         android:id="@+id/viewProfessorAddNotes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/text_notes"
+        android:text="@string/view_notes"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/layoutProfessorAddNotes"
@@ -21,7 +21,7 @@
 
     <TableLayout
         android:id="@+id/layoutProfessorAddNotes"
-        android:layout_width="250dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="250dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -35,19 +35,14 @@
 
             <TextView
                 android:id="@+id/viewProfessorAddNotesStudent"
-                android:layout_width="match_parent"
+                android:layout_width="157dp"
                 android:layout_height="wrap_content"
                 android:text="@string/text_student"
                 android:textAlignment="center" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
             <Spinner
                 android:id="@+id/spinnerProfessorAddNotesStudent"
-                android:layout_width="match_parent"
+                android:layout_width="193dp"
                 android:layout_height="25dp" />
         </TableRow>
 
@@ -57,8 +52,8 @@
 
             <TextView
                 android:id="@+id/viewProfessorAddNotesEmpty"
-                android:layout_width="250dp"
-                android:layout_height="10dp" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
         </TableRow>
 
         <TableRow
@@ -69,19 +64,15 @@
                 android:id="@+id/viewProfessorAddNotesSubject"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/text_subjects"
+                android:text="@string/text_subject"
                 android:textAlignment="center" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
             <Spinner
                 android:id="@+id/spinnerProfessorAddNotesSubject"
                 android:layout_width="match_parent"
                 android:layout_height="25dp" />
         </TableRow>
+
     </TableLayout>
 
 
@@ -221,7 +212,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
-        android:text="@string/text_add"
+        android:text="@string/button_add"
         app:layout_constraintBottom_toTopOf="@+id/notesBottomNavigation"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tableLayout7" />
@@ -230,8 +221,8 @@
         android:id="@+id/buttonProfessorAddNotesNotes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="100dp"
-        android:text="@string/text_notes"
+        android:layout_marginEnd="65dp"
+        android:text="@string/button_all_notes"
         app:layout_constraintBottom_toTopOf="@+id/notesBottomNavigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tableLayout7" />

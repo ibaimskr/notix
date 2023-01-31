@@ -1,66 +1,88 @@
 <resources>
     <string name="app_name">notix</string>
 
+    <string name="text_addres">Dirección</string>
+    <string name="text_body">Cuerpo: </string>
+    <string name="text_code">Código</string>
+    <string name="text_date">Fecha</string>
+    <string name="text_date_format">YYYY-MM-DD</string>
     <string name="text_dni">DNI</string>
-    <string name="text_password">PASSWORD</string>
-    <string name="text_signup_question">¿Que tipo de usuario eres?</string>
-    <string name="text_professor">PROFESOR</string>
-    <string name="text_student">ALUMNO</string>
-    <string name="text_students">ALUMNOS</string>
-    <string name="text_assessment1">1ª Evaluación</string>
-    <string name="text_assessment2">2ª Evaluación</string>
-    <string name="text_assessment3">3ª Evaluación</string>
     <string name="text_eva1">Eva1</string>
     <string name="text_eva2">Eva2</string>
     <string name="text_eva3">Eva3</string>
     <string name="text_final1">Final 1</string>
     <string name="text_final2">Final 2</string>
+    <string name="text_justified">Justificada</string>
+    <string name="text_mail">Correo</string>
+    <string name="text_mail_subject">Asunto: </string>
+    <string name="text_name">Nombre</string>
+    <string name="text_new_password">Nueva contraseña</string>
+    <string name="text_password">Contraseña</string>
+    <string name="text_receiper">Receptor: </string>
+    <string name="text_repeat_password">Repita la contraseña</string>
+    <string name="text_student">Alumno</string>
+    <string name="text_subject">Asignatura</string>
+    <string name="text_surname">Apellidos</string>
+
+    <string name="button_add">AÑADIR</string>
+    <string name="button_all_absences">VER FALTAS</string>
+    <string name="button_all_notes">VER NOTAS</string>
+    <string name="button_enter">ENTRAR</string>
+    <string name="button_forget_password">He olvidado mi contraseña</string>
+    <string name="button_go_signup">No tengo usuario/Registrar</string>
+    <string name="button_modify">Modificar</string>
+    <string name="button_no_add_user">Ya tengo usuario/Iniciar Sesión</string>
+    <string name="button_send">ENVIAR</string>
+    <string name="button_send_code">Enviar Código</string>
+    <string name="button_signup">REGISTRAR</string>
+
+    <string name="view_absences">FALTAS</string>
+    <string name="view_mail">CORREO</string>
+    <string name="view_notes">NOTAS</string>
+    <string name="view_professor_area">ÁREA PROFESOR</string>
+    <string name="view_professorSignup">Registro Profesor</string>
+    <string name="view_student_area">ÁREA ALUMNO</string>
+
+    <string name="check_remember">Recuerdame</string>
+
+
+
+
+
+
+    <string name="text_professor">PROFESOR</string>
+    <string name="text_students">ALUMNOS</string>
+    <string name="text_assessment1">1ª Evaluación</string>
+    <string name="text_assessment2">2ª Evaluación</string>
+    <string name="text_assessment3">3ª Evaluación</string>
+
     <string name="text_parcial">PARCIALES</string>
-    <string name="text_absences">FALTAS</string>
-    <string name="text_notes">NOTAS</string>
     <string name="text_main">MENÚ</string>
     <string name="text_justified_absences">FALTAS JUSTIFICADAS</string>
-    <string name="text_subjects">ASIGNATURAS</string>
-    <string name="text_mail">EMAIL</string>
     <string name="text_spanish">CASTELLANO</string>
     <string name="text_english">INGLES</string>
     <string name="text_basque">EUSKERA</string>
     <string name="text_spinner">SPINNER</string>
-    <string name="text_add">AÑADIR</string>
     <string name="text_send">ENVIAR</string>
-    <string name="text_date">FECHA</string>
-    <string name="text_receiper">Receptor: </string>
-    <string name="text_asunt">Asunto: </string>
-    <string name="text_body">Cuerpo: </string>
 
-    <string name="dni">DNI</string>
-    <string name="name">Nombre</string>
-    <string name="surname">Apellidos</string>
+    <string name="question_singup">¿Que tipo de usuario eres?</string>
+
+
     <string name="bornDate">Nacimiento: 0000-00-00</string>
     <string name="nationality">Nacionalidad</string>
     <string name="email">Email</string>
-    <string name="addres">Dirección</string>
     <string name="phone">Telefono</string>
     <string name="photo">Foto</string>
     <string name="mail">Email</string>
-    <string name="password">Contraseña</string>
-    <string name="password2">Repite Contraseña</string>
-    <string name="professorSignup">Registro Profesor</string>
     <string name="studentSignup">Registro Alumno</string>
 
     <string name="button_idioma">Idioma</string>
-    <string name="button_contraseña">He olvidado mi contraseña</string>
-    <string name="button_add_user">No tengo usuario/Registrar</string>
-    <string name="button_no_add_user">Ya tengo usuario/Iniciar Sesión</string>
-    <string name="button_signup">Registrar</string>
-    <string name="button_login">ENTRAR</string>
     <string name="button_back">VOLVER</string>
     <string name="button_photo">CLICA</string>
     <string name="button_next">SIGUIENTE</string>
     <string name="button_previous">ANTERIOR</string>
     <string name="button_final">FINAL</string>
     <string name="button_justified">JUSTIFICADAS</string>
-    <string name="button_send">ENVIAR</string>
     <string name="button_change">CAMBIAR</string>
 
     <string name="error">¡Error!</string>
@@ -82,5 +104,4 @@
     <string name="toast_sended">¡Enviado!</string>
     <string name="toast_modified_password">¡Contraseña actualizada!</string>
 
-    <string name="check_remember">Recuerdame</string>
 </resources>

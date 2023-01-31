@@ -11,7 +11,7 @@
         android:id="@+id/viewProfessorSignup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/professorSignup"
+        android:text="@string/view_professorSignup"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/layoutProfessorSignup"
@@ -39,7 +39,7 @@
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="@string/dni"
+                android:hint="@string/text_dni"
                 android:inputType="textPersonName" />
         </TableRow>
 
@@ -52,7 +52,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="@string/name"
+                android:hint="@string/text_name"
                 android:inputType="textPersonName" />
         </TableRow>
 
@@ -65,7 +65,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="@string/surname"
+                android:hint="@string/text_surname"
                 android:inputType="textPersonName" />
         </TableRow>
 
@@ -88,7 +88,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="@string/mail"
+                android:hint="@string/text_mail"
                 android:inputType="textPersonName" />
         </TableRow>
 
@@ -101,7 +101,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="@string/addres"
+                android:hint="@string/text_addres"
                 android:inputType="textPersonName" />
         </TableRow>
 
@@ -114,7 +114,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="@string/password"
+                android:hint="@string/text_password"
                 android:inputType="textPassword" />
         </TableRow>
 
@@ -127,7 +127,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="@string/password2"
+                android:hint="@string/text_repeat_password"
                 android:inputType="textPassword" />
         </TableRow>
 

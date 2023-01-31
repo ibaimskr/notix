@@ -39,7 +39,7 @@
         android:id="@+id/textViewProfessorAreaMainProfessor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Professor Area"
+        android:text="@string/view_professor_area"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/imageProfessorMain"

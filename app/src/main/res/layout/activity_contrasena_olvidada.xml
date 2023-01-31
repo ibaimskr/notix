@@ -3,115 +3,107 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ContrasenaOlvidadaActivity">
+    android:layout_height="match_parent">
+
+    <TableLayout
+        android:id="@+id/tableLayout2"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="175dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="125dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/dni" />
+
+            <EditText
+                android:id="@+id/editTextDniContrasenaOlvidadaActivity"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+        </TableRow>
+
+    </TableLayout>
 
     <Button
         android:id="@+id/buttonEnviarCodigoContrasenaOlvidadaActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="Enviar codigo"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/button_styles"
+        android:hint="@string/button_send_code"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDniContrasenaOlvidadaActivity" />
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout2" />
 
-    <TextView
-        android:id="@+id/textViewDniContrasenaOlvidadaActivity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="88dp"
-        android:text="Introduce tu DNI"
+    <TableLayout
+        android:id="@+id/tableLayout4"
+        android:layout_width="350dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonEnviarCodigoContrasenaOlvidadaActivity">
 
-    <EditText
-        android:id="@+id/editTextDniContrasenaOlvidadaActivity"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="88dp"
-        android:layout_marginEnd="60dp"
-        android:ems="10"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.9"
-        app:layout_constraintStart_toEndOf="@+id/textViewDniContrasenaOlvidadaActivity"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/editTextTextPasswordContrasenaOlvidadaActivity"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="60dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextCodigoContrasenaOlvidadaActivity" />
+            <EditText
+                android:id="@+id/editTextCodigoContrasenaOlvidadaActivity"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/text_code"
+                android:inputType="textPersonName" />
+        </TableRow>
 
-    <TextView
-        android:id="@+id/textViewPassword2ContrasenaOlvidadaActivity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="36dp"
-        android:text="Repite contraseña"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewPasswordContrasenaOlvidadaActivity" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textViewPasswordContrasenaOlvidadaActivity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="36dp"
-        android:text="Contraseña nueva"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewCodigoContrasenaOlvidadaActivity" />
+            <EditText
+                android:id="@+id/editTextTextPasswordContrasenaOlvidadaActivity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/text_new_password"
+                android:inputType="textPassword" />
+        </TableRow>
 
-    <EditText
-        android:id="@+id/editTextTextPassword2ContrasenaOlvidadaActivity"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="60dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPasswordContrasenaOlvidadaActivity" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/editTextCodigoContrasenaOlvidadaActivity"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="72dp"
-        android:layout_marginEnd="60dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonEnviarCodigoContrasenaOlvidadaActivity" />
+            <EditText
+                android:id="@+id/editTextTextPassword2ContrasenaOlvidadaActivity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/text_repeat_password"
+                android:inputType="textPassword" />
+        </TableRow>
+
+    </TableLayout>
 
     <Button
         android:id="@+id/buttonModificarCOntrasenaOlvidadaActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Modificar"
-        android:enabled="false"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/button_styles"
+        android:hint="@string/button_modify"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewPassword2ContrasenaOlvidadaActivity"
-        app:layout_constraintVertical_bias="0.318" />
-
-    <TextView
-        android:id="@+id/textViewCodigoContrasenaOlvidadaActivity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="96dp"
-        android:text="Codigo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonEnviarCodigoContrasenaOlvidadaActivity" />
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

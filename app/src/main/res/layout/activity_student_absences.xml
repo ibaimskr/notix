@@ -10,7 +10,7 @@
         android:id="@+id/viewStudentAbsences"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/text_absences"
+        android:text="@string/view_absences"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/listViewStudentAbsences"
