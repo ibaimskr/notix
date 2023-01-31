@@ -22,7 +22,7 @@
                 android:id="@+id/textView6"
                 android:layout_width="125dp"
                 android:layout_height="wrap_content"
-                android:hint="@string/dni" />
+                android:hint="@string/text_dni" />
 
             <EditText
                 android:id="@+id/editTextDniContrasenaOlvidadaActivity"
