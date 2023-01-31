@@ -2,17 +2,22 @@ package com.example.notix;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -55,7 +60,34 @@ public class StudentSignupActivity extends AppCompatActivity {
 
         ArrayAdapter<String> nationalityAdapter = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, nacionalidades);
         spinnerNationality.setAdapter(nationalityAdapter);
+        ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                activityResult -> {
+                    if ((activityResult.getResultCode() == RESULT_OK) && (activityResult.getData() != null)) {
 
+                        // Get the image and displays it
+                        // Note this method is called when the photo is taken!
+                        Bundle bundle = activityResult.getData().getExtras();
+                        Bitmap bitmap = (Bitmap) bundle.get( "data" );
+                    }
+                } );
+
+        ImageButton imageButton = findViewById(R.id.imageButtonPhotoStudentSignUp);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent takePhotoIntent = new Intent( MediaStore.ACTION_IMAGE_CAPTURE );
+
+                // Is there a camera? If yes, then intent!
+                if (takePhotoIntent.resolveActivity( getPackageManager() ) != null) {
+                    activityResultLauncher.launch(takePhotoIntent);
+                } else {
+                    Toast.makeText( getApplicationContext(), "no tengo camara", Toast.LENGTH_LONG ).show();
+                }
+            }
+
+        });
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
