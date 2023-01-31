@@ -89,13 +89,6 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ProfessorNotesActivity"
-            android:exported="true">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".StudentAbsencesActivity"
             android:exported="true">
             <meta-data

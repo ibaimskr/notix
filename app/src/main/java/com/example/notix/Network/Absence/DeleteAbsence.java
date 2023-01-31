@@ -30,7 +30,7 @@ public class DeleteAbsence extends NetConfiguration implements Runnable {
             URL url = new URL(theUrl + student_dni + "/" + subject_id + "/" + date);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("DELETE");
-//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + access);
+            httpURLConnection.setRequestProperty("Authorization", "Bearer " + access);
 
             // Sending...
             int responseCode = httpURLConnection.getResponseCode();

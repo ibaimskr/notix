@@ -1,8 +1,5 @@
 package com.example.notix;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -16,6 +13,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.notix.Network.Note.GetNotesByStudentDniAndSubjectId;
 import com.example.notix.Network.Note.PutNote;
@@ -54,7 +54,6 @@ public class ProfessorAddNotesActivity extends AppCompatActivity {
         Spinner spinnerStudents = findViewById(R.id.spinnerProfessorAddNotesStudent);
         Spinner spinnerSubjects = findViewById(R.id.spinnerProfessorAddNotesSubject);
         Button buttonAddNote = findViewById(R.id.buttonProfessorAddANotesAdd);
-        Button buttonNotes = findViewById(R.id.buttonProfessorAddNotesNotes);
         BottomNavigationView navigation = findViewById(R.id.notesBottomNavigation);
 
         ArrayList<Subject> subjectsArrayList ;
@@ -167,11 +166,6 @@ public class ProfessorAddNotesActivity extends AppCompatActivity {
             }
         });
 
-        buttonNotes.setOnClickListener(view -> {
-            Intent i = new Intent(ProfessorAddNotesActivity.this, ProfessorNotesActivity.class);
-            startActivity(i);
-            finish();
-        });
 
         buttonAddNote.setOnClickListener(new View.OnClickListener() {
             @Override

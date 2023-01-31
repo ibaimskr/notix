@@ -1,8 +1,5 @@
 package com.example.notix;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -17,8 +14,11 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.notix.Network.Absence.PostAbsence;
-import com.example.notix.Network.Student.GetStudentsBySubjectId;
+import com.example.notix.Network.Student.GetStudentsBySubjectIdAndProfessorDni;
 import com.example.notix.Network.Subject.GetSubjectsByProfessorDni;
 import com.example.notix.Network.User.SessionManager;
 import com.example.notix.beans.Absence;
@@ -35,6 +35,10 @@ public class ProfessorAddAbsencesActivity extends AppCompatActivity {
     int subject_id;
     String date;
     Boolean justified = false;
+    Subject selectedSubject = new Subject();
+    Student selectedStudent = new Student();
+    ArrayList<Subject> subjectsArrayList = new ArrayList<>();
+    ArrayList<Student> studentsArrayList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,13 +57,14 @@ public class ProfessorAddAbsencesActivity extends AppCompatActivity {
         EditText editeTexDate = findViewById(R.id.editTextDateProfessorAddAbsences);
         BottomNavigationView navigation = findViewById(R.id.absencesBottomNavigation);
 
+
         ArrayList<String> foulArrayList = new ArrayList<>();
         foulArrayList.add("True");
         foulArrayList.add("False");
         ArrayAdapter foulAdapter = new ArrayAdapter(ProfessorAddAbsencesActivity.this, android.R.layout.simple_spinner_dropdown_item, foulArrayList);
         spinnerFoul.setAdapter(foulAdapter);
 
-        ArrayList<Subject> subjectsArrayList;
+
 
         if (isConnected()) {
             GetSubjectsByProfessorDni getSubjectsByProfessorDni = new GetSubjectsByProfessorDni(dni_profe,token);
@@ -82,38 +87,32 @@ public class ProfessorAddAbsencesActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "no me conecto al server", Toast.LENGTH_LONG).show();
         }
 
-        spinnerStudents.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Subject selectedSubject = (Subject) spinnerSubjects.getSelectedItem();
-                subject_id = selectedSubject.getSubject_id();
-                Student selectedStudent = (Student) spinnerStudents.getSelectedItem();
-                dni_alumno = selectedStudent.getStudent_dni();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
         spinnerSubjects.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String token = session.getStringData("jwtToken");
-                ArrayList<Student> studentsArrayList = new ArrayList<>();
-                studentsArrayList.clear();
-                Subject selectedSubject = (Subject) spinnerSubjects.getSelectedItem();
+                if(studentsArrayList != null) {
+                    studentsArrayList.clear();
+                    ArrayList<Student> arrayListVacio = new ArrayList<>();
+                    Student student = new Student();
+                    student.setName("");
+                    student.setSurname("");
+                    arrayListVacio.add(student);
+                    ArrayAdapter studentAdapter = new ArrayAdapter(ProfessorAddAbsencesActivity.this, android.R.layout.simple_spinner_dropdown_item, arrayListVacio);
+                    spinnerStudents.setAdapter(studentAdapter);
+                }
+
+                selectedSubject = (Subject) spinnerSubjects.getSelectedItem();
                 if (isConnected()) {
-                    GetStudentsBySubjectId getStudentsBySubjectId = new GetStudentsBySubjectId(selectedSubject.getSubject_id(),token );
-                    Thread thread = new Thread(getStudentsBySubjectId);
+                    GetStudentsBySubjectIdAndProfessorDni getStudentsBySubjectIdAndProfessorDni = new GetStudentsBySubjectIdAndProfessorDni(selectedSubject.getSubject_id(), dni_profe ,token );
+                    Thread thread = new Thread(getStudentsBySubjectIdAndProfessorDni);
                     try {
                         thread.start();
                         thread.join();
                     } catch (InterruptedException e) {
                     }
                     // Processing the answer
-                    studentsArrayList = getStudentsBySubjectId.getResponse();
+                    studentsArrayList = getStudentsBySubjectIdAndProfessorDni.getResponse();
 
                     if (studentsArrayList == null) {
                         Toast.makeText(getApplicationContext(), "Recibo null", Toast.LENGTH_LONG).show();
@@ -128,6 +127,18 @@ public class ProfessorAddAbsencesActivity extends AppCompatActivity {
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+        spinnerStudents.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                selectedStudent = (Student) spinnerStudents.getSelectedItem();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
 
@@ -150,6 +161,8 @@ public class ProfessorAddAbsencesActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 date = editeTexDate.getText().toString();
+                dni_alumno = selectedStudent.getStudent_dni();
+                subject_id = selectedSubject.getSubject_id();
 
                 Absence absence = new Absence();
                 absence.setStudent_dni(dni_alumno);

@@ -1,8 +1,5 @@
 package com.example.notix;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -11,6 +8,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.notix.Network.Student.GetStudentsByProfessorDni;
 import com.example.notix.Network.User.SessionManager;
@@ -80,7 +80,7 @@ public class ProfessorStudentsActivity extends AppCompatActivity {
                         finish();
                         break;
                     case R.id.professor_nav_notes:
-                        Intent i4 = new Intent(ProfessorStudentsActivity.this, ProfessorNotesActivity.class);
+                        Intent i4 = new Intent(ProfessorStudentsActivity.this, ProfessorAddNotesActivity.class);
                         startActivity(i4);
                         finish();
                         break;
