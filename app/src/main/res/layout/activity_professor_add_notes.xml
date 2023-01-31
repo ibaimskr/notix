@@ -34,15 +34,15 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/viewProfessorAddNotesStudent"
-                android:layout_width="157dp"
+                android:id="@+id/viewProfessorAddNotesSubject"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/text_student"
+                android:text="@string/text_subject"
                 android:textAlignment="center" />
 
             <Spinner
-                android:id="@+id/spinnerProfessorAddNotesStudent"
-                android:layout_width="193dp"
+                android:id="@+id/spinnerProfessorAddNotesSubject"
+                android:layout_width="match_parent"
                 android:layout_height="25dp" />
         </TableRow>
 
@@ -61,15 +61,15 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/viewProfessorAddNotesSubject"
-                android:layout_width="match_parent"
+                android:id="@+id/viewProfessorAddNotesStudent"
+                android:layout_width="157dp"
                 android:layout_height="wrap_content"
-                android:text="@string/text_subject"
+                android:text="@string/text_student"
                 android:textAlignment="center" />
 
             <Spinner
-                android:id="@+id/spinnerProfessorAddNotesSubject"
-                android:layout_width="match_parent"
+                android:id="@+id/spinnerProfessorAddNotesStudent"
+                android:layout_width="193dp"
                 android:layout_height="25dp" />
         </TableRow>
 
