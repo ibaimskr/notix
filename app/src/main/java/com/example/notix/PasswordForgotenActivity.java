@@ -27,7 +27,7 @@ import com.example.notix.beans.Student;
 
 import java.util.Base64;
 
-public class ContrasenaOlvidadaActivity extends AppCompatActivity {
+public class PasswordForgotenActivity extends AppCompatActivity {
 
     String email = " ";
     String token = " ";
@@ -36,7 +36,7 @@ public class ContrasenaOlvidadaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_contrasena_olvidada);
+        setContentView(R.layout.activity_password_forgoten);
 
         EditText editTextDni = findViewById(R.id.editTextDniContrasenaOlvidadaActivity);
         EditText editTextCodigo = findViewById(R.id.editTextCodigoContrasenaOlvidadaActivity);
@@ -190,7 +190,7 @@ public class ContrasenaOlvidadaActivity extends AppCompatActivity {
                                     Toast.makeText(getApplicationContext(), "No existe el usuario", Toast.LENGTH_LONG).show();
                                 } else if (response == 200){
                                     Toast.makeText(getApplicationContext(), "Contraseña modificada", Toast.LENGTH_LONG).show();
-                                    Intent i = new Intent(ContrasenaOlvidadaActivity.this, LoginActivity.class);
+                                    Intent i = new Intent(PasswordForgotenActivity.this, LoginActivity.class);
                                     startActivity(i);
                                 }
 

@@ -61,12 +61,7 @@ public class ProfessorSubjectsActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), getString(R.string.error_communication), Toast.LENGTH_LONG).show();
         }
 
-
-
-
-
         BottomNavigationView navigation = findViewById(R.id.subjectsBottomNavigation);
-
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -81,8 +76,6 @@ public class ProfessorSubjectsActivity extends AppCompatActivity {
                 return true;
             }
         });
-
-
     }
 
     public boolean isConnected() {

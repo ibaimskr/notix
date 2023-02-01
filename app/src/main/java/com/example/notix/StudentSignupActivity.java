@@ -64,7 +64,6 @@ public class StudentSignupActivity extends AppCompatActivity {
                 new ActivityResultContracts.StartActivityForResult(),
                 activityResult -> {
                     if ((activityResult.getResultCode() == RESULT_OK) && (activityResult.getData() != null)) {
-
                         // Get the image and displays it
                         // Note this method is called when the photo is taken!
                         Bundle bundle = activityResult.getData().getExtras();

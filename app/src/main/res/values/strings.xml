@@ -101,4 +101,10 @@
     <string name="check_remember">Recuerdame</string>
 
     <string name="question_singup">¿Que tipo de usuario eres?</string>
+
+    <string name="text_new_phone">Nuevo número</string>
+    <string name="text_new_mail">Nuevo correo</string>
+    <string name="text_new_address">Nueva dirección</string>
+    <string name="view_modify_data">MODIFICAR DATOS</string>
+    <string name="error_any_field_modify">¡No has modificado ningún dato!</string>
 </resources>

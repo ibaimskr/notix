@@ -71,7 +71,6 @@ public class CifradoRSA {
             //String response = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCshfMcBm/6EA7QAtfTuNc+b16IW6lS82MQPfCP0HPmfwhIz0nGzuj6fsuwRi6xv/C3+WbWb4g8dT3NoxSRahzM36nSgvkQxyT9bJ2PGn8/igzQEf1P3L+5eqC8sw2CDZx7RgPA/BclXHv0kly2wmiwOcSw/gvg01pkCVqWYMNAkQIDAQAB";
 
             byte[] clavePublica = Base64.getDecoder().decode(response);
-            System.out.println("Tamanio -> " + clavePublica.length + " bytes");
 
 
             KeyFactory keyFactory = KeyFactory.getInstance("RSA");

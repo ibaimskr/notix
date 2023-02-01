@@ -11,7 +11,7 @@ import java.net.URL;
 
 public class PutUser extends NetConfiguration implements Runnable {
 
-    private final String theUrl = theBaseUrl + "users/";
+    private final String theUrl = theBaseUrl + "users/updatePass/";
     private AuthRequest user;
     private String dni;
     private String token;

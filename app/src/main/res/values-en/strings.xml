@@ -93,4 +93,9 @@
     <string name="error_absence_exits">¡Absence already exists!</string>
     <string name="error_camera">¡Camera not available!</string>
 
+    <string name="text_new_phone">New phone</string>
+    <string name="text_new_mail">New mail</string>
+    <string name="text_new_address">New address</string>
+    <string name="view_modify_data">MODIFY DATAS</string>
+    <string name="error_any_field_modify">¡You don´t modified any field!</string>
 </resources>

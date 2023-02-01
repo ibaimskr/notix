@@ -6,8 +6,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageButton;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,17 +31,9 @@ public class MainProfessorActivity extends AppCompatActivity {
         String token = session.getStringData("jwtToken");
         String dni = session.getStringData("dni");
 
+        ImageButton imagePhoto = findViewById(R.id.imageProfessorMain);
         TextView viewName = findViewById(R.id.viewProfessorMainName);
         BottomNavigationView navigation = findViewById(R.id.professorBottomNavigation);
-        ImageButton buttonCloseSession = findViewById(R.id.imageButton);
-
-        buttonCloseSession.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainProfessorActivity.this, LoginActivity.class);
-                startActivity(i);
-            }
-        });
 
         if (isConnected()) {
             GetProfessorByDni getProfessor = new GetProfessorByDni(dni, token);
@@ -57,6 +49,23 @@ public class MainProfessorActivity extends AppCompatActivity {
             String professorName = (professor.getName() + " " + professor.getSurname());
             viewName.setText(professorName);
         }
+
+        imagePhoto.setOnClickListener(view -> {
+            PopupMenu popupMenu = new PopupMenu(MainProfessorActivity.this, (findViewById(R.id.imageProfessorMain)));
+            popupMenu.getMenuInflater().inflate(R.menu.profile_menu, popupMenu.getMenu());
+
+            popupMenu.setOnMenuItemClickListener(item -> {
+                if (item.getItemId() == (R.id.menuEditProfileItem)) {
+                    Intent i = new Intent(MainProfessorActivity.this, ProfessorEditProfileActivity.class);
+                    startActivity(i);
+                } else if (item.getItemId() == (R.id.menuLogoutItem)){
+                    Intent i2 = new Intent(MainProfessorActivity.this, LoginActivity.class);
+                    startActivity(i2);
+                }
+                return true;
+            });
+            popupMenu.show();
+        });
 
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

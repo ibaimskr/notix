@@ -6,9 +6,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,18 +31,9 @@ public class MainStudentActivity extends AppCompatActivity {
         String token = session.getStringData("jwtToken");
         String dni = session.getStringData("dni");
 
+        ImageButton imagePhoto = findViewById(R.id.imageStudentMain);
         TextView viewName = findViewById(R.id.viewStudentMainName);
-        Button button = findViewById(R.id.button);
         BottomNavigationView navigation = findViewById(R.id.studentBottomNavigation);
-        ImageButton buttonCloseSession = findViewById(R.id.imageButton2);
-
-        buttonCloseSession.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainStudentActivity.this, LoginActivity.class);
-                startActivity(i);
-            }
-        });
 
         if (isConnected()) {
             GetStudentByDni getStudent = new GetStudentByDni(dni, token);
@@ -60,12 +50,21 @@ public class MainStudentActivity extends AppCompatActivity {
             viewName.setText(studentName);
         }
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainStudentActivity.this, StudentNewPasswordActivity.class);
-                startActivity(i);
-            }
+        imagePhoto.setOnClickListener(view -> {
+            PopupMenu popupMenu = new PopupMenu(MainStudentActivity.this, (findViewById(R.id.imageStudentMain)));
+            popupMenu.getMenuInflater().inflate(R.menu.profile_menu, popupMenu.getMenu());
+
+            popupMenu.setOnMenuItemClickListener(item -> {
+                if (item.getItemId() == (R.id.menuEditProfileItem)) {
+                    Intent i = new Intent(MainStudentActivity.this, StudentEditProfileActivity.class);
+                    startActivity(i);
+                } else if (item.getItemId() == (R.id.menuLogoutItem)){
+                    Intent i = new Intent(MainStudentActivity.this, LoginActivity.class);
+                    startActivity(i);
+                }
+                return true;
+            });
+            popupMenu.show();
         });
 
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

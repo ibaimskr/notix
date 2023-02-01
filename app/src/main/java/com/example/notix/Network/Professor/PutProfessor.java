@@ -2,6 +2,7 @@ package com.example.notix.Network.Professor;
 
 import com.example.notix.beans.Professor;
 import com.example.notix.Network.NetConfiguration;
+import com.example.notix.beans.ProfessorRequest;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -16,9 +17,9 @@ public class PutProfessor extends NetConfiguration implements Runnable {
     private String access;
     private int response;
 
-    public PutProfessor(String professor_dni, Professor professorRequest, String access) {
-        this.professor_dni = professor_dni;
+    public PutProfessor(Professor professorRequest, String professor_dni, String access) {
         this.professor = professorRequest;
+        this.professor_dni = professor_dni;
         this.access = access;
     }
 
@@ -32,7 +33,7 @@ public class PutProfessor extends NetConfiguration implements Runnable {
             httpURLConnection.setRequestMethod("PUT");
             httpURLConnection.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
             httpURLConnection.setRequestProperty("Accept", "application/json");
-//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + access);
+            httpURLConnection.setRequestProperty("Authorization", "Bearer " + access);
             httpURLConnection.setDoOutput(true);
             httpURLConnection.setDoInput(true);
 

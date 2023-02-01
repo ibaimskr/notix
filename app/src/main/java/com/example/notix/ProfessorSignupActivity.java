@@ -53,7 +53,6 @@ public class ProfessorSignupActivity extends AppCompatActivity {
                 new ActivityResultContracts.StartActivityForResult(),
                 activityResult -> {
                     if ((activityResult.getResultCode() == RESULT_OK) && (activityResult.getData() != null)) {
-
                         // Get the image and displays it
                         // Note this method is called when the photo is taken!
                         Bundle bundle = activityResult.getData().getExtras();
@@ -72,7 +71,7 @@ public class ProfessorSignupActivity extends AppCompatActivity {
                     if (takePhotoIntent.resolveActivity( getPackageManager() ) != null) {
                         activityResultLauncher.launch(takePhotoIntent);
                     } else {
-                        Toast.makeText( getApplicationContext(), "no tengo camara", Toast.LENGTH_LONG ).show();
+                        Toast.makeText( getApplicationContext(), getString(R.string.error_camera), Toast.LENGTH_LONG ).show();
                     }
                 }
         });
@@ -135,7 +134,8 @@ public class ProfessorSignupActivity extends AppCompatActivity {
                             setEmptyField();
                         } else if (response == 201) {
                             Toast.makeText(getApplicationContext(), R.string.toast_created, Toast.LENGTH_SHORT).show();
-                            Intent i = new Intent();
+                            Intent i = new Intent(ProfessorSignupActivity.this, LoginActivity.class);
+
                             startActivity(i);
                         }
 

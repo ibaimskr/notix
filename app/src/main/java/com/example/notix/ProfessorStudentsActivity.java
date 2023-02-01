@@ -52,8 +52,6 @@ public class ProfessorStudentsActivity extends AppCompatActivity {
 
             if (students == null) {
                 Toast.makeText(getApplicationContext(), getString(R.string.error_server_null_receipt), Toast.LENGTH_LONG).show();
-            } else {
-                students.addAll(studentsArrayList);
             }
 
         } else {

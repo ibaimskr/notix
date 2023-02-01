@@ -58,7 +58,7 @@ public class ProfessorMailActivity extends AppCompatActivity {
             // Processing the answer
             studentsArrayList = getStudents.getResponse();
 
-            if (studentsArrayList.size() != 0) {
+            if (studentsArrayList != null) {
                 ArrayAdapter studentsAdapter = new ArrayAdapter(ProfessorMailActivity.this, android.R.layout.simple_spinner_dropdown_item, studentsArrayList);
                 spinnerReceiper.setAdapter(studentsAdapter);
             } else {
