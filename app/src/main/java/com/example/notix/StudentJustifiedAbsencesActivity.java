@@ -75,24 +75,14 @@ public class StudentJustifiedAbsencesActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.student_nav_notes:
-                        Intent i = new Intent(StudentJustifiedAbsencesActivity.this, StudentNotesActivity.class);
+                    case R.id.student_nav_main:
+                        Intent i = new Intent(StudentJustifiedAbsencesActivity.this, MainStudentActivity.class);
                         startActivity(i);
                         finish();
                         break;
                     case R.id.student_nav_absences:
                         Intent i2 = new Intent(StudentJustifiedAbsencesActivity.this, StudentAbsencesActivity.class);
                         startActivity(i2);
-                        finish();
-                        break;
-                    case R.id.student_nav_subjects:
-                        Intent i3 = new Intent(StudentJustifiedAbsencesActivity.this, StudentSubjectsActivity.class);
-                        startActivity(i3);
-                        finish();
-                        break;
-                    case R.id.student_nav_mail:
-                        Intent i4 = new Intent(StudentJustifiedAbsencesActivity.this, StudentMailActivity.class);
-                        startActivity(i4);
                         finish();
                         break;
                     default:

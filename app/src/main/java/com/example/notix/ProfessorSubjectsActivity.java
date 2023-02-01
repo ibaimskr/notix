@@ -80,26 +80,6 @@ public class ProfessorSubjectsActivity extends AppCompatActivity {
                         startActivity(i);
                         finish();
                         break;
-                    case R.id.professor_nav_notes:
-                        Intent i3 = new Intent(ProfessorSubjectsActivity.this, ProfessorAddNotesActivity.class);
-                        startActivity(i3);
-                        finish();
-                        break;
-                    case R.id.professor_nav_absences:
-                        Intent i2 = new Intent(ProfessorSubjectsActivity.this, ProfessorAddAbsencesActivity.class);
-                        startActivity(i2);
-                        finish();
-                        break;
-                    case R.id.professor_nav_students:
-                        Intent i4 = new Intent(ProfessorSubjectsActivity.this, ProfessorStudentsActivity.class);
-                        startActivity(i4);
-                        finish();
-                        break;
-                    case R.id.professor_nav_mail:
-                        Intent i5 = new Intent(ProfessorSubjectsActivity.this, ProfessorMailActivity.class);
-                        startActivity(i5);
-                        finish();
-                        break;
                     default:
                 }
                 return true;

@@ -67,7 +67,9 @@
     <string name="error_server_data">Error receiving datas!</string>
     <string name="menu_basque">BASQUE</string>
     <string name="menu_delete">DELETE</string>
+    <string name="menu_edit_profile">Edit datas</string>
     <string name="menu_english">ENGLISH</string>
+    <string name="menu_logout">Logout</string>
     <string name="menu_main">MAIN</string>
     <string name="menu_spanish">SPANISH</string>
     <string name="toast_created">User created!</string>

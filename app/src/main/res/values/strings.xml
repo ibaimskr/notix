@@ -71,7 +71,9 @@
 
     <string name="menu_basque">EUSKERA</string>
     <string name="menu_delete">ELIMINAR</string>
+    <string name="menu_edit_profile">Editar datos</string>
     <string name="menu_english">INGLES</string>
+    <string name="menu_logout">Cerrar sesión</string>
     <string name="menu_main">MENÚ</string>
     <string name="menu_spanish">CASTELLANO</string>
 

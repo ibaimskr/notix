@@ -25,7 +25,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/professor_students_bottom_menu" />
+        app:menu="@menu/professor_no_main_bottom_menu" />
 
     <TextView
         android:id="@+id/textViewStudentsProfessor"
