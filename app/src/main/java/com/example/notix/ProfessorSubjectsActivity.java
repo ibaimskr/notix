@@ -1,28 +1,24 @@
 package com.example.notix;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.notix.Network.Student.GetStudentsBySubjectId;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.notix.Network.Subject.GetSubjectsByProfessorDni;
 import com.example.notix.Network.User.SessionManager;
 import com.example.notix.adapters.ProfessorSubjectsAdapter;
-import com.example.notix.adapters.SubjectsAdapter;
 import com.example.notix.beans.Subject;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ProfessorSubjectsActivity extends AppCompatActivity {
     String dni_profe;
@@ -55,14 +51,14 @@ public class ProfessorSubjectsActivity extends AppCompatActivity {
             ArrayList<Subject> subjects = getSubjectsByProfessorDni.getResponse();
 
             if (subjects == null) {
-                Toast.makeText(getApplicationContext(), "Recibo null", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.error_server_null_receipt), Toast.LENGTH_LONG).show();
             } else {
                 subjectsArrayList.addAll(subjects);
                 listViewSubjects.setAdapter(professorSubjectsAdapter);
             }
 
         } else {
-            Toast.makeText(getApplicationContext(), "no me conecto al server", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.error_communication), Toast.LENGTH_LONG).show();
         }
 
 
@@ -99,7 +95,7 @@ public class ProfessorSubjectsActivity extends AppCompatActivity {
             if ((networkInfo != null) && (networkInfo.isAvailable()) && (networkInfo.isConnected()))
                 ret = true;
         } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "comunication error", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.error_communication), Toast.LENGTH_SHORT).show();
         }
         return ret;
     }

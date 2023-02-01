@@ -1,8 +1,5 @@
 package com.example.notix;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -16,6 +13,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.notix.Network.Mail.PostMail;
 import com.example.notix.Network.Professor.GetProfessorsByStudentDni;
@@ -67,7 +67,7 @@ public class StudentMailActivity extends AppCompatActivity {
             }
 
         } else {
-            Toast.makeText(getApplicationContext(), "no me conecto al server", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.error_communication), Toast.LENGTH_LONG).show();
         }
 
         spinnerReceiper.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

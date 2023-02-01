@@ -51,13 +51,13 @@ public class ProfessorStudentsActivity extends AppCompatActivity {
             ArrayList<Student> studentsArrayList = getStudentsByProfessorDni.getResponse();
 
             if (students == null) {
-                Toast.makeText(getApplicationContext(), "recibo null colega", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.error_server_null_receipt), Toast.LENGTH_LONG).show();
             } else {
                 students.addAll(studentsArrayList);
             }
 
         } else {
-            Toast.makeText(getApplicationContext(), "no me conecto al server", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.error_communication), Toast.LENGTH_LONG).show();
         }
 
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -86,7 +86,7 @@ public class ProfessorStudentsActivity extends AppCompatActivity {
             if ((networkInfo != null) && (networkInfo.isAvailable()) && (networkInfo.isConnected()))
                 ret = true;
         } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "comunication error", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.error_communication), Toast.LENGTH_SHORT).show();
         }
         return ret;
     }

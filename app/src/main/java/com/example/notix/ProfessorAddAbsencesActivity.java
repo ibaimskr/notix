@@ -59,8 +59,8 @@ public class ProfessorAddAbsencesActivity extends AppCompatActivity {
 
 
         ArrayList<String> foulArrayList = new ArrayList<>();
-        foulArrayList.add("True");
-        foulArrayList.add("False");
+        foulArrayList.add(getString(R.string.option_absence_true));
+        foulArrayList.add(getString(R.string.option_absence_false));
         ArrayAdapter foulAdapter = new ArrayAdapter(ProfessorAddAbsencesActivity.this, android.R.layout.simple_spinner_dropdown_item, foulArrayList);
         spinnerFoul.setAdapter(foulAdapter);
 
@@ -78,13 +78,13 @@ public class ProfessorAddAbsencesActivity extends AppCompatActivity {
             subjectsArrayList = getSubjectsByProfessorDni.getResponse();
 
             if (subjectsArrayList == null) {
-                Toast.makeText(getApplicationContext(), "Recibo null", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.error_server_null_receipt), Toast.LENGTH_LONG).show();
             } else {
                 ArrayAdapter subjectAdapter = new ArrayAdapter(ProfessorAddAbsencesActivity.this, android.R.layout.simple_spinner_dropdown_item, subjectsArrayList);
                 spinnerSubjects.setAdapter(subjectAdapter);
             }
         } else {
-            Toast.makeText(getApplicationContext(), "no me conecto al server", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.error_communication), Toast.LENGTH_LONG).show();
         }
 
         spinnerSubjects.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -115,14 +115,14 @@ public class ProfessorAddAbsencesActivity extends AppCompatActivity {
                     studentsArrayList = getStudentsBySubjectIdAndProfessorDni.getResponse();
 
                     if (studentsArrayList == null) {
-                        Toast.makeText(getApplicationContext(), "Recibo null", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), getString(R.string.error_server_null_receipt), Toast.LENGTH_LONG).show();
                     } else {
                         ArrayAdapter studentAdapter = new ArrayAdapter(ProfessorAddAbsencesActivity.this, android.R.layout.simple_spinner_dropdown_item, studentsArrayList);
                         spinnerStudents.setAdapter(studentAdapter);
                     }
 
                 } else {
-                    Toast.makeText(getApplicationContext(), "no me conecto al server", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.error_communication), Toast.LENGTH_LONG).show();
                 }
             }
             @Override
@@ -145,7 +145,7 @@ public class ProfessorAddAbsencesActivity extends AppCompatActivity {
         spinnerFoul.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(spinnerFoul.getSelectedItem().toString().equalsIgnoreCase("True")){
+                if(spinnerFoul.getSelectedItem().toString().equalsIgnoreCase(getString(R.string.option_absence_true))){
                     justified = true;
                 } else {
                     justified = false;
@@ -183,12 +183,12 @@ public class ProfessorAddAbsencesActivity extends AppCompatActivity {
                    int response = absenceService.getResponse();
 
                     if (response == 409) {
-                        Toast.makeText(getApplicationContext(), "Ya existe esta falta", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), getString(R.string.error_absence_exits), Toast.LENGTH_LONG).show();
                     } else if (response == 201) {
-                        Toast.makeText(getApplicationContext(), "Falta creada correctamente", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), getString(R.string.toast_absence_created), Toast.LENGTH_LONG).show();
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), "no me conecto al server", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.error_communication), Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -225,7 +225,7 @@ public class ProfessorAddAbsencesActivity extends AppCompatActivity {
             if ((networkInfo != null) && (networkInfo.isAvailable()) && (networkInfo.isConnected()))
                 ret = true;
         } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "comunication error", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.error_communication), Toast.LENGTH_SHORT).show();
         }
         return ret;
     }

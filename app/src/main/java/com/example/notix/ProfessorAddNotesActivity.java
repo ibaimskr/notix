@@ -35,6 +35,8 @@ public class ProfessorAddNotesActivity extends AppCompatActivity {
     String dni_student;
     int id_subject;
     Note noteBD;
+    ArrayList<Subject> subjectsArrayList = new ArrayList<>();
+    ArrayList<Student> studentsArrayList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +58,7 @@ public class ProfessorAddNotesActivity extends AppCompatActivity {
         Button buttonAddNote = findViewById(R.id.buttonProfessorAddANotesAdd);
         BottomNavigationView navigation = findViewById(R.id.notesBottomNavigation);
 
-        ArrayList<Subject> subjectsArrayList ;
+
 
         if (isConnected()) {
             GetSubjectsByProfessorDni getSubjectsByProfessorDni = new GetSubjectsByProfessorDni(dni_profe,token);
@@ -80,20 +82,72 @@ public class ProfessorAddNotesActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "no me conecto al server", Toast.LENGTH_LONG).show();
         }
 
+        spinnerSubjects.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String token = session.getStringData("jwtToken");
+                if(studentsArrayList != null) {
+                    studentsArrayList.clear();
+                    ArrayList<Student> arrayListVacio = new ArrayList<>();
+                    Student student = new Student();
+                    student.setName("");
+                    student.setSurname("");
+                    eva1.setText("");
+                    eva1.setEnabled(false);
+                    eva2.setText("");
+                    eva2.setEnabled(false);
+                    eva3.setText("");
+                    eva3.setEnabled(false);
+                    final1.setText("");
+                    final1.setEnabled(false);
+                    final2.setText("");
+                    final2.setEnabled(false);
+                    arrayListVacio.add(student);
+                    ArrayAdapter studentAdapter = new ArrayAdapter(ProfessorAddNotesActivity.this, android.R.layout.simple_spinner_dropdown_item, arrayListVacio);
+                    spinnerStudents.setAdapter(studentAdapter);
+                }
+                Subject selectedSubject = (Subject) spinnerSubjects.getSelectedItem();
+                if (isConnected()) {
+                    GetStudentsBySubjectId getStudentsBySubjectId = new GetStudentsBySubjectId(selectedSubject.getSubject_id(),token );
+                    Thread thread = new Thread(getStudentsBySubjectId);
+                    try {
+                        thread.start();
+                        thread.join();
+                    } catch (InterruptedException e) {
+                    }
+                    // Processing the answer
+                    studentsArrayList = getStudentsBySubjectId.getResponse();
 
+                    if (studentsArrayList == null) {
+                        Toast.makeText(getApplicationContext(), "Recibo null", Toast.LENGTH_LONG).show();
+                    } else {
+                        ArrayAdapter studentAdapter = new ArrayAdapter(ProfessorAddNotesActivity.this, android.R.layout.simple_spinner_dropdown_item, studentsArrayList);
+                        spinnerStudents.setAdapter(studentAdapter);
+                        eva1.setEnabled(true);
+                        eva2.setEnabled(true);
+                        eva3.setEnabled(true);
+                        final1.setEnabled(true);
+                        final2.setEnabled(true);
+                    }
+
+                } else {
+                    Toast.makeText(getApplicationContext(), "no me conecto al server", Toast.LENGTH_LONG).show();
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         spinnerStudents.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String token = session.getStringData("jwtToken");
-//                ArrayList<Student> studentsArrayList = new ArrayList<>();
-//                studentsArrayList.clear();
                 Subject selectedSubject = (Subject) spinnerSubjects.getSelectedItem();
                 Student selectedStudent = (Student) spinnerStudents.getSelectedItem();
-
-
-
-
 
                 if (isConnected()) {
                     GetNotesByStudentDniAndSubjectId getNotesByStudentDniAndSubjectId = new GetNotesByStudentDniAndSubjectId(selectedStudent.getStudent_dni(),selectedSubject.getSubject_id(),token );
@@ -107,7 +161,7 @@ public class ProfessorAddNotesActivity extends AppCompatActivity {
                     noteBD = getNotesByStudentDniAndSubjectId.getResponse();
 
                     if (noteBD == null) {
-                        Toast.makeText(getApplicationContext(), "no me conecto al server", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "recibo null", Toast.LENGTH_LONG).show();
                     } else {
                        eva1.setText(String.valueOf(noteBD.getEva1()));
                        eva2.setText(String.valueOf(noteBD.getEva2()));
@@ -126,46 +180,6 @@ public class ProfessorAddNotesActivity extends AppCompatActivity {
 
             }
         });
-
-
-
-
-        spinnerSubjects.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String token = session.getStringData("jwtToken");
-                ArrayList<Student> studentsArrayList = new ArrayList<>();
-                studentsArrayList.clear();
-                Subject selectedSubject = (Subject) spinnerSubjects.getSelectedItem();
-                if (isConnected()) {
-                    GetStudentsBySubjectId getStudentsBySubjectId = new GetStudentsBySubjectId(selectedSubject.getSubject_id(),token );
-                    Thread thread = new Thread(getStudentsBySubjectId);
-                    try {
-                        thread.start();
-                        thread.join();
-                    } catch (InterruptedException e) {
-                    }
-                    // Processing the answer
-                    studentsArrayList = getStudentsBySubjectId.getResponse();
-
-                    if (studentsArrayList == null) {
-                        Toast.makeText(getApplicationContext(), "Recibo null", Toast.LENGTH_LONG).show();
-                    } else {
-                        ArrayAdapter studentAdapter = new ArrayAdapter(ProfessorAddNotesActivity.this, android.R.layout.simple_spinner_dropdown_item, studentsArrayList);
-                        spinnerStudents.setAdapter(studentAdapter);
-                    }
-
-                } else {
-                    Toast.makeText(getApplicationContext(), "no me conecto al server", Toast.LENGTH_LONG).show();
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
 
         buttonAddNote.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -226,6 +240,7 @@ public class ProfessorAddNotesActivity extends AppCompatActivity {
                         startActivity(i);
                         finish();
                         break;
+
                     default:
                 }
                 return true;

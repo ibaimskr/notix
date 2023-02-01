@@ -83,7 +83,7 @@ public class StudentSignupActivity extends AppCompatActivity {
                 if (takePhotoIntent.resolveActivity( getPackageManager() ) != null) {
                     activityResultLauncher.launch(takePhotoIntent);
                 } else {
-                    Toast.makeText( getApplicationContext(), "no tengo camara", Toast.LENGTH_LONG ).show();
+                    Toast.makeText( getApplicationContext(), getString(R.string.error_camera), Toast.LENGTH_LONG ).show();
                 }
             }
 

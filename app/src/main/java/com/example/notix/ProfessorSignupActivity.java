@@ -79,11 +79,13 @@ public class ProfessorSignupActivity extends AppCompatActivity {
 
         ArrayList<String> nacionalidades = new ArrayList<>();
         nacionalidades.add("");
-        nacionalidades.add("España");
-        nacionalidades.add("Francia");
-        nacionalidades.add("Italia");
-        nacionalidades.add("Marruecos");
-        nacionalidades.add("Portugal");
+        nacionalidades.add(getString(R.string.option_nationality_spain));
+        nacionalidades.add(getString(R.string.option_nationality_france));
+        nacionalidades.add(getString(R.string.option_nationality_italy));
+        nacionalidades.add(getString(R.string.option_nationality_morocco));
+        nacionalidades.add(getString(R.string.option_nationality_andorra));
+        nacionalidades.add(getString(R.string.option_nationality_murcia));
+        nacionalidades.add(getString(R.string.option_nationality_portugal));
 
         ArrayAdapter<String> nationalityAdapter = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, nacionalidades);
         spinnerNationality.setAdapter(nationalityAdapter);
@@ -131,15 +133,10 @@ public class ProfessorSignupActivity extends AppCompatActivity {
                         } else if (response == 400) {
                             Toast.makeText(getApplicationContext(), R.string.error_no_create_user, Toast.LENGTH_SHORT).show();
                             setEmptyField();
-                        } else if (response == 200) {
-                            /*
-                            Intent i = new Intent();
-                            i.putExtra("dni", user.getDni());
-                            i.putExtra("password", user.getPassword());
-                            setResult(2, i);
-                            finish();
-                             */
+                        } else if (response == 201) {
                             Toast.makeText(getApplicationContext(), R.string.toast_created, Toast.LENGTH_SHORT).show();
+                            Intent i = new Intent();
+                            startActivity(i);
                         }
 
                     } else {
@@ -164,7 +161,7 @@ public class ProfessorSignupActivity extends AppCompatActivity {
                     // Processing the answer
                     professorResponse = createProfessor.getResponse();
 
-                    if (professorResponse == 200) {
+                    if (professorResponse == 201) {
                         UserSignup createUser = new UserSignup(user);
                         Thread thread2 = new Thread(createUser);
                         try {

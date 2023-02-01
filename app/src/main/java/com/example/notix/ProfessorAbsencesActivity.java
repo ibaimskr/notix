@@ -69,13 +69,13 @@ public class ProfessorAbsencesActivity extends AppCompatActivity {
             subjectsArrayList = getSubjectsByProfessorDni.getResponse();
 
             if (subjectsArrayList == null) {
-                Toast.makeText(getApplicationContext(), "Recibo null", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.error_server_null_receipt), Toast.LENGTH_LONG).show();
             } else {
                 ArrayAdapter subjectAdapter = new ArrayAdapter(ProfessorAbsencesActivity.this, android.R.layout.simple_spinner_dropdown_item, subjectsArrayList);
                 spinnerSubjects.setAdapter(subjectAdapter);
             }
         } else {
-            Toast.makeText(getApplicationContext(), "no me conecto al server", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.error_communication), Toast.LENGTH_LONG).show();
         }
 
         spinnerSubjects.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -106,14 +106,14 @@ public class ProfessorAbsencesActivity extends AppCompatActivity {
                     studentsArrayList = getStudentsBySubjectIdAndProfessorDni.getResponse();
 
                     if (studentsArrayList == null) {
-                        Toast.makeText(getApplicationContext(), "Recibo null", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), getString(R.string.error_server_null_receipt), Toast.LENGTH_LONG).show();
                     } else {
                         ArrayAdapter studentAdapter = new ArrayAdapter(ProfessorAbsencesActivity.this, android.R.layout.simple_spinner_dropdown_item, studentsArrayList);
                         spinnerStudents.setAdapter(studentAdapter);
                     }
 
                 } else {
-                    Toast.makeText(getApplicationContext(), "no me conecto al server", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.error_communication), Toast.LENGTH_LONG).show();
                 }
             }
             @Override
@@ -138,14 +138,14 @@ public class ProfessorAbsencesActivity extends AppCompatActivity {
                     absencesArrayList = getAbsencesByStudentDniAndSubjectId.getResponse();
 
                     if (absencesArrayList == null) {
-                        Toast.makeText(getApplicationContext(), "Recibo null", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), getString(R.string.error_server_null_receipt), Toast.LENGTH_LONG).show();
                     } else {
                         AbsencesAdapter absencesAdapter = new AbsencesAdapter(ProfessorAbsencesActivity.this, R.layout.absence_layout, absencesArrayList, subjectsArrayList);
                         listViewAbsences.setAdapter(absencesAdapter);
                     }
 
                 } else {
-                    Toast.makeText(getApplicationContext(), "no me conecto al server", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.error_communication), Toast.LENGTH_LONG).show();
                 }
             }
 
@@ -179,16 +179,16 @@ public class ProfessorAbsencesActivity extends AppCompatActivity {
                         int response = deleteAbsence.getResponse();
 
                         if (response == 204) {
-                            Toast.makeText(getApplicationContext(), "Recibo null", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), getString(R.string.error_server_null_receipt), Toast.LENGTH_LONG).show();
                         } else if (response == 200) {
-                            Toast.makeText(ProfessorAbsencesActivity.this, "Falta eliminada", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ProfessorAbsencesActivity.this, getString(R.string.toast_absence_deleted), Toast.LENGTH_SHORT).show();
                             absencesArrayList.remove(clickedAbsence);
                             AbsencesAdapter absencesAdapter = new AbsencesAdapter(ProfessorAbsencesActivity.this, R.layout.absence_layout, absencesArrayList, subjectsArrayList);
                             listViewAbsences.setAdapter(absencesAdapter);
                         }
 
                     } else {
-                        Toast.makeText(getApplicationContext(), "no me conecto al server", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), getString(R.string.error_communication), Toast.LENGTH_LONG).show();
                     }
 
 
@@ -237,7 +237,7 @@ public class ProfessorAbsencesActivity extends AppCompatActivity {
             if ((networkInfo != null) && (networkInfo.isAvailable()) && (networkInfo.isConnected()))
                 ret = true;
         } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "comunication error", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.error_communication), Toast.LENGTH_SHORT).show();
         }
         return ret;
     }

@@ -56,6 +56,9 @@
     <string name="error_passwordlength">¡Contraseña minimo de 5 caracteres!</string>
     <string name="error_samePass">¡Las contraseñas no coinciden!</string>
     <string name="error_server_data">¡Error al recibir datos del servidor!</string>
+    <string name="error_server_null_receipt">¡No hay datos en el servidor!</string>
+    <string name="error_absence_exits">¡Falta ya existente!</string>
+    <string name="error_camera">¡Camara no disponible!</string>
 
     <string name="view_absences">FALTAS</string>
     <string name="view_justified_absences">FALTAS JUSTICADAS</string>
@@ -81,6 +84,19 @@
     <string name="toast_modified_password">¡Contraseña actualizada!</string>
     <string name="toast_sended">¡Enviado!</string>
     <string name="toast_verification">¡Usuario pendiente de verificación!</string>
+    <string name="toast_absence_deleted">¡Falta eliminada correctamente!</string>
+    <string name="toast_absence_created">¡Falta creada correctamente!</string>
+
+    <string name="option_absence_true">Justificada</string>
+    <string name="option_absence_false">No justificada</string>
+    <string name="option_nationality_spain">España</string>
+    <string name="option_nationality_morocco">Marruecos</string>
+    <string name="option_nationality_france">Francia</string>
+    <string name="option_nationality_italy">Italia</string>
+    <string name="option_nationality_portugal">Portugal</string>
+    <string name="option_nationality_andorra">Andorra</string>
+    <string name="option_nationality_murcia">Murcia</string>
+
 
     <string name="check_remember">Recuerdame</string>
 
