@@ -1,10 +1,14 @@
 package com.example.notix.adapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -36,7 +40,15 @@ public class ProfessorStudentsAdapter extends ArrayAdapter<Student> {
         LayoutInflater layoutInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.professor_student_layout, null);
 
-//        ((ImageView) view.findViewById(R.id.imageViewStudentPhotoAdapter)).;
+        String base64String = "data:image/png;base64," + students.get(position).getPhoto() + "";
+        String base64Image = base64String.split(",")[1];
+
+        byte[] decodedString = Base64.decode(base64Image, Base64.DEFAULT);
+        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+
+
+
+        ((ImageView) view.findViewById(R.id.imageViewStudentPhotoAdapter)).setImageBitmap(decodedByte);
         ((TextView) view.findViewById(R.id.textViewStudentNameAdapter)).setText("" + students.get(position).getName() + " " + students.get(position).getSurname());
         ((TextView) view.findViewById(R.id.textViewStudentDniAdapter)).setText("" + students.get(position).getStudent_dni());
         ((TextView) view.findViewById(R.id.textViewStudentNationalityAdapter)).setText("" + students.get(position).getNationality());

@@ -50,10 +50,11 @@ public class ProfessorStudentsActivity extends AppCompatActivity {
             // Processing the answer
             ArrayList<Student> studentsArrayList = getStudentsByProfessorDni.getResponse();
 
-            if (students == null) {
+            if (studentsArrayList == null) {
                 Toast.makeText(getApplicationContext(), getString(R.string.error_server_null_receipt), Toast.LENGTH_LONG).show();
+            } else {
+                students.addAll(studentsArrayList);
             }
-
         } else {
             Toast.makeText(getApplicationContext(), getString(R.string.error_communication), Toast.LENGTH_LONG).show();
         }

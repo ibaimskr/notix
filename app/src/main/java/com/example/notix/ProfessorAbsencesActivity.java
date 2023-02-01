@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.notix.Network.Absence.DeleteAbsence;
 import com.example.notix.Network.Absence.GetAbsencesByStudentDniAndSubjectId;
+import com.example.notix.Network.Absence.PutAbsence;
 import com.example.notix.Network.Student.GetStudentsBySubjectIdAndProfessorDni;
 import com.example.notix.Network.Subject.GetSubjectsByProfessorDni;
 import com.example.notix.Network.User.SessionManager;
@@ -39,7 +40,7 @@ public class ProfessorAbsencesActivity extends AppCompatActivity {
     ArrayList<Subject> subjectsArrayList = new ArrayList<>();
     ArrayList<Student> studentsArrayList = new ArrayList<>();
     ArrayList<Absence> absencesArrayList = new ArrayList<>();
-    ArrayList<Absence> justifiedAbsences = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -193,8 +194,35 @@ public class ProfessorAbsencesActivity extends AppCompatActivity {
 
 
                 } else if (item.getItemId() == (R.id.justificate_absence)) {
+                    Boolean justified = clickedAbsence.getJustified();
+                    if(justified){
+                        Toast.makeText(getApplicationContext(), getString(R.string.error_absence_is_justified), Toast.LENGTH_LONG).show();
+                    } else {
+                        clickedAbsence.setJustified(true);
+                        if (isConnected()) {
+                            PutAbsence putAbsence = new PutAbsence(dni_alumno, clickedAbsence, subject_id, date, token );
+                            Thread thread = new Thread(putAbsence);
+                            try {
+                                thread.start();
+                                thread.join();
+                            } catch (InterruptedException e) {
+                            }
+                            // Processing the answer
+                            int response = putAbsence.getResponse();
 
+                            if (response == 204) {
+                                Toast.makeText(getApplicationContext(), getString(R.string.error_server_null_receipt), Toast.LENGTH_LONG).show();
+                            } else if (response == 200) {
+                                Toast.makeText(ProfessorAbsencesActivity.this, getString(R.string.toast_absence_updated), Toast.LENGTH_SHORT).show();
+                                AbsencesAdapter absencesAdapter = new AbsencesAdapter(ProfessorAbsencesActivity.this, R.layout.absence_layout, absencesArrayList, subjectsArrayList);
+                                listViewAbsences.setAdapter(absencesAdapter);
+                            }
 
+                        } else {
+                            Toast.makeText(getApplicationContext(), getString(R.string.error_communication), Toast.LENGTH_LONG).show();
+                        }
+
+                    }
 
                 }
                 return true;

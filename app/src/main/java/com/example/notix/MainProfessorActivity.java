@@ -2,9 +2,12 @@ package com.example.notix;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.MenuItem;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
@@ -48,6 +51,12 @@ public class MainProfessorActivity extends AppCompatActivity {
             Professor professor = getProfessor.getResponse();
             String professorName = (professor.getName() + " " + professor.getSurname());
             viewName.setText(professorName);
+
+            String base64String = "data:image/png;base64," + professor.getPhoto() + "";
+            String base64Image = base64String.split(",")[1];
+            byte[] decodedString = Base64.decode(base64Image, Base64.DEFAULT);
+            Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+            imagePhoto.setImageBitmap(decodedByte);
         }
 
         imagePhoto.setOnClickListener(view -> {

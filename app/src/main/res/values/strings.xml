@@ -97,7 +97,6 @@
     <string name="option_nationality_andorra">Andorra</string>
     <string name="option_nationality_murcia">Murcia</string>
 
-
     <string name="check_remember">Recuerdame</string>
 
     <string name="question_singup">¿Que tipo de usuario eres?</string>
@@ -107,4 +106,12 @@
     <string name="text_new_address">Nueva dirección</string>
     <string name="view_modify_data">MODIFICAR DATOS</string>
     <string name="error_any_field_modify">¡No has modificado ningún dato!</string>
+
+    <string name="error_not_authorized">¡No estas autorizado a hacer esta accion!</string>
+    <string name="error_conflict">¡Conflicto!</string>
+    <string name="toast_note_updated">¡Nota actualizada correctamente!</string>
+    <string name="error_photo">¡Debes sacarte una foto!</string>
+    <string name="toast_absence_updated">¡Falta justificada correctamente!</string>
+    <string name="error_absence_is_justified">¡La falta ya esta justificada!</string>
+
 </resources>

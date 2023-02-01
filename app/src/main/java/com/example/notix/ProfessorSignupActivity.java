@@ -27,10 +27,13 @@ import com.example.notix.Network.User.UserSignup;
 import com.example.notix.beans.AuthRequest;
 import com.example.notix.beans.ProfessorRequest;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Base64;
 
 public class ProfessorSignupActivity extends AppCompatActivity {
+
+    Bitmap bitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +59,7 @@ public class ProfessorSignupActivity extends AppCompatActivity {
                         // Get the image and displays it
                         // Note this method is called when the photo is taken!
                         Bundle bundle = activityResult.getData().getExtras();
-                        Bitmap bitmap = (Bitmap) bundle.get( "data" );
+                        bitmap = (Bitmap) bundle.get( "data" );
                     }
                 } );
 
@@ -115,30 +118,40 @@ public class ProfessorSignupActivity extends AppCompatActivity {
                         byte[] encoded64 = Base64.getEncoder().encode(cifradoRSA.cifrarTexto(textPass.getText().toString()));
                         String passBase64= new String(encoded64);
 
-                        user.setDni(textDni.getText().toString());
-                        user.setPassword(passBase64);
-                        user.setRoleId(2);
-                        professor.setProfessor_dni(textDni.getText().toString());
-                        professor.setName(textName.getText().toString());
-                        professor.setSurname(textSurname.getText().toString());
-                        professor.setNationality(nationality);
-                        professor.setEmail(textEmail.getText().toString());
-                        professor.setAdress(textAdress.getText().toString());
+                        if (bitmap == null) {
+                            Toast.makeText(ProfessorSignupActivity.this, R.string.error_photo, Toast.LENGTH_SHORT).show();
+                        } else {
+                            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                            bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                            byte[] photoByte = stream.toByteArray();
+                            bitmap.recycle();
+                            byte[] encodedPhoto64 = Base64.getEncoder().encode(photoByte);
+                            String photoBase64 = new String(encodedPhoto64);
 
-                        int response = signupProfessor(user, professor);
-                        if (response == 500) {
-                            Toast.makeText(getApplicationContext(), R.string.error_duplicated_user, Toast.LENGTH_SHORT).show();
-                            setEmptyField();
-                        } else if (response == 400) {
-                            Toast.makeText(getApplicationContext(), R.string.error_no_create_user, Toast.LENGTH_SHORT).show();
-                            setEmptyField();
-                        } else if (response == 201) {
-                            Toast.makeText(getApplicationContext(), R.string.toast_created, Toast.LENGTH_SHORT).show();
-                            Intent i = new Intent(ProfessorSignupActivity.this, LoginActivity.class);
+                            user.setDni(textDni.getText().toString());
+                            user.setPassword(passBase64);
+                            user.setRoleId(2);
+                            professor.setProfessor_dni(textDni.getText().toString());
+                            professor.setName(textName.getText().toString());
+                            professor.setSurname(textSurname.getText().toString());
+                            professor.setNationality(nationality);
+                            professor.setEmail(textEmail.getText().toString());
+                            professor.setAdress(textAdress.getText().toString());
+                            professor.setPhoto(photoBase64);
 
-                            startActivity(i);
+                            int response = signupProfessor(user, professor);
+                            if (response == 500) {
+                                Toast.makeText(getApplicationContext(), R.string.error_duplicated_user, Toast.LENGTH_SHORT).show();
+                                setEmptyField();
+                            } else if (response == 400) {
+                                Toast.makeText(getApplicationContext(), R.string.error_no_create_user, Toast.LENGTH_SHORT).show();
+                                setEmptyField();
+                            } else if (response == 201) {
+                                Toast.makeText(getApplicationContext(), R.string.toast_created, Toast.LENGTH_SHORT).show();
+                                Intent i = new Intent(ProfessorSignupActivity.this, LoginActivity.class);
+                                startActivity(i);
+                            }
                         }
-
                     } else {
                         Toast.makeText(getApplicationContext(), R.string.error_samePass, Toast.LENGTH_SHORT).show();
                     }

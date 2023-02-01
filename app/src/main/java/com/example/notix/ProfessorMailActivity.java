@@ -44,7 +44,7 @@ public class ProfessorMailActivity extends AppCompatActivity {
         Button buttonSend = findViewById(R.id.buttonProfessorMailSend);
         BottomNavigationView navigation = findViewById(R.id.mailBottomNavigation);
 
-        ArrayList<Student> studentsArrayList;
+        ArrayList<Student> studentsArrayList = null;
 
         if (isConnected()) {
             GetStudentsByProfessorDni getStudents = new GetStudentsByProfessorDni(dni, token);

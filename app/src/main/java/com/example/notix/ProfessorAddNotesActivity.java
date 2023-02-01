@@ -72,14 +72,14 @@ public class ProfessorAddNotesActivity extends AppCompatActivity {
             subjectsArrayList = getSubjectsByProfessorDni.getResponse();
 
             if (subjectsArrayList == null) {
-                Toast.makeText(getApplicationContext(), "Recibo null", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.error_server_null_receipt), Toast.LENGTH_LONG).show();
             } else {
                 ArrayAdapter subjectAdapter = new ArrayAdapter(ProfessorAddNotesActivity.this, android.R.layout.simple_spinner_dropdown_item, subjectsArrayList);
                 spinnerSubjects.setAdapter(subjectAdapter);
             }
 
         } else {
-            Toast.makeText(getApplicationContext(), "no me conecto al server", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.error_communication), Toast.LENGTH_LONG).show();
         }
 
         spinnerSubjects.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -119,7 +119,7 @@ public class ProfessorAddNotesActivity extends AppCompatActivity {
                     studentsArrayList = getStudentsBySubjectId.getResponse();
 
                     if (studentsArrayList == null) {
-                        Toast.makeText(getApplicationContext(), "Recibo null", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), getString(R.string.error_server_null_receipt), Toast.LENGTH_LONG).show();
                     } else {
                         ArrayAdapter studentAdapter = new ArrayAdapter(ProfessorAddNotesActivity.this, android.R.layout.simple_spinner_dropdown_item, studentsArrayList);
                         spinnerStudents.setAdapter(studentAdapter);
@@ -131,7 +131,7 @@ public class ProfessorAddNotesActivity extends AppCompatActivity {
                     }
 
                 } else {
-                    Toast.makeText(getApplicationContext(), "no me conecto al server", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.error_communication), Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -161,17 +161,17 @@ public class ProfessorAddNotesActivity extends AppCompatActivity {
                     noteBD = getNotesByStudentDniAndSubjectId.getResponse();
 
                     if (noteBD == null) {
-                        Toast.makeText(getApplicationContext(), "recibo null", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), getString(R.string.error_server_null_receipt), Toast.LENGTH_LONG).show();
                     } else {
-                       eva1.setText(String.valueOf(noteBD.getEva1()));
-                       eva2.setText(String.valueOf(noteBD.getEva2()));
-                       eva3.setText(String.valueOf(noteBD.getEva3()));
-                       final1.setText(String.valueOf(noteBD.getFinal1()));
-                       final2.setText(String.valueOf(noteBD.getFinal2()));
+                        eva1.setText(String.valueOf(noteBD.getEva1()));
+                        eva2.setText(String.valueOf(noteBD.getEva2()));
+                        eva3.setText(String.valueOf(noteBD.getEva3()));
+                        final1.setText(String.valueOf(noteBD.getFinal1()));
+                        final2.setText(String.valueOf(noteBD.getFinal2()));
                     }
 
                 } else {
-                    Toast.makeText(getApplicationContext(), "no me conecto al server", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.error_communication), Toast.LENGTH_LONG).show();
                 }
             }
 
@@ -206,24 +206,24 @@ public class ProfessorAddNotesActivity extends AppCompatActivity {
                 note.setFinal2(final2text);
 
                 if (isConnected()) {
-                        PutNote putNote = new PutNote(dni_student, id_subject, note, token);
-                        Thread thread2 = new Thread(putNote);
-                        try {
-                            thread2.start();
-                            thread2.join();
-                        } catch (InterruptedException e) {
-                        }
-                        // Processing the answer
-                        int response = putNote.getResponse();
-
-                        if (response == 401) {
-                            Toast.makeText(getApplicationContext(), "No estas autorizado para crear esta nota", Toast.LENGTH_LONG).show();
-                        } else if (response == 409){
-                            Toast.makeText(getApplicationContext(), "Conflicto", Toast.LENGTH_LONG).show();
-                        }else {
-                            Toast.makeText(getApplicationContext(), "Nota actualizada correctamente", Toast.LENGTH_LONG).show();
-                        }
+                    PutNote putNote = new PutNote(dni_student, id_subject, note, token);
+                    Thread thread2 = new Thread(putNote);
+                    try {
+                        thread2.start();
+                        thread2.join();
+                    } catch (InterruptedException e) {
                     }
+                    // Processing the answer
+                    int response = putNote.getResponse();
+
+                    if (response == 401) {
+                        Toast.makeText(getApplicationContext(), getString(R.string.error_not_authorized), Toast.LENGTH_LONG).show();
+                    } else if (response == 409){
+                        Toast.makeText(getApplicationContext(), getString(R.string.error_conflict), Toast.LENGTH_LONG).show();
+                    }else {
+                        Toast.makeText(getApplicationContext(), getString(R.string.toast_note_updated), Toast.LENGTH_LONG).show();
+                    }
+                }
 
 
 

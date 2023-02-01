@@ -27,10 +27,13 @@ import com.example.notix.Network.User.UserSignup;
 import com.example.notix.beans.AuthRequest;
 import com.example.notix.beans.StudentRequest;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Base64;
 
 public class StudentSignupActivity extends AppCompatActivity {
+
+    Bitmap bitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +70,7 @@ public class StudentSignupActivity extends AppCompatActivity {
                         // Get the image and displays it
                         // Note this method is called when the photo is taken!
                         Bundle bundle = activityResult.getData().getExtras();
-                        Bitmap bitmap = (Bitmap) bundle.get( "data" );
+                        bitmap = (Bitmap) bundle.get( "data" );
                     }
                 } );
 
@@ -115,35 +118,41 @@ public class StudentSignupActivity extends AppCompatActivity {
                         byte[] encoded64 = Base64.getEncoder().encode(cifradoRSA.cifrarTexto(textPass.getText().toString()));
                         String passBase64= new String(encoded64);
 
-                        user.setDni(textDni.getText().toString());
-                        user.setPassword(passBase64);
-                        user.setRoleId(3);
-                        student.setStudent_dni(textDni.getText().toString());
-                        student.setName(textName.getText().toString());
-                        student.setSurname(textSurname.getText().toString());
-                        student.setBornDate(textBornDate.getText().toString());
-                        student.setNationality(nationality);
-                        student.setEmail(textEmail.getText().toString());
-                        student.setPhone(textPhone.getText().toString());
+                        if (bitmap == null) {
+                            Toast.makeText(StudentSignupActivity.this, R.string.error_photo, Toast.LENGTH_SHORT).show();
+                        } else {
+                            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                            bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                            byte[] photoByte = stream.toByteArray();
+                            bitmap.recycle();
+                            byte[] encodedPhoto64 = Base64.getEncoder().encode(photoByte);
+                            String photoBase64 = new String(encodedPhoto64);
 
-                        int response = signupStudent(user, student);
-                        if (response == 500) {
-                            Toast.makeText(getApplicationContext(), R.string.error_duplicated_user, Toast.LENGTH_SHORT).show();
-                            setEmptyField();
-                        } else if (response == 400) {
-                            Toast.makeText(getApplicationContext(), R.string.error_no_create_user, Toast.LENGTH_SHORT).show();
-                            setEmptyField();
-                        } else if (response == 200) {
-                            /*
-                            Intent i = new Intent();
-                            i.putExtra("dni", user.getDni());
-                            i.putExtra("password", user.getPassword());
-                            setResult(2, i);
-                            finish();
-                            */
-                            Toast.makeText(getApplicationContext(), R.string.toast_created, Toast.LENGTH_SHORT).show();
+                            user.setDni(textDni.getText().toString());
+                            user.setPassword(passBase64);
+                            user.setRoleId(3);
+                            student.setStudent_dni(textDni.getText().toString());
+                            student.setName(textName.getText().toString());
+                            student.setSurname(textSurname.getText().toString());
+                            student.setBornDate(textBornDate.getText().toString());
+                            student.setNationality(nationality);
+                            student.setEmail(textEmail.getText().toString());
+                            student.setPhone(textPhone.getText().toString());
+                            student.setPhoto(photoBase64);
+
+                            int response = signupStudent(user, student);
+                            if (response == 500) {
+                                Toast.makeText(getApplicationContext(), R.string.error_duplicated_user, Toast.LENGTH_SHORT).show();
+                                setEmptyField();
+                            } else if (response == 400) {
+                                Toast.makeText(getApplicationContext(), R.string.error_no_create_user, Toast.LENGTH_SHORT).show();
+                                setEmptyField();
+                            } else if (response == 201) {
+                                Toast.makeText(getApplicationContext(), R.string.toast_created, Toast.LENGTH_SHORT).show();
+                                Intent i = new Intent(StudentSignupActivity.this, LoginActivity.class);
+                                startActivity(i);
+                            }
                         }
-
                     } else {
                         Toast.makeText(getApplicationContext(), R.string.error_samePass, Toast.LENGTH_SHORT).show();
                     }

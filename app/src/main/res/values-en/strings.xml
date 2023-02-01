@@ -98,4 +98,11 @@
     <string name="text_new_address">New address</string>
     <string name="view_modify_data">MODIFY DATAS</string>
     <string name="error_any_field_modify">¡You don´t modified any field!</string>
+
+    <string name="error_not_authorized">¡You are not authorized to do this action!</string>
+    <string name="error_conflict">¡Conflict!</string>
+    <string name="toast_note_updated">¡Note correctly updated!</string>
+    <string name="error_photo">¡You have to take a photo!</string>
+    <string name="toast_absence_updated">¡Absence correctly justified!</string>
+    <string name="error_absence_is_justified">¡Te absence is already justified!</string>
 </resources>
