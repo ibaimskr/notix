@@ -78,7 +78,7 @@ public class PasswordForgotenActivity extends AppCompatActivity {
                         } else {
                             email = student.getEmail().toString();
                             code = getFiveDigitsNumber();
-                            MailRequest mail = new MailRequest("enekogarciarenovales@gmail.com", getString(R.string.msg_message_verification_code2) + "  " +  code, getString(R.string.subject));
+                            MailRequest mail = new MailRequest(email, getString(R.string.msg_message_verification_code2) + "  " +  code, getString(R.string.subject));
                             int responseMail = sendMail(mail);
                             if (responseMail == 400) {
                                 //Toast

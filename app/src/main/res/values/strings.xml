@@ -51,6 +51,7 @@
     <string name="error_partial">¡Aun no tienes notas parciales!</string>
     <string name="error_password">¡Contraseña incorrecta!</string>
     <string name="error_password_length">¡Contraseña minimo de 5 caracteres!</string>
+    <string name="error_phone_length">¡El número debe tener 9 caracteres!</string>
     <string name="error_photo">¡Debes sacarte una foto!</string>
     <string name="error_samePass">¡Las contraseñas no coinciden!</string>
     <string name="error_server_data">¡Error al recibir datos del servidor!</string>
@@ -82,6 +83,21 @@
     <string name="view_student_signup">Registro Alumno</string>
     <string name="view_subjects">ASIGNATURAS</string>
 
+    <string name="toast_absence_created">¡Falta creada correctamente!</string>
+    <string name="toast_absence_deleted">¡Falta eliminada correctamente!</string>
+    <string name="toast_absence_updated">¡Falta justificada correctamente!</string>
+    <string name="toast_created">¡Usuario creado!</string>
+    <string name="toast_dni_not_registered">¡Este dni no esta registrado!</string>
+    <string name="toast_incorrect_code">¡Codigo de verificacion incorrecto!</string>
+    <string name="toast_modified_password">¡Contraseña actualizada!</string>
+    <string name="toast_note_updated">¡Nota actualizada correctamente!</string>
+    <string name="toast_pass_modified">¡Contraseña modificada!</string>
+    <string name="toast_professor_datas_modified">¡Datos del profesor actualizados!</string>
+    <string name="toast_sended">¡Enviado!</string>
+    <string name="toast_student_datas_modified">¡Datos del alumno actualizados!</string>
+    <string name="toast_user_not_exists">¡No existe el usuario!</string>
+    <string name="toast_verification">¡Usuario pendiente de verificación!</string>
+
     <string name="option_absence_false">No justificada</string>
     <string name="option_absence_true">Justificada</string>
     <string name="option_nationality_andorra">Andorra</string>
@@ -92,17 +108,6 @@
     <string name="option_nationality_portugal">Portugal</string>
     <string name="option_nationality_spain">España</string>
 
-    <string name="toast_absence_created">¡Falta creada correctamente!</string>
-    <string name="toast_absence_deleted">¡Falta eliminada correctamente!</string>
-    <string name="toast_absence_updated">¡Falta justificada correctamente!</string>
-    <string name="toast_created">¡Usuario creado!</string>
-    <string name="toast_modified_password">¡Contraseña actualizada!</string>
-    <string name="toast_note_updated">¡Nota actualizada correctamente!</string>
-    <string name="toast_professor_datas_modified">¡Datos del profesor actualizados!</string>
-    <string name="toast_sended">¡Enviado!</string>
-    <string name="toast_student_datas_modified">¡Datos del alumno actualizados!</string>
-    <string name="toast_verification">¡Usuario pendiente de verificación!</string>
-
     <string name="menu_basque">Euskera</string>
     <string name="menu_delete">Eliminar</string>
     <string name="menu_edit_profile">Editar datos</string>
@@ -112,13 +117,12 @@
     <string name="menu_main">MENÚ</string>
     <string name="menu_spanish">Castellano</string>
 
+    <string name="msg_message_verification_code">Ha solicitado restablecer la contraseña de acceso a su cuenta de Notix</string>
+    <string name="msg_message_verification_code2">Su codigo de verificacion para poder restablecer la contraseña es:</string>
+
+    <string name="subject">Código de verificación</string>
+
     <string name="check_remember">Recuerdame</string>
 
     <string name="question_singup">¿Que tipo de usuario eres?</string>
-
-    <string name="toast_dni_not_registered">¡Este dni no esta registrado!</string>
-    <string name="toast_user_not_exists">¡No existe el usuario!</string>
-    <string name="toast_pass_modified">¡Contraseña modificada!</string>
-    <string name="toast_incorrect_code">¡Codigo de verificacion incorrecto!</string>
-    <string name="msg_message_verification_code">Ha solicitado restablecer la contraseña de acceso a su cuenta de Notix\nSu codigo de verificacion para poder restablecer la contraseña es:</string>
 </resources>
