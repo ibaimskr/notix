@@ -44,6 +44,7 @@
     <string name="error_duplicated_user">User already exists!</string>
     <string name="error_invalid_data">¡You have entered some invalid data!</string>
     <string name="error_modify_password">Password not modified!</string>
+    <string name="error_no_data_modified">¡Datas cant be modified!</string>
     <string name="error_not_authorized">¡You are not authorized to do this action!</string>
     <string name="error_notes">You still don`t have notes!</string>
     <string name="error_no_create_user">¡Failed to create user!</string>
@@ -97,7 +98,9 @@
     <string name="toast_created">User created!</string>
     <string name="toast_modified_password">Password modified!</string>
     <string name="toast_note_updated">¡Note correctly updated!</string>
+    <string name="toast_professor_datas_modified">¡Professor datas modified!</string>
     <string name="toast_sended">Sended!</string>
+    <string name="toast_student_datas_modified">¡Student datas modified!</string>
     <string name="toast_verification">Wait to be verified!</string>
 
     <string name="menu_basque">Basque</string>

@@ -44,6 +44,7 @@
     <string name="error_duplicated_user">¡El usuario ya existe!</string>
     <string name="error_invalid_data">¡Has introducido algún dato invalido!</string>
     <string name="error_modify_password">¡No se ha podido actualizar la contraseña!</string>
+    <string name="error_no_data_modified">¡No se han podido actualizar los datos!</string>
     <string name="error_not_authorized">¡No estas autorizado a hacer esta accion!</string>
     <string name="error_notes">¡Aun no tienes notas!</string>
     <string name="error_no_create_user">¡No se ha podido crear el usuario!</string>
@@ -97,7 +98,9 @@
     <string name="toast_created">¡Usuario creado!</string>
     <string name="toast_modified_password">¡Contraseña actualizada!</string>
     <string name="toast_note_updated">¡Nota actualizada correctamente!</string>
+    <string name="toast_professor_datas_modified">¡Datos del profesor actualizados!</string>
     <string name="toast_sended">¡Enviado!</string>
+    <string name="toast_student_datas_modified">¡Datos del alumno actualizados!</string>
     <string name="toast_verification">¡Usuario pendiente de verificación!</string>
 
     <string name="menu_basque">Euskera</string>
