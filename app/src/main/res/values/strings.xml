@@ -121,5 +121,4 @@
     <string name="toast_pass_modified">¡Contraseña modificada!</string>
     <string name="toast_incorrect_code">¡Codigo de verificacion incorrecto!</string>
     <string name="msg_message_verification_code">Ha solicitado restablecer la contraseña de acceso a su cuenta de Notix\nSu codigo de verificacion para poder restablecer la contraseña es:</string>
-
 </resources>

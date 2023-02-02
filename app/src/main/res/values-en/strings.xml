@@ -121,5 +121,4 @@
     <string name="toast_pass_modified">¡Password modified!</string>
     <string name="toast_incorrect_code">¡Verification code is incorrect!</string>
     <string name="msg_message_verification_code">You have requested to reset the password to access your Notix account\nYour verification code to reset the password is: </string>
-
 </resources>
