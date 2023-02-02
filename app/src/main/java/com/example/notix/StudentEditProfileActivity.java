@@ -81,6 +81,7 @@ public class StudentEditProfileActivity extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
+                StudentRequest studentRequest = new StudentRequest();
                 int response;
                 if (textMail.getText().toString().equals("") && textPhone.getText().toString().equals("")
                     && textPassword.getText().toString().equals("") && textPassword2.getText().toString().equals("")) {

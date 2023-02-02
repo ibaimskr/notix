@@ -94,7 +94,6 @@ public class ProfessorEditProfileActivity extends AppCompatActivity {
                         professorRequest.setAdress(textAddress.getText().toString());
                     }
 
-
                     PutProfessor putProfessor = new PutProfessor(professorRequest, dni, token);
                     Thread thread2 = new Thread(putProfessor);
                     try {
@@ -113,8 +112,8 @@ public class ProfessorEditProfileActivity extends AppCompatActivity {
                         String passBase64 = new String(encoded64);
 
                         user.setDni(dni);
-                        user.setRoleId(2);
                         user.setPassword(passBase64);
+                        user.setRoleId(2);
                         PutUser putUser = new PutUser(user, dni, token);
                         Thread thread1 = new Thread(putUser);
                         try {
@@ -123,8 +122,17 @@ public class ProfessorEditProfileActivity extends AppCompatActivity {
                         } catch (InterruptedException e) {
                             // Nothing to do here...
                         }
-                    }
+                        // Processing the answer
+                        response = putUser.getResponse();
+                        if (response == 201) {
+                            Toast.makeText(getApplicationContext(), getString(R.string.toast_modified_password), Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getApplicationContext(), getString(R.string.error_modify_password), Toast.LENGTH_SHORT).show();
+                        }
 
+                    } else {
+                        Toast.makeText(getApplicationContext(), getString(R.string.error_samePass), Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
