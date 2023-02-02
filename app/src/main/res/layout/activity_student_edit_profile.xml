@@ -19,7 +19,7 @@
     <TableLayout
         android:id="@+id/layoutNewPassword"
         android:layout_width="350dp"
-        android:layout_height="270dp"
+        android:layout_height="320dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,9 +40,29 @@
             android:layout_height="match_parent">
 
             <TextView
+                android:id="@+id/viewStudentEditProfileEmpty"
+                android:layout_width="210dp"
+                android:layout_height="10dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
                 android:id="@+id/viewStudentEditProfileName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/viewStudentEditProfileEmpty2"
+                android:layout_width="210dp"
+                android:layout_height="10dp" />
         </TableRow>
 
         <TableRow
@@ -60,9 +80,29 @@
             android:layout_height="match_parent">
 
             <TextView
+                android:id="@+id/viewStudentEditProfileEmpty3"
+                android:layout_width="210dp"
+                android:layout_height="10dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
                 android:id="@+id/viewStudentEditProfileBornDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/viewStudentEditProfileEmpty4"
+                android:layout_width="210dp"
+                android:layout_height="10dp" />
         </TableRow>
 
         <TableRow

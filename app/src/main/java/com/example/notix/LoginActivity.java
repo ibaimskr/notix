@@ -46,14 +46,14 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        ImageButton buttonIdioma = findViewById(R.id.imageButtonLogin);
+        ImageButton buttonIdioma = findViewById(R.id.imageButtonLanguage);
         Button buttonPassword = findViewById(R.id.buttonLoginRemember);
         Button buttonRegister = findViewById(R.id.buttonLoginSignup);
         Button buttonLogin = findViewById(R.id.buttonLogin);
         CheckBox checkRemember = findViewById(R.id.checkLoginRemember);
         textDni = findViewById(R.id.textLoginDni);
         textPassword = findViewById(R.id.textLoginPassword);
-        ImageView image = findViewById(R.id.imageLogin);
+        ImageView image = findViewById(R.id.imageButtonLogin);
 
         Glide.with(getApplicationContext()).load(R.drawable.logo).into(image);
 
@@ -208,7 +208,7 @@ public class LoginActivity extends AppCompatActivity {
 
         // BUTTON LANGUAGE //
         buttonIdioma.setOnClickListener(view -> {
-            PopupMenu popupMenu = new PopupMenu(LoginActivity.this, (findViewById(R.id.imageButtonLogin)));
+            PopupMenu popupMenu = new PopupMenu(LoginActivity.this, (findViewById(R.id.imageButtonLanguage)));
             popupMenu.getMenuInflater().inflate(R.menu.language_menu, popupMenu.getMenu());
 
             popupMenu.setOnMenuItemClickListener(item -> {

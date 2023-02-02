@@ -10,16 +10,16 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/tableLayout5"
+        app:layout_constraintBottom_toTopOf="@+id/layoutProfessorEditProfile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="@string/view_modify_data" />
 
     <TableLayout
-        android:id="@+id/tableLayout5"
+        android:id="@+id/layoutProfessorEditProfile"
         android:layout_width="350dp"
-        android:layout_height="270dp"
+        android:layout_height="280dp"
         app:layout_constraintBottom_toBottomOf="@+id/professorBottomNavigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,7 +27,7 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/viewProfessorEditProfileDni"
@@ -37,7 +37,17 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/viewProfessorEditProfileEmpty"
+                android:layout_width="210dp"
+                android:layout_height="10dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/viewProfessorEditProfileName"
@@ -47,7 +57,17 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/viewProfessorEditProfileEmpty2"
+                android:layout_width="210dp"
+                android:layout_height="10dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/viewProfessorEditProfileSurname"
@@ -57,7 +77,17 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/viewProfessorEditProfileEmpty3"
+                android:layout_width="210dp"
+                android:layout_height="10dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/viewProfessorEditProfileNationality"
@@ -67,7 +97,7 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/viewProfessorEditProfileMail"
@@ -85,7 +115,7 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/viewProfessorEditProfileAddress"
@@ -103,7 +133,7 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/textView4"
@@ -121,7 +151,7 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/textView5"
@@ -145,7 +175,7 @@
         app:layout_constraintBottom_toTopOf="@+id/professorBottomNavigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout5"
+        app:layout_constraintTop_toBottomOf="@+id/layoutProfessorEditProfile"
         tools:text="@string/button_modify" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

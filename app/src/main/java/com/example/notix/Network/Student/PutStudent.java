@@ -2,6 +2,7 @@ package com.example.notix.Network.Student;
 
 import com.example.notix.beans.Student;
 import com.example.notix.Network.NetConfiguration;
+import com.example.notix.beans.StudentRequest;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -13,8 +14,8 @@ public class PutStudent extends NetConfiguration implements Runnable {
     private final String theUrl = theBaseUrl + "students/";
     private Student student;
     private String student_dni;
-    private int response;
     private String token;
+    private int response;
 
     public PutStudent(Student studentRequest, String student_dni, String token) {
         this.student = studentRequest;
@@ -31,7 +32,7 @@ public class PutStudent extends NetConfiguration implements Runnable {
             httpURLConnection.setRequestMethod("PUT");
             httpURLConnection.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
             httpURLConnection.setRequestProperty("Accept", "application/json");
-//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + token);
+            httpURLConnection.setRequestProperty("Authorization", "Bearer " + token);
             httpURLConnection.setDoOutput(true);
             httpURLConnection.setDoInput(true);
 
@@ -63,7 +64,6 @@ public class PutStudent extends NetConfiguration implements Runnable {
         } catch (Exception e) {
             System.out.println("ERROR: " + e.getMessage());
         }
-
     }
 
     public int getResponse() {

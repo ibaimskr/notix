@@ -52,8 +52,8 @@ public class ProfessorAbsencesActivity extends AppCompatActivity {
         dni_profe = session.getStringData("dni");
 
         BottomNavigationView navigation = findViewById(R.id.professorBottomNavigation);
-        Spinner spinnerStudents = findViewById(R.id.spinnerStudentsProfessorAbsences);
-        Spinner spinnerSubjects = findViewById(R.id.spinnerSubjectsProfessorAbsences);
+        Spinner spinnerStudents = findViewById(R.id.spinnerProfessorAbsencesStudents);
+        Spinner spinnerSubjects = findViewById(R.id.spinnerProfessorAbsencesSubjects);
         ListView listViewAbsences = findViewById(R.id.listViewProfessorAbsences);
 
 
@@ -165,7 +165,7 @@ public class ProfessorAbsencesActivity extends AppCompatActivity {
 
 
             PopupMenu popupMenu = new PopupMenu(ProfessorAbsencesActivity.this, (findViewById(R.id.listViewProfessorAbsences)));
-            popupMenu.getMenuInflater().inflate(R.menu.menu_delete_absence, popupMenu.getMenu());
+            popupMenu.getMenuInflater().inflate(R.menu.delete_absence_menu, popupMenu.getMenu());
             popupMenu.setOnMenuItemClickListener(item -> {
                 if (item.getItemId() == (R.id.delete_absence)) {
                     if (isConnected()) {

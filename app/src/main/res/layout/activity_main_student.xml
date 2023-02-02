@@ -7,7 +7,7 @@
     tools:context=".MainStudentActivity">
 
     <TextView
-        android:id="@+id/textViewStudentAreaMainStudent"
+        android:id="@+id/viewStudentMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/view_student_area"

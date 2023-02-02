@@ -32,6 +32,29 @@
     <string name="text_subject">Asignatura</string>
     <string name="text_surname">Apellidos</string>
 
+    <string name="error">¡Error!</string>
+    <string name="error_absence_exits">¡Falta ya existente!</string>
+    <string name="error_absence_is_justified">¡La falta ya esta justificada!</string>
+    <string name="error_any_field_modify">¡No has modificado ningún dato!</string>
+    <string name="error_blankField">¡Se deben rellenar todos los campos!</string>
+    <string name="error_camera">¡Camara no disponible!</string>
+    <string name="error_communication">¡Error al conectar con el servidor!</string>
+    <string name="error_conflict">¡Conflicto!</string>
+    <string name="error_dniPass">¡DNI o Contraseña incorrecta!</string>
+    <string name="error_duplicated_user">¡El usuario ya existe!</string>
+    <string name="error_invalid_data">¡Has introducido algún dato invalido!</string>
+    <string name="error_modify_password">¡No se ha podido actualizar la contraseña!</string>
+    <string name="error_not_authorized">¡No estas autorizado a hacer esta accion!</string>
+    <string name="error_notes">¡Aun no tienes notas!</string>
+    <string name="error_no_create_user">¡No se ha podido crear el usuario!</string>
+    <string name="error_partial">¡Aun no tienes notas parciales!</string>
+    <string name="error_password">¡Contraseña incorrecta!</string>
+    <string name="error_password_length">¡Contraseña minimo de 5 caracteres!</string>
+    <string name="error_photo">¡Debes sacarte una foto!</string>
+    <string name="error_samePass">¡Las contraseñas no coinciden!</string>
+    <string name="error_server_data">¡Error al recibir datos del servidor!</string>
+    <string name="error_server_null_receipt">¡No hay datos en el servidor!</string>
+
     <string name="button_add">AÑADIR</string>
     <string name="button_all_absences">VER TODAS LAS FALTAS</string>
     <string name="button_all_justified_absences">VER JUSTIFICADAS</string>
@@ -45,29 +68,6 @@
     <string name="button_send_code">Enviar Código</string>
     <string name="button_signup">REGISTRAR</string>
 
-    <string name="error">¡Error!</string>
-    <string name="error_absence_is_justified">¡La falta ya esta justificada!</string>
-    <string name="error_any_field_modify">¡No has modificado ningún dato!</string>
-    <string name="error_blankField">¡Se deben rellenar todos los campos!</string>
-    <string name="error_communication">¡Error al conectar con el servidor!</string>
-    <string name="error_conflict">¡Conflicto!</string>
-    <string name="error_dniPass">¡DNI o Contraseña incorrecta!</string>
-    <string name="error_duplicated_user">¡El usuario ya existe!</string>
-    <string name="error_invalid_data">¡Has introducido algún dato invalido!</string>
-    <string name="error_not_authorized">¡No estas autorizado a hacer esta accion!</string>
-    <string name="error_notes">¡Aun no tienes notas!</string>
-    <string name="error_no_create_user">¡No se ha podido crear el usuario!</string>
-    <string name="error_modify_password">¡No se ha podido actualizar la contraseña!</string>
-    <string name="error_partial">¡Aun no tienes notas parciales!</string>
-    <string name="error_password">¡Contraseña incorrecta!</string>
-    <string name="error_passwordlength">¡Contraseña minimo de 5 caracteres!</string>
-    <string name="error_photo">¡Debes sacarte una foto!</string>
-    <string name="error_samePass">¡Las contraseñas no coinciden!</string>
-    <string name="error_server_data">¡Error al recibir datos del servidor!</string>
-    <string name="error_server_null_receipt">¡No hay datos en el servidor!</string>
-    <string name="error_absence_exits">¡Falta ya existente!</string>
-    <string name="error_camera">¡Camara no disponible!</string>
-
     <string name="view_absences">FALTAS</string>
     <string name="view_justified_absences">FALTAS JUSTICADAS</string>
     <string name="view_mail">CORREO</string>
@@ -75,38 +75,39 @@
     <string name="view_notes">NOTAS</string>
     <string name="view_partial">PARCIALES</string>
     <string name="view_professor_area">ÁREA PROFESOR</string>
-    <string name="view_professorSignup">Registro Profesor</string>
+    <string name="view_professor_signup">Registro Profesor</string>
     <string name="view_students">ALUMNOS</string>
     <string name="view_student_area">ÁREA ALUMNO</string>
-    <string name="view_studentSignup">Registro Alumno</string>
+    <string name="view_student_signup">Registro Alumno</string>
     <string name="view_subjects">ASIGNATURAS</string>
 
-    <string name="menu_basque">EUSKERA</string>
-    <string name="menu_delete">ELIMINAR</string>
-    <string name="menu_edit_profile">Editar datos</string>
-    <string name="menu_english">INGLES</string>
-    <string name="menu_logout">Cerrar sesión</string>
-    <string name="menu_main">MENÚ</string>
-    <string name="menu_spanish">CASTELLANO</string>
+    <string name="option_absence_false">No justificada</string>
+    <string name="option_absence_true">Justificada</string>
+    <string name="option_nationality_andorra">Andorra</string>
+    <string name="option_nationality_france">Francia</string>
+    <string name="option_nationality_italy">Italia</string>
+    <string name="option_nationality_morocco">Marruecos</string>
+    <string name="option_nationality_murcia">Murcia</string>
+    <string name="option_nationality_portugal">Portugal</string>
+    <string name="option_nationality_spain">España</string>
 
+    <string name="toast_absence_created">¡Falta creada correctamente!</string>
+    <string name="toast_absence_deleted">¡Falta eliminada correctamente!</string>
     <string name="toast_absence_updated">¡Falta justificada correctamente!</string>
     <string name="toast_created">¡Usuario creado!</string>
     <string name="toast_modified_password">¡Contraseña actualizada!</string>
     <string name="toast_note_updated">¡Nota actualizada correctamente!</string>
     <string name="toast_sended">¡Enviado!</string>
     <string name="toast_verification">¡Usuario pendiente de verificación!</string>
-    <string name="toast_absence_deleted">¡Falta eliminada correctamente!</string>
-    <string name="toast_absence_created">¡Falta creada correctamente!</string>
 
-    <string name="option_absence_true">Justificada</string>
-    <string name="option_absence_false">No justificada</string>
-    <string name="option_nationality_spain">España</string>
-    <string name="option_nationality_morocco">Marruecos</string>
-    <string name="option_nationality_france">Francia</string>
-    <string name="option_nationality_italy">Italia</string>
-    <string name="option_nationality_portugal">Portugal</string>
-    <string name="option_nationality_andorra">Andorra</string>
-    <string name="option_nationality_murcia">Murcia</string>
+    <string name="menu_basque">Euskera</string>
+    <string name="menu_delete">Eliminar</string>
+    <string name="menu_edit_profile">Editar datos</string>
+    <string name="menu_english">Inglés</string>
+    <string name="menu_justify">Justificar</string>
+    <string name="menu_logout">Cerrar sesión</string>
+    <string name="menu_main">MENÚ</string>
+    <string name="menu_spanish">Castellano</string>
 
     <string name="check_remember">Recuerdame</string>
 

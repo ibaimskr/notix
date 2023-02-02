@@ -7,7 +7,7 @@
     tools:context=".LoginActivity">
 
     <ImageView
-        android:id="@+id/imageLogin"
+        android:id="@+id/imageButtonLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/textLoginDni"
@@ -107,7 +107,7 @@
         app:layout_constraintVertical_bias="0.196" />
 
     <ImageButton
-        android:id="@+id/imageButtonLogin"
+        android:id="@+id/imageButtonLanguage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="35dp"

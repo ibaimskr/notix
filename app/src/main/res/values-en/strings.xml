@@ -31,6 +31,30 @@
     <string name="text_student">Student</string>
     <string name="text_subject">Subject</string>
     <string name="text_surname">Surnames</string>
+
+    <string name="error">Error!</string>
+    <string name="error_absence_exits">¡Absence already exists!</string>
+    <string name="error_absence_is_justified">¡Te absence is already justified!</string>
+    <string name="error_any_field_modify">¡You don´t modified any field!</string>
+    <string name="error_blankField">All fields must be filled!</string>
+    <string name="error_camera">¡Camera not available!</string>
+    <string name="error_communication">Error to connect to the server!</string>
+    <string name="error_conflict">¡Conflict!</string>
+    <string name="error_dniPass">Incorrect DNI or Password!</string>
+    <string name="error_duplicated_user">User already exists!</string>
+    <string name="error_invalid_data">¡You have entered some invalid data!</string>
+    <string name="error_modify_password">Password not modified!</string>
+    <string name="error_not_authorized">¡You are not authorized to do this action!</string>
+    <string name="error_notes">You still don`t have notes!</string>
+    <string name="error_no_create_user">¡Failed to create user!</string>
+    <string name="error_partial">You still don´t have partials!</string>
+    <string name="error_password">¡Incorrect password!</string>
+    <string name="error_password_length">¡Password minimum of 5 characters!</string>
+    <string name="error_photo">¡You have to take a photo!</string>
+    <string name="error_samePass">Password`s are not the same</string>
+    <string name="error_server_data">Error receiving datas!</string>
+    <string name="error_server_null_receipt">¡There is no data on the server!</string>
+
     <string name="button_add">ADD</string>
     <string name="button_all_absences">WATCH ABSENCES</string>
     <string name="button_all_justified_absences">WATCH JUSTIEDS</string>
@@ -43,6 +67,7 @@
     <string name="button_send">SEND</string>
     <string name="button_send_code">Send code</string>
     <string name="button_signup">SIGNUP</string>
+
     <string name="view_absences">ABSENCES</string>
     <string name="view_justified_absences">JUSTIFIED ABSENCES</string>
     <string name="view_mail">MAIL</string>
@@ -50,57 +75,41 @@
     <string name="view_notes">NOTES</string>
     <string name="view_partial">PARTIALS</string>
     <string name="view_professor_area">PROFESSOR AREA</string>
-    <string name="view_professorSignup">Professor Signup</string>
+    <string name="view_professor_signup">Professor Signup</string>
     <string name="view_students">STUDENTS</string>
     <string name="view_student_area">STUDENT AREA</string>
-    <string name="view_studentSignup">Student Signup</string>
+    <string name="view_student_signup">Student Signup</string>
     <string name="view_subjects">SUBJECTS</string>
-    <string name="error">Error!</string>
-    <string name="error_absence_is_justified">¡Te absence is already justified!</string>
-    <string name="error_any_field_modify">¡You don´t modified any field!</string>
-    <string name="error_blankField">All fields must be filled!</string>
-    <string name="error_communication">Error to connect to the server!</string>
-    <string name="error_conflict">¡Conflict!</string>
-    <string name="error_dniPass">Incorrect DNI or Password!</string>
-    <string name="error_duplicated_user">User already exists!</string>
-    <string name="error_invalid_data">¡You have entered some invalid data!</string>
-    <string name="error_not_authorized">¡You are not authorized to do this action!</string>
-    <string name="error_notes">You still don`t have notes!</string>
-    <string name="error_no_create_user">¡Failed to create user!</string>
-    <string name="error_modify_password">Password not modified!</string>
-    <string name="error_partial">You still don´t have partials!</string>
-    <string name="error_password">¡Incorrect password!</string>
-    <string name="error_passwordlength">¡Password minimum of 5 characters!</string>
-    <string name="error_photo">¡You have to take a photo!</string>
-    <string name="error_samePass">Password`s are not the same</string>
-    <string name="error_server_data">Error receiving datas!</string>
-    <string name="menu_basque">BASQUE</string>
-    <string name="menu_delete">DELETE</string>
-    <string name="menu_edit_profile">Edit datas</string>
-    <string name="menu_english">ENGLISH</string>
-    <string name="menu_logout">Logout</string>
-    <string name="menu_main">MAIN</string>
-    <string name="menu_spanish">SPANISH</string>
+
+    <string name="option_absence_false">Not justified</string>
+    <string name="option_absence_true">Justified</string>
+    <string name="option_nationality_andorra">Andorra</string>
+    <string name="option_nationality_france">France</string>
+    <string name="option_nationality_italy">Italy</string>
+    <string name="option_nationality_morocco">Morocco</string>
+    <string name="option_nationality_murcia">Murcia</string>
+    <string name="option_nationality_portugal">Portugal</string>
+    <string name="option_nationality_spain">Spain</string>
+
+    <string name="toast_absence_created">¡Absence correctly created!</string>
+    <string name="toast_absence_deleted">¡Absence correctly deleted!</string>
     <string name="toast_absence_updated">¡Absence correctly justified!</string>
     <string name="toast_created">User created!</string>
     <string name="toast_modified_password">Password modified!</string>
     <string name="toast_note_updated">¡Note correctly updated!</string>
     <string name="toast_sended">Sended!</string>
     <string name="toast_verification">Wait to be verified!</string>
+
+    <string name="menu_basque">Basque</string>
+    <string name="menu_delete">Delete</string>
+    <string name="menu_edit_profile">Edit datas</string>
+    <string name="menu_english">English</string>
+    <string name="menu_justify">Justify</string>
+    <string name="menu_logout">Logout</string>
+    <string name="menu_main">MAIN</string>
+    <string name="menu_spanish">Spanish</string>
+
     <string name="check_remember">Remember me</string>
+
     <string name="question_singup">What type of user are you?</string>
-    <string name="toast_absence_deleted">¡Absence correctly deleted!</string>
-    <string name="toast_absence_created">¡Absence correctly created!</string>
-    <string name="option_absence_true">Justified</string>
-    <string name="option_absence_false">Not justified</string>
-    <string name="option_nationality_spain">Spain</string>
-    <string name="option_nationality_morocco">Morocco</string>
-    <string name="option_nationality_france">France</string>
-    <string name="option_nationality_italy">Italy</string>
-    <string name="option_nationality_portugal">Portugal</string>
-    <string name="option_nationality_andorra">Andorra</string>
-    <string name="option_nationality_murcia">Murcia</string>
-    <string name="error_server_null_receipt">¡There is no data on the server!</string>
-    <string name="error_absence_exits">¡Absence already exists!</string>
-    <string name="error_camera">¡Camera not available!</string>
 </resources>

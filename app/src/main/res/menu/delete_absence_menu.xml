@@ -6,5 +6,5 @@
         android:title="@string/menu_delete" />
     <item
         android:id="@+id/justificate_absence"
-        android:title="JUSTIFICAR" />
+        android:title="@string/menu_justify" />
 </menu>
