@@ -1,6 +1,5 @@
 package com.example.notix.Network.Student;
 
-import com.example.notix.beans.Student;
 import com.example.notix.Network.NetConfiguration;
 import com.example.notix.beans.StudentRequest;
 
@@ -11,7 +10,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class PutStudent extends NetConfiguration implements Runnable {
-    private final String theUrl = theBaseUrl + "students/";
+    private final String theUrl = theBaseUrl + "studentsUpdate/";
     private StudentRequest student;
     private String student_dni;
     private String token;

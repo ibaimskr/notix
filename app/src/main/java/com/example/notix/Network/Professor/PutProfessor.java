@@ -10,7 +10,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class PutProfessor extends NetConfiguration implements Runnable {
-    private final String theUrl = theBaseUrl + "professors/";
+    private final String theUrl = theBaseUrl + "professorsUpdate/";
     private ProfessorRequest professor;
     private String professor_dni;
     private String access;
