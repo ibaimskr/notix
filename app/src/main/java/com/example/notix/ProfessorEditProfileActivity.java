@@ -79,21 +79,23 @@ public class ProfessorEditProfileActivity extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
+                ProfessorRequest professorRequest = new ProfessorRequest();
                 int response;
                 if (textMail.getText().toString().equals("") && textAddress.getText().toString().equals("")
-                    && textPassword.getText().toString().equals(" ") && textPassword2.getText().toString().equals("")) {
+                        && textPassword.getText().toString().equals(" ") && textPassword2.getText().toString().equals("")) {
                     Toast.makeText(getApplicationContext(), getString(R.string.error_any_field_modify), Toast.LENGTH_SHORT).show();
                 } else {
                     AuthRequest user = new AuthRequest();
 
                     if (textMail.getText().toString() != null) {
-                        professor.setEmail(textMail.getText().toString());
+                        professorRequest.setEmail(textMail.getText().toString());
                     }
                     if (textAddress.getText().toString() != null) {
-                        professor.setAdress(textAddress.getText().toString());
+                        professorRequest.setAdress(textAddress.getText().toString());
                     }
 
-                    PutProfessor putProfessor = new PutProfessor(professor, dni, token);
+
+                    PutProfessor putProfessor = new PutProfessor(professorRequest, dni, token);
                     Thread thread2 = new Thread(putProfessor);
                     try {
                         thread2.start();
@@ -103,38 +105,29 @@ public class ProfessorEditProfileActivity extends AppCompatActivity {
                     }
                     response = putProfessor.getResponse();
 
-                if ((textPassword.getText() != null && textPassword2.getText() != null)
-                     && (textPassword.getText().toString().equals(textPassword2.getText().toString()))) {
+                    if ((textPassword.getText() != null && textPassword2.getText() != null)
+                            && (textPassword.getText().toString().equals(textPassword2.getText().toString()))) {
 
-                    CifradoRSA cifradoRSA = new CifradoRSA();
-                    byte[] encoded64 = Base64.getEncoder().encode(cifradoRSA.cifrarTexto(textPassword.getText().toString()));
-                    String passBase64 = new String(encoded64);
+                        CifradoRSA cifradoRSA = new CifradoRSA();
+                        byte[] encoded64 = Base64.getEncoder().encode(cifradoRSA.cifrarTexto(textPassword.getText().toString()));
+                        String passBase64 = new String(encoded64);
 
-                    user.setDni(dni);
-                    user.setRoleId(2);
-                    user.setPassword(passBase64);
-                    PutUser putUser = new PutUser(user, dni, token);
-                    Thread thread1 = new Thread(putUser);
-                    try {
-                        thread1.start();
-                        thread1.join();
-                    } catch (InterruptedException e) {
-                        // Nothing to do here...
-                    }
-                    // Processing the answer
-                    response = putUser.getResponse();
-                    if (response == 201) {
-                        Toast.makeText(getApplicationContext(), getString(R.string.toast_modified_password), Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(getApplicationContext(), getString(R.string.error_modify_password), Toast.LENGTH_SHORT).show();
+                        user.setDni(dni);
+                        user.setRoleId(2);
+                        user.setPassword(passBase64);
+                        PutUser putUser = new PutUser(user, dni, token);
+                        Thread thread1 = new Thread(putUser);
+                        try {
+                            thread1.start();
+                            thread1.join();
+                        } catch (InterruptedException e) {
+                            // Nothing to do here...
+                        }
                     }
 
-                } else {
-                    Toast.makeText(getApplicationContext(), getString(R.string.error_samePass), Toast.LENGTH_SHORT).show();
                 }
             }
-        }
-    });
+        });
 
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

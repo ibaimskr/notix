@@ -1,6 +1,5 @@
 package com.example.notix.Network.Professor;
 
-import com.example.notix.beans.Professor;
 import com.example.notix.Network.NetConfiguration;
 import com.example.notix.beans.ProfessorRequest;
 
@@ -12,12 +11,12 @@ import java.net.URL;
 
 public class PutProfessor extends NetConfiguration implements Runnable {
     private final String theUrl = theBaseUrl + "professors/";
-    private Professor professor;
+    private ProfessorRequest professor;
     private String professor_dni;
     private String access;
     private int response;
 
-    public PutProfessor(Professor professorRequest, String professor_dni, String access) {
+    public PutProfessor(ProfessorRequest professorRequest, String professor_dni, String access) {
         this.professor = professorRequest;
         this.professor_dni = professor_dni;
         this.access = access;
@@ -28,6 +27,8 @@ public class PutProfessor extends NetConfiguration implements Runnable {
         try {
             // The URL
             URL url = new URL(theUrl + professor_dni);
+
+            professor.setProfessor_dni(professor_dni);
 
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("PUT");
@@ -60,11 +61,13 @@ public class PutProfessor extends NetConfiguration implements Runnable {
                 bufferedReader.close();
 
                 this.response = 200;
+
             }
 
         } catch (Exception e) {
             System.out.println("ERROR: " + e.getMessage());
         }
+
     }
 
     public int getResponse() {
