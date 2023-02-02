@@ -153,11 +153,11 @@ public class PasswordForgotenActivity extends AppCompatActivity {
                     user = getUserByDni.getResponse();
 
                     if (user == null) {
-                        Toast.makeText(getApplicationContext(), "recibo null colega", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), getString(R.string.error_server_null_receipt), Toast.LENGTH_LONG).show();
                     }
 
                 } else {
-                    Toast.makeText(getApplicationContext(), "no me conecto al server", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.error_communication), Toast.LENGTH_LONG).show();
                 }
 
                 if (Integer.parseInt(editTextCodigo.getText().toString()) == code) {
@@ -195,7 +195,7 @@ public class PasswordForgotenActivity extends AppCompatActivity {
                                 }
 
                             } else {
-                                Toast.makeText(getApplicationContext(), "no me conecto al server", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), getString(R.string.error_communication), Toast.LENGTH_LONG).show();
                             }
                         } else {
                             Toast.makeText(getApplicationContext(), "Las contraseñas deben coincidir", Toast.LENGTH_SHORT).show();
