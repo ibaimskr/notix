@@ -16,9 +16,9 @@ public class PutStudent extends NetConfiguration implements Runnable {
     private int response;
     private String token;
 
-    public PutStudent(String student_dni, Student studentRequest, String token) {
-        this.student_dni = student_dni;
+    public PutStudent(Student studentRequest, String student_dni, String token) {
         this.student = studentRequest;
+        this.student_dni = student_dni;
         this.token = token;
     }
 

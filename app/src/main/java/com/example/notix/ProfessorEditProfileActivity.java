@@ -84,14 +84,14 @@ public class ProfessorEditProfileActivity extends AppCompatActivity {
                     && textPassword.getText().toString().equals(" ") && textPassword2.getText().toString().equals("")) {
                     Toast.makeText(getApplicationContext(), getString(R.string.error_any_field_modify), Toast.LENGTH_SHORT).show();
                 } else {
-                        AuthRequest user = new AuthRequest();
+                    AuthRequest user = new AuthRequest();
 
-                        if (textMail.getText().toString() != null) {
-                          professor.setEmail(textMail.getText().toString());
-                        }
-                        if (textAddress.getText().toString() != null) {
-                            professor.setAdress(textAddress.getText().toString());
-                        }
+                    if (textMail.getText().toString() != null) {
+                        professor.setEmail(textMail.getText().toString());
+                    }
+                    if (textAddress.getText().toString() != null) {
+                        professor.setAdress(textAddress.getText().toString());
+                    }
 
                     PutProfessor putProfessor = new PutProfessor(professor, dni, token);
                     Thread thread2 = new Thread(putProfessor);
@@ -116,17 +116,25 @@ public class ProfessorEditProfileActivity extends AppCompatActivity {
                     PutUser putUser = new PutUser(user, dni, token);
                     Thread thread1 = new Thread(putUser);
                     try {
-                                thread1.start();
-                                thread1.join();
+                        thread1.start();
+                        thread1.join();
                     } catch (InterruptedException e) {
-                                // Nothing to do here...
-                        }
+                        // Nothing to do here...
+                    }
+                    // Processing the answer
+                    response = putUser.getResponse();
+                    if (response == 201) {
+                        Toast.makeText(getApplicationContext(), getString(R.string.toast_modified_password), Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), getString(R.string.error_modify_password), Toast.LENGTH_SHORT).show();
                     }
 
+                } else {
+                    Toast.makeText(getApplicationContext(), getString(R.string.error_samePass), Toast.LENGTH_SHORT).show();
                 }
             }
-        });
-
+        }
+    });
 
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -142,7 +150,6 @@ public class ProfessorEditProfileActivity extends AppCompatActivity {
                 return true;
             }
         });
-
     }
 
     public boolean isConnected() {

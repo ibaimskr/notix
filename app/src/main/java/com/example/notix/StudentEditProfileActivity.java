@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.notix.Network.RSA.CifradoRSA;
 import com.example.notix.Network.Student.GetStudentByDni;
+import com.example.notix.Network.Student.PutStudent;
 import com.example.notix.Network.User.PutUser;
 import com.example.notix.Network.User.SessionManager;
 import com.example.notix.beans.AuthRequest;
@@ -29,6 +30,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.Base64;
 
 public class StudentEditProfileActivity extends AppCompatActivity {
+
+    Student student = new Student();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,14 +50,12 @@ public class StudentEditProfileActivity extends AppCompatActivity {
         TextView viewNationality = findViewById(R.id.viewStudentEditProfileNationality);
         TextView viewMail = findViewById(R.id.viewStudentEditProfileMail);
         TextView viewPhone = findViewById(R.id.viewStudentEditProfilePhone);
-        EditText textCorreo = findViewById(R.id.textStudentEditProfileMail);
+        EditText textMail = findViewById(R.id.textStudentEditProfileMail);
         EditText textPhone = findViewById(R.id.textStudentEditProfilePhone);
         EditText textPassword = findViewById(R.id.textStudentEditProfilePassword);
         EditText textPassword2 = findViewById(R.id.textStudentEditProfilePassword2);
         Button buttonChange = findViewById(R.id.buttonStudentEditProfileModify);
         BottomNavigationView navigation = findViewById(R.id.studentBottomNavigation);
-
-        Student student = new Student();
 
         if (isConnected()) {
             GetStudentByDni getStudent = new GetStudentByDni(dni, token);
@@ -81,15 +82,31 @@ public class StudentEditProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 int response;
-
-                if (textCorreo.getText().toString().equals("") && textPhone.getText().toString().equals("")
+                if (textMail.getText().toString().equals("") && textPhone.getText().toString().equals("")
                     && textPassword.getText().toString().equals("") && textPassword2.getText().toString().equals("")) {
                     Toast.makeText(getApplicationContext(), getString(R.string.error_any_field_modify), Toast.LENGTH_SHORT).show();
                 } else {
+                    AuthRequest user = new AuthRequest();
+
+                    if (textMail.getText().toString() != null) {
+                        student.setEmail(textMail.getText().toString());
+                    }
+                    if (textPhone.getText().toString() != null) {
+                        student.setPhone(textPhone.getText().toString());
+                    }
+
+                    PutStudent putStudent = new PutStudent(student, dni, token);
+                    Thread thread2 = new Thread(putStudent);
+                    try {
+                        thread2.start();
+                        thread2.join();
+                    } catch (InterruptedException e) {
+                        // Nothing to do here...
+                    }
+                    response = putStudent.getResponse();
+
                     if ((textPassword.getText().toString() != null && textPassword2.getText().toString() != null)
                         && (textPassword.getText().toString().equals(textPassword2.getText().toString()))) {
-                        AuthRequest user = new AuthRequest();
-                        StudentRequest student = new StudentRequest();
 
                         CifradoRSA cifradoRSA = new CifradoRSA();
                         byte[] encoded64 = Base64.getEncoder().encode(cifradoRSA.cifrarTexto(textPassword.getText().toString()));
@@ -98,8 +115,7 @@ public class StudentEditProfileActivity extends AppCompatActivity {
                         user.setDni(dni);
                         user.setPassword(passBase64);
                         user.setRoleId(3);
-
-                        PutUser putUser = new PutUser(user, token, dni);
+                        PutUser putUser = new PutUser(user, dni, token);
                         Thread thread = new Thread(putUser);
                         try {
                             thread.start();
