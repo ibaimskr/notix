@@ -82,41 +82,65 @@ public class StudentEditProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 StudentRequest studentRequest = new StudentRequest();
-                int response;
+                AuthRequest userRequest = new AuthRequest();
+                int studentResponse;
+                int userResponse;
+
                 if (textMail.getText().toString().equals("") && textPhone.getText().toString().equals("")
-                    && textPassword.getText().toString().equals("") && textPassword2.getText().toString().equals("")) {
+                        && textPassword.getText().toString().equals("") && textPassword2.getText().toString().equals("")) {
                     Toast.makeText(getApplicationContext(), getString(R.string.error_any_field_modify), Toast.LENGTH_SHORT).show();
-                } else {
-                    AuthRequest user = new AuthRequest();
+                } else if (!textMail.getText().toString().equals("") || !textPhone.getText().toString().equals("")) {
+                    studentRequest.setName(student.getName());
+                    studentRequest.setSurname(student.getSurname());
+                    String bornDate = student.getBorn_date().substring(0,10);
+                    studentRequest.setBornDate(bornDate);
+                    studentRequest.setNationality(student.getNationality());
+                    studentRequest.setEmail(student.getEmail());
+                    studentRequest.setPhone(student.getPhone());
+                    studentRequest.setPhoto(student.getPhoto());
 
-                    if (textMail.getText().toString() != null) {
-                        student.setEmail(textMail.getText().toString());
+                    if (!textMail.getText().toString().equals("")) {
+                        studentRequest.setEmail(textMail.getText().toString());
                     }
-                    if (textPhone.getText().toString() != null) {
-                        student.setPhone(textPhone.getText().toString());
+                    if (!textPhone.getText().toString().equals("")) {
+                        studentRequest.setPhone(textPhone.getText().toString());
                     }
 
-                    PutStudent putStudent = new PutStudent(student, dni, token);
-                    Thread thread2 = new Thread(putStudent);
-                    try {
-                        thread2.start();
-                        thread2.join();
-                    } catch (InterruptedException e) {
-                        // Nothing to do here...
+                    if (textPhone.getText().toString().length() == 9) {
+                        PutStudent putStudent = new PutStudent(studentRequest, dni, token);
+                        Thread thread2 = new Thread(putStudent);
+                        try {
+                            thread2.start();
+                            thread2.join();
+                        } catch (InterruptedException e) {
+                            // Nothing to do here...
+                        }
+                        // Processing the answer
+                        studentResponse = putStudent.getResponse();
+                        if (studentResponse == 200) {
+                            Toast.makeText(getApplicationContext(), getString(R.string.toast_student_datas_modified), Toast.LENGTH_SHORT).show();
+                            setEmptyField();
+                            Intent i = new Intent(StudentEditProfileActivity.this, StudentEditProfileActivity.class);
+                            startActivity(i);
+                            finish();
+                        } else {
+                            Toast.makeText(getApplicationContext(), getString(R.string.error_no_data_modified), Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(getApplicationContext(), getString(R.string.error_phone_length), Toast.LENGTH_SHORT).show();
                     }
-                    response = putStudent.getResponse();
 
-                    if ((textPassword.getText().toString() != null && textPassword2.getText().toString() != null)
-                        && (textPassword.getText().toString().equals(textPassword2.getText().toString()))) {
+                } else if (!textPassword.getText().toString().equals("") || textPassword2.getText().toString().equals("")) {
+                    if (textPassword.getText().toString().equals(textPassword2.getText().toString())) {
 
                         CifradoRSA cifradoRSA = new CifradoRSA();
                         byte[] encoded64 = Base64.getEncoder().encode(cifradoRSA.cifrarTexto(textPassword.getText().toString()));
                         String passBase64= new String(encoded64);
 
-                        user.setDni(dni);
-                        user.setPassword(passBase64);
-                        user.setRoleId(3);
-                        PutUser putUser = new PutUser(user, dni, token);
+                        userRequest.setDni(dni);
+                        userRequest.setPassword(passBase64);
+                        userRequest.setRoleId(3);
+                        PutUser putUser = new PutUser(userRequest, dni, token);
                         Thread thread = new Thread(putUser);
                         try {
                             thread.start();
@@ -125,9 +149,10 @@ public class StudentEditProfileActivity extends AppCompatActivity {
                             // Nothing to do here...
                         }
                         // Processing the answer
-                        response = putUser.getResponse();
-                        if (response == 201) {
+                        userResponse = putUser.getResponse();
+                        if (userResponse == 200) {
                             Toast.makeText(getApplicationContext(), getString(R.string.toast_modified_password), Toast.LENGTH_SHORT).show();
+                            setEmptyField();
                         } else {
                             Toast.makeText(getApplicationContext(), getString(R.string.error_modify_password), Toast.LENGTH_SHORT).show();
                         }
@@ -137,7 +162,14 @@ public class StudentEditProfileActivity extends AppCompatActivity {
                     }
                 }
             }
-        });
+
+        public void setEmptyField() {
+            textMail.setText("");
+            textPhone.setText("");
+            textPassword.setText("");
+            textPassword2.setText("");
+        }
+    });
 
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

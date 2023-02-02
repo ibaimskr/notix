@@ -70,6 +70,7 @@ public class MainProfessorActivity extends AppCompatActivity {
                 } else if (item.getItemId() == (R.id.menuLogoutItem)){
                     Intent i2 = new Intent(MainProfessorActivity.this, LoginActivity.class);
                     startActivity(i2);
+                    finish();
                 }
                 return true;
             });
