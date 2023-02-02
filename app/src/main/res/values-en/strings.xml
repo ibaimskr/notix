@@ -115,4 +115,11 @@
     <string name="check_remember">Remember me</string>
 
     <string name="question_singup">What type of user are you?</string>
+
+    <string name="toast_dni_not_registered">¡This DNI is not registered!</string>
+    <string name="toast_user_not_exists">¡The user does not exist!</string>
+    <string name="toast_pass_modified">¡Password modified!</string>
+    <string name="toast_incorrect_code">¡Verification code is incorrect!</string>
+    <string name="msg_message_verification_code">You have requested to reset the password to access your Notix account\nYour verification code to reset the password is: </string>
+
 </resources>
