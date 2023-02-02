@@ -1,8 +1,5 @@
 package com.example.notix;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -16,6 +13,9 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.notix.Network.Note.GetNotesByStudentDni;
 import com.example.notix.Network.Subject.GetSubjectsByStudentDni;
@@ -48,10 +48,10 @@ public class StudentNotesActivity extends AppCompatActivity {
         BottomNavigationView navigation = findViewById(R.id.notesBottomNavigation);
 
         ArrayList<String> evaluaciones = new ArrayList<>();
-        evaluaciones.add("Evaluación");
-        evaluaciones.add("1ª");
-        evaluaciones.add("2ª");
-        evaluaciones.add("3ª");
+        evaluaciones.add(getString(R.string.text_evaluation));
+        evaluaciones.add(getString(R.string.text_eva1));
+        evaluaciones.add(getString(R.string.text_eva2));
+        evaluaciones.add(getString(R.string.text_eva3));
         ArrayAdapter<String> evaluationAdapter = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, evaluaciones);
         spinnerEvaluation.setAdapter(evaluationAdapter);
 
@@ -82,19 +82,21 @@ public class StudentNotesActivity extends AppCompatActivity {
                     ArrayList<Subject> subjects = getSubjects.getResponse();
 
                     if (notes.size() != 0 || subjects.size() != 0) {
+                        notesArrayList.clear();
+                        subjectsArrayList.clear();
                         notesArrayList.addAll(notes);
                         subjectsArrayList.addAll(subjects);
 
                         switch (spinnerEvaluation.getSelectedItem().toString()) {
-                            case "1ª":
+                            case "Eva1":
                                 listView.setAdapter(eva1Adapter);
                                 ((ListView) findViewById(R.id.listViewStudentNotes)).setAdapter(eva1Adapter);
                                 break;
-                            case "2ª":
+                            case "Eva2":
                                 listView.setAdapter(eva2Adapter);
                                 ((ListView) findViewById(R.id.listViewStudentNotes)).setAdapter(eva2Adapter);
                                 break;
-                            case "3ª":
+                            case "Eva3":
                                 listView.setAdapter(eva3Adapter);
                                 ((ListView) findViewById(R.id.listViewStudentNotes)).setAdapter(eva3Adapter);
                                 break;

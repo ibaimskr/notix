@@ -44,9 +44,7 @@ public class PostAbsence extends NetConfiguration implements Runnable {
             // Sending
             int responseCode = httpURLConnection.getResponseCode();
 
-            if (responseCode == 409) {
-                this.response = 409;
-            } else if (responseCode == HttpURLConnection.HTTP_CREATED) {
+             if (responseCode == HttpURLConnection.HTTP_CREATED) {
                 BufferedReader bufferedReader = new BufferedReader(
                         new InputStreamReader(httpURLConnection.getInputStream()));
 
@@ -57,7 +55,11 @@ public class PostAbsence extends NetConfiguration implements Runnable {
                 }
                 bufferedReader.close();
                 this.response = 201;
-            }
+            } else if (responseCode == 400) {
+                 this.response = 400;
+             } else if (responseCode == 409) {
+                 this.response = 409;
+             }
 
         } catch (Exception e) {
             System.out.println("ERROR: " + e.getMessage());

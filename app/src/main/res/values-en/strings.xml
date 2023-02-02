@@ -123,6 +123,10 @@
     <string name="subject">Verification code</string>
 
     <string name="check_remember">Remember me</string>
+    <string name="error_date_format">Date format is incorrect</string>
+    <string name="text_evaluation">Evaluation</string>
+
+
 
     <string name="question_singup">What type of user are you?</string>
 </resources>

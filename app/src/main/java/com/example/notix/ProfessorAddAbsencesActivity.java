@@ -182,11 +182,14 @@ public class ProfessorAddAbsencesActivity extends AppCompatActivity {
                     // Processing the answer
                    int response = absenceService.getResponse();
 
-                    if (response == 409) {
-                        Toast.makeText(getApplicationContext(), getString(R.string.error_absence_exits), Toast.LENGTH_LONG).show();
-                    } else if (response == 201) {
+                     if (response == 201) {
                         Toast.makeText(getApplicationContext(), getString(R.string.toast_absence_created), Toast.LENGTH_LONG).show();
-                    }
+                    } else if (response == 400) {
+                        Toast.makeText(getApplicationContext(), getString(R.string.error_date_format), Toast.LENGTH_LONG).show();
+                        editeTexDate.setText(" ");
+                    }else if (response == 409) {
+                         Toast.makeText(getApplicationContext(), getString(R.string.error_absence_exits), Toast.LENGTH_LONG).show();
+                     }
                 } else {
                     Toast.makeText(getApplicationContext(), getString(R.string.error_communication), Toast.LENGTH_LONG).show();
                 }
