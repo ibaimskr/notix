@@ -20,7 +20,7 @@
 
     <Spinner
         android:id="@+id/spinnerStudentNotesEvaluation"
-        android:layout_width="409dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/listViewStudentNotes"
         app:layout_constraintEnd_toEndOf="parent"

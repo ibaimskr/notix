@@ -80,17 +80,25 @@ public class ProfessorEditProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 ProfessorRequest professorRequest = new ProfessorRequest();
-                int response;
-                if (textMail.getText().toString().equals("") && textAddress.getText().toString().equals("")
-                        && textPassword.getText().toString().equals(" ") && textPassword2.getText().toString().equals("")) {
-                    Toast.makeText(getApplicationContext(), getString(R.string.error_any_field_modify), Toast.LENGTH_SHORT).show();
-                } else {
-                    AuthRequest user = new AuthRequest();
+                AuthRequest userRequest = new AuthRequest();
+                int professorResponse;
+                int userResponse;
 
-                    if (textMail.getText().toString() != null) {
+                if (textMail.getText().toString().equals("") && textAddress.getText().toString().equals("")
+                        && textPassword.getText().toString().equals("") && textPassword2.getText().toString().equals("")) {
+                    Toast.makeText(getApplicationContext(), getString(R.string.error_any_field_modify), Toast.LENGTH_SHORT).show();
+                } else if (!textMail.getText().toString().equals("") || !textAddress.getText().toString().equals("")) {
+                    professorRequest.setName(professor.getName());
+                    professorRequest.setSurname(professor.getSurname());
+                    professorRequest.setNationality(professor.getNationality());
+                    professorRequest.setEmail(professor.getEmail());
+                    professorRequest.setAdress(professor.getAdress());;
+                    professorRequest.setPhoto(professor.getPhoto());
+
+                    if (!textMail.getText().toString().equals("")) {
                         professorRequest.setEmail(textMail.getText().toString());
                     }
-                    if (textAddress.getText().toString() != null) {
+                    if (!textAddress.getText().toString().equals("")) {
                         professorRequest.setAdress(textAddress.getText().toString());
                     }
 
@@ -102,19 +110,29 @@ public class ProfessorEditProfileActivity extends AppCompatActivity {
                     } catch (InterruptedException e) {
                         // Nothing to do here...
                     }
-                    response = putProfessor.getResponse();
+                    // Processing the answer
+                    professorResponse = putProfessor.getResponse();
+                    if (professorResponse == 200) {
+                        Toast.makeText(getApplicationContext(), getString(R.string.toast_professor_datas_modified), Toast.LENGTH_SHORT).show();
+                        setEmptyField();
+                        Intent i = new Intent(ProfessorEditProfileActivity.this, ProfessorEditProfileActivity.class);
+                        startActivity(i);
+                        finish();
+                    } else {
+                        Toast.makeText(getApplicationContext(), getString(R.string.error_no_data_modified), Toast.LENGTH_SHORT).show();
+                    }
 
-                    if ((textPassword.getText() != null && textPassword2.getText() != null)
-                            && (textPassword.getText().toString().equals(textPassword2.getText().toString()))) {
+                } else if (!textPassword.getText().toString().equals("") || textPassword2.getText().toString().equals("")) {
+                    if (textPassword.getText().toString().equals(textPassword2.getText().toString())) {
 
                         CifradoRSA cifradoRSA = new CifradoRSA();
                         byte[] encoded64 = Base64.getEncoder().encode(cifradoRSA.cifrarTexto(textPassword.getText().toString()));
                         String passBase64 = new String(encoded64);
 
-                        user.setDni(dni);
-                        user.setPassword(passBase64);
-                        user.setRoleId(2);
-                        PutUser putUser = new PutUser(user, dni, token);
+                        userRequest.setDni(dni);
+                        userRequest.setPassword(passBase64);
+                        userRequest.setRoleId(2);
+                        PutUser putUser = new PutUser(userRequest, dni, token);
                         Thread thread1 = new Thread(putUser);
                         try {
                             thread1.start();
@@ -123,9 +141,10 @@ public class ProfessorEditProfileActivity extends AppCompatActivity {
                             // Nothing to do here...
                         }
                         // Processing the answer
-                        response = putUser.getResponse();
-                        if (response == 201) {
+                        userResponse = putUser.getResponse();
+                        if (userResponse == 200) {
                             Toast.makeText(getApplicationContext(), getString(R.string.toast_modified_password), Toast.LENGTH_SHORT).show();
+                            setEmptyField();
                         } else {
                             Toast.makeText(getApplicationContext(), getString(R.string.error_modify_password), Toast.LENGTH_SHORT).show();
                         }
@@ -134,6 +153,13 @@ public class ProfessorEditProfileActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), getString(R.string.error_samePass), Toast.LENGTH_SHORT).show();
                     }
                 }
+            }
+
+            public void setEmptyField() {
+                textMail.setText("");
+                textAddress.setText("");
+                textPassword.setText("");
+                textPassword2.setText("");
             }
         });
 

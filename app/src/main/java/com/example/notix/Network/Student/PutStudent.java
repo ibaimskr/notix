@@ -12,12 +12,12 @@ import java.net.URL;
 
 public class PutStudent extends NetConfiguration implements Runnable {
     private final String theUrl = theBaseUrl + "students/";
-    private Student student;
+    private StudentRequest student;
     private String student_dni;
     private String token;
     private int response;
 
-    public PutStudent(Student studentRequest, String student_dni, String token) {
+    public PutStudent(StudentRequest studentRequest, String student_dni, String token) {
         this.student = studentRequest;
         this.student_dni = student_dni;
         this.token = token;
@@ -28,6 +28,9 @@ public class PutStudent extends NetConfiguration implements Runnable {
         try {
             // The URL
             URL url = new URL(theUrl + student_dni);
+
+            student.setStudent_dni(student_dni);
+
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("PUT");
             httpURLConnection.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
