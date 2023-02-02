@@ -62,12 +62,11 @@ public class LoginActivity extends AppCompatActivity {
         AuthRequest request = new AuthRequest();
 
         if (!dataManager.isEmpty()) {
-            List<UserRemember> users = dataManager.selectAllUsers();
-            for (UserRemember userRemember : users) {
-                textDni.setText(userRemember.getDni());
-                textPassword.setText(userRemember.getPass());
+            UserRemember user = dataManager.selectUser();
+                textDni.setText(user.getDni());
+                textPassword.setText(user.getPass());
                 checkRemember.setChecked(true);
-            }
+
         }
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
@@ -168,11 +167,12 @@ public class LoginActivity extends AppCompatActivity {
                 UserRemember remembered = dataManager.selectUser();
                 if (checkRemember.isChecked()) {
                     if (dataManager.isEmpty()) {
-                        dataManager.insert(remembered);
-                    } else {
+                        dataManager.insert(userRem);
+                    } else if (!dataManager.isEmpty()){
                         dataManager.delete(remembered.getDni());
+                        dataManager.insert(userRem);
                     }
-                } else if (!dataManager.isEmpty()) {
+                } else if (!checkRemember.isChecked()) {
                     dataManager.delete(remembered.getDni());
                 }
             }

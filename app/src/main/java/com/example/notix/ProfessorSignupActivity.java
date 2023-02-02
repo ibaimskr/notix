@@ -26,6 +26,8 @@ import com.example.notix.Network.RSA.CifradoRSA;
 import com.example.notix.Network.User.UserSignup;
 import com.example.notix.beans.AuthRequest;
 import com.example.notix.beans.ProfessorRequest;
+import com.example.notix.beans.UserRemember;
+import com.example.notix.db.DataManager;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
@@ -34,6 +36,7 @@ import java.util.Base64;
 public class ProfessorSignupActivity extends AppCompatActivity {
 
     Bitmap bitmap;
+    DataManager dataManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -148,6 +151,13 @@ public class ProfessorSignupActivity extends AppCompatActivity {
                                 setEmptyField();
                             } else if (response == 201) {
                                 Toast.makeText(getApplicationContext(), R.string.toast_created, Toast.LENGTH_SHORT).show();
+                                UserRemember userRemember = new UserRemember();
+                                userRemember.setDni(user.getDni().toString());
+                                userRemember.setPass(textPass.getText().toString());
+
+                                dataManager = new DataManager(getApplicationContext());
+                                dataManager.insert(userRemember);
+
                                 Intent i = new Intent(ProfessorSignupActivity.this, LoginActivity.class);
                                 startActivity(i);
                             }
