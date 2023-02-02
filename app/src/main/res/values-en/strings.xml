@@ -125,8 +125,8 @@
     <string name="check_remember">Remember me</string>
     <string name="error_date_format">Date format is incorrect</string>
     <string name="text_evaluation">Evaluation</string>
-
-
+    <string name="text_duration">Duration</string>
+    <string name="text_day">Day</string>
 
     <string name="question_singup">What type of user are you?</string>
 </resources>

@@ -9,7 +9,7 @@ import java.net.URL;
 
 public class DeleteAbsence extends NetConfiguration implements Runnable {
 
-    private final String theUrl = theBaseUrl + "absences/";
+    private final String theUrl = theBaseUrl + "absencesDelete/";
     private String student_dni;
     private int subject_id;
     private String date;

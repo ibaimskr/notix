@@ -11,37 +11,83 @@
         android:id="@+id/viewProfessorAbsences"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
         android:text="@string/view_absences"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/spinnerProfessorAbsencesSubjects"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Spinner
-        android:id="@+id/spinnerProfessorAbsencesStudents"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
+    <TableLayout
+        android:id="@+id/tableLayout4"
+        android:layout_width="350dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerProfessorAbsencesSubjects" />
+        app:layout_constraintTop_toBottomOf="@+id/viewProfessorAbsences">
 
-    <Spinner
-        android:id="@+id/spinnerProfessorAbsencesSubjects"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Spinner
+                android:id="@+id/spinnerProfessorAbsencesStudents"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Spinner
+                android:id="@+id/spinnerProfessorAbsencesSubjects"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content" />
+        </TableRow>
+
+    </TableLayout>
+
+    <TableLayout
+        android:id="@+id/tableLayout2"
+        android:layout_width="350dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintBottom_toTopOf="@+id/listViewProfessorAbsences"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout4">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/viewProfessorAbsencesSubject"
+                android:layout_width="175dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/text_subject"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/viewProfessorAbsenceDay"
+                android:layout_width="175dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/text_day"
+                android:textStyle="bold" />
+        </TableRow>
+
+    </TableLayout>
 
     <ListView
         android:id="@+id/listViewProfessorAbsences"
-        android:layout_width="300dp"
+        android:layout_width="350dp"
         android:layout_height="300dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="175dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

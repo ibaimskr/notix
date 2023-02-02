@@ -11,7 +11,7 @@ import java.net.URL;
 
 public class PutAbsence extends NetConfiguration implements Runnable {
 
-    private final String theUrl = theBaseUrl + "absences/";
+    private final String theUrl = theBaseUrl + "absencesUpdate/";
     private String date;
     private int subject_id;
     private String student_dni;
