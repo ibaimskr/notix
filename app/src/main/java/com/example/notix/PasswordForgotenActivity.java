@@ -74,11 +74,11 @@ public class PasswordForgotenActivity extends AppCompatActivity {
                         Student student = getStudentByDni.getResponse();
 
                         if (student == null) {
-                            Toast.makeText(getApplicationContext(), "Este dni no esta registrado", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), getString(R.string.toast_dni_not_registered), Toast.LENGTH_LONG).show();
                         } else {
                             email = student.getEmail().toString();
                             code = getFiveDigitsNumber();
-                            MailRequest mail = new MailRequest("enekogarciarenovales@gmail.com", "Ha solicitado restablecer la contraseña de acceso a su cuenta de NotixSu codigo de verificacion para poder restablecer la contraseña es:" + code, "Codigo de verificacion");
+                            MailRequest mail = new MailRequest(email, getString(R.string.msg_message_verification_code) + code, "Codigo de verificacion");
                             int responseMail = sendMail(mail);
                             if (responseMail == 400) {
                                 //Toast
@@ -89,7 +89,7 @@ public class PasswordForgotenActivity extends AppCompatActivity {
                         }
 
                     } else {
-                        Toast.makeText(getApplicationContext(), "no me conecto al server", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), getString(R.string.error_communication), Toast.LENGTH_LONG).show();
                     }
                 }
 
@@ -187,9 +187,9 @@ public class PasswordForgotenActivity extends AppCompatActivity {
                                 int response = putUser.getResponse();
 
                                 if (response == 204) {
-                                    Toast.makeText(getApplicationContext(), "No existe el usuario", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getApplicationContext(), getString(R.string.toast_user_not_exists), Toast.LENGTH_LONG).show();
                                 } else if (response == 200){
-                                    Toast.makeText(getApplicationContext(), "Contraseña modificada", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getApplicationContext(), getString(R.string.toast_pass_modified), Toast.LENGTH_LONG).show();
                                     Intent i = new Intent(PasswordForgotenActivity.this, LoginActivity.class);
                                     startActivity(i);
                                 }
@@ -198,11 +198,11 @@ public class PasswordForgotenActivity extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), getString(R.string.error_communication), Toast.LENGTH_LONG).show();
                             }
                         } else {
-                            Toast.makeText(getApplicationContext(), "Las contraseñas deben coincidir", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), getString(R.string.error_samePass), Toast.LENGTH_SHORT).show();
                         }
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), "Codigo de verificacion incorrecto", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.toast_incorrect_code), Toast.LENGTH_SHORT).show();
 
                 }
             }
