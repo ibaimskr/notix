@@ -58,11 +58,12 @@ public class StudentSignupActivity extends AppCompatActivity {
 
         ArrayList<String> nacionalidades = new ArrayList<>();
         nacionalidades.add("");
-        nacionalidades.add("España");
-        nacionalidades.add("Francia");
-        nacionalidades.add("Italia");
-        nacionalidades.add("Marruecos");
-        nacionalidades.add("Portugal");
+        nacionalidades.add(getString(R.string.option_nationality_spain));
+        nacionalidades.add(getString(R.string.option_nationality_france));
+        nacionalidades.add(getString(R.string.option_nationality_italy));
+        nacionalidades.add(getString(R.string.option_nationality_morocco));
+        nacionalidades.add(getString(R.string.option_nationality_portugal));
+        nacionalidades.add(getString(R.string.option_nationality_murcia));
 
         ArrayAdapter<String> nationalityAdapter = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, nacionalidades);
         spinnerNationality.setAdapter(nationalityAdapter);
