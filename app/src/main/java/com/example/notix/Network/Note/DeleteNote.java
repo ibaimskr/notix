@@ -9,7 +9,7 @@ import java.net.URL;
 
 public class DeleteNote  extends NetConfiguration implements Runnable {
 
-    private final String theUrl = theBaseUrl + "notes/";
+    private final String theUrl = theBaseUrl + "notesUpdate/";
     private String student_dni;
     private int subject_id;
     private String access;

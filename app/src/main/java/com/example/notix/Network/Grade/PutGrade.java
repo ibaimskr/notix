@@ -10,7 +10,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class PutGrade extends NetConfiguration implements Runnable{
-    private final String theUrl = theBaseUrl + "grades/";
+    private final String theUrl = theBaseUrl + "gradesAdmin/";
     private Grade grade;
     private int grade_id;
     private int response;

@@ -10,7 +10,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class UpdateSubject extends NetConfiguration implements Runnable{
-    private final String theUrl = theBaseUrl + "subjects";
+    private final String theUrl = theBaseUrl + "subjectsUpdate/";
     private Subject subject;
     private int response;
     private String token;
@@ -30,7 +30,7 @@ public class UpdateSubject extends NetConfiguration implements Runnable{
             httpURLConnection.setRequestMethod("PUT");
             httpURLConnection.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
             httpURLConnection.setRequestProperty("Accept", "application/json");
-//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + token);
+            httpURLConnection.setRequestProperty("Authorization", "Bearer " + token);
             httpURLConnection.setDoOutput(true);
             httpURLConnection.setDoInput(true);
 

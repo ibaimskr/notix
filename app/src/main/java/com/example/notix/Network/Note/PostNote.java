@@ -11,7 +11,7 @@ import java.net.URL;
 
 public class PostNote extends NetConfiguration implements Runnable {
 
-    private final String theUrl = theBaseUrl + "notes";
+    private final String theUrl = theBaseUrl + "notesUpdate/create";
     private Note note;
     private String access;
     private int response;

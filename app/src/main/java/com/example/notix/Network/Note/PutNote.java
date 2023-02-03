@@ -11,7 +11,7 @@ import java.net.URL;
 
 public class PutNote extends NetConfiguration implements Runnable {
 
-    private final String theUrl = theBaseUrl + "notes/";
+    private final String theUrl = theBaseUrl + "notesUpdate/";
     private Note note;
     private String student_dni;
     private int subject_id;

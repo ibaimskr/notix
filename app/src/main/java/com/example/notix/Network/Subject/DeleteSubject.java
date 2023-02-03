@@ -8,7 +8,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class DeleteSubject extends NetConfiguration implements Runnable{
-    private final String theUrl = theBaseUrl + "subjects/";
+    private final String theUrl = theBaseUrl + "subjectsUpdate/";
 
     private int subject_id;
     private int response;

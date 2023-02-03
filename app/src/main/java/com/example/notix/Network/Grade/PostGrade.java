@@ -10,7 +10,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class PostGrade extends NetConfiguration implements Runnable{
-    private final String theUrl = theBaseUrl + "grades";
+    private final String theUrl = theBaseUrl + "gradesAdmin/create";
     private Grade grade;
     private int response;
     private String token;
@@ -30,7 +30,6 @@ public class PostGrade extends NetConfiguration implements Runnable{
             httpURLConnection.setRequestMethod("POST");
             httpURLConnection.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
             httpURLConnection.setRequestProperty("Accept", "application/json");
-//            httpURLConnection.setRequestProperty("Authorization", "Bearer " + access);
             httpURLConnection.setDoOutput(true);
             httpURLConnection.setDoInput(true);
 

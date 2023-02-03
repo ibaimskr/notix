@@ -10,7 +10,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class AddSubject extends NetConfiguration implements Runnable{
-    private final String theUrl = theBaseUrl + "subjects";
+    private final String theUrl = theBaseUrl + "subjectsUpdate";
     private Subject subject;
     private int response;
     private String token;

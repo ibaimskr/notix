@@ -9,7 +9,7 @@ import java.net.URL;
 
 public class DeleteGrade extends NetConfiguration implements Runnable {
 
-    private final String theUrl = theBaseUrl + "grades/";
+    private final String theUrl = theBaseUrl + "gradesAdmin/";
     private int grade_id;
     private String access;
     private int response;
