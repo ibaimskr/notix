@@ -6,19 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".StudentSubjectsActivity">
 
-    <TextView
-        android:id="@+id/viewStudentSubjects"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/listViewStudentSubjects"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/view_subjects" />
-
     <TableLayout
+        android:id="@+id/tableLayout2"
         android:layout_width="350dp"
         android:layout_height="25dp"
         app:layout_constraintBottom_toTopOf="@+id/listViewStudentSubjects"
@@ -67,5 +56,17 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/student_no_main_bottom_menu" />
+
+    <TextView
+        android:id="@+id/viewStudentSubjects"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/view_subjects"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
