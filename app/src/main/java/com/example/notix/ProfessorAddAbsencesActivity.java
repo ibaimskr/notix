@@ -54,7 +54,7 @@ public class ProfessorAddAbsencesActivity extends AppCompatActivity {
         Spinner spinnerFoul = findViewById(R.id.spinnerProfessorAddAbsencesFoul);
         Button buttonAddAbsence = findViewById(R.id.buttonProfessorAddAbsencesAdd);
         Button buttonAbsences = findViewById(R.id.buttonProfessorAddAbsencesAbsences);
-        EditText editeTexDate = findViewById(R.id.editTextDateProfessorAddAbsences);
+        EditText editeTexDate = findViewById(R.id.textProfessorAddAbsencesDate);
         BottomNavigationView navigation = findViewById(R.id.absencesBottomNavigation);
 
 

@@ -38,12 +38,12 @@ public class PasswordForgotenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_password_forgoten);
 
-        EditText editTextDni = findViewById(R.id.editTextDniContrasenaOlvidadaActivity);
-        EditText editTextCodigo = findViewById(R.id.editTextCodigoContrasenaOlvidadaActivity);
-        EditText editTextPass = findViewById(R.id.editTextTextPasswordContrasenaOlvidadaActivity);
-        EditText editTextPass2 = findViewById(R.id.editTextTextPassword2ContrasenaOlvidadaActivity);
-        Button buttonCodigo = findViewById(R.id.buttonEnviarCodigoContrasenaOlvidadaActivity);
-        Button buttonModificar = findViewById(R.id.buttonModificarCOntrasenaOlvidadaActivity);
+        EditText editTextDni = findViewById(R.id.textPasswordForgotenDni);
+        EditText editTextCodigo = findViewById(R.id.textPasswordForgotenCode);
+        EditText editTextPass = findViewById(R.id.textPasswordForgotenNewPassword);
+        EditText editTextPass2 = findViewById(R.id.textPasswordForgotenRepeatPassword);
+        Button buttonCodigo = findViewById(R.id.buttonPasswordForgotenSendCode);
+        Button buttonModificar = findViewById(R.id.buttonPasswordForgotenModify);
 
         buttonCodigo.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)

@@ -93,7 +93,7 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/editTextDateProfessorAddAbsences"
+                android:id="@+id/textProfessorAddAbsencesDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
