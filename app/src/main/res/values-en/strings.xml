@@ -7,7 +7,10 @@
     <string name="text_code">Code</string>
     <string name="text_date">Date</string>
     <string name="text_date_format">YYYY-MM-DD</string>
+    <string name="text_day">Day</string>
     <string name="text_dni">DNI</string>
+    <string name="text_duration">Duration</string>
+    <string name="text_evaluation">Evaluation</string>
     <string name="text_eva1">Eva1</string>
     <string name="text_eva2">Eva2</string>
     <string name="text_eva3">Eva3</string>
@@ -40,6 +43,7 @@
     <string name="error_camera">¡Camera not available!</string>
     <string name="error_communication">Error to connect to the server!</string>
     <string name="error_conflict">¡Conflict!</string>
+    <string name="error_date_format">Date format is incorrect</string>
     <string name="error_dniPass">Incorrect DNI or Password!</string>
     <string name="error_duplicated_user">User already exists!</string>
     <string name="error_invalid_data">¡You have entered some invalid data!</string>
@@ -56,6 +60,21 @@
     <string name="error_samePass">Password`s are not the same</string>
     <string name="error_server_data">Error receiving datas!</string>
     <string name="error_server_null_receipt">¡There is no data on the server!</string>
+
+    <string name="toast_absence_created">¡Absence correctly created!</string>
+    <string name="toast_absence_deleted">¡Absence correctly deleted!</string>
+    <string name="toast_absence_updated">¡Absence correctly justified!</string>
+    <string name="toast_created">User created!</string>
+    <string name="toast_dni_not_registered">¡This DNI is not registered!</string>
+    <string name="toast_incorrect_code">¡Verification code is incorrect!</string>
+    <string name="toast_modified_password">Password modified!</string>
+    <string name="toast_note_updated">¡Note correctly updated!</string>
+    <string name="toast_pass_modified">¡Password modified!</string>
+    <string name="toast_professor_datas_modified">¡Professor datas modified!</string>
+    <string name="toast_sended">Sended!</string>
+    <string name="toast_student_datas_modified">¡Student datas modified!</string>
+    <string name="toast_user_not_exists">¡The user does not exist!</string>
+    <string name="toast_verification">Wait to be verified!</string>
 
     <string name="button_add">ADD</string>
     <string name="button_all_absences">WATCH ABSENCES</string>
@@ -93,21 +112,6 @@
     <string name="option_nationality_portugal">Portugal</string>
     <string name="option_nationality_spain">Spain</string>
 
-    <string name="toast_absence_created">¡Absence correctly created!</string>
-    <string name="toast_absence_deleted">¡Absence correctly deleted!</string>
-    <string name="toast_absence_updated">¡Absence correctly justified!</string>
-    <string name="toast_created">User created!</string>
-    <string name="toast_dni_not_registered">¡This DNI is not registered!</string>
-    <string name="toast_incorrect_code">¡Verification code is incorrect!</string>
-    <string name="toast_modified_password">Password modified!</string>
-    <string name="toast_note_updated">¡Note correctly updated!</string>
-    <string name="toast_pass_modified">¡Password modified!</string>
-    <string name="toast_professor_datas_modified">¡Professor datas modified!</string>
-    <string name="toast_sended">Sended!</string>
-    <string name="toast_student_datas_modified">¡Student datas modified!</string>
-    <string name="toast_user_not_exists">¡The user does not exist!</string>
-    <string name="toast_verification">Wait to be verified!</string>
-
     <string name="menu_basque">Basque</string>
     <string name="menu_delete">Delete</string>
     <string name="menu_edit_profile">Edit datas</string>
@@ -120,13 +124,9 @@
     <string name="msg_message_verification_code">You have requested to reset the password to access your Notix account</string>
     <string name="msg_message_verification_code2">Your verification code to reset the password is: </string>
 
-    <string name="subject">Verification code</string>
-
     <string name="check_remember">Remember me</string>
-    <string name="error_date_format">Date format is incorrect</string>
-    <string name="text_evaluation">Evaluation</string>
-    <string name="text_duration">Duration</string>
-    <string name="text_day">Day</string>
+
+    <string name="subject">Verification code</string>
 
     <string name="question_singup">What type of user are you?</string>
 </resources>

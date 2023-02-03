@@ -46,15 +46,12 @@ public class ProfessorStudentsAdapter extends ArrayAdapter<Student> {
         byte[] decodedString = Base64.decode(base64Image, Base64.DEFAULT);
         Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
 
-
-
         ((ImageView) view.findViewById(R.id.imageViewStudentPhotoAdapter)).setImageBitmap(decodedByte);
-        ((TextView) view.findViewById(R.id.textViewStudentNameAdapter)).setText("" + students.get(position).getName() + " " + students.get(position).getSurname());
-        ((TextView) view.findViewById(R.id.textViewStudentDniAdapter)).setText("" + students.get(position).getStudent_dni());
-        ((TextView) view.findViewById(R.id.textViewStudentNationalityAdapter)).setText("" + students.get(position).getNationality());
-        ((TextView) view.findViewById(R.id.textViewStudentBornDateAdapter)).setText(students.get(position).getBorn_date());
-        ((TextView) view.findViewById(R.id.textViewStudentMailAdapter)).setText(students.get(position).getEmail());
-        ((TextView) view.findViewById(R.id.textViewStudentPhoneAdapter)).setText(students.get(position).getPhone());
+        ((TextView) view.findViewById(R.id.viewStudentLayoutName)).setText("" + students.get(position).getName());
+        ((TextView) view.findViewById(R.id.viewStudentLayoutSurname)).setText("" + students.get(position).getSurname());
+        ((TextView) view.findViewById(R.id.viewStudentLayoutDni)).setText("" + students.get(position).getStudent_dni());
+        ((TextView) view.findViewById(R.id.viewStudentLayoutPhone)).setText(students.get(position).getPhone());
+        ((TextView) view.findViewById(R.id.viewStudentLayoutMail)).setText(students.get(position).getEmail());
 
         return view;
     }

@@ -5,107 +5,69 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <LinearLayout
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TableRow
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="75dp"
+            android:orientation="horizontal">
 
-            <Space
-                android:layout_width="56dp"
-                android:layout_height="23dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-            <Space
-                android:layout_width="96dp"
-                android:layout_height="23dp" />
+                <TextView
+                    android:id="@+id/viewStudentLayoutName"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center" />
+
+                <TextView
+                    android:id="@+id/viewStudentLayoutSurname"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center" />
+            </LinearLayout>
 
             <ImageView
                 android:id="@+id/imageViewStudentPhotoAdapter"
-                android:layout_width="98dp"
-                android:layout_height="80dp"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
                 tools:srcCompat="@tools:sample/avatars" />
+        </LinearLayout>
 
-        </TableRow>
+        <TextView
+            android:id="@+id/viewStudentLayoutDni"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:gravity="center" />
 
-        <TableRow
+        <TextView
+            android:id="@+id/viewStudentLayoutPhone"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:gravity="center" />
 
-            <Space
-                android:layout_width="15dp"
-                android:layout_height="match_parent" />
-
-            <TextView
-                android:id="@+id/textViewStudentNameAdapter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
-
-            <Space
-                android:layout_width="70dp"
-                android:layout_height="match_parent" />
-
-            <TextView
-                android:id="@+id/textViewStudentDniAdapter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
-        </TableRow>
-
-        <TableRow
+        <TextView
+            android:id="@+id/viewStudentLayoutMail"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:gravity="center" />
 
-            <Space
-                android:layout_width="70dp"
-                android:layout_height="match_parent" />
-
-            <TextView
-                android:id="@+id/textViewStudentNationalityAdapter"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="TextView" />
-
-            <Space
-                android:layout_width="15dp"
-                android:layout_height="match_parent" />
-
-            <TextView
-                android:id="@+id/textViewStudentBornDateAdapter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
-        </TableRow>
-
-        <TableRow
+        <TextView
+            android:id="@+id/viewStudentLayoutEmpty"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <Space
-                android:layout_width="70dp"
-                android:layout_height="match_parent" />
-
-            <TextView
-                android:id="@+id/textViewStudentMailAdapter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
-
-            <Space
-                android:layout_width="15dp"
-                android:layout_height="match_parent" />
-
-            <TextView
-                android:id="@+id/textViewStudentPhoneAdapter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
-
-        </TableRow>
-    </TableLayout>
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

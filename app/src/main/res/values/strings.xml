@@ -7,7 +7,10 @@
     <string name="text_code">Código</string>
     <string name="text_date">Fecha</string>
     <string name="text_date_format">YYYY-MM-DD</string>
+    <string name="text_day">Día</string>
     <string name="text_dni">DNI</string>
+    <string name="text_duration">Duración</string>
+    <string name="text_evaluation">Evaluacion</string>
     <string name="text_eva1">Eva1</string>
     <string name="text_eva2">Eva2</string>
     <string name="text_eva3">Eva3</string>
@@ -40,6 +43,7 @@
     <string name="error_camera">¡Camara no disponible!</string>
     <string name="error_communication">¡Error al conectar con el servidor!</string>
     <string name="error_conflict">¡Conflicto!</string>
+    <string name="error_date_format">Formato de fecha incorrecto</string>
     <string name="error_dniPass">¡DNI o Contraseña incorrecta!</string>
     <string name="error_duplicated_user">¡El usuario ya existe!</string>
     <string name="error_invalid_data">¡Has introducido algún dato invalido!</string>
@@ -56,6 +60,21 @@
     <string name="error_samePass">¡Las contraseñas no coinciden!</string>
     <string name="error_server_data">¡Error al recibir datos del servidor!</string>
     <string name="error_server_null_receipt">¡No hay datos en el servidor!</string>
+
+    <string name="toast_absence_created">¡Falta creada correctamente!</string>
+    <string name="toast_absence_deleted">¡Falta eliminada correctamente!</string>
+    <string name="toast_absence_updated">¡Falta justificada correctamente!</string>
+    <string name="toast_created">¡Usuario creado!</string>
+    <string name="toast_dni_not_registered">¡Este dni no esta registrado!</string>
+    <string name="toast_incorrect_code">¡Codigo de verificacion incorrecto!</string>
+    <string name="toast_modified_password">¡Contraseña actualizada!</string>
+    <string name="toast_note_updated">¡Nota actualizada correctamente!</string>
+    <string name="toast_pass_modified">¡Contraseña modificada!</string>
+    <string name="toast_professor_datas_modified">¡Datos del profesor actualizados!</string>
+    <string name="toast_sended">¡Enviado!</string>
+    <string name="toast_student_datas_modified">¡Datos del alumno actualizados!</string>
+    <string name="toast_user_not_exists">¡No existe el usuario!</string>
+    <string name="toast_verification">¡Usuario pendiente de verificación!</string>
 
     <string name="button_add">AÑADIR</string>
     <string name="button_all_absences">VER TODAS LAS FALTAS</string>
@@ -83,21 +102,6 @@
     <string name="view_student_signup">Registro Alumno</string>
     <string name="view_subjects">ASIGNATURAS</string>
 
-    <string name="toast_absence_created">¡Falta creada correctamente!</string>
-    <string name="toast_absence_deleted">¡Falta eliminada correctamente!</string>
-    <string name="toast_absence_updated">¡Falta justificada correctamente!</string>
-    <string name="toast_created">¡Usuario creado!</string>
-    <string name="toast_dni_not_registered">¡Este dni no esta registrado!</string>
-    <string name="toast_incorrect_code">¡Codigo de verificacion incorrecto!</string>
-    <string name="toast_modified_password">¡Contraseña actualizada!</string>
-    <string name="toast_note_updated">¡Nota actualizada correctamente!</string>
-    <string name="toast_pass_modified">¡Contraseña modificada!</string>
-    <string name="toast_professor_datas_modified">¡Datos del profesor actualizados!</string>
-    <string name="toast_sended">¡Enviado!</string>
-    <string name="toast_student_datas_modified">¡Datos del alumno actualizados!</string>
-    <string name="toast_user_not_exists">¡No existe el usuario!</string>
-    <string name="toast_verification">¡Usuario pendiente de verificación!</string>
-
     <string name="option_absence_false">No justificada</string>
     <string name="option_absence_true">Justificada</string>
     <string name="option_nationality_andorra">Andorra</string>
@@ -120,13 +124,9 @@
     <string name="msg_message_verification_code">Ha solicitado restablecer la contraseña de acceso a su cuenta de Notix</string>
     <string name="msg_message_verification_code2">Su codigo de verificacion para poder restablecer la contraseña es:</string>
 
-    <string name="subject">Código de verificación</string>
-
     <string name="check_remember">Recuerdame</string>
-    <string name="error_date_format">Formato de fecha incorrecto</string>
-    <string name="text_evaluation">Evaluacion</string>
-    <string name="text_duration">Duración</string>
-    <string name="text_day">Día</string>
+
+    <string name="subject">Código de verificación</string>
 
     <string name="question_singup">¿Que tipo de usuario eres?</string>
 </resources>
