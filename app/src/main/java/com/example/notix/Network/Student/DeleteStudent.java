@@ -9,7 +9,7 @@ import java.net.URL;
 
 public class DeleteStudent extends NetConfiguration implements Runnable {
 
-    private final String theUrl = theBaseUrl + "students/";
+    private final String theUrl = theBaseUrl + "studentsDelete/";
     private String student_dni;
     private int response;
     private String token;
