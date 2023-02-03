@@ -22,7 +22,8 @@
         android:id="@+id/tableLayout3"
         android:layout_width="350dp"
         android:layout_height="80dp"
-        android:layout_marginTop="201dp"
+        android:layout_marginTop="190dp"
+        android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toTopOf="@+id/tableLayout6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,13 +35,13 @@
 
             <TextView
                 android:id="@+id/viewProfessorMailReceiper"
-                android:layout_width="140dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:text="@string/text_receiper" />
 
             <Spinner
                 android:id="@+id/spinnerProfessorMailReceiper"
-                android:layout_width="match_parent"
+                android:layout_width="140dp"
                 android:layout_height="wrap_content" />
         </TableRow>
 
@@ -56,12 +57,11 @@
 
             <EditText
                 android:id="@+id/textProfesessorMailSubject"
-                android:layout_width="wrap_content"
+                android:layout_width="230dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName" />
         </TableRow>
-
     </TableLayout>
 
     <TableLayout
