@@ -44,7 +44,6 @@
                 android:gravity="center"
                 android:text="@string/text_duration"
                 android:textStyle="bold" />
-
         </TableRow>
 
     </TableLayout>

@@ -6,50 +6,49 @@
 
     <TableLayout
         android:layout_width="350dp"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <Space
-                android:layout_width="104dp"
-                android:layout_height="match_parent" />
-
             <TextView
-                android:id="@+id/textViewSubjectNameProfessorSubjects"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:id="@+id/viewProfessorSubjectsLayoutEmpty"
+                android:layout_width="175dp"
+                android:layout_height="wrap_content" />
 
-            <Space
-                android:layout_width="86dp"
-                android:layout_height="match_parent" />
-
-            <TextView
-                android:id="@+id/textViewSubjectDurationProfessorSubjects"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="11dp">
 
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="33dp" />
+            <TextView
+                android:id="@+id/viewProfessorSubjectsLayoutName"
+                android:layout_width="175dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/viewProfessorSubjectsLayoutDuration"
+                android:layout_width="175dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"/>
+
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent" >
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            <TextView
+                android:id="@+id/viewProfessorSubjectsLayoutEmpty2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </TableRow>
+
     </TableLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

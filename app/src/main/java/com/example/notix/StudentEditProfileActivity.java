@@ -127,7 +127,7 @@ public class StudentEditProfileActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), getString(R.string.error_no_data_modified), Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                        Toast.makeText(getApplicationContext(), getString(R.string.error_phone_length), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "uihdf", Toast.LENGTH_SHORT).show();
                     }
 
                 } else if (!textPassword.getText().toString().equals("") || textPassword2.getText().toString().equals("")) {

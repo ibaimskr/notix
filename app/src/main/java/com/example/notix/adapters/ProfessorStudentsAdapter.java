@@ -47,9 +47,8 @@ public class ProfessorStudentsAdapter extends ArrayAdapter<Student> {
         Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
 
         ((ImageView) view.findViewById(R.id.imageViewStudentPhotoAdapter)).setImageBitmap(decodedByte);
-        ((TextView) view.findViewById(R.id.viewStudentLayoutName)).setText("" + students.get(position).getName());
-        ((TextView) view.findViewById(R.id.viewStudentLayoutSurname)).setText("" + students.get(position).getSurname());
-        ((TextView) view.findViewById(R.id.viewStudentLayoutDni)).setText("" + students.get(position).getStudent_dni());
+        ((TextView) view.findViewById(R.id.viewStudentLayoutNameSurname)).setText("" + students.get(position).getName() + " " + students.get(position).getSurname());
+        //((TextView) view.findViewById(R.id.viewStudentLayoutSurname)).setText("" + students.get(position).getSurname());
         ((TextView) view.findViewById(R.id.viewStudentLayoutPhone)).setText(students.get(position).getPhone());
         ((TextView) view.findViewById(R.id.viewStudentLayoutMail)).setText(students.get(position).getEmail());
 

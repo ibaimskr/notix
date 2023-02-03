@@ -10,7 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import com.example.notix.R;
-import com.example.notix.beans.Absence;
 import com.example.notix.beans.Subject;
 
 import java.util.ArrayList;
@@ -33,8 +32,8 @@ public class ProfessorSubjectsAdapter extends ArrayAdapter<Subject> {
         LayoutInflater layoutInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.professor_subjects_layout, null);
 
-        ((TextView) view.findViewById(R.id.textViewSubjectNameProfessorSubjects)).setText( " " + subjects.get(position).getName());
-        ((TextView) view.findViewById(R.id.textViewSubjectDurationProfessorSubjects)).setText("" + subjects.get(position).getDuration());
+        ((TextView) view.findViewById(R.id.viewProfessorSubjectsLayoutName)).setText( " " + subjects.get(position).getName());
+        ((TextView) view.findViewById(R.id.viewProfessorSubjectsLayoutDuration)).setText("" + subjects.get(position).getDuration());
 
         return view;
     }
